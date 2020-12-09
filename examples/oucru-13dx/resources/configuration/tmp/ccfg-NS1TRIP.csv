@@ -1,0 +1,11 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,StudyNo,study_no,string,,,False,,
+1,SampleNo,sample_no,category,"{'V_0': 101, 'V_1': 10}",,False,,
+2,Analyte,analyte,category,{'V_0': 'VIRAL NS1 PROTEIN'},,False,,
+3,ControlResult,control_result,category,"{True: 1, False: 2, None: None}",,False,,
+4,TestResult,test_result,category,"{True: 1, False: 2, None: None}",,False,,
+5,SampleDate,sample_date,datetime64[ns],,,True,,
+6,SampleTime,sample_time,string,,,False,,
+7,SampleComment,sample_comment,string,,,False,,
+8,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
+9,0,date_sample,datetime64[ns],,,True,SampleDate,SampleTime

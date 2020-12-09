@@ -1,0 +1,8 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,StudyNo,study_no,string,,,FALSE,,
+1,AnalysisDate,analysis_date,datetime64[ns],,,TRUE,,
+2,ALB,alb,float64,,analysis_date,FALSE,,
+3,AST,ast,float64,,analysis_date,FALSE,,
+4,ALT,alt,float64,,analysis_date,FALSE,,
+5,CK,creatine_kinase,float64,,analysis_date,FALSE,,
+6,entry,entry,category,"{True: 1, False: 2, None: None}",,FALSE,,

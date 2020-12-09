@@ -1,0 +1,9 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,ID,id,Int64,,,False,,
+1,studycode,studycode,string,,,False,,
+2,SampleDate ,sample_date ,datetime64[ns],,,True,,
+3,Serotype,serotype,category,"{'V_0': 1, 'V_1': 2, 'V_2': 3, 'V_3': 4}",,False,,
+4,ResultReaction,result_reaction,string,,,False,,
+5,Resultml,resultml,string,,,False,,
+6,DateOfTesting,date_oftesting,datetime64[ns],,,True,,
+7,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,

@@ -1,0 +1,9 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,StudyCode,study_code,string,,,False,,
+1,FuDate,fu_date,datetime64[ns],,,True,,
+2,AENo,aeno,category,"{True: 1, False: 2, None: None}",,False,,
+3,Resolved,resolved,category,"{True: 1, False: 2, None: None}",,False,,
+4,DateResolved,date_resolved,datetime64[ns],,,True,,
+5,Treatment,treatment,category,"{True: 1, False: 2, None: None}",,False,,
+6,Details,details,string,,,False,,
+7,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,

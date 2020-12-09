@@ -1,0 +1,9 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,StudyNo,study_no,string,,,FALSE,,
+1,SampleNo,sample_no,category,,,FALSE,,
+2,DateOfSample,date_sample,datetime64[ns],,,TRUE,,
+3,IgM,igm,float64,,date_sample,FALSE,,
+4,IgMResult,igm_interpretation,category,"{'Positive':1,  'Negative':2,  'Equivocal':3}",date_sample,FALSE,,
+5,IgG,igg,float64,,date_sample,FALSE,,
+6,IgGResult,igg_interpretation,category,"{'Positive':1,  'Negative':2,  'Equivocal':3}",date_sample,FALSE,,
+7,entry,entry,category,"{True: 1, False: 2, None: None}",,FALSE,,

@@ -1,0 +1,7 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,ID,id,category,"{True: 1, False: 2, None: None}",,FALSE,,
+1,StudyNo,study_no,string,,,FALSE,,
+2,SampleDate,sample_date,datetime64[ns],,,TRUE,,
+3,Serotype,pcr_dengue_serotype,category,"{'<LOD': '<LOD', 'DENV-4': '4', 'DENV-3': '3', 'DENV-2': '2', 'DENV-1': '1'}",sample_date,FALSE,,
+4,ViremiaCopiesPerML,pcr_dengue_load,string,{0:'<LOD'},sample_date,FALSE,,
+5,entry,entry,category,"{True: 1, False: 2, None: None}",,FALSE,,

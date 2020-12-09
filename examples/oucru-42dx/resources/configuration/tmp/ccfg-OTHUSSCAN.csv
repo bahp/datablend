@@ -1,0 +1,8 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,SUBJID,subjid,string,,,False,,
+1,Initial,initial,string,,,False,,
+2,NewUAbnomalDate,new_uabnomaldate,datetime64[ns],,,True,,
+3,NewUAbnomalTime,new_uabnomaltime,string,,,False,,
+4,NewUAbnomal,new_uabnomal,string,,,False,,
+5,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
+6,0,date_new_uabnomal,datetime64[ns],,,True,NewUAbnomalDate,NewUAbnomalTime

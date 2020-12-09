@@ -1,0 +1,13 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,SUBJID,subjid,string,,,False,,
+1,Initial,initial,string,,,False,,
+2,Xray,xray,category,"{True: 1, False: 2, None: None}",,False,,
+3,XrayDate,xray_date,datetime64[ns],,,True,,
+4,XrayTime,xray_time,string,,,False,,
+5,XNormal,xnormal,boolean,,,False,,
+6,XPleuralEffusion,xpleural_effusion,boolean,,,False,,
+7,XPulmonaryEdema,xpulmonary_edema,boolean,,,False,,
+8,XPneumonia,xpneumonia,boolean,,,False,,
+9,OTHXray,othxray,boolean,,,False,,
+10,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
+11,0,date_xray,datetime64[ns],,,True,XrayDate,XrayTime

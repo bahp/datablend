@@ -1,0 +1,10 @@
+,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
+0,studycode,studycode,string,,,False,,
+1,SampleDate,sample_date,datetime64[ns],,,True,,
+2,DOS,dos,Int64,,,False,,
+3,PT,pt,string,,,False,,
+4,APTT,aptt,string,,,False,,
+5,Fibrinogen,fibrinogen,float64,,,False,,
+6,DDiTest,ddi_test,string,,,False,,
+7,SuspectResult,suspect_result,category,"{True: 1, False: 2, None: None}",,False,,
+8,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
