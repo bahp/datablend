@@ -339,6 +339,7 @@ class Blender:
     def stack(self, data, index, include=None, exclude=None):
         """Stacks the data.
 
+        .. todo: Warn skipped sheets?
         .. todo: This method could go within the StackWidget.
         .. todo: Stack widget by default unit=True. If unit
                  is true look for unit and if it exists in the

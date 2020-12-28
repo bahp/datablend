@@ -1,41 +1,50 @@
 # Libraries
+import pathlib
 import pandas as pd
 
-# Specific libraries
-from datablend.core.descriptors import Template
-from datablend.core.descriptors import DataBlender
+# DataBlend libraries
+from datablend.core.blend import BlenderTemplate
 from datablend.utils.pandas import save_xlsx
 
 # -------------------------------
 # Create configuration from data
 # -------------------------------
-# Paths
-path_output_temp = './resources/outputs/templates'
-path_output_data = './resources/outputs/datasets'
+# Current path
+curr_path = pathlib.Path(__file__).parent.absolute()
 
-# Filename
-filename = '13dx_data_fixed.xlsx'
+# Path with raw data.
+path_data = '{0}/resources/datasets/{1}'.format(
+    curr_path, '13DX_Data_sharing.xls')
 
-# Filepath to raw dataset
-filepath_data = '{0}/{1}'.format(path_output_data, filename)
-filepath_tmps = '{0}/tmp/ccfgs_{1}'.format(path_output_temp, filename)
+# Path to save fixed data.
+path_ccfgs = '{0}/resources/outputs/templates/tmp/{1}'.format(
+    curr_path, 'ccfgs_13dx_data_fixed.xlsx')
 
-# -------------------
+# --------------------
 # Main
-# -------------------
-# Read data (all sheets)
-data = pd.read_excel(filepath_data, sheet_name=None)
+# --------------------
+# Read all data sheets
+data = pd.read_excel(path_data, sheet_name=None)
 
-# Create the configuration templates
-templates = DBTemplate().fit(data)
+# Create templates
+templates = {}
 
-# Create folder if it does not exist.
-tmp = Template(templates['ENROL'])
+# Fill templates
+for k, df in data.items():
+    # Show information
+    print("Processing sheet... %s <%s>." % (path_data, k))
+    # Create descriptor template
+    templates[k] = BlenderTemplate().fit_from_data(df)
 
-print(tmp.has_timestamp())
+# -----------
+# Save
+# -----------
+# Create path if it does not exist
+path = pathlib.Path(path_ccfgs)
+path.parent.mkdir(parents=True, exist_ok=True)
 
+# Format templates (improve this)
+aux = {k:v.df for k,v in templates.items()}
 
-import sys
-sys.exit()
-# Save templates
-save_xlsx(templates, filepath_tmps, sheet_split=False)
+# Save
+save_xlsx(aux, path_ccfgs)
