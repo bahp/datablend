@@ -1,12 +1,13 @@
 # Own
 .idea
-#**/examples/outputs
+**/resources/outputs/datasets
 #**/examples/data
 **/*.DS_Store
+**/~*
 
 # Folders
 examples/basic
-examples/oucru-32dx-v0.0
+examples/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
