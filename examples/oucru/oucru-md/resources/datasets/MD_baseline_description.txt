@@ -1,0 +1,42 @@
+The dataset contains observational data of 2301 children with dengue in the MD cohort. 
+
+Variables:
+- st_no		: Patient study number
+- age		: Age at enrolment (year)
+- sex		: Gender (Female, Male)
+- wt 		: Weight at enrolment (kg)
+- day_ill  		: Day of illness at enrolment
+- his_tired		: History of tiredness at enrolment (Yes, No)
+- his_vomit	: History of vomiting at enrolment (Yes, No)
+- ttest		: Tourniquet test result at enrolment (Positive, Equivocal, Negative)
+- temp		: Temperature at enrolment (0C)
+- pulse		: Pulse rate at enrolment (count per minute)
+- sys_bp		: Systolic blood pressure at enrolment (mmHg)
+- mucosal_bleed	: Mucosal bleeding at enrolment (Yes, No)
+- abdominal_pain 	: Abdominal pain at enrolment (Yes, No)
+- liver		: Liver size at enrolment (cm)
+- hct_bsl		: Haematocrit level at enrolment (%)
+- plt_bsl		: Platelet count at enrolment (cells/mm3)
+- serotype2	: Serotype determined by PCR (DENV-1, DENV-2, DENV-3, DENV-4, Mixed, Negative)
+- serology	: Immune status determined by ELISA (Secondary dengue, Primary dengue, Possible primary, Unclassifiable)
+- to_PICU		: Referred to PICU (Yes, No)
+- shock		: Dengue shock syndrome (Yes, No)
+- doi_shock	: Day of illness at shock (day)
+- bleed_hos	: Bleeding during hospitalization (No, Skin, Mucose, Other)
+- minPLT_3to8	: Platelet nadir (cells/mm3)
+- dminPLT_3to8	: Day of illness of platelet nadir (day)
+- maxHCT_3to8	: Maximum haematocrit (%)
+- dmaxHCT_3to8	: Day of illness of maximum haematocrit (day)
+- maxhemo_3to8	: Overall haemoconcentration (%)
+
+-----
+Data source: Dr. Bridget Wills <bwills@oucru.org>
+Disclaimer:
+- Use of this data should be for the purpose of medical research to advance understanding of scientific questions only.
+- When publishing any analysis or results which makes use of this data, please acknowledge the contribution of Hospital for Tropical Diseases and OUCRU and cite this original paper.
+- For any secondary analysis that relies heavily on this dataset, please consider contacting the corresponding author for input and potential co-authorship
+
+
+
+
+
