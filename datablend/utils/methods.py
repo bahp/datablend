@@ -239,7 +239,6 @@ def extract_records_from_tuples(dataframe, index, tuples,
 
     # Loop over all the tuples
     for date, result in tuples:
-
         # Both status and level are None
         if date is None or result is None:
             print("Tuple (%s, %s) has a None." % (date, result))
@@ -281,6 +280,7 @@ def extract_records_from_tuples(dataframe, index, tuples,
     if return_by_types:
         return stacked_by_dtype
 
+    # Careful if no datetime column ccfg aux will not exist.
     # Merge all no matter their types
     result = pd.DataFrame(columns=aux.columns, dtype=object)
     for k, v in stacked_by_dtype.items():
