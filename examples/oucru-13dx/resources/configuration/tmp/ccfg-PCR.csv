@@ -1,7 +1,0 @@
-,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
-0,ID,id,category,"{True: 1, False: 2, None: None}",,False,,
-1,StudyNo,study_no,string,,,False,,
-2,SampleNo,sample_no,category,{'V_0': 101},,False,,
-3,Serotype,serotype,category,"{'V_0': '2', 'V_1': '<LOD', 'V_2': '1', 'V_3': '3', 'V_4': '4'}",,False,,
-4,Volume,volume,string,,,False,,
-5,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,

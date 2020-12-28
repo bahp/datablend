@@ -1,9 +1,0 @@
-,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
-0,SUBJID,subjid,string,,,False,,
-1,Initial,initial,string,,,False,,
-2,SystemKey,system_key,string,,,False,,
-3,LabDate,lab_date,datetime64[ns],,,True,,
-4,LabTime,lab_time,string,,,False,,
-5,Haematocrit,haematocrit,Int64,,,False,,
-6,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
-7,0,date_lab,datetime64[ns],,,True,LabDate,LabTime

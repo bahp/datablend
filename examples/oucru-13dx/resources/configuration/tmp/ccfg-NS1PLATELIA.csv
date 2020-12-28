@@ -1,6 +1,0 @@
-,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
-0,StudyNo,study_no,string,,,False,,
-1,SampleNo,sample_no,category,{'V_0': 101},,False,,
-2,TestResult,test_result,category,"{'V_0': 1, 'V_1': 2, 'V_2': 3}",,False,,
-3,SampleComment,sample_comment,category,{},,False,,
-4,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,

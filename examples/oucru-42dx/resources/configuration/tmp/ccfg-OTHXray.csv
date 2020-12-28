@@ -1,8 +1,0 @@
-,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
-0,SUBJID,subjid,category,"{'V_0': '03-1051', 'V_1': '03-5493'}",,False,,
-1,Initial,initial,category,"{'V_0': 'PTTN', 'V_1': 'TTT'}",,False,,
-2,NewXAbnomalDate,new_xabnomaldate,datetime64[ns],,,True,,
-3,NewXAbnomalTime,new_xabnomaltime,category,"{'V_0': '09:22', 'V_1': '15:28'}",,False,,
-4,NewXAbnomal,new_xabnomal,category,"{'V_0': 'NORMAL', 'V_1': 'NO'}",,False,,
-5,entry,entry,category,"{True: 1, False: 2, None: None}",,False,,
-6,0,date_new_xabnomal,datetime64[ns],,,True,NewXAbnomalDate,NewXAbnomalTime

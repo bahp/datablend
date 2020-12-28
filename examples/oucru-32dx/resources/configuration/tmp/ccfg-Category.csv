@@ -1,6 +1,0 @@
-,from_name,to_name,type,to_replace,timestamp,datetime,datetime_date,datetime_time
-0,Category Code,category code,string,,,False,,
-1,Name,name,string,,,False,,
-2,FreeText Category,free_text category,category,{'V_1': 'YES'},,False,,
-3,Database value,database value,string,,,False,,
-4,Title EN,title en,string,,,False,,
