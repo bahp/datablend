@@ -88,7 +88,7 @@ def format_var_names(x):
     .. todo: ValueSBP    --> value_sbp   instead of
     .. todo: LungChestOutcome --> lung_chest_outcome instead of lung_chestoutcome
 
-    RegExp1: r"(\w)([A-Z]+[a-z]*)"
+    RegExp1: r"(w)([A-Z]+[a-z]*)" (missing backslash before w)
     RegExp2: r"([a-z]+)([A-Z]+[a-z]*)"
 
     Parameters
