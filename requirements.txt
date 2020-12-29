@@ -27,21 +27,6 @@ dateutils==0.6.8
 decorator==4.4.2
 defusedxml==0.6.0
 diff-match-patch==20181111
-Django==3.0.6
-django-admin-rangefilter==0.6.0
-django-celery-beat==2.0.0
-django-cleanup==5.0.0
-django-filter==2.2.0
-django-import-export==2.1.0
-django-rest-framework==0.1.0
-django-rest-framework-braces==0.3.4
-django-rest-swagger==2.2.0
-django-reversion==3.0.7
-django-reversion-compare==0.12.2
-django-stubs==1.5.0
-django-timezone-field==4.0
-django-widget-tweaks==1.4.8
-djangorestframework==3.11.0
 docutils==0.16
 entrypoints==0.3
 et-xmlfile==1.0.1
@@ -108,13 +93,11 @@ prompt-toolkit==3.0.5
 protobuf==3.12.2
 ptyprocess==0.6.0
 py==1.9.0
--e git+https://github.com/bahp/pysml2.git@237e316398acf0029746aa1ab3dcaf529ebcabd6#egg=py_epicimpoc_inference
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 Pygments==2.6.1
 pyparsing==2.4.7
 pyrsistent==0.16.0
--e git+https://github.com/bahp/pysml.git@fcf0a30a6e937b0b04246efe1bd5b1d77e2d0d79#egg=pysml
 pytest==5.4.3
 pytest-cov==2.10.1
 python-crontab==2.5.1
@@ -130,7 +113,6 @@ requests==2.23.0
 rsa==4.0
 scikit-learn==0.23.1
 scipy==1.4.1
-seaborn==0.10.1
 Send2Trash==1.5.0
 simplegeneric==0.8.1
 simplejson==3.17.0
