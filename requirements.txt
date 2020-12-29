@@ -3,7 +3,7 @@ importlib-metadata==3.3.0
 iniconfig==1.1.1
 numpy==1.19.4
 packaging==20.8
-pandas==1.2.0
+pandas
 pluggy==0.13.1
 py==1.10.0
 pyparsing==2.4.7
