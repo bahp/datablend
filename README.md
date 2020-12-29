@@ -26,6 +26,9 @@
 [![MIT License][license-shield]][none-url]
 [![Contributors][contributors-shield]][none-url]
 
+[![Actions Status](https://github.com/bahp/datablend/workflows/Python%20package/badge.svg)](https://github.com/bahp/datablend/actions)
+
+
 <!--
 [![Forks][forks-shield]][none-url]
 [![Stargazers][stars-shield]][none-url]
