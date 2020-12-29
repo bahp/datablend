@@ -161,7 +161,8 @@ class BlenderTemplate:
 
         # Convert to_replace to dict
         if 'to_replace' in df:
-            df.to_replace = df.to_replace.apply(str2eval)
+            df.to_replace = df.to_replace.apply( \
+                lambda x: x if isinstance(x, dict) else str2eval(x))
 
         # Set resources_artificial
         self.df = df
@@ -376,7 +377,7 @@ class Blender:
             from datablend.core.widgets import StackWidget
 
 
-            stacked[k] = StackWidget(index=['study_no']).fit_transform(self.templates[k], df)
+            stacked[k] = StackWidget(index=index).fit_transform(self.templates[k], df)
 
         # Return DataFrame
         if isinstance(data, pd.DataFrame):

@@ -96,8 +96,8 @@ class RenameWidget(BaseWidget):
     """This widget renames columns.
 
     .. note: The column 'to_name' from the BlenderTemplate will
-             be used to find those data columns whose values
-             will be replace.
+             be used to find those data columns whose names
+             will be replaced.
     """
     # Required columns
     subset = ['from_name', 'to_name']
