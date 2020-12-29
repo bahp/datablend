@@ -22,7 +22,6 @@ coreschema==0.0.4
 coverage==5.3.1
 cycler==0.10.0
 Cython==0.29.21
--e git+https://github.com/bahp/datablend.git@1361abcec2109f37607fc38d2315cd1c003d4bec#egg=datablend
 dateutils==0.6.8
 decorator==4.4.2
 defusedxml==0.6.0
