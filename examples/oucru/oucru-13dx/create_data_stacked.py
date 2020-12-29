@@ -81,21 +81,3 @@ stacked = blender.stack(transformed, index='study_no',
 # Save stack data
 for k, df in stacked.items():
     df.to_csv(path_stack.replace('.xlsx', '_%s.csv' % k), index=False)
-
-import sys
-sys.exit()
-
-# Log
-for k in data.keys():
-    logger.info("\nData (%s):" % k)
-    logger.info(data[k])
-    logger.info("\nTransformed (%s):" % k)
-    logger.info(transformed[k])
-    logger.info("\nStacked (%s):" % k)
-    logger.info(stacked[k])
-    logger.info("\n\n\n")
-
-# Logging information
-logger.info("=" * 80)
-logger.info("File: %s", filepath_data)
-logger.info("")
