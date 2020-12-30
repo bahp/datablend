@@ -1,0 +1,578 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Blender with various widgets &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="The Template Gallery" href="../template/index.html" />
+    <link rel="prev" title="Blender with multiple inputs" href="plot_blender_02.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Inferring templates from data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#fixing-the-data">Fixing the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#data-in-stacked-format">Data in stacked format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#data-in-tidy-format">Data in tidy format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#further-considerations">Further considerations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">The Widget Gallery</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Blender Gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_blender_01.html">Blender with single input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_blender_02.html">Blender with multiple inputs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Blender with various widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">The Template Gallery</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">The Blender Gallery</a> &raquo;</li>
+        
+      <li>Blender with various widgets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_examples/blender/plot_blender_03.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-blender-plot-blender-03-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="blender-with-various-widgets">
+<span id="sphx-glr-examples-blender-plot-blender-03-py"></span><h1>Blender with various widgets<a class="headerlink" href="#blender-with-various-widgets" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The order of the <code class="docutils literal notranslate"><span class="pre">Widgets</span></code> passed to <code class="docutils literal notranslate"><span class="pre">Blender</span></code> matters.</p>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
+    StudyNo     enDate enTime DateIllness  Temp  Shock  Sex  CoughLevel   CoughDate  hct  wbc  LabSampleStudyDay      date_enrolment
+0  32dx-001 2020-11-07  10:00  05/07/2020  37.2  False    1         1.0  12/07/2020  2.0  3.5                  3 2020-11-07 10:00:00
+1  32dx-002 2020-12-07  11:00  09/07/2020  36.5  False    1         5.0  14/07/2020  3.0  2.0                  5 2020-12-07 11:00:00
+2  32dx-003 2020-07-13  12:00         NaN  39.8   True    2         2.0  13/07/2020  4.0  3.0                  1 2020-07-13 12:00:00
+3  32dx-004 2020-07-14  13:00         NaN  37.4  False    1         NaN         NaN  7.0  1.0                  2 2020-07-14 13:00:00
+
+Transformed:
+  study_number     enDate enTime  date_onset  body_temperature  shock  gender  cough_level  cough_date  hct  wbc  lab_study_day      date_enrolment     date_laboratory  event_onset
+0     32dx-001 2020-11-07  10:00  05/07/2020              37.2  False    Male          1.0  12/07/2020  2.0  3.5              3 2020-11-07 10:00:00 2020-11-10 10:00:00         True
+1     32dx-002 2020-12-07  11:00  09/07/2020              36.5  False    Male          5.0  14/07/2020  3.0  2.0              5 2020-12-07 11:00:00 2020-12-12 11:00:00         True
+2     32dx-003 2020-07-13  12:00         NaN              39.8   True  Female          2.0  13/07/2020  4.0  3.0              1 2020-07-13 12:00:00 2020-07-14 12:00:00        False
+3     32dx-004 2020-07-14  13:00         NaN              37.4  False    Male          NaN         NaN  7.0  1.0              2 2020-07-14 13:00:00 2020-07-16 13:00:00        False
+
+Stacked:
+   study_number                date            column  result     unit
+0      32dx-001 2020-11-07 10:00:00  body_temperature    37.2  celsius
+1      32dx-002 2020-12-07 11:00:00  body_temperature    36.5  celsius
+2      32dx-003 2020-07-13 12:00:00  body_temperature    39.8  celsius
+3      32dx-004 2020-07-14 13:00:00  body_temperature    37.4  celsius
+4      32dx-001 2020-12-07 00:00:00       cough_level     1.0      NaN
+5      32dx-002 2020-07-14 00:00:00       cough_level     5.0      NaN
+6      32dx-003 2020-07-13 00:00:00       cough_level     2.0      NaN
+7      32dx-001 2020-11-10 10:00:00               hct     2.0        %
+8      32dx-002 2020-12-12 11:00:00               hct     3.0        %
+9      32dx-003 2020-07-14 12:00:00               hct     4.0        %
+10     32dx-004 2020-07-16 13:00:00               hct     7.0        %
+11     32dx-001 2020-11-10 10:00:00               wbc     3.5  10^9U/L
+12     32dx-002 2020-12-12 11:00:00               wbc     2.0  10^9U/L
+13     32dx-003 2020-07-14 12:00:00               wbc     3.0  10^9U/L
+14     32dx-004 2020-07-16 13:00:00               wbc     1.0  10^9U/L
+15     32dx-001 2020-11-07 10:00:00             shock     0.0      NaN
+16     32dx-002 2020-12-07 11:00:00             shock     0.0      NaN
+17     32dx-003 2020-07-13 12:00:00             shock     1.0      NaN
+18     32dx-004 2020-07-14 13:00:00             shock     0.0      NaN
+19     32dx-001 2020-05-07 00:00:00       event_onset     1.0      NaN
+20     32dx-002 2020-09-07 00:00:00       event_onset     1.0      NaN
+21     32dx-001 2020-11-07 10:00:00            gender    Male      NaN
+22     32dx-002 2020-12-07 11:00:00            gender    Male      NaN
+23     32dx-003 2020-07-13 12:00:00            gender  Female      NaN
+24     32dx-004 2020-07-14 13:00:00            gender    Male      NaN
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">Blender</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateTimeMergeWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateFromStudyDayWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">EventWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">StackWidget</span>
+
+ <span class="c1"># ------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># ------------------------</span>
+ <span class="c1"># Template</span>
+ <span class="n">template</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="c1"># Example rename widget</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;StudyNo&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;study_number&#39;</span><span class="p">},</span>
+
+     <span class="c1"># Example datetime merge</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;datetime_date&#39;</span><span class="p">:</span> <span class="s1">&#39;enDate&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;datetime_time&#39;</span><span class="p">:</span> <span class="s1">&#39;enTime&#39;</span><span class="p">},</span>
+
+     <span class="c1"># Example parameters to be stacked</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Temp&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;body_temperature&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;celsius&#39;</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Shock&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;shock&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
+
+     <span class="c1"># Example replace widget</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_replace&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
+
+     <span class="c1"># Example parameters to be stacked.</span>
+     <span class="c1"># Note that uses a different date.</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;CoughLevel&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;cough_level&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;cough_date&#39;</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;CoughDate&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;cough_date&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+
+     <span class="c1"># Example event</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;DateIllness&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_onset&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="s1">&#39;event_onset&#39;</span><span class="p">},</span>
+
+     <span class="c1"># Example study day</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;lab_study_day&#39;</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;study_day_col&#39;</span><span class="p">:</span> <span class="s1">&#39;lab_study_day&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;study_day_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;hct&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;hct&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;%&#39;</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;unit&#39;</span><span class="p">:</span><span class="s1">&#39;10^9U/L&#39;</span><span class="p">}</span>
+
+ <span class="p">]</span>
+
+ <span class="c1"># Data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;11/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;10:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;DateIllness&#39;</span><span class="p">:</span> <span class="s1">&#39;05/07/2020&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">37.2</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s1">&#39;CoughLevel&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;CoughDate&#39;</span><span class="p">:</span> <span class="s1">&#39;12/07/2020&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span><span class="s1">&#39;12/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;11:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;DateIllness&#39;</span><span class="p">:</span> <span class="s1">&#39;09/07/2020&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">36.5</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s1">&#39;CoughLevel&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;CoughDate&#39;</span><span class="p">:</span> <span class="s1">&#39;14/07/2020&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;13/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;12:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">39.8</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s1">&#39;CoughLevel&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;CoughDate&#39;</span><span class="p">:</span> <span class="s1">&#39;13/07/2020&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+
+     <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span><span class="s1">&#39;14/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;13:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">37.4</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+
+ <span class="p">]</span>
+
+ <span class="c1"># Create DataFrames</span>
+ <span class="n">template</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Create blender</span>
+ <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">DateTimeMergeWidget</span><span class="p">(),</span>
+                            <span class="n">RenameWidget</span><span class="p">(),</span>
+                            <span class="n">ReplaceWidget</span><span class="p">(),</span>
+                            <span class="n">DateFromStudyDayWidget</span><span class="p">(),</span>
+                            <span class="n">EventWidget</span><span class="p">()])</span>
+
+ <span class="c1"># Fit blender to templates.</span>
+ <span class="n">blender</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">template</span><span class="p">)</span>
+
+ <span class="c1"># Transform data</span>
+ <span class="n">transformed</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Stack data</span>
+ <span class="n">stacked</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">transformed</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;study_number&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transformed:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stacked:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">stacked</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.106 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-blender-plot-blender-03-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/699706c9f59c138641aa7ee60a6c5536/plot_blender_03.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blender_03.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/b86e309808dadbe864a846bd68dc5709/plot_blender_03.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_blender_03.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../template/index.html" class="btn btn-neutral float-right" title="The Template Gallery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_blender_02.html" class="btn btn-neutral float-left" title="Blender with multiple inputs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
