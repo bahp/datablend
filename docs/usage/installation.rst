@@ -11,10 +11,11 @@ create the documentation, coverage or package testing are not required
 by default.
 
 - ``pandas``
-- ``pytest`` (only for package testing).
+- ``pyyaml`` (for logging purposes)
+- ``pytest`` (only for package testing)
 - ``sphinx``         (only to update documentation)
 - ``sphinx-gallery`` (only to update documentation)
-- ``sphinx-autodoc`` (only to update documentation)
+- ``sphinx-rtd-theme`` (only to update documentation)
 
 Creating the virtual environment
 --------------------------------
