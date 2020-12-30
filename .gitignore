@@ -1,12 +1,22 @@
-# Own
-.idea
-**/resources/outputs/datasets
-#**/examples/data
+# -------------------------------------------------
+# Own ammendments
+# -------------------------------------------------
+# MAC hidden files
 **/*.DS_Store
+# Temporal excel files
 **/~*
+# PyCharm folder
+.idea
+
 
 # Folders
+examples/oucru/**/datasets/**/*.csv
+examples/oucru/**/datasets/**/*.xlsx
+examples/oucru/**/datasets/**/*.xls
+**/resources/outputs/datasets
+
 examples/basic
+# -------------------------------------------------
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -38,7 +48,7 @@ share/python-wheels/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a resources_artificial
+#  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
