@@ -9,10 +9,13 @@ def load_logger(path):
 
     Parameters
     ----------
-    path
+    path: str-like
+        Path to the YAML configuration file.
 
     Returns
-    -------"""
+    -------
+    Logge
+    """
     # Load logging configuration
     with open(path, 'r') as stream:
         config = yaml.load(stream, Loader=yaml.FullLoader)

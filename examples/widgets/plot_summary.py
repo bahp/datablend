@@ -16,6 +16,7 @@ from datablend.core.widgets import DateTimeMergeWidget
 from datablend.core.widgets import DateFromStudyDayWidget
 from datablend.core.widgets import EventWidget
 from datablend.core.widgets import StackWidget
+from datablend.utils.display import str_dtypes
 
 # ------------------------
 # Constants
@@ -141,3 +142,9 @@ print("\nTransformed:")
 print(transformed)
 print("\nStacked:")
 print(stacked)
+
+# Show data types
+print("\n")
+print(str_dtypes(data))
+
+

@@ -368,9 +368,11 @@ class StackWidget(BaseWidget):
     # Required columns
     subset = ['to_name', 'timestamp']
 
-    def __init__(self, index, with_unit=True):
+    def __init__(self, index, with_unit=True,
+                       as_datetime=True):
         self.index = index
         self.with_unit = with_unit
+        self.as_datetime = as_datetime
 
         if with_unit:
             self.subset.append('unit')
@@ -447,12 +449,17 @@ class StackWidget(BaseWidget):
 
         # Extract events from tuples
         stacked = extract_records_from_tuples(dataframe=data,
-                                              index=self.index, return_by_types=False,
+                                              index=self.index,
+                                              return_by_types=False,
                                               tuples=tuples, verbose=10)
 
         # Unit
         if self.with_unit:
             stacked = StackUnitWidget().fit_transform(self.bt, stacked)
+
+        # Cast date to datetime
+        if self.as_datetime:
+            stacked.date = pd.to_datetime(stacked.date)
 
         # Return
         return stacked

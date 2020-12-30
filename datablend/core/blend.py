@@ -23,6 +23,7 @@ from datablend.utils.transformations import str2eval
 # Configure logger
 logger = logging.getLogger('dev')
 
+
 def date_time_maps(data):
     """This method...
 
@@ -134,6 +135,12 @@ class BlenderTemplate:
 
         Parameters
         ----------
+        template: pd.DataFrame or array of dicts
+            The information of the template (see class description).
+
+        Returns
+        -------
+        BlenderTemplate
         """
         if isinstance(template, pd.DataFrame):
             return self.fit_from_bt_df(template)
@@ -141,34 +148,31 @@ class BlenderTemplate:
             return self.fit_from_bt_df(pd.DataFrame(template))
 
         raise TypeError
-        print("Fit from data")
-            #return self.fit_from_data(df)
 
     def fit_from_bt_df(self, df):
-        """Fits the resources_artificial.
+        """Fits the template.
 
         Parameters
         ----------
-        template: pd.DataFrame
-            The dataframe with the resources_artificial information.
+        df: pd.DataFrame
+            The template information as DataFrame
 
         Returns
         -------
-        Template object
+        BlenderTemplate
         """
         # Raises error if not valid.
         self.valid_blender_template_dataframe(df)
 
         # Convert to_replace to dict
         if 'to_replace' in df:
-            df.to_replace = df.to_replace.apply( \
+            df.to_replace = df.to_replace.apply(
                 lambda x: x if isinstance(x, dict) else str2eval(x))
 
-        # Set resources_artificial
+        # Set DataFrame
         self.df = df
         # Return
         return self
-
 
     def fit_from_data(self, data):
         """Creates a configuration file for the descriptor.
@@ -179,17 +183,18 @@ class BlenderTemplate:
                  strings leave them and don't create automatically
                  a to_replace?
 
-        The result produced is just a resources_artificial and needs further inspection
-        by the user to ensure that all the transformations and parameters
-        are correct.
+        The result produced is just a preliminary template and needs
+        further inspection by the user to ensure that all the
+        transformations and parameters are correct.
 
         Parameters
         ----------
         data: pd.DataFrame
-            A pandas DataFrame with the data.
+            The data from which a preliminary template will be inferred.
 
         Returns
         --------
+        BlenderTemplate
         """
         # Convert data types
         data = data.convert_dtypes()
@@ -230,14 +235,6 @@ class BlenderTemplate:
 
         # Return
         return self
-
-    def transform(self, data, widgets=[]):
-        """"""
-        pass
-
-    def stack(self, data, index):
-        """"""
-        pass
 
     def __str__(self):
         return '\nBlenderTemplate:\n{0}\n'.format(self.df)

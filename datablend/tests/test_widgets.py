@@ -6,6 +6,8 @@ import pandas as pd
 from datablend.core.blend import BlenderTemplate
 from datablend.core.widgets import BaseWidget
 from datablend.core.widgets import RenameWidget
+from datablend.core.widgets import ReplaceWidget
+from datablend.core.widgets import DateTimeMergeWidget
 from datablend.core.exceptions import WrongColumnType
 from datablend.core.exceptions import MissingRequiredColumns
 from datablend.core.exceptions import IncompatibleBlenderTemplateError
@@ -32,7 +34,8 @@ def bt_json():
         {'from_name': 'StudyNo', 'to_name': 'study_number'},
         {'from_name': 'Temp', 'to_name': 'body_temperature'},
         {'from_name': 'Shock', 'to_name': 'shock'},
-        {'from_name': 'Sex', 'to_name': 'gender'}
+        {'from_name': 'Sex', 'to_name': 'gender',
+         'to_replace': {'Male': 1, 'Female': 2}}
     ]
     # Return
     return template
@@ -44,8 +47,9 @@ def bt_df(bt_json):
 
 
 @pytest.fixture
-def blender_template(bt_df):
+def bt(bt_df):
     return BlenderTemplate().fit(bt_df)
+
 
 # ----------------------------
 # RenameWidget tests
@@ -59,26 +63,32 @@ def blender_template(bt_df):
 # ----------------------------
 # BlenderTemplate tests
 # ----------------------------
-def test_bt_raises_exception_on_None():
+def test_bt_fit_raises_exception_on_None():
     """Widget none template."""
     with pytest.raises(TypeError):
         BlenderTemplate().fit(None)
 
 
-def test_bt_from_df(bt_df):
+def test_bt_fit_from_df(bt_df):
     """Widget none template."""
     bt = BlenderTemplate().fit(bt_df)
     assert isinstance(bt, BlenderTemplate)
 
 
-def test_bt_from_json(bt_json):
+def test_bt_fit_from_json(bt_json):
     """"""
     bt = BlenderTemplate().fit(bt_json)
     assert isinstance(bt, BlenderTemplate)
 
 
+def test_bt_fit_from_data(data):
+    """"""
+    bt = BlenderTemplate().fit_from_data(data)
+    assert isinstance(bt, BlenderTemplate)
+
+
 # ----------------------------
-# RenameWidget tests
+# Widget tests
 # ----------------------------
 def test_widget_raises_exception_on_None():
     """"""
@@ -104,3 +114,40 @@ def test_widget_raises_exception_on_missing_required_columns(bt_df):
     bt = BlenderTemplate().fit(bt_df)
     with pytest.raises(MissingRequiredColumns):
         RenameWidget().fit(bt)
+
+
+def test_widget_rename(bt, data):
+    """"""
+    transformed = RenameWidget().fit_transform(bt, data)
+    assert True
+
+
+def test_widget_replace_from_dict(bt, data):
+    """"""
+    transformed = RenameWidget().fit_transform(bt, data)
+    transformed = ReplaceWidget().fit_transform(bt, transformed)
+    unique = set(transformed.gender.unique())
+    assert unique.issubset(set(['Male', 'Female']))
+
+
+def test_widget_replace_from_str(bt, data):
+    assert True
+
+
+def test_widget_dtmerge(bt, data):
+    """"""
+    assert True
+
+
+def test_widget_events(bt, data):
+    """"""
+    assert True
+
+
+def test_widget_studyday(bt, data):
+    """"""
+    assert True
+
+
+def test_widget_stack(bt, data):
+    """"""

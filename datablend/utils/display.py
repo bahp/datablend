@@ -2,16 +2,6 @@
 import pandas
 
 
-def str_data_types(data):
-    """This method..."""
-    s = "=" * 80 + "\n"
-    s += "Date Types:\n\n"
-    s += str(data.convert_dtypes().sort_index().dtypes)
-    s += "\n\n"
-    s += "=" * 80 + "\n"
-    return s
-
-
 def str_dtypes(data, label=None):
     """Returns str with the dtypes"""
     # Create string
