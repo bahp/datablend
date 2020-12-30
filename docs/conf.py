@@ -36,6 +36,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
+    'sphinx.ext.githubpages',
     'sphinx_gallery.gen_gallery'
 ]
 
