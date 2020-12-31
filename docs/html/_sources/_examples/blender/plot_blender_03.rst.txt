@@ -50,32 +50,32 @@ Blender with various widgets
     3     32dx-004 2020-07-14  13:00         NaN              37.4  False    Male          NaN         NaN  7.0  1.0              2 2020-07-14 13:00:00 2020-07-16 13:00:00        False
 
     Stacked:
-       study_number                 date            column  result     unit
-    0      32dx-001  2020-11-07 10:00:00  body_temperature    37.2  celsius
-    1      32dx-002  2020-12-07 11:00:00  body_temperature    36.5  celsius
-    2      32dx-003  2020-07-13 12:00:00  body_temperature    39.8  celsius
-    3      32dx-004  2020-07-14 13:00:00  body_temperature    37.4  celsius
-    4      32dx-001           12/07/2020       cough_level       1      NaN
-    5      32dx-002           14/07/2020       cough_level       5      NaN
-    6      32dx-003           13/07/2020       cough_level       2      NaN
-    7      32dx-001  2020-11-10 10:00:00               hct       2        %
-    8      32dx-002  2020-12-12 11:00:00               hct       3        %
-    9      32dx-003  2020-07-14 12:00:00               hct       4        %
-    10     32dx-004  2020-07-16 13:00:00               hct       7        %
-    11     32dx-001  2020-11-10 10:00:00               wbc     3.5  10^9U/L
-    12     32dx-002  2020-12-12 11:00:00               wbc       2  10^9U/L
-    13     32dx-003  2020-07-14 12:00:00               wbc       3  10^9U/L
-    14     32dx-004  2020-07-16 13:00:00               wbc       1  10^9U/L
-    15     32dx-001  2020-11-07 10:00:00             shock       0      NaN
-    16     32dx-002  2020-12-07 11:00:00             shock       0      NaN
-    17     32dx-003  2020-07-13 12:00:00             shock       1      NaN
-    18     32dx-004  2020-07-14 13:00:00             shock       0      NaN
-    19     32dx-001           05/07/2020       event_onset       1      NaN
-    20     32dx-002           09/07/2020       event_onset       1      NaN
-    21     32dx-001  2020-11-07 10:00:00            gender    Male      NaN
-    22     32dx-002  2020-12-07 11:00:00            gender    Male      NaN
-    23     32dx-003  2020-07-13 12:00:00            gender  Female      NaN
-    24     32dx-004  2020-07-14 13:00:00            gender    Male      NaN
+       study_number                date            column  result     unit
+    0      32dx-001 2020-11-07 10:00:00  body_temperature    37.2  celsius
+    1      32dx-002 2020-12-07 11:00:00  body_temperature    36.5  celsius
+    2      32dx-003 2020-07-13 12:00:00  body_temperature    39.8  celsius
+    3      32dx-004 2020-07-14 13:00:00  body_temperature    37.4  celsius
+    4      32dx-001 2020-12-07 00:00:00       cough_level     1.0      NaN
+    5      32dx-002 2020-07-14 00:00:00       cough_level     5.0      NaN
+    6      32dx-003 2020-07-13 00:00:00       cough_level     2.0      NaN
+    7      32dx-001 2020-11-10 10:00:00               hct     2.0        %
+    8      32dx-002 2020-12-12 11:00:00               hct     3.0        %
+    9      32dx-003 2020-07-14 12:00:00               hct     4.0        %
+    10     32dx-004 2020-07-16 13:00:00               hct     7.0        %
+    11     32dx-001 2020-11-10 10:00:00               wbc     3.5  10^9U/L
+    12     32dx-002 2020-12-12 11:00:00               wbc     2.0  10^9U/L
+    13     32dx-003 2020-07-14 12:00:00               wbc     3.0  10^9U/L
+    14     32dx-004 2020-07-16 13:00:00               wbc     1.0  10^9U/L
+    15     32dx-001 2020-11-07 10:00:00             shock     0.0      NaN
+    16     32dx-002 2020-12-07 11:00:00             shock     0.0      NaN
+    17     32dx-003 2020-07-13 12:00:00             shock     1.0      NaN
+    18     32dx-004 2020-07-14 13:00:00             shock     0.0      NaN
+    19     32dx-001 2020-05-07 00:00:00       event_onset     1.0      NaN
+    20     32dx-002 2020-09-07 00:00:00       event_onset     1.0      NaN
+    21     32dx-001 2020-11-07 10:00:00            gender    Male      NaN
+    22     32dx-002 2020-12-07 11:00:00            gender    Male      NaN
+    23     32dx-003 2020-07-13 12:00:00            gender  Female      NaN
+    24     32dx-004 2020-07-14 13:00:00            gender    Male      NaN
 
 
 
@@ -228,7 +228,7 @@ Blender with various widgets
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.275 seconds)
+   **Total running time of the script:** ( 0 minutes  0.106 seconds)
 
 
 .. _sphx_glr_download__examples_blender_plot_blender_03.py:

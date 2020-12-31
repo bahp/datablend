@@ -103,14 +103,14 @@ Import
     3     32dx-004     2020/12/11       1               NaN
 
     Stack:
-      study_number        date            column result     unit
-    0     32dx-001  2020/12/01            gender      1      NaN
-    1     32dx-002  2020/12/04            gender      2      NaN
-    2     32dx-003  2020/12/08            gender      1      NaN
-    3     32dx-004  2020/12/11            gender      1      NaN
-    4     32dx-001  2020/12/01  body_temperature   37.5  celsius
-    5     32dx-002  2020/12/04  body_temperature   36.8  celsius
-    6     32dx-003  2020/12/08  body_temperature   39.2  celsius
+      study_number       date            column result     unit
+    0     32dx-001 2020-12-01            gender      1      NaN
+    1     32dx-002 2020-12-04            gender      2      NaN
+    2     32dx-003 2020-12-08            gender      1      NaN
+    3     32dx-004 2020-12-11            gender      1      NaN
+    4     32dx-001 2020-12-01  body_temperature   37.5  celsius
+    5     32dx-002 2020-12-04  body_temperature   36.8  celsius
+    6     32dx-003 2020-12-08  body_temperature   39.2  celsius
 
 
 
@@ -118,7 +118,7 @@ Import
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.050 seconds)
+   **Total running time of the script:** ( 0 minutes  0.046 seconds)
 
 
 .. _sphx_glr_download__examples_widgets_plot_stack.py:

@@ -88,36 +88,36 @@ Example using ``Blender`` works with data collected from several sources.
     Stacked:
 
     EXAM:
-            pid        date            column  result     unit
-    0  32dx-001  10/07/2020  body_temperature    37.2  celsius
-    1  32dx-002  08/07/2020  body_temperature    37.5  celsius
-    2  32dx-003  10/07/2020  body_temperature    36.7  celsius
-    3  32dx-001  10/07/2020            gender    Male      NaN
-    4  32dx-002  08/07/2020            gender  Female      NaN
-    5  32dx-003  10/07/2020            gender  Female      NaN
+            pid       date            column  result     unit
+    0  32dx-001 2020-10-07  body_temperature    37.2  celsius
+    1  32dx-002 2020-08-07  body_temperature    37.5  celsius
+    2  32dx-003 2020-10-07  body_temperature    36.7  celsius
+    3  32dx-001 2020-10-07            gender    Male      NaN
+    4  32dx-002 2020-08-07            gender  Female      NaN
+    5  32dx-003 2020-10-07            gender  Female      NaN
 
     LAB:
-             pid        date column  result     unit
-    0   32dx-001  11/07/2020    hct     1.0        %
-    1   32dx-001  12/07/2020    hct     2.0        %
-    2   32dx-001  13/07/2020    hct     3.0        %
-    3   32dx-001  14/07/2020    hct     4.0        %
-    4   32dx-001  15/07/2020    hct     5.0        %
-    5   32dx-002  09/07/2020    hct     1.0        %
-    6   32dx-002  10/07/2020    hct     3.0        %
-    7   32dx-002  11/07/2020    hct     3.0        %
-    8   32dx-003  20/07/2020    hct     2.0        %
-    9   32dx-003  21/07/2020    hct     4.0        %
-    10  32dx-001  11/07/2020    wbc     1.5  10^9U/L
-    11  32dx-001  12/07/2020    wbc     2.5  10^9U/L
-    12  32dx-001  13/07/2020    wbc     3.5  10^9U/L
-    13  32dx-001  14/07/2020    wbc     4.5  10^9U/L
-    14  32dx-001  15/07/2020    wbc     5.5  10^9U/L
-    15  32dx-002  09/07/2020    wbc     3.5  10^9U/L
-    16  32dx-002  10/07/2020    wbc     3.2  10^9U/L
-    17  32dx-002  11/07/2020    wbc     4.3  10^9U/L
-    18  32dx-003  20/07/2020    wbc     1.5  10^9U/L
-    19  32dx-003  21/07/2020    wbc     2.5  10^9U/L
+             pid       date column  result     unit
+    0   32dx-001 2020-11-07    hct     1.0        %
+    1   32dx-001 2020-12-07    hct     2.0        %
+    2   32dx-001 2020-07-13    hct     3.0        %
+    3   32dx-001 2020-07-14    hct     4.0        %
+    4   32dx-001 2020-07-15    hct     5.0        %
+    5   32dx-002 2020-09-07    hct     1.0        %
+    6   32dx-002 2020-10-07    hct     3.0        %
+    7   32dx-002 2020-11-07    hct     3.0        %
+    8   32dx-003 2020-07-20    hct     2.0        %
+    9   32dx-003 2020-07-21    hct     4.0        %
+    10  32dx-001 2020-11-07    wbc     1.5  10^9U/L
+    11  32dx-001 2020-12-07    wbc     2.5  10^9U/L
+    12  32dx-001 2020-07-13    wbc     3.5  10^9U/L
+    13  32dx-001 2020-07-14    wbc     4.5  10^9U/L
+    14  32dx-001 2020-07-15    wbc     5.5  10^9U/L
+    15  32dx-002 2020-09-07    wbc     3.5  10^9U/L
+    16  32dx-002 2020-10-07    wbc     3.2  10^9U/L
+    17  32dx-002 2020-11-07    wbc     4.3  10^9U/L
+    18  32dx-003 2020-07-20    wbc     1.5  10^9U/L
+    19  32dx-003 2020-07-21    wbc     2.5  10^9U/L
 
 
 
@@ -241,7 +241,7 @@ Example using ``Blender`` works with data collected from several sources.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.234 seconds)
+   **Total running time of the script:** ( 0 minutes  0.095 seconds)
 
 
 .. _sphx_glr_download__examples_blender_plot_blender_02.py:

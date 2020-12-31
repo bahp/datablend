@@ -48,13 +48,13 @@ Example using ``Blender`` works with data collected from a single sources.
     2  32dx-003  10/07/2020              36.7  Female
 
     Stacked:
-            pid        date            column  result     unit
-    0  32dx-001  10/07/2020  body_temperature    37.2  celsius
-    1  32dx-002  08/07/2020  body_temperature    37.5  celsius
-    2  32dx-003  10/07/2020  body_temperature    36.7  celsius
-    3  32dx-001  10/07/2020            gender    Male      NaN
-    4  32dx-002  08/07/2020            gender  Female      NaN
-    5  32dx-003  10/07/2020            gender  Female      NaN
+            pid       date            column  result     unit
+    0  32dx-001 2020-10-07  body_temperature    37.2  celsius
+    1  32dx-002 2020-08-07  body_temperature    37.5  celsius
+    2  32dx-003 2020-10-07  body_temperature    36.7  celsius
+    3  32dx-001 2020-10-07            gender    Male      NaN
+    4  32dx-002 2020-08-07            gender  Female      NaN
+    5  32dx-003 2020-10-07            gender  Female      NaN
 
 
 
@@ -129,7 +129,7 @@ Example using ``Blender`` works with data collected from a single sources.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.208 seconds)
+   **Total running time of the script:** ( 0 minutes  0.049 seconds)
 
 
 .. _sphx_glr_download__examples_blender_plot_blender_01.py:
