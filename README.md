@@ -37,7 +37,7 @@
 
 Community | [Documentation][url-documentation] | Resources | Contributors | Release Notes
 
-![alt text](docs/logos/blender.png)
+![](docs/logos/blender.png =50x)
 
 The Datablend library aims to facilitate the formatting of manually collected data into
 (i) stacked data format which is commonly used to store data in a database table and 
