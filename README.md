@@ -9,7 +9,7 @@
 ![](docs/logos/whisker-manual-01.png)
 --> 
 
-# DataBlend <img src="docs/logos/blender.png" width="50">
+# DataBlend <img src="docs/logos/blender.png" style="float:right;" width="50">
 
 <!-- ----------------------- -->
 <!--     PROJECT SHIELDS     -->
