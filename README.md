@@ -1,63 +1,13 @@
-# datablend README
+# datablend
+
+Important
+ - .nojekyll file (so it works with sphinx _)
+ - index.html (to redirect to html main index)
 
 <!-- ----------------------- -->
 <!--     PROJECT SHIELDS     -->
 <!-- ----------------------- -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
-***
-*** For more badges: http://badges.github.io/badgerbadgerbadger/
-*** For more badges: https://github.com/Naereen/badges
-***  Basic use: 
-*** https://img.shields.io/badge/<subject>-<status>-<color?.svg
-*** https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=flat-square
-***
--->
-<!--[![Build][build-shield]][none-url]-->
-<!--[![Coverage][coverage-shield]][none-url]-->
-<!--[![Documentation][documentation-shield]][none-url]-->
-<!--[![Website][website-shield]][none-url]-->
-[![Python][python-shield]][none-url]
-[![Issues][issues-shield]][none-url]
-[![MIT License][license-shield]][none-url]
-[![Contributors][contributors-shield]][none-url]
-
 [![Actions Status](https://github.com/bahp/datablend/workflows/Python%20package/badge.svg)](https://github.com/bahp/datablend/actions)
-
-
-<!--
-[![Forks][forks-shield]][none-url]
-[![Stargazers][stars-shield]][none-url]
-[![MIT License][license-shield]][none-url]
--->
-
-Community | Documentation | Resources | Contributors | Release Notes
-
-The Datablend library aims to facilitate the formatting of manually collected data into
-(i) stacked data format which is commonly used to store data in a database table and 
-(ii) tidy format which is commonly used in ML libraries.
-
-<!-- > Subtitle or Short Description Goes Here -->
-
-<!-- > ideally one sentence -->
-
-<!-- > include terms/tags that can be searched -->
-
-
-<!-- PROJECT LOGO -->
-<!--
-<br />
-<p align="center">
-  <a href="">
-    <img src="" alt="Logo" width="150" height="80">
-  </a>
-</p>
--->
-
 
 <!-- ----------------------- -->
 <!--    TABLE OF CONTENTS    -->
