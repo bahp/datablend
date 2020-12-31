@@ -21,13 +21,11 @@
 <!--[![Coverage][coverage-shield]][none-url]-->
 <!--[![Documentation][documentation-shield]][none-url]-->
 <!--[![Website][website-shield]][none-url]-->
+[![Actions Status](https://github.com/bahp/datablend/workflows/Python%20package/badge.svg)](https://github.com/bahp/datablend/actions)
 [![Python][python-shield]][none-url]
 [![Issues][issues-shield]][none-url]
 [![MIT License][license-shield]][none-url]
 [![Contributors][contributors-shield]][none-url]
-
-[![Actions Status](https://github.com/bahp/datablend/workflows/Python%20package/badge.svg)](https://github.com/bahp/datablend/actions)
-
 
 <!--
 [![Forks][forks-shield]][none-url]

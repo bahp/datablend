@@ -16,6 +16,7 @@ by default.
 - ``sphinx``         (only to update documentation)
 - ``sphinx-gallery`` (only to update documentation)
 - ``sphinx-rtd-theme`` (only to update documentation)
+- ``matplotlib`` (only to update documentation)
 
 Creating the virtual environment
 --------------------------------
