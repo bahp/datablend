@@ -47,6 +47,7 @@
 -->
 
 [url-documentation]: https://bahp.github.io/datablend/index.html
+[url-installation]: https://bahp.github.io/datablend/usage/installation.html
 [url-development]: https://bahp.github.io/datablend/usage/development.html
 
 Community | [Documentation][url-documentation] | Resources | Contributors | Release Notes
@@ -75,61 +76,11 @@ used in AI/ML libraries.
 
 
 <!-- ----------------------- -->
-<!--    TABLE OF CONTENTS    -->
+<!--     Installation        -->
 <!-- ----------------------- -->
-## Table of Contents
+## Installation
 
-* [About the project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Tests](#tests)
-* [Roadmap](#roadmap)
-* [License](#license)
-* [Contact](#contact)
-* [Utils](#utils)
-
-<!--* [Contributing](#contributing)-->
-<!--* [Versioning](#versioning)-->
-<!--* [Sponsors](#sponsors)-->
-<!--* [Authors](#authors)-->
-<!--* [Acknowledgements](#acknowledgements)-->
-
-<!-- ----------------------- -->
-<!--    ABOUT THE PROJECT    -->
-<!-- ----------------------- -->
-## About the project
-
-<!-- Add image if it is a graphical user interface -->
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-The Datablend library facilitates formatting data into stacked and/or tidy format.
-
-<!--
-### Built With
-
-This project heavily relies on other major framework which have build most of the
-algorithms and functionality. It just sits on top of them to facilitate the
-evaluation and reporting of to wider audiences.
-
-* [![Django](https://img.shields.io/badge/Django-3.0.7-blue.svg)](https://www.djangoproject.com/) 
-* [![DjangoRF](https://img.shields.io/badge/djangorestframework-3.11.0-blue.svg)](https://www.django-rest-framework.org/) 
-* [![DjangoIE](https://img.shields.io/badge/django_import_export-2.2.0-blue.svg)](https://django-import-export.readthedocs.io/en/latest/) 
-* Others
--->
-
-<!--
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* [Laravel](https://laravel.com)
--->
-
-<!-- ----------------------- -->
-<!--     USAGE EXAMPLES      -->
-<!-- ----------------------- -->
-### Usage (the oucru-32dx example)
+Please follow the [Installation Guide][url-installation].
 
 <!-- ----------------------- -->
 <!--      CONTRIBUTING       -->
@@ -140,17 +91,12 @@ We welcome contributions including bug reports, bug fixes, documentation improve
 enhances and ideas from new contributors of all experience levels. The goals are to be 
 helpful, welcoming, and effective. The [Development Guide][url-development] has detailed 
 information about contributing code, documentation, tests, and more. We've included some 
-basic information in this README.
+basic information in this `README` and `CHANGELOG` file.
 
-Important links
+<!--For more information read <a href="#">CONTRIBUTING.md</a> for details on our 
+code of conduct and the process for submitting pull requests to us.-->
 
-  - Official source code repo: https://github.com/bahp/datablend
-  - Download releases:
-  - Issue tracker: https://github.com/bahp/datablend/issues
-
-Contributions are what make the open source community such an amazing place 
-to be learn, inspire, and create. Any contributions you make are 
-**greatly appreciated**.
+#### Basic steps
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/FeatureName`)
@@ -158,14 +104,16 @@ to be learn, inspire, and create. Any contributions you make are
 4. Push to the Branch (`git push origin feature/FeatureName`)
 5. Open a Pull Request
 
-For more information read <a href="#">CONTRIBUTING.md</a> for details on our 
-code of conduct and the process for submitting pull requests to us.
+#### Testing
 
-### Testing
+You can launch the test suite from the main directory running `pytest`.
 
-You can launch the test suite from
+## Useful links
 
-`pytest`
+  - Official source code repo: https://github.com/bahp/datablend
+  - Download releases: https://github.com/bahp/datablend/releases
+  - Issue tracker: https://github.com/bahp/datablend/issues
+
 
 <!-- ----------------------- -->
 <!--         LICENSE         -->
@@ -175,7 +123,8 @@ You can launch the test suite from
 Distributed under the GNU v3.0 License. See `LICENSE` for more information.
 
 ## Changelog
-Link to release history.
+
+Link to release history and/or `CHANGELOG` 
 
 ## Roadmap
 ## Acknowledgements
@@ -189,10 +138,10 @@ Link to release history.
 ## Contact
 
 Bernard Hernandez - 
-   - add twitter
-   - add email
-   - add linkedin
-   - add anything
+   - add ...
+   - add ...
+   - add ...
+   - add ...
 
 
 <!-- ----------------------- -->
