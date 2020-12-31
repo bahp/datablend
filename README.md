@@ -33,10 +33,9 @@
 [![MIT License][license-shield]][none-url]
 -->
 
-.. _COMMUNITY: 
-.. _DOCUMENTATION: https://bahp.github.io/datablend/index.html
+[url-documentation]: https://bahp.github.io/datablend/index.html
 
-Community | `DOCUMENTATION` | Resources | Contributors | Release Notes
+Community | [Documentation][url-documentation] | Resources | Contributors | Release Notes
 
 The Datablend library aims to facilitate the formatting of manually collected data into
 (i) stacked data format which is commonly used to store data in a database table and 
