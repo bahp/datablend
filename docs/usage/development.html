@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Blender &mdash; datablend 0.0.1 documentation</title>
+  <title>Development &mdash; datablend 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Useful Tips" href="tips.html" />
-    <link rel="prev" title="Widgets" href="widgets.html" /> 
+    <link rel="next" title="datablend" href="../_apidoc/modules.html" />
+    <link rel="prev" title="Blender with single input" href="../_examples/template/plot_template_02.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,12 +86,12 @@
             
             
               <p class="caption"><span class="caption-text">Using DataBlend</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1"><a class="reference internal" href="template.html">Template</a></li>
 <li class="toctree-l1"><a class="reference internal" href="widgets.html">Widgets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
@@ -110,8 +110,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#generating-sphinx-documentation">Generating Sphinx documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-distribution-files">Generating distribution files</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">API doc</span></p>
 <ul>
@@ -162,13 +166,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Blender</li>
+      <li>Development</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/usage/blender.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/usage/development.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,8 +185,61 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="blender">
-<h1>Blender<a class="headerlink" href="#blender" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="development">
+<h1>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="generating-sphinx-documentation">
+<h2>Generating Sphinx documentation<a class="headerlink" href="#generating-sphinx-documentation" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The numpy doc style is used thorough the code (autodocs).</p>
+</div>
+<p>First you need to install sphinx, sphinx-gallery, sphinx-std-theme and matplotlib.</p>
+<p>Let’s install the required libraries.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>            <span class="c1"># Install sphinx</span>
+<span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">gallery</span>    <span class="c1"># Install sphinx-gallery for examples</span>
+<span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">std</span><span class="o">-</span><span class="n">theme</span>  <span class="c1"># Install sphinx-std-theme CSS</span>
+<span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>        <span class="c1"># Install matplotlib for plot examples</span>
+</pre></div>
+</div>
+<p>Then go to the docs folder and run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">github</span>
+</pre></div>
+</div>
+<p>Note that make github is defined within the Makefile and it is equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">apidoc</span> <span class="o">-</span><span class="n">o</span> <span class="o">./</span><span class="n">_apidoc</span> <span class="o">../</span><span class="n">datablend</span><span class="o">/</span>
+<span class="n">make</span> <span class="n">clean</span> <span class="n">html</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">a</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/.</span> <span class="o">../../</span><span class="n">gh</span><span class="o">-</span><span class="n">pages</span><span class="o">/</span><span class="n">docs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-distribution-files">
+<h2>Generating distribution files<a class="headerlink" href="#generating-distribution-files" title="Permalink to this headline">¶</a></h2>
+<p>Lets generate the &lt;a href=”<a class="reference external" href="https://packaging.python.org/tutorials/packaging-projects/">https://packaging.python.org/tutorials/packaging-projects/</a>”&gt;
+distribution package&lt;/a&gt; which contains the archives that are uploaded to the public
+Package Index (PyPI) and can be installed by anyone using pip.</p>
+<p>First of all, make sure you have the latest versions of setuptools and wheel installed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">setuptools</span> <span class="n">wheel</span>
+</pre></div>
+</div>
+<p>Now run this command from the same directory where setup.py is located. Note that this
+command should output a lot of text and once completed should generate two files in the
+dist directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>dist/</dt><dd><ul>
+<li><p>package-name-version-….whl</p></li>
+<li><p>package-name-version-….tar.gz</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">py</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span> <span class="n">bdist_wheel</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -193,10 +250,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tips.html" class="btn btn-neutral float-right" title="Useful Tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../_apidoc/modules.html" class="btn btn-neutral float-right" title="datablend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="widgets.html" class="btn btn-neutral float-left" title="Widgets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../_examples/template/plot_template_02.html" class="btn btn-neutral float-left" title="Blender with single input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Useful Tips" href="tips.html" />
-    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+    <link rel="next" title="Blender" href="blender.html" />
+    <link rel="prev" title="Template" href="template.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,6 +89,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template.html">Template</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Widgets</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#renamewidget">RenameWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#replacewidget">ReplaceWidget</a></li>
@@ -99,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#formatting-stacked-data-unit">Formatting stacked data unit</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
@@ -115,6 +117,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_apidoc/modules.html">datablend</a></li>
 </ul>
 
             
@@ -183,7 +193,100 @@
   <div class="section" id="widgets">
 <span id="widgets-page"></span><h1>Widgets<a class="headerlink" href="#widgets" title="Permalink to this headline">¶</a></h1>
 <p>This section explains the widgets implemented in <code class="docutils literal notranslate"><span class="pre">DataBlend</span></code>. For full examples
-of this widgets see the widget gallery.</p>
+of this widgets see the widget gallery. In addition, the table below summarises the
+columns that must appear in the previously defined <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> for each of
+the implemented Widgets.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 22%" />
+<col style="width: 8%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Rename</p></th>
+<th class="head"><p>Replace</p></th>
+<th class="head"><p>DateTimeMerge</p></th>
+<th class="head"><p>Event</p></th>
+<th class="head"><p>DateFromStudyDay</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>from_name</p></td>
+<td><p>x</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>to_name</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>type</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>to_replace</p></td>
+<td></td>
+<td><p>x</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>datetime</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>datetime_date</p></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>datetime_time</p></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>event</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>study_day_col</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>study_day_ref</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="renamewidget">
 <h2>RenameWidget<a class="headerlink" href="#renamewidget" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">RenameWidget</span></code> renames columns.</p>
@@ -252,10 +355,10 @@ of this widgets see the widget gallery.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tips.html" class="btn btn-neutral float-right" title="Useful Tips" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="blender.html" class="btn btn-neutral float-right" title="Blender" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="template.html" class="btn btn-neutral float-left" title="Template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

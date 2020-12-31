@@ -1,0 +1,949 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datablend.core package &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datablend.tests package" href="datablend.tests.html" />
+    <link rel="prev" title="datablend package" href="datablend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Inferring templates from data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#fixing-the-data">Fixing the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-stacked-format">Data in stacked format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-tidy-format">Data in tidy format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#further-considerations">Further considerations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">datablend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="datablend.html">datablend package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="datablend.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">datablend.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.tests.html">datablend.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.utils.html">datablend.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datablend.html#module-datablend">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">datablend</a> &raquo;</li>
+        
+          <li><a href="datablend.html">datablend package</a> &raquo;</li>
+        
+      <li>datablend.core package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_apidoc/datablend.core.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datablend-core-package">
+<h1>datablend.core package<a class="headerlink" href="#datablend-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datablend.core.blend">
+<span id="datablend-core-blend-module"></span><h2>datablend.core.blend module<a class="headerlink" href="#module-datablend.core.blend" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="datablend.core.blend.Blender">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">Blender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widgets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This method…</p>
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the blender.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>info</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.fit_transform">
+<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.save" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.stack">
+<code class="sig-name descname">stack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stacks the data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.blend.Blender.templates">
+<code class="sig-name descname">templates</code><em class="property"> = {}</em><a class="headerlink" href="#datablend.core.blend.Blender.templates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.tidy">
+<code class="sig-name descname">tidy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.tidy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.Blender.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms the data according to a template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame or dict-like</em>) – Data to transform in either pd.DataFrame format or a
+dictionary where key is the sheet name and the value
+is the pd.DataFrame.</p></li>
+<li><p><strong>include</strong> (<em>list of str</em>) – Name of sheets to be included.</p></li>
+<li><p><strong>exclude</strong> (<em>list of str</em>) – Name of sheets to be excluded</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.blend.BlenderTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">BlenderTemplate</code><a class="headerlink" href="#datablend.core.blend.BlenderTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Description…</p>
+<p>from_name:</p>
+<p>to_name:</p>
+<p>type:</p>
+<p>to_replace:</p>
+<p>datetime:</p>
+<p>datetime_date:</p>
+<p>datetime_time:</p>
+<p>unit:</p>
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.check">
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.blend.BlenderTemplate.df">
+<code class="sig-name descname">df</code><em class="property"> = None</em><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>template</strong> (<em>pd.DataFrame or array of dicts</em>) – The information of the template (see class description).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.fit_from_bt_df">
+<code class="sig-name descname">fit_from_bt_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit_from_bt_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fits the template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – The template information as DataFrame</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.fit_from_data">
+<code class="sig-name descname">fit_from_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a configuration file for the descriptor.</p>
+<p>The result produced is just a preliminary template and needs
+further inspection by the user to ensure that all the
+transformations and parameters are correct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – The data from which a preliminary template will be inferred.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.has_columns">
+<code class="sig-name descname">has_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.has_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.has_timestamp">
+<code class="sig-name descname">has_timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.has_timestamp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.missing_columns">
+<code class="sig-name descname">missing_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.missing_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend.BlenderTemplate.valid_blender_template_dataframe">
+<code class="sig-name descname">valid_blender_template_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.valid_blender_template_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether the template is valid.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.blend.category_maps">
+<code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">category_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">max_nunique</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.category_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method infers the enumerated maps.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.blend.date_time_maps">
+<code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">date_time_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.date_time_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.exceptions">
+<span id="datablend-core-exceptions-module"></span><h2>datablend.core.exceptions module<a class="headerlink" href="#module-datablend.core.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="py exception">
+<dt id="datablend.core.exceptions.IncompatibleBlenderTemplateError">
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">IncompatibleBlenderTemplateError</code><a class="headerlink" href="#datablend.core.exceptions.IncompatibleBlenderTemplateError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="datablend.core.exceptions.InvalidBlenderTemplateError">
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">InvalidBlenderTemplateError</code><a class="headerlink" href="#datablend.core.exceptions.InvalidBlenderTemplateError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="datablend.core.exceptions.MissingRequiredColumns">
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">MissingRequiredColumns</code><a class="headerlink" href="#datablend.core.exceptions.MissingRequiredColumns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.exceptions.IncompatibleBlenderTemplateError" title="datablend.core.exceptions.IncompatibleBlenderTemplateError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.exceptions.IncompatibleBlenderTemplateError</span></code></a></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="datablend.core.exceptions.WrongColumnType">
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">WrongColumnType</code><a class="headerlink" href="#datablend.core.exceptions.WrongColumnType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.exceptions.IncompatibleBlenderTemplateError" title="datablend.core.exceptions.IncompatibleBlenderTemplateError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.exceptions.IncompatibleBlenderTemplateError</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.settings">
+<span id="datablend-core-settings-module"></span><h2>datablend.core.settings module<a class="headerlink" href="#module-datablend.core.settings" title="Permalink to this headline">¶</a></h2>
+<p>Describing which variables are static.</p>
+<dl class="py function">
+<dt id="datablend.core.settings.find_levels">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">find_levels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable_names</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.settings.find_levels" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Variables with the word levels in it.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.settings.find_sources">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">find_sources</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.settings.find_sources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.settings.find_static">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">find_static</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.settings.find_static" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.settings.prefix_sources">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">prefix_sources</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.settings.prefix_sources" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="datablend.core.settings.static">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">static</code><em class="property"> = ['age', 'gender', 'height', 'weight', 'pregnant', 'diabetes', 'anemia', 'asthma', 'hypertension', 'peptic_ulcer', 'renal_disease', 'chronic_hepatitis', 'coronary_heart_disease']</em><a class="headerlink" href="#datablend.core.settings.static" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describing levels.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.widgets">
+<span id="datablend-core-widgets-module"></span><h2>datablend.core.widgets module<a class="headerlink" href="#module-datablend.core.widgets" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="datablend.core.widgets.BaseWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">BaseWidget</code><a class="headerlink" href="#datablend.core.widgets.BaseWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base widget class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bt</strong> (<a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate"><em>BlenderTemplate</em></a>) – The blender template.</p></li>
+<li><p><strong>subset</strong> (<em>array-like</em>) – List with the required columns that must be present in the
+template to successfully apply the widget transformation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">.. todo: Create generic get_tuples method?</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">.. todo: Create generic get_map method?</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">.. todo: Create generic get_list method?</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">.. todo: errors={'ignore', 'raise', 'coerce'} # warn</code></dt>
+<dd><p>If ‘raise’, then invalid parsing will raise an exception.
+If ‘coerce’, then invalid parsing will be set as NaT.
+If ‘ignore’, then invalid parsing will return the input.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.BaseWidget.check_required_columns">
+<code class="sig-name descname">check_required_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.BaseWidget.check_required_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify required columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.exceptions.MissingRequiredColumns" title="datablend.core.exceptions.MissingRequiredColumns"><strong>MissingRequiredColumns</strong></a> – Required columns are missing</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>bt</strong> (<em>BlenderTemplate</em>) – The template with the columns</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether all required columns are in the template</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.BaseWidget.compatible_template">
+<code class="sig-name descname">compatible_template</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.BaseWidget.compatible_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that the widget can be applied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>TypeError</strong> – Invalid BlenderTemplate instance.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>bt</strong> (<em>BlenderTemplate</em>) – The blender template fitted.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether the template is compatible with the widget.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.BaseWidget.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.BaseWidget.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bt</strong> (<em>BlenderTemplate</em>) – The blender template fitted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The fitted Widget instance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Widget</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.BaseWidget.fit_transform">
+<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.BaseWidget.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit widget and transform data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template</strong> (<em>pd.DataFrame or array of dicts</em>) – The information needed to fit the template.</p></li>
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – DatFrame with the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transformed DataFrame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.BaseWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.BaseWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform function needs to be overridden.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – DatFrame with the data.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Transformed DataFrame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.DateFromStudyDayWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">DateFromStudyDayWidget</code><a class="headerlink" href="#datablend.core.widgets.DateFromStudyDayWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget format study days to date.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.DateFromStudyDayWidget.get_list">
+<code class="sig-name descname">get_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.DateFromStudyDayWidget.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates tuples (name, date, days)</p>
+<p>This method extracts from the template tuples indicating
+the column that will be used as name, the column that will
+be used as date and the column with the days to add.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[(‘date_laboratory’, ‘date_enrolment’, ‘study_day’)]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.DateFromStudyDayWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'study_day_col', 'study_day_ref']</em><a class="headerlink" href="#datablend.core.widgets.DateFromStudyDayWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.DateFromStudyDayWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.DateFromStudyDayWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.DateTimeMergeWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">DateTimeMergeWidget</code><a class="headerlink" href="#datablend.core.widgets.DateTimeMergeWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget merges date and time columns.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.DateTimeMergeWidget.get_list">
+<code class="sig-name descname">get_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.DateTimeMergeWidget.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates tuples (name, date, time)</p>
+<p>This method extracts from the template tuples indicating
+the column that will be used as name, the column that will
+be used as date and the column that will be used as time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(‘date_assessment’, ‘aDate’, ‘astime’)]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[(‘date_enrolment’, ‘enDate’, ‘enTime’),</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.DateTimeMergeWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'datetime_date', 'datetime_time']</em><a class="headerlink" href="#datablend.core.widgets.DateTimeMergeWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.DateTimeMergeWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.DateTimeMergeWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.EventWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">EventWidget</code><a class="headerlink" href="#datablend.core.widgets.EventWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget creates events from date columns.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.EventWidget.get_list">
+<code class="sig-name descname">get_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.EventWidget.get_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates tuples (name, date, days)</p>
+<p>This method extracts from the template tuples indicating
+the column that will be used as name and the column that
+will be used as date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[(‘admission’, ‘date_admission’)]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.EventWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['event', 'to_name']</em><a class="headerlink" href="#datablend.core.widgets.EventWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.EventWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.EventWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.FullTemplateWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">FullTemplateWidget</code><a class="headerlink" href="#datablend.core.widgets.FullTemplateWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.RenameWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">RenameWidget</code><a class="headerlink" href="#datablend.core.widgets.RenameWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget renames columns.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.RenameWidget.get_map">
+<code class="sig-name descname">get_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.RenameWidget.get_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the rename map.</p>
+<p>This method extracts from the template a dictionary where
+the keys and values indicate the current and target column
+names respectively.</p>
+<p class="rubric">Example</p>
+<p>{StudyNo: study_no, BirthDate: dob, Sex: gender}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dictionary with {from_name: to_name} keys and values.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.RenameWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['from_name', 'to_name']</em><a class="headerlink" href="#datablend.core.widgets.RenameWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.RenameWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.RenameWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.ReplaceWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">ReplaceWidget</code><a class="headerlink" href="#datablend.core.widgets.ReplaceWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget replaces values in a column.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.ReplaceWidget.get_map">
+<code class="sig-name descname">get_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.ReplaceWidget.get_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the replace map.</p>
+<p>This method extracts from the template a dictionary where
+the key indicates the column name and the value is a
+dictionary with the renaming map convention.</p>
+<p class="rubric">Example</p>
+<p>{‘code: {‘Positive’: 1, ‘Negative’: 2, ‘Equivocal’: 3},
+‘gender’: {‘Male’: 1, ‘Female’: 2},
+‘diabetes’: {True: 1, False: 2}}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.ReplaceWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'to_replace']</em><a class="headerlink" href="#datablend.core.widgets.ReplaceWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.ReplaceWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.ReplaceWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.StackUnitWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">StackUnitWidget</code><a class="headerlink" href="#datablend.core.widgets.StackUnitWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget appends unit to stacked data.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.StackUnitWidget.get_dataframe">
+<code class="sig-name descname">get_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackUnitWidget.get_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates dataframe.</p>
+<p>This method extracts from the template a dataframe
+indicating the column indicating the feature name
+and the unit to be merged with.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.StackUnitWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'unit']</em><a class="headerlink" href="#datablend.core.widgets.StackUnitWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.StackUnitWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackUnitWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.StackWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">StackWidget</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">with_unit</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">as_datetime</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget stacks data.</p>
+<p>Original format:</p>
+<p>Stacked format:</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.StackWidget.get_timestamp_feature_events">
+<code class="sig-name descname">get_timestamp_feature_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackWidget.get_timestamp_feature_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates tuples…</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.StackWidget.get_timestamp_feature_tuples">
+<code class="sig-name descname">get_timestamp_feature_tuples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackWidget.get_timestamp_feature_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates tuples (timestamp, feature).</p>
+<p>This method extracts from the template tuples indicating
+the column that will be used as timestamp and the column
+that will be used as feature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(‘date_enrolment’, ‘gender’),
+(‘date_collection’, ‘hct’),
+(‘date_collection’, ‘wbc’),
+(‘date_assessment’, ‘cough’)]</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[(‘date_enrolment’, ‘age’),</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.StackWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'timestamp']</em><a class="headerlink" href="#datablend.core.widgets.StackWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.StackWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.StackWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.widgets.TemplateTransformWidget">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.widgets.</code><code class="sig-name descname">TemplateTransformWidget</code><a class="headerlink" href="#datablend.core.widgets.TemplateTransformWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.widgets.BaseWidget" title="datablend.core.widgets.BaseWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.widgets.BaseWidget</span></code></a></p>
+<p>This widget performs basic data formatting from the template.</p>
+<dl class="py method">
+<dt id="datablend.core.widgets.TemplateTransformWidget.get_datetimes_list">
+<code class="sig-name descname">get_datetimes_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.TemplateTransformWidget.get_datetimes_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="datablend.core.widgets.TemplateTransformWidget.subset">
+<code class="sig-name descname">subset</code><em class="property"> = ['to_name', 'timestamp']</em><a class="headerlink" href="#datablend.core.widgets.TemplateTransformWidget.subset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.widgets.TemplateTransformWidget.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.widgets.TemplateTransformWidget.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the transformation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datablend.core" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datablend.tests.html" class="btn btn-neutral float-right" title="datablend.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datablend.html" class="btn btn-neutral float-left" title="datablend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

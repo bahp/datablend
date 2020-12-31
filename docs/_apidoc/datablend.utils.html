@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datablend.utils package &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="datablend.tests package" href="datablend.tests.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Inferring templates from data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#fixing-the-data">Fixing the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-stacked-format">Data in stacked format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-tidy-format">Data in tidy format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#further-considerations">Further considerations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">datablend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="datablend.html">datablend package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="datablend.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="datablend.core.html">datablend.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.tests.html">datablend.tests package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">datablend.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datablend.html#module-datablend">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">datablend</a> &raquo;</li>
+        
+          <li><a href="datablend.html">datablend package</a> &raquo;</li>
+        
+      <li>datablend.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_apidoc/datablend.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datablend-utils-package">
+<h1>datablend.utils package<a class="headerlink" href="#datablend-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datablend.utils.compute">
+<span id="datablend-utils-compute-module"></span><h2>datablend.utils.compute module<a class="headerlink" href="#module-datablend.utils.compute" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.compute.add_days">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">add_days</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dates</span></em>, <em class="sig-param"><span class="n">days</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.add_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method….</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.compute.age">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">age</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dob</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.age" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method calculates the age.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.compute.datetime">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date</span></em>, <em class="sig-param"><span class="n">time</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method merges columns date and time</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.compute.dob">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">dob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">age</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.dob" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method calculates the date of birth.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.display">
+<span id="datablend-utils-display-module"></span><h2>datablend.utils.display module<a class="headerlink" href="#module-datablend.utils.display" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.display.str_dtypes">
+<code class="sig-prename descclassname">datablend.utils.display.</code><code class="sig-name descname">str_dtypes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.display.str_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns str with the dtypes</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.logger">
+<span id="datablend-utils-logger-module"></span><h2>datablend.utils.logger module<a class="headerlink" href="#module-datablend.utils.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.logger.load_logger">
+<code class="sig-prename descclassname">datablend.utils.logger.</code><code class="sig-name descname">load_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.logger.load_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method loads the logger</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str-like</em>) – Path to the YAML configuration file.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Logge</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.merge">
+<span id="datablend-utils-merge-module"></span><h2>datablend.utils.merge module<a class="headerlink" href="#module-datablend.utils.merge" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.merge.merge_date_time">
+<code class="sig-prename descclassname">datablend.utils.merge.</code><code class="sig-name descname">merge_date_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">date_column</span></em>, <em class="sig-param"><span class="n">time_column</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.merge.merge_date_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method merges columns date and time</p>
+<p>import datetime
+datetime.time.fromisoformat()</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.merge.merge_day_month_year">
+<code class="sig-prename descclassname">datablend.utils.merge.</code><code class="sig-name descname">merge_day_month_year</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">day</span></em>, <em class="sig-param"><span class="n">month</span></em>, <em class="sig-param"><span class="n">year</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.merge.merge_day_month_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is not implemented yet.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.methods">
+<span id="datablend-utils-methods-module"></span><h2>datablend.utils.methods module<a class="headerlink" href="#module-datablend.utils.methods" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.methods.display">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.display" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.extract_events">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">extract_events</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">keep</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.extract_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method….</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.extract_records_from_tuples">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">extract_records_from_tuples</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">tuples</span></em>, <em class="sig-param"><span class="n">bool2int</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">return_by_types</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.extract_records_from_tuples" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method extracts the events from tuples.</p>
+<p>This approach is used when there are specific columns for
+the different symptoms indicating the status (true or false),
+the date it started and/or the level.</p>
+<p>The input is an array of tuples containing (date, status, level) where
+status indicates the column with the status (True or False),
+date indicates the column with the dates (datetime [ns]) and
+level indicates the column with the acuity (number).</p>
+<p class="rubric">Example</p>
+<dl>
+<dt>date_enrollment chills chills_date headache, headache_date, headache_level</dt><dd><dl class="simple">
+<dt>10-10-2020      1   9-10-2020        1      8-10-2020               3</dt><dd><p>5-10-2020      1   1-10-2020        1     08-10-2020               1
+1-10-2020      0           -        1     08-10-2020               1</p>
+</dd>
+</dl>
+<p>12-10-2020      1   7-10-2020        1     08-10-2020               2</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The result</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.extract_stacked">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">extract_stacked</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">keep</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name_column</span><span class="o">=</span><span class="default_value">'column'</span></em>, <em class="sig-param"><span class="n">name_result</span><span class="o">=</span><span class="default_value">'result'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.extract_stacked" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method to extract stacked information from the dataframe.</p>
+<p>Example:</p>
+<dl class="simple">
+<dt>The dataframe parameter:</dt><dd><dl class="simple">
+<dt>date patient  bt   hr  rr</dt><dd><p>d1    p1    35.5  67  18
+d2    p1     -    -    -
+d1    p2     -    -    -</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>The index parameter: [‘date’, ‘patient’]
+The keep parameter:  [‘bt’, ‘hr’, ‘rr’]</p>
+<dl class="simple">
+<dt>The output:</dt><dd><dl class="simple">
+<dt>date  patient column result</dt><dd><p>d1      p1      bt    35.5
+d1      p1      hr     67
+d1      p1      rr     18
+d2      p1      bt     -</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>pd.DataFrame</em>) – The dataframe with the data</p></li>
+<li><p><strong>index</strong> (<em>list</em>) – List of column names that will be set as index.</p></li>
+<li><p><strong>keep</strong> (<em>list</em>) – List of column names that will be stacked. The name
+of the column will be in the column named ‘column’
+and the corresponding value in the column named
+‘result’.</p></li>
+<li><p><strong>source</strong></p></li>
+<li><p><strong>name_column</strong></p></li>
+<li><p><strong>name_result</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>The stacked dataframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.load_columns_operations">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">load_columns_operations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.load_columns_operations" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.load_features_map">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">load_features_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.load_features_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method loads the features map json file.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.merge_date_time">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">merge_date_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">date_column</span></em>, <em class="sig-param"><span class="n">time_column</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.merge_date_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method merges columns date and time</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.methods.stacked_display">
+<code class="sig-prename descclassname">datablend.utils.methods.</code><code class="sig-name descname">stacked_display</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">title</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">top</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.methods.stacked_display" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method displays the dataframes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datafame</strong></p></li>
+<li><p><strong>title</strong></p></li>
+<li><p><strong>top</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.pandas">
+<span id="datablend-utils-pandas-module"></span><h2>datablend.utils.pandas module<a class="headerlink" href="#module-datablend.utils.pandas" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.pandas.save_xlsx">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">save_xlsx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">sheet_split</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.save_xlsx" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method saves a dictionary in .xlsx</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>dict-like</em>) – The dictionary where key is the name of the worksheet
+and value is the pandas DataFrame.</p></li>
+<li><p><strong>filepath</strong> (<em>str-like</em>)</p></li>
+<li><p><strong>sheet_split</strong> (<em>boolean</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.plot">
+<span id="datablend-utils-plot-module"></span><h2>datablend.utils.plot module<a class="headerlink" href="#module-datablend.utils.plot" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datablend.utils.transformations">
+<span id="datablend-utils-transformations-module"></span><h2>datablend.utils.transformations module<a class="headerlink" href="#module-datablend.utils.transformations" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.transformations.convert_dtypes_categorical">
+<code class="sig-prename descclassname">datablend.utils.transformations.</code><code class="sig-name descname">convert_dtypes_categorical</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">nunique_threshold</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.transformations.convert_dtypes_categorical" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method converts columns to categorical.</p>
+<p>It converts to categorical those columns that are not
+datetime64[ns] or boolean and have a small number of
+unique values (lower than the nunique_threshold).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The pandas dataframe.</p></li>
+<li><p><strong>nunique_threshold</strong> (<em>int</em>) – The maximum number of unique values to be considered
+of a column to be considered a categorical feature.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.transformations.convert_dtypes_datetime">
+<code class="sig-prename descclassname">datablend.utils.transformations.</code><code class="sig-name descname">convert_dtypes_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.transformations.convert_dtypes_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method converts columns to datetime.</p>
+<p>It converts to datetime64[ns] those columns containing
+the substring ‘date’ in the column name and has an
+string dtype (dtype == ‘string’).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>pd.DataFrame</em>) – The pandas dataframe.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.transformations.format_var_names">
+<code class="sig-prename descclassname">datablend.utils.transformations.</code><code class="sig-name descname">format_var_names</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.transformations.format_var_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method formats an string into a variable name.</p>
+<p>It inserts an underscore before any number of consecutive
+uppercase letters not including uppercase at the beginning
+or end of the string.</p>
+<p>RegExp1: r”(w)([A-Z]+[a-z]*)” (missing backslash before w)
+RegExp2: r”([a-z]+)([A-Z]+[a-z]*)”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>str</em>) – The string to format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.transformations.str2eval">
+<code class="sig-prename descclassname">datablend.utils.transformations.</code><code class="sig-name descname">str2eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.transformations.str2eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datablend.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="datablend.tests.html" class="btn btn-neutral float-left" title="datablend.tests package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

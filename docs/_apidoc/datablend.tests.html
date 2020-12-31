@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datablend.tests package &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datablend.utils package" href="datablend.utils.html" />
+    <link rel="prev" title="datablend.core package" href="datablend.core.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Inferring templates from data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#fixing-the-data">Fixing the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-stacked-format">Data in stacked format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#data-in-tidy-format">Data in tidy format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html#further-considerations">Further considerations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">datablend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="datablend.html">datablend package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="datablend.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="datablend.core.html">datablend.core package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">datablend.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.utils.html">datablend.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datablend.html#module-datablend">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">datablend</a> &raquo;</li>
+        
+          <li><a href="datablend.html">datablend package</a> &raquo;</li>
+        
+      <li>datablend.tests package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_apidoc/datablend.tests.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datablend-tests-package">
+<h1>datablend.tests package<a class="headerlink" href="#datablend-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datablend.tests.test_examples">
+<span id="datablend-tests-test-examples-module"></span><h2>datablend.tests.test_examples module<a class="headerlink" href="#module-datablend.tests.test_examples" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.tests.test_examples.test_script_execution_blender">
+<code class="sig-prename descclassname">datablend.tests.test_examples.</code><code class="sig-name descname">test_script_execution_blender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_examples.test_script_execution_blender" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_examples.test_script_execution_template">
+<code class="sig-prename descclassname">datablend.tests.test_examples.</code><code class="sig-name descname">test_script_execution_template</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_examples.test_script_execution_template" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_examples.test_script_execution_widgets">
+<code class="sig-prename descclassname">datablend.tests.test_examples.</code><code class="sig-name descname">test_script_execution_widgets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_examples.test_script_execution_widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datablend.tests.test_widgets">
+<span id="datablend-tests-test-widgets-module"></span><h2>datablend.tests.test_widgets module<a class="headerlink" href="#module-datablend.tests.test_widgets" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.bt">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">bt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.bt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.bt_df">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">bt_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.bt_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.bt_json">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">bt_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.bt_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.data">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a basic data DataFrame.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_bt_fit_from_data">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_bt_fit_from_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_bt_fit_from_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_bt_fit_from_df">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_bt_fit_from_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_bt_fit_from_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Widget none template.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_bt_fit_from_json">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_bt_fit_from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_bt_fit_from_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_bt_fit_raises_exception_on_None">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_bt_fit_raises_exception_on_None</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_bt_fit_raises_exception_on_None" title="Permalink to this definition">¶</a></dt>
+<dd><p>Widget none template.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_dtmerge">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_dtmerge</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_dtmerge" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_events">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_events</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_fit_from_df">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_fit_from_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_fit_from_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_fit_from_json">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_fit_from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_fit_from_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_raises_exception_on_None">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_raises_exception_on_None</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_raises_exception_on_None" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_raises_exception_on_missing_required_columns">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_raises_exception_on_missing_required_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_raises_exception_on_missing_required_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_rename">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_rename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_rename" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_replace_from_dict">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_replace_from_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_replace_from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_replace_from_str">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_replace_from_str</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_replace_from_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_stack">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_stack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_widgets.test_widget_studyday">
+<code class="sig-prename descclassname">datablend.tests.test_widgets.</code><code class="sig-name descname">test_widget_studyday</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt</span></em>, <em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_widgets.test_widget_studyday" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datablend.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datablend.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datablend.utils.html" class="btn btn-neutral float-right" title="datablend.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datablend.core.html" class="btn btn-neutral float-left" title="datablend.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

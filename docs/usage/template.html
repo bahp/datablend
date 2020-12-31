@@ -38,7 +38,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Widgets" href="widgets.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,10 +86,12 @@
             
             
               <p class="caption"><span class="caption-text">Using DataBlend</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Template</a></li>
 <li class="toctree-l1"><a class="reference internal" href="widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
@@ -104,6 +108,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_apidoc/modules.html">datablend</a></li>
 </ul>
 
             
@@ -171,6 +183,96 @@
             
   <div class="section" id="template">
 <h1>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> represents the transformations to be applied
+to each of the columns in the data. In order to fit a template it is
+necessary to previously define a table with all the relevant
+information. This table can be loaded from a csv or xlsx file. It can
+also be defined as a list of dicts.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 13%" />
+<col style="width: 21%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>from_name</p></th>
+<th class="head"><p>to_name</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>to_replace</p></th>
+<th class="head"><p>datetime</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>StudyNo</p></td>
+<td><p>study_number</p></td>
+<td><p>str</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Age</p></td>
+<td><p>age</p></td>
+<td><p>int</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Sex</p></td>
+<td colspan="2"><p>gender       str1</p></td>
+<td><p>{‘Male’:1}</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s understand each of the columns supported:</p>
+<dl class="simple">
+<dt>from_name: str</dt><dd><p>Refers to the name of the column in the original dataset.</p>
+</dd>
+<dt>to_name: str (<code class="docutils literal notranslate"><span class="pre">RenameWidget</span></code>)</dt><dd><p>Refers to the name of the column in the formatted dataset.</p>
+</dd>
+<dt>type: str</dt><dd><p>Indicates the type of the column (serves as guidance).</p>
+</dd>
+<dt>to_replace: dict-like (<code class="docutils literal notranslate"><span class="pre">ReplaceWidget</span></code>)</dt><dd><p>These dictionaries indicate the values that need to be replaced from
+the original dataset into the formatted one. For instance, if the
+original dataset used the following coding system (1 is True, 2 False)
+the dictionary would be {True: 1, False: 2}. Note that strings should
+be quoted (e.g. {‘Positive’: 1, ‘Negative’: 2, ‘Equivocal’: 3). It
+is also possible to include None (e.g. {True: 1, False: 2, None: 3})</p>
+</dd>
+<dt>datetime: boolean</dt><dd><p>Indicates whether the feature is a datetime. It is redundant because
+type already includes the datetime64[ns] type. The aim of the datetime
+information is to combine columns containing date and time information
+separately.</p>
+</dd>
+<dt>datetime_date: str (<code class="docutils literal notranslate"><span class="pre">DateTimeMergeWidget</span></code>)</dt><dd><p>Refers to the from_name of the column with the date information.</p>
+</dd>
+<dt>datetime_time: str (<code class="docutils literal notranslate"><span class="pre">DateTimeMergeWidget</span></code>)</dt><dd><p>Refers to the from_name of the column with the time information.</p>
+</dd>
+<dt>event: str (<code class="docutils literal notranslate"><span class="pre">EventWidget</span></code>)</dt><dd><p>Name to use for the newly created event. Note that can only be used
+for data columns which contain dates.</p>
+</dd>
+<dt>study_day_col: str (<code class="docutils literal notranslate"><span class="pre">DateFromStudyDayWidget</span></code>)</dt><dd><p>Refers to the name of the column in the formatted dataset with the
+study day information. Note that the column in the dataset should
+contain integer representing the study day (e.g 1st, 2nd, 3rd, …)</p>
+</dd>
+<dt>study_day_ref: str (<code class="docutils literal notranslate"><span class="pre">DateFromStudyDayWidget</span></code>)</dt><dd><p>Refers to the name of the column in the formatted dataset with the
+date in which the study commenced. Note that the column in the
+dataset should represent a date(time).</p>
+</dd>
+</dl>
+<p>In order to transform the data, we use a DatasetDescriptor. This object
+contains all the information describing the data and the transformations
+that need to be applied. In order to configure the DatasetDescriptor we
+need a configuration file. The datablend library has a method to ease
+this process by automatically creating configuration files from raw datasets.</p>
+<p>Let’s create the configuration files.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`py</span>
+<span class="pre">python</span> <span class="pre">create_ccfgs.py</span>
+<span class="pre">`</span></code></p>
+<p>This script creates a single configuration file for each of the books within
+the excel spreadsheet. Note that all of them are stored within the tmp folder
+because these configuration files will need further revision/editing.</p>
+<p>#### Aut</p>
 </div>
 
 
@@ -178,6 +280,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="widgets.html" class="btn btn-neutral float-right" title="Widgets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

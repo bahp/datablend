@@ -183,7 +183,7 @@ Import
 
  .. code-block:: none
 
-    /Users/cbit/Desktop/repositories/github/datablend/main/datablend/core/widgets.py:482: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
+    /Users/cbit/Desktop/repositories/github/datablend/main/datablend/core/widgets.py:562: UserWarning: Boolean Series key will be reindexed to match DataFrame index.
       .dropna(how='any')[self.bt.df[date] == True][name] \
 
     Original:
