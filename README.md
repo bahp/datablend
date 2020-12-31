@@ -10,6 +10,7 @@
 --> 
 
 # DataBlend
+
 <img src="docs/logos/blender.png" align="right" width="150">
 
 <!-- ----------------------- -->
@@ -46,12 +47,14 @@
 -->
 
 [url-documentation]: https://bahp.github.io/datablend/index.html
+[url-development]: https://bahp.github.io/datablend/usage/development.html
 
 Community | [Documentation][url-documentation] | Resources | Contributors | Release Notes
 
-The Datablend library aims to facilitate the formatting of manually collected data into
-(i) stacked data format which is commonly used to store data in a database table and 
-(ii) tidy format which is commonly used in ML libraries.
+The Datablend is a lightweight library to format manually collected data. It allows
+to perform common transformations (e.g. rename or replace) and conversions to various
+data structures such as stacked data structure used in databases or tidy data structure 
+used in AI/ML libraries.
 
 <!-- > Subtitle or Short Description Goes Here -->
 
@@ -128,28 +131,22 @@ evaluation and reporting of to wider audiences.
 <!-- ----------------------- -->
 ### Usage (the oucru-32dx example)
 
-See the [documentation]() for a list of examples.
-
-
-
-<!-- ----------------------- -->
-<!--          TESTS          -->
-<!-- ----------------------- -->
-### Tests
-
-
-<!-- ----------------------- -->
-<!--        ROADMAP          -->
-<!-- ----------------------- -->
-## Roadmap
-
-See the [open issues]() for a list of proposed features (and known issues).
-
-
 <!-- ----------------------- -->
 <!--      CONTRIBUTING       -->
 <!-- ----------------------- -->
 ## Contributing
+
+We welcome contributions including bug reports, bug fixes, documentation improvements, 
+enhances and ideas from new contributors of all experience levels. The goals are to be 
+helpful, welcoming, and effective. The [Development Guide][url-development] has detailed 
+information about contributing code, documentation, tests, and more. We've included some 
+basic information in this README.
+
+Important links
+
+  - Official source code repo: https://github.com/bahp/datablend
+  - Download releases:
+  - Issue tracker: https://github.com/bahp/datablend/issues
 
 Contributions are what make the open source community such an amazing place 
 to be learn, inspire, and create. Any contributions you make are 
@@ -164,12 +161,27 @@ to be learn, inspire, and create. Any contributions you make are
 For more information read <a href="#">CONTRIBUTING.md</a> for details on our 
 code of conduct and the process for submitting pull requests to us.
 
+### Testing
+
+You can launch the test suite from
+
+`pytest`
+
 <!-- ----------------------- -->
 <!--         LICENSE         -->
 <!-- ----------------------- -->
 ## License
 
 Distributed under the GNU v3.0 License. See `LICENSE` for more information.
+
+## Changelog
+Link to release history.
+
+## Roadmap
+## Acknowledgements
+## Contributors
+## Support
+## FAQ
 
 <!-- ----------------------- -->
 <!--         CONTACT         -->
@@ -181,14 +193,6 @@ Bernard Hernandez -
    - add email
    - add linkedin
    - add anything
-
-<!-- ----------------------- -->
-<!--     ACKNOWLEDGEMENTS    -->
-<!-- ----------------------- -->
-## Acknowledgements
-## Contributors
-## Support
-## FAQ
 
 
 <!-- ----------------------- -->
