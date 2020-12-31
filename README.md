@@ -10,7 +10,7 @@
 --> 
 
 # DataBlend
-<img src="docs/logos/blender.png" align="right" width="100">
+<img src="docs/logos/blender.png" align="right" width="150">
 
 <!-- ----------------------- -->
 <!--     PROJECT SHIELDS     -->
