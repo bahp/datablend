@@ -37,7 +37,19 @@
 
 Community | [Documentation][url-documentation] | Resources | Contributors | Release Notes
 
-![](docs/logos/blender.png =50x)
+![DataBlend](docs/logos/blender.png)
+
+<img src="docs/logos/blender.png" width="40">
+<!--
+  Possible icons:
+  
+![](docs/logos/blender.png)
+![](docs/logos/mixer-stand-01.jpg)
+![](docs/logos/mixer-stand-02.png)
+![](docs/logos/mixer-stand-03.png)
+![](docs/logos/whisker-electric.png)
+![](docs/logos/whisker-manual-01.png)
+--> 
 
 The Datablend library aims to facilitate the formatting of manually collected data into
 (i) stacked data format which is commonly used to store data in a database table and 
