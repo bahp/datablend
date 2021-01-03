@@ -215,16 +215,17 @@ def extract_records_from_tuples(dataframe, index, tuples,
 
     The input is an array of tuples containing (date, status, level) where
     status indicates the column with the status (True or False),
-    date indicates the column with the dates (datetime [ns]) and
+    date indicates the column with the dates (datetime64[ns]) and
     level indicates the column with the acuity (number).
 
-    Example
-    -------
-    date_enrollment chills chills_date headache, headache_date, headache_level
-         10-10-2020      1   9-10-2020        1      8-10-2020               3
-          5-10-2020      1   1-10-2020        1     08-10-2020               1
-          1-10-2020      0           -        1     08-10-2020               1
-         12-10-2020      1   7-10-2020        1     08-10-2020               2
+    =============== ====== =========== ======== ============= ==============
+    date_enrollment chills chills_date headache headache_date headache_level
+    =============== ====== =========== ======== ============= ==============
+         10-10-2020      1   9-10-2020        1     8-10-2020              3
+          5-10-2020      1   1-10-2020        1     8-10-2020              1
+          1-10-2020      0           -        1     8-10-2020              1
+         12-10-2020      1   7-10-2020        1     8-10-2020              2
+    =============== ====== =========== ======== ============= ==============
 
     Returns
     -------

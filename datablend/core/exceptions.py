@@ -22,7 +22,7 @@ class BTNullValueError(InvalidBlenderTemplateError):
     Age       age
     Gender
     Sex       sex
-    ========= =============
+    ========= ============
     """
     def __init__(self, column):
         self.column = column
@@ -37,16 +37,15 @@ class BTDuplicateError(InvalidBlenderTemplateError):
 
     The column has duplicated values.
 
-    Example
-    -------
-    =========
-    from_name
-    =========
-    StudyNo
-    Age
-    Age
-    Sex
-    =========
+    .. code:
+        =========
+        from_name
+        =========
+        StudyNo
+        Age
+        Age
+        Sex
+        =========
     """
     def __init__(self, column):
         self.column = column
@@ -94,13 +93,17 @@ class ReplaceWidgetMapWarning(Warning):
     It warns if the map does not contain all the elements in the data.
     It warns if the map contains elements that do not appear in the data.
 
-    Attributes:
-    diff1_: elements of data not appearing in replace map.
-    diff2_: elements of replace map not appearing in data.
 
     """
+    diff1_ = set()
+    diff2_ = set()
+
     def __init__(self, key, dict_values, data_values, max_size=10):
         """Constructor.
+
+        .. note:
+            diff1_: elements of data not appearing in replace map.
+            diff2_: elements of replace map not appearing in data.
 
         Parameters
         ----------

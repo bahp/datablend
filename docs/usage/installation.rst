@@ -51,7 +51,7 @@ Installation in editable mode
 -------------------------------
 
 It is recommended that you install this package in editable (develop) mode. It
-puts a link (actually *.pth files) into the python installation to your code,
+puts a link (actually \*.pth files) into the python installation to your code,
 so that your package is installed, but any changes will immediately take effect.
 This way all your test code, and client code, etc, can all import your package
 the usual way.
