@@ -9,13 +9,13 @@ Summary
 import pandas as pd
 
 # DataBlend library
-from datablend.core.widgets import TemplateTransformWidget
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
-from datablend.core.widgets import DateTimeMergeWidget
-from datablend.core.widgets import DateFromStudyDayWidget
-from datablend.core.widgets import EventWidget
-from datablend.core.widgets import StackWidget
+from datablend.core.widgets.format import FullTemplateWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
+from datablend.core.widgets.format import DateTimeMergeWidget
+from datablend.core.widgets.format import DateFromStudyDayWidget
+from datablend.core.widgets.format import EventWidget
+from datablend.core.widgets.stack import StackWidget
 from datablend.utils.display import str_dtypes
 
 # ------------------------
@@ -28,7 +28,7 @@ template = [
      'to_name': 'study_number'},
 
     # Example datetime merge
-    {'from_name': None,
+    {'from_name': 'date_enrolment',
      'to_name': 'date_enrolment',
      'datetime_date': 'enDate',
      'datetime_time': 'enTime'},
@@ -68,7 +68,7 @@ template = [
     {'from_name': 'LabSampleStudyDay',
      'to_name': 'lab_study_day'},
 
-    {'from_name': None,
+    {'from_name': 'date_laboratory',
      'to_name': 'date_laboratory',
      'study_day_col': 'lab_study_day',
      'study_day_ref': 'date_enrolment'},
@@ -123,13 +123,14 @@ data = pd.DataFrame(data)
 #template.event = None
 #template = template.drop(columns=['to_name'])
 
+print(template)
+
 # Transformed (order matters!)
-transformed = RenameWidget().fit_transform(template, data)
-transformed = TemplateTransformWidget().fit_transform(template, transformed)
+transformed = DateTimeMergeWidget().fit_transform(template, data)
 transformed = ReplaceWidget().fit_transform(template, transformed)
-transformed = DateTimeMergeWidget().fit_transform(template, transformed)
-transformed = DateFromStudyDayWidget().fit_transform(template, transformed)
+transformed = RenameWidget().fit_transform(template, transformed)
 transformed = EventWidget().fit_transform(template, transformed)
+transformed = DateFromStudyDayWidget().fit_transform(template, transformed)
 
 # Stack data
 stacked = StackWidget(index=['study_number']) \

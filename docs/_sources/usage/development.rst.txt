@@ -1,6 +1,15 @@
 Development
 =============================
 
+Generating pytest coverage
+-------------------------------
+
+.. code: pytest --cov-report html -cov datablend -- verbose
+
+Further reading...
+
+https://www.robinandeer.com/blog/2016/06/22/how-i-test-my-code-part-3
+
 Generating Sphinx documentation
 -------------------------------
 

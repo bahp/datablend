@@ -18,8 +18,8 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import Blender
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
 
 # ------------------------
 # Constants
@@ -92,8 +92,8 @@ data = {
 }
 
 # Create blender
-blender = Blender(widgets=[RenameWidget(),
-                           ReplaceWidget()])
+blender = Blender(widgets=[ReplaceWidget(),
+                           RenameWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=templates)

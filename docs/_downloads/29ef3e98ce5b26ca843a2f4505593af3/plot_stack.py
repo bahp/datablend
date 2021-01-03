@@ -3,15 +3,13 @@ StackWidget
 ===========================
 """
 
-###############################################################################
-# First of all, we need to import the modules and functions that will be used
 # Import
 import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import BlenderTemplate
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import StackWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.stack import StackWidget
 
 # ------------------------
 # Constants
@@ -22,8 +20,8 @@ template = [
     {'from_name': 'StudyNo', 'to_name': 'study_number'},
     {'from_name': 'DateEnrol', 'to_name': 'date_enrolment'},
     {'from_name': 'Sex', 'to_name': 'gender', 'timestamp': 'date_enrolment'},
-    #{'from_name': 'Age', 'to_name': 'age', 'timestamp': 'date_enrolment'},
-    {'from_name': 'Tmp', 'to_name': 'body_temperature', 'timestamp': 'date_enrolment', 'unit': 'celsius'}
+    {'from_name': 'Tmp', 'to_name': 'body_temperature',
+        'timestamp': 'date_enrolment', 'unit': 'celsius'}
 ]
 
 # Data

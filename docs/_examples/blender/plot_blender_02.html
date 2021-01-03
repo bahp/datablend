@@ -391,8 +391,8 @@ LAB:
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">Blender</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -465,8 +465,8 @@ LAB:
  <span class="p">}</span>
 
  <span class="c1"># Create blender</span>
- <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">RenameWidget</span><span class="p">(),</span>
-                            <span class="n">ReplaceWidget</span><span class="p">()])</span>
+ <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">ReplaceWidget</span><span class="p">(),</span>
+                            <span class="n">RenameWidget</span><span class="p">()])</span>
 
  <span class="c1"># Fit blender to templates.</span>
  <span class="n">blender</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">templates</span><span class="p">)</span>
@@ -494,7 +494,7 @@ LAB:
      <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.254 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.097 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-blender-plot-blender-02-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/68ced11cac5df22caa1ed7cbb5130fb8/plot_blender_02.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blender_02.py</span></code></a></p>

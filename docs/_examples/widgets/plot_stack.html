@@ -105,6 +105,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">StackWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_studyday.html">DateFromStudyDayWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_levels.html">RenameWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_static.html">RenameWidget</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
@@ -192,9 +194,39 @@ to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="stackwidget">
 <span id="sphx-glr-examples-widgets-plot-stack-py"></span><h1>StackWidget<a class="headerlink" href="#stackwidget" title="Permalink to this headline">¶</a></h1>
-<p>First of all, we need to import the modules and functions that will be used
-Import</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
+    StudyNo   DateEnrol  Sex   Tmp
+0  32dx-001  2020/12/01    1  37.5
+1  32dx-002  2020/12/04    2  36.8
+2  32dx-003  2020/12/08    1  39.2
+3  32dx-004  2020/12/11    1   NaN
+
+Transformed:
+  study_number date_enrolment  gender  body_temperature
+0     32dx-001     2020/12/01       1              37.5
+1     32dx-002     2020/12/04       2              36.8
+2     32dx-003     2020/12/08       1              39.2
+3     32dx-004     2020/12/11       1               NaN
+
+Stack:
+  study_number       date            column  result     unit
+0     32dx-001 2020-12-01  body_temperature    37.5  celsius
+1     32dx-002 2020-12-04  body_temperature    36.8  celsius
+2     32dx-003 2020-12-08  body_temperature    39.2  celsius
+3     32dx-001 2020-12-01            gender     1.0      NaN
+4     32dx-002 2020-12-04            gender     2.0      NaN
+5     32dx-003 2020-12-08            gender     1.0      NaN
+6     32dx-004 2020-12-11            gender     1.0      NaN
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 6
+ 7
+ 8
+ 9
 10
 11
 12
@@ -238,14 +270,13 @@ Import</p>
 50
 51
 52
-53
-54
-55</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+53</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">StackWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.stack</span> <span class="kn">import</span> <span class="n">StackWidget</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -256,8 +287,8 @@ Import</p>
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;StudyNo&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;study_number&#39;</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;DateEnrol&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
-     <span class="c1">#{&#39;from_name&#39;: &#39;Age&#39;, &#39;to_name&#39;: &#39;age&#39;, &#39;timestamp&#39;: &#39;date_enrolment&#39;},</span>
-     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tmp&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;body_temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;celsius&#39;</span><span class="p">}</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tmp&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;body_temperature&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;celsius&#39;</span><span class="p">}</span>
  <span class="p">]</span>
 
  <span class="c1"># Data</span>
@@ -289,33 +320,7 @@ Import</p>
  <span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
-    StudyNo   DateEnrol  Sex   Tmp
-0  32dx-001  2020/12/01    1  37.5
-1  32dx-002  2020/12/04    2  36.8
-2  32dx-003  2020/12/08    1  39.2
-3  32dx-004  2020/12/11    1   NaN
-
-Transformed:
-  study_number date_enrolment  gender  body_temperature
-0     32dx-001     2020/12/01       1              37.5
-1     32dx-002     2020/12/04       2              36.8
-2     32dx-003     2020/12/08       1              39.2
-3     32dx-004     2020/12/11       1               NaN
-
-Stack:
-  study_number       date            column result     unit
-0     32dx-001 2020-12-01            gender      1      NaN
-1     32dx-002 2020-12-04            gender      2      NaN
-2     32dx-003 2020-12-08            gender      1      NaN
-3     32dx-004 2020-12-11            gender      1      NaN
-4     32dx-001 2020-12-01  body_temperature   37.5  celsius
-5     32dx-002 2020-12-04  body_temperature   36.8  celsius
-6     32dx-003 2020-12-08  body_temperature   39.2  celsius
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.045 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.050 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-widgets-plot-stack-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/29ef3e98ce5b26ca843a2f4505593af3/plot_stack.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_stack.py</span></code></a></p>

@@ -105,6 +105,8 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_stack.html">StackWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_studyday.html">DateFromStudyDayWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_levels.html">RenameWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_static.html">RenameWidget</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
@@ -194,18 +196,20 @@ to download the full example code</p>
 <span id="sphx-glr-examples-widgets-plot-dtmerge-py"></span><h1>DateTimeMergeWidget<a class="headerlink" href="#datetimemergewidget" title="Permalink to this headline">¶</a></h1>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
-    StudyNo      enDate enTime
-0  32dx-001  2020/12/01  10:00
-1  32dx-002  2020/12/04  11:00
-2  32dx-003  2020/12/08  04:30
-3  32dx-004  2020/12/11  09:07
+    StudyNo      enDate enTime      date_enrolment
+0  32dx-001  2020/12/01  10:00 2020-12-01 10:00:00
+1  32dx-002  2020/12/04  11:00 2020-12-04 11:00:00
+2  32dx-003  2020/12/08  04:30 2020-12-08 04:30:00
+3  32dx-004  2020/12/11  09:07 2020-12-11 09:07:00
+4  32dx-004  2020/12/11  24:00 2020-12-11 00:00:00
 
 Transformed:
-  study_number     enDate enTime      date_enrolment
-0     32dx-001 2020-12-01  10:00 2020-12-01 10:00:00
-1     32dx-002 2020-12-04  11:00 2020-12-04 11:00:00
-2     32dx-003 2020-12-08  04:30 2020-12-08 04:30:00
-3     32dx-004 2020-12-11  09:07 2020-12-11 09:07:00
+    StudyNo      enDate enTime      date_enrolment
+0  32dx-001  2020/12/01  10:00 2020-12-01 10:00:00
+1  32dx-002  2020/12/04  11:00 2020-12-04 11:00:00
+2  32dx-003  2020/12/08  04:30 2020-12-08 04:30:00
+3  32dx-004  2020/12/11  09:07 2020-12-11 09:07:00
+4  32dx-004  2020/12/11  24:00 2020-12-11 00:00:00
 </pre></div>
 </div>
 <div class="line-block">
@@ -255,16 +259,12 @@ Transformed:
 47
 48
 49
-50
-51
-52</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateTimeMergeWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">DateTimeMergeWidget</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -287,6 +287,7 @@ Transformed:
      <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/04&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;11:00&#39;</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span> <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/08&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;04:30&#39;</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/11&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;09:07&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/11&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;24:00&#39;</span><span class="p">},</span>
  <span class="p">]</span>
 
  <span class="c1"># Blender template</span>
@@ -296,8 +297,7 @@ Transformed:
  <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
  <span class="c1"># Create widgets and transform</span>
- <span class="n">trans</span> <span class="o">=</span> <span class="n">RenameWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
- <span class="n">trans</span> <span class="o">=</span> <span class="n">DateTimeMergeWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+ <span class="n">trans</span> <span class="o">=</span> <span class="n">DateTimeMergeWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
  <span class="c1"># Show</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original:&quot;</span><span class="p">)</span>
@@ -306,7 +306,7 @@ Transformed:
  <span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.181 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.368 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-widgets-plot-dtmerge-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c378c1784ece078d0336eb2cc2ec55f3/plot_dtmerge.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_dtmerge.py</span></code></a></p>

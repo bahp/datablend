@@ -21,23 +21,61 @@
 EventWidget
 ===========================
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-9
+.. GENERATED FROM PYTHON SOURCE LINES 5-54
 
-First of all, we need to import the modules and functions that will be used
-Import
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-64
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+      study_number date_enrolment  lab_study_day
+    0     32dx-001     2020/12/01            1.0
+    1     32dx-002     2020/12/04            5.0
+    2     32dx-003     2020/12/08            0.0
+    3     32dx-004     2020/12/11           10.0
+    4     32dx-005            NaN            3.0
+    5     32dx-005     2020/12/07            NaN
+
+    Original:
+        StudyNo   DateEnrol  LabStudyDay
+    0  32dx-001  2020/12/01          1.0
+    1  32dx-002  2020/12/04          5.0
+    2  32dx-003  2020/12/08          0.0
+    3  32dx-004  2020/12/11         10.0
+    4  32dx-005         NaN          3.0
+    5  32dx-005  2020/12/07          NaN
+
+    Transformed:
+      study_number date_enrolment  lab_study_day  event_enrolment
+    0     32dx-001     2020/12/01            1.0             True
+    1     32dx-002     2020/12/04            5.0             True
+    2     32dx-003     2020/12/08            0.0             True
+    3     32dx-004     2020/12/11           10.0             True
+    4     32dx-005            NaN            3.0            False
+    5     32dx-005     2020/12/07            NaN             True
+
+
+
+
+
+
+|
 
 .. code-block:: default
-   :lineno-start: 9
+   :lineno-start: 6
 
+
+    # Import
     import pandas as pd
 
     # DataBlend library
     from datablend.core.blend import BlenderTemplate
-    from datablend.core.widgets import RenameWidget
-    from datablend.core.widgets import DateFromStudyDayWidget
-    from datablend.core.widgets import EventWidget
+    from datablend.core.widgets.format import RenameWidget
+    from datablend.core.widgets.format import EventWidget
 
     # ------------------------
     # Constants
@@ -52,13 +90,6 @@ Import
         {'from_name': 'DateEnrol',
          'to_name': 'date_enrolment',
          'event': 'event_enrolment'},
-
-        # Example date from study day widget and event
-        {'from_name': None,
-         'to_name': 'date_laboratory',
-         'study_day_col': 'lab_study_day',
-         'study_day_ref': 'date_enrolment',
-         'event': 'event_lab'},
     ]
 
     # Data
@@ -79,7 +110,7 @@ Import
 
     # Create widgets and transform
     trans = RenameWidget().fit_transform(bt, data)
-    trans = DateFromStudyDayWidget().fit_transform(bt, trans)
+    print(trans)
     trans = EventWidget().fit_transform(bt, trans)
 
     # Show
@@ -88,40 +119,9 @@ Import
     print("\nTransformed:")
     print(trans)
 
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    Original:
-        StudyNo   DateEnrol  LabStudyDay
-    0  32dx-001  2020/12/01          1.0
-    1  32dx-002  2020/12/04          5.0
-    2  32dx-003  2020/12/08          0.0
-    3  32dx-004  2020/12/11         10.0
-    4  32dx-005         NaN          3.0
-    5  32dx-005  2020/12/07          NaN
-
-    Transformed:
-      study_number date_enrolment  lab_study_day date_laboratory  event_enrolment  event_lab
-    0     32dx-001     2020/12/01            1.0      2020-12-02             True       True
-    1     32dx-002     2020/12/04            5.0      2020-12-09             True       True
-    2     32dx-003     2020/12/08            0.0      2020-12-08             True       True
-    3     32dx-004     2020/12/11           10.0      2020-12-21             True       True
-    4     32dx-005            NaN            3.0             NaT            False      False
-    5     32dx-005     2020/12/07            NaN             NaT             True      False
-
-
-
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.027 seconds)
+   **Total running time of the script:** ( 0 minutes  0.029 seconds)
 
 
 .. _sphx_glr_download__examples_widgets_plot_events.py:

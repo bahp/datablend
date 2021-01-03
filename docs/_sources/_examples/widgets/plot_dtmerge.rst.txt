@@ -21,7 +21,7 @@
 DateTimeMergeWidget
 ===========================
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-52
+.. GENERATED FROM PYTHON SOURCE LINES 5-50
 
 
 
@@ -34,18 +34,20 @@ DateTimeMergeWidget
 
 
     Original:
-        StudyNo      enDate enTime
-    0  32dx-001  2020/12/01  10:00
-    1  32dx-002  2020/12/04  11:00
-    2  32dx-003  2020/12/08  04:30
-    3  32dx-004  2020/12/11  09:07
+        StudyNo      enDate enTime      date_enrolment
+    0  32dx-001  2020/12/01  10:00 2020-12-01 10:00:00
+    1  32dx-002  2020/12/04  11:00 2020-12-04 11:00:00
+    2  32dx-003  2020/12/08  04:30 2020-12-08 04:30:00
+    3  32dx-004  2020/12/11  09:07 2020-12-11 09:07:00
+    4  32dx-004  2020/12/11  24:00 2020-12-11 00:00:00
 
     Transformed:
-      study_number     enDate enTime      date_enrolment
-    0     32dx-001 2020-12-01  10:00 2020-12-01 10:00:00
-    1     32dx-002 2020-12-04  11:00 2020-12-04 11:00:00
-    2     32dx-003 2020-12-08  04:30 2020-12-08 04:30:00
-    3     32dx-004 2020-12-11  09:07 2020-12-11 09:07:00
+        StudyNo      enDate enTime      date_enrolment
+    0  32dx-001  2020/12/01  10:00 2020-12-01 10:00:00
+    1  32dx-002  2020/12/04  11:00 2020-12-04 11:00:00
+    2  32dx-003  2020/12/08  04:30 2020-12-08 04:30:00
+    3  32dx-004  2020/12/11  09:07 2020-12-11 09:07:00
+    4  32dx-004  2020/12/11  24:00 2020-12-11 00:00:00
 
 
 
@@ -63,9 +65,7 @@ DateTimeMergeWidget
 
     # DataBlend library
     from datablend.core.blend import BlenderTemplate
-    from datablend.core.widgets import RenameWidget
-    from datablend.core.widgets import ReplaceWidget
-    from datablend.core.widgets import DateTimeMergeWidget
+    from datablend.core.widgets.format import DateTimeMergeWidget
 
     # ------------------------
     # Constants
@@ -88,6 +88,7 @@ DateTimeMergeWidget
         {'StudyNo': '32dx-002', 'enDate': '2020/12/04', 'enTime': '11:00'},
         {'StudyNo': '32dx-003', 'enDate': '2020/12/08', 'enTime': '04:30'},
         {'StudyNo': '32dx-004', 'enDate': '2020/12/11', 'enTime': '09:07'},
+        {'StudyNo': '32dx-004', 'enDate': '2020/12/11', 'enTime': '24:00'},
     ]
 
     # Blender template
@@ -97,8 +98,7 @@ DateTimeMergeWidget
     data = pd.DataFrame(data)
 
     # Create widgets and transform
-    trans = RenameWidget().fit_transform(bt, data)
-    trans = DateTimeMergeWidget().fit_transform(bt, trans)
+    trans = DateTimeMergeWidget().fit_transform(bt, data)
 
     # Show
     print("\nOriginal:")
@@ -108,7 +108,7 @@ DateTimeMergeWidget
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.181 seconds)
+   **Total running time of the script:** ( 0 minutes  0.368 seconds)
 
 
 .. _sphx_glr_download__examples_widgets_plot_dtmerge.py:

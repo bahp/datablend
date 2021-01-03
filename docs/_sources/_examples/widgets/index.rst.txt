@@ -156,6 +156,48 @@ Below is a gallery of examples
    :hidden:
 
    /_examples/widgets/plot_summary
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="RenameWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_levels_thumb.png
+     :alt: RenameWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_tidy_levels.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_tidy_levels
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="RenameWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_static_thumb.png
+     :alt: RenameWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_tidy_static.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_tidy_static
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

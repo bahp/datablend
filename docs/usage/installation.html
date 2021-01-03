@@ -186,16 +186,20 @@
 <p>Note that this library will need the following libraries. Most of the
 libraries are included in the requirements.txt file and will be installed
 by following this tutorial. Yet a few libraries are only required to
-create the documentation, coverage or package testing and therefore are not
-required by default.</p>
+create the documentation, coverage or package testing and therefore might
+not be required by default.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pyyaml</span></code> (for logging purposes)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> (only for package testing)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code>         (only to update documentation)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-gallery</span></code> (only to update documentation)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-rtd-theme</span></code> (only to update documentation)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> (only to update documentation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest</span></code> (testing)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code> (testing)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyyaml</span></code> (logging purposes)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xlrd</span></code> (working with excel files)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xlsxwriter</span></code> (working with excel files)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">openpyxl</span></code> (working with excel files)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx</span></code> (documentation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-gallery</span></code> (documentation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sphinx-rtd-theme</span></code> (documentation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> (plotting and documentation)</p></li>
 </ul>
 </div>
 <div class="section" id="creating-the-virtual-environment">
@@ -220,7 +224,7 @@ for them. This is one of the most important tools that Python developers use.</p
 <div class="section" id="installation-in-editable-mode">
 <h2>Installation in editable mode<a class="headerlink" href="#installation-in-editable-mode" title="Permalink to this headline">¶</a></h2>
 <p>It is recommended that you install this package in editable (develop) mode. It
-puts a link (actually <a href="#id1"><span class="problematic" id="id2">*</span></a>.pth files) into the python installation to your code,
+puts a link (actually *.pth files) into the python installation to your code,
 so that your package is installed, but any changes will immediately take effect.
 This way all your test code, and client code, etc, can all import your package
 the usual way.</p>

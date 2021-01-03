@@ -105,6 +105,8 @@
 <li class="toctree-l2"><a class="reference internal" href="plot_stack.html">StackWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_studyday.html">DateFromStudyDayWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_summary.html">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_levels.html">RenameWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_static.html">RenameWidget</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
@@ -192,9 +194,41 @@ to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="eventwidget">
 <span id="sphx-glr-examples-widgets-plot-events-py"></span><h1>EventWidget<a class="headerlink" href="#eventwidget" title="Permalink to this headline">¶</a></h1>
-<p>First of all, we need to import the modules and functions that will be used
-Import</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>  study_number date_enrolment  lab_study_day
+0     32dx-001     2020/12/01            1.0
+1     32dx-002     2020/12/04            5.0
+2     32dx-003     2020/12/08            0.0
+3     32dx-004     2020/12/11           10.0
+4     32dx-005            NaN            3.0
+5     32dx-005     2020/12/07            NaN
+
+Original:
+    StudyNo   DateEnrol  LabStudyDay
+0  32dx-001  2020/12/01          1.0
+1  32dx-002  2020/12/04          5.0
+2  32dx-003  2020/12/08          0.0
+3  32dx-004  2020/12/11         10.0
+4  32dx-005         NaN          3.0
+5  32dx-005  2020/12/07          NaN
+
+Transformed:
+  study_number date_enrolment  lab_study_day  event_enrolment
+0     32dx-001     2020/12/01            1.0             True
+1     32dx-002     2020/12/04            5.0             True
+2     32dx-003     2020/12/08            0.0             True
+3     32dx-004     2020/12/11           10.0             True
+4     32dx-005            NaN            3.0            False
+5     32dx-005     2020/12/07            NaN             True
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 6
+ 7
+ 8
+ 9
 10
 11
 12
@@ -239,23 +273,13 @@ Import</p>
 51
 52
 53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+54</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateFromStudyDayWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">EventWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">EventWidget</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -270,13 +294,6 @@ Import</p>
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;DateEnrol&#39;</span><span class="p">,</span>
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
       <span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="s1">&#39;event_enrolment&#39;</span><span class="p">},</span>
-
-     <span class="c1"># Example date from study day widget and event</span>
-     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-      <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;study_day_col&#39;</span><span class="p">:</span> <span class="s1">&#39;lab_study_day&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;study_day_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;event&#39;</span><span class="p">:</span> <span class="s1">&#39;event_lab&#39;</span><span class="p">},</span>
  <span class="p">]</span>
 
  <span class="c1"># Data</span>
@@ -297,7 +314,7 @@ Import</p>
 
  <span class="c1"># Create widgets and transform</span>
  <span class="n">trans</span> <span class="o">=</span> <span class="n">RenameWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
- <span class="n">trans</span> <span class="o">=</span> <span class="n">DateFromStudyDayWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
  <span class="n">trans</span> <span class="o">=</span> <span class="n">EventWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">bt</span><span class="p">,</span> <span class="n">trans</span><span class="p">)</span>
 
  <span class="c1"># Show</span>
@@ -307,27 +324,7 @@ Import</p>
  <span class="nb">print</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
-    StudyNo   DateEnrol  LabStudyDay
-0  32dx-001  2020/12/01          1.0
-1  32dx-002  2020/12/04          5.0
-2  32dx-003  2020/12/08          0.0
-3  32dx-004  2020/12/11         10.0
-4  32dx-005         NaN          3.0
-5  32dx-005  2020/12/07          NaN
-
-Transformed:
-  study_number date_enrolment  lab_study_day date_laboratory  event_enrolment  event_lab
-0     32dx-001     2020/12/01            1.0      2020-12-02             True       True
-1     32dx-002     2020/12/04            5.0      2020-12-09             True       True
-2     32dx-003     2020/12/08            0.0      2020-12-08             True       True
-3     32dx-004     2020/12/11           10.0      2020-12-21             True       True
-4     32dx-005            NaN            3.0             NaT            False      False
-5     32dx-005     2020/12/07            NaN             NaT             True      False
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.027 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.029 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-widgets-plot-events-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/d87c5a490c62cf40eb05bc39af6976bf/plot_events.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_events.py</span></code></a></p>

@@ -71,7 +71,7 @@ The code of the project is on Github: https://github.com/bahp/datablend
    usage/development
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
    :caption: API doc
    :hidden:
 

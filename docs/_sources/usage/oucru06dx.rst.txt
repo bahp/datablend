@@ -125,17 +125,19 @@ In the log file the duplicate values are presented (see below).
    True and False values on the same day.
 
 
-    - Inconsistent **values**: Opposite values recorded on the same day. This
-      are a problem since we need to identify why they are contradictory and
-      decide the strategy to solve this inconsistency.
-       - e.g. ascites can't True and False
+     - Inconsistent **values**: Opposite values recorded on the same day. This
+       are a problem since we need to identify why they are contradictory and
+       decide the strategy to solve this inconsistency.
 
-    - Inconsistent **formats**: Equal values are considered duplicated due to the
-      format in which they have been collected. These are not a real problem as
-      it can be easily solved by just keeping the last appearance (note that all
-      values are the same).
-        - e.g. sbp of 120.0 (float) and 120 (int)
-        - e.g. skin_rash of 0.0 (float), 0 (int) and False (boolean).
+         - e.g. ascites can't be True and False
+
+     - Inconsistent **formats**: Equal values are considered duplicated due to the
+       format in which they have been collected. These are not a real problem as
+       it can be easily solved by just keeping the last appearance (note that all
+       values are the same).
+
+         - e.g. sbp of 120.0 (float) and 120 (int)
+         - e.g. skin_rash of 0.0 (float), 0 (int) and False (boolean).
 
 
 .. code-block::

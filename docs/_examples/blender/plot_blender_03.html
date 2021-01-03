@@ -194,42 +194,42 @@ to download the full example code</p>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
-    StudyNo     enDate enTime DateIllness  Temp  Shock  Sex  CoughLevel   CoughDate  hct  wbc  LabSampleStudyDay      date_enrolment
-0  32dx-001 2020-11-07  10:00  05/07/2020  37.2  False    1         1.0  12/07/2020  2.0  3.5                  3 2020-11-07 10:00:00
-1  32dx-002 2020-12-07  11:00  09/07/2020  36.5  False    1         5.0  14/07/2020  3.0  2.0                  5 2020-12-07 11:00:00
-2  32dx-003 2020-07-13  12:00         NaN  39.8   True    2         2.0  13/07/2020  4.0  3.0                  1 2020-07-13 12:00:00
-3  32dx-004 2020-07-14  13:00         NaN  37.4  False    1         NaN         NaN  7.0  1.0                  2 2020-07-14 13:00:00
+    StudyNo      enDate enTime DateIllness  Temp  Shock  Sex  CoughLevel   CoughDate  hct  wbc  LabSampleStudyDay      date_enrolment
+0  32dx-001  11/07/2020  10:00  05/07/2020  37.2  False    1         1.0  12/07/2020  2.0  3.5                  3 2020-11-07 10:00:00
+1  32dx-002  12/07/2020  11:00  09/07/2020  36.5  False    1         5.0  14/07/2020  3.0  2.0                  5 2020-12-07 11:00:00
+2  32dx-003  13/07/2020  12:00         NaN  39.8   True    2         2.0  13/07/2020  4.0  3.0                  1 2020-07-13 12:00:00
+3  32dx-004  14/07/2020  13:00         NaN  37.4  False    1         NaN         NaN  7.0  1.0                  2 2020-07-14 13:00:00
 
 Transformed:
-  study_number     enDate enTime  date_onset  body_temperature  shock  gender  cough_level  cough_date  hct  wbc  lab_study_day      date_enrolment     date_laboratory  event_onset
-0     32dx-001 2020-11-07  10:00  05/07/2020              37.2  False    Male          1.0  12/07/2020  2.0  3.5              3 2020-11-07 10:00:00 2020-11-10 10:00:00         True
-1     32dx-002 2020-12-07  11:00  09/07/2020              36.5  False    Male          5.0  14/07/2020  3.0  2.0              5 2020-12-07 11:00:00 2020-12-12 11:00:00         True
-2     32dx-003 2020-07-13  12:00         NaN              39.8   True  Female          2.0  13/07/2020  4.0  3.0              1 2020-07-13 12:00:00 2020-07-14 12:00:00        False
-3     32dx-004 2020-07-14  13:00         NaN              37.4  False    Male          NaN         NaN  7.0  1.0              2 2020-07-14 13:00:00 2020-07-16 13:00:00        False
+  study_number      enDate enTime  date_onset  body_temperature  shock  gender  cough_level  cough_date  hct  wbc  lab_study_day      date_enrolment  event_onset     date_laboratory
+0     32dx-001  11/07/2020  10:00  05/07/2020              37.2  False    Male          1.0  12/07/2020  2.0  3.5              3 2020-11-07 10:00:00         True 2020-11-10 10:00:00
+1     32dx-002  12/07/2020  11:00  09/07/2020              36.5  False    Male          5.0  14/07/2020  3.0  2.0              5 2020-12-07 11:00:00         True 2020-12-12 11:00:00
+2     32dx-003  13/07/2020  12:00         NaN              39.8   True  Female          2.0  13/07/2020  4.0  3.0              1 2020-07-13 12:00:00        False 2020-07-14 12:00:00
+3     32dx-004  14/07/2020  13:00         NaN              37.4  False    Male          NaN         NaN  7.0  1.0              2 2020-07-14 13:00:00        False 2020-07-16 13:00:00
 
 Stacked:
    study_number                date            column  result     unit
-0      32dx-001 2020-11-07 10:00:00  body_temperature    37.2  celsius
-1      32dx-002 2020-12-07 11:00:00  body_temperature    36.5  celsius
-2      32dx-003 2020-07-13 12:00:00  body_temperature    39.8  celsius
-3      32dx-004 2020-07-14 13:00:00  body_temperature    37.4  celsius
-4      32dx-001 2020-12-07 00:00:00       cough_level     1.0      NaN
-5      32dx-002 2020-07-14 00:00:00       cough_level     5.0      NaN
-6      32dx-003 2020-07-13 00:00:00       cough_level     2.0      NaN
-7      32dx-001 2020-11-10 10:00:00               hct     2.0        %
-8      32dx-002 2020-12-12 11:00:00               hct     3.0        %
-9      32dx-003 2020-07-14 12:00:00               hct     4.0        %
-10     32dx-004 2020-07-16 13:00:00               hct     7.0        %
-11     32dx-001 2020-11-10 10:00:00               wbc     3.5  10^9U/L
-12     32dx-002 2020-12-12 11:00:00               wbc     2.0  10^9U/L
-13     32dx-003 2020-07-14 12:00:00               wbc     3.0  10^9U/L
-14     32dx-004 2020-07-16 13:00:00               wbc     1.0  10^9U/L
-15     32dx-001 2020-11-07 10:00:00             shock     0.0      NaN
-16     32dx-002 2020-12-07 11:00:00             shock     0.0      NaN
-17     32dx-003 2020-07-13 12:00:00             shock     1.0      NaN
-18     32dx-004 2020-07-14 13:00:00             shock     0.0      NaN
-19     32dx-001 2020-05-07 00:00:00       event_onset     1.0      NaN
-20     32dx-002 2020-09-07 00:00:00       event_onset     1.0      NaN
+0      32dx-001 2020-11-07 10:00:00             shock   False      NaN
+1      32dx-002 2020-12-07 11:00:00             shock   False      NaN
+2      32dx-003 2020-07-13 12:00:00             shock    True      NaN
+3      32dx-004 2020-07-14 13:00:00             shock   False      NaN
+4      32dx-001 2020-05-07 00:00:00       event_onset    True      NaN
+5      32dx-002 2020-09-07 00:00:00       event_onset    True      NaN
+6      32dx-001 2020-11-07 10:00:00  body_temperature    37.2  celsius
+7      32dx-002 2020-12-07 11:00:00  body_temperature    36.5  celsius
+8      32dx-003 2020-07-13 12:00:00  body_temperature    39.8  celsius
+9      32dx-004 2020-07-14 13:00:00  body_temperature    37.4  celsius
+10     32dx-001 2020-12-07 00:00:00       cough_level     1.0      NaN
+11     32dx-002 2020-07-14 00:00:00       cough_level     5.0      NaN
+12     32dx-003 2020-07-13 00:00:00       cough_level     2.0      NaN
+13     32dx-001 2020-11-10 10:00:00               hct     2.0        %
+14     32dx-002 2020-12-12 11:00:00               hct     3.0        %
+15     32dx-003 2020-07-14 12:00:00               hct     4.0        %
+16     32dx-004 2020-07-16 13:00:00               hct     7.0        %
+17     32dx-001 2020-11-10 10:00:00               wbc     3.5  10^9U/L
+18     32dx-002 2020-12-12 11:00:00               wbc     2.0  10^9U/L
+19     32dx-003 2020-07-14 12:00:00               wbc     3.0  10^9U/L
+20     32dx-004 2020-07-16 13:00:00               wbc     1.0  10^9U/L
 21     32dx-001 2020-11-07 10:00:00            gender    Male      NaN
 22     32dx-002 2020-12-07 11:00:00            gender    Male      NaN
 23     32dx-003 2020-07-13 12:00:00            gender  Female      NaN
@@ -378,12 +378,12 @@ Stacked:
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">Blender</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateTimeMergeWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">DateFromStudyDayWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">EventWidget</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets</span> <span class="kn">import</span> <span class="n">StackWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">DateTimeMergeWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">DateFromStudyDayWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">EventWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.widgets.stack</span> <span class="kn">import</span> <span class="n">StackWidget</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -395,7 +395,7 @@ Stacked:
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;study_number&#39;</span><span class="p">},</span>
 
      <span class="c1"># Example datetime merge</span>
-     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">,</span>
       <span class="s1">&#39;datetime_date&#39;</span><span class="p">:</span> <span class="s1">&#39;enDate&#39;</span><span class="p">,</span>
       <span class="s1">&#39;datetime_time&#39;</span><span class="p">:</span> <span class="s1">&#39;enTime&#39;</span><span class="p">},</span>
@@ -435,7 +435,7 @@ Stacked:
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">,</span>
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;lab_study_day&#39;</span><span class="p">},</span>
 
-     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+     <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
       <span class="s1">&#39;study_day_col&#39;</span><span class="p">:</span> <span class="s1">&#39;lab_study_day&#39;</span><span class="p">,</span>
       <span class="s1">&#39;study_day_ref&#39;</span><span class="p">:</span> <span class="s1">&#39;date_enrolment&#39;</span><span class="p">},</span>
@@ -448,7 +448,7 @@ Stacked:
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span>
       <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span>
       <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_laboratory&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;unit&#39;</span><span class="p">:</span><span class="s1">&#39;10^9U/L&#39;</span><span class="p">}</span>
+      <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;10^9U/L&#39;</span><span class="p">}</span>
 
  <span class="p">]</span>
 
@@ -462,7 +462,7 @@ Stacked:
       <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
 
      <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span><span class="s1">&#39;12/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;11:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;12/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;11:00&#39;</span><span class="p">,</span>
       <span class="s1">&#39;DateIllness&#39;</span><span class="p">:</span> <span class="s1">&#39;09/07/2020&#39;</span><span class="p">,</span>
       <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">36.5</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
       <span class="s1">&#39;CoughLevel&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;CoughDate&#39;</span><span class="p">:</span> <span class="s1">&#39;14/07/2020&#39;</span><span class="p">,</span>
@@ -475,7 +475,7 @@ Stacked:
       <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
 
      <span class="p">{</span><span class="s1">&#39;StudyNo&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span><span class="s1">&#39;14/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;13:00&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;enDate&#39;</span><span class="p">:</span> <span class="s1">&#39;14/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;enTime&#39;</span><span class="p">:</span> <span class="s1">&#39;13:00&#39;</span><span class="p">,</span>
       <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">37.4</span><span class="p">,</span> <span class="s1">&#39;Shock&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
       <span class="s1">&#39;hct&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span> <span class="s1">&#39;wbc&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;LabSampleStudyDay&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
 
@@ -487,10 +487,10 @@ Stacked:
 
  <span class="c1"># Create blender</span>
  <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">DateTimeMergeWidget</span><span class="p">(),</span>
-                            <span class="n">RenameWidget</span><span class="p">(),</span>
                             <span class="n">ReplaceWidget</span><span class="p">(),</span>
-                            <span class="n">DateFromStudyDayWidget</span><span class="p">(),</span>
-                            <span class="n">EventWidget</span><span class="p">()])</span>
+                            <span class="n">RenameWidget</span><span class="p">(),</span>
+                            <span class="n">EventWidget</span><span class="p">(),</span>
+                            <span class="n">DateFromStudyDayWidget</span><span class="p">()])</span>
 
  <span class="c1"># Fit blender to templates.</span>
  <span class="n">blender</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">template</span><span class="p">)</span>
@@ -510,7 +510,7 @@ Stacked:
  <span class="nb">print</span><span class="p">(</span><span class="n">stacked</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.102 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.115 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-blender-plot-blender-03-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/699706c9f59c138641aa7ee60a6c5536/plot_blender_03.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blender_03.py</span></code></a></p>

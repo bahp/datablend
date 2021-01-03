@@ -180,7 +180,6 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
- | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
@@ -208,19 +207,23 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget">BaseWidget (class in datablend.core.widgets)</a>
-</li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender">Blender (class in datablend.core.blend)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate">BlenderTemplate (class in datablend.core.blend)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt">bt() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_df">bt_df() (in module datablend.tests.test_widgets)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_json">bt_json() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.BTDuplicateError">BTDuplicateError</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.BTMissingRequiredColumnsError">BTMissingRequiredColumnsError</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.BTNullValueError">BTNullValueError</a>
 </li>
   </ul></td>
 </tr></table>
@@ -232,12 +235,8 @@
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.check">check() (datablend.core.blend.BlenderTemplate method)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget.check_required_columns">check_required_columns() (datablend.core.widgets.BaseWidget method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget.compatible_template">compatible_template() (datablend.core.widgets.BaseWidget method)</a>
-</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.convert_dtypes_categorical">convert_dtypes_categorical() (in module datablend.utils.transformations)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.convert_dtypes_datetime">convert_dtypes_datetime() (in module datablend.utils.transformations)</a>
@@ -380,13 +379,13 @@
       </ul></li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.date_time_maps">date_time_maps() (in module datablend.core.blend)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateFromStudyDayWidget">DateFromStudyDayWidget (class in datablend.core.widgets)</a>
-</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.datetime">datetime() (in module datablend.utils.compute)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateTimeMergeWidget">DateTimeMergeWidget (class in datablend.core.widgets)</a>
-</li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.df">df (datablend.core.blend.BlenderTemplate attribute)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning.diff1_">diff1_ (datablend.core.exceptions.ReplaceWidgetMapWarning attribute)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning.diff2_">diff2_ (datablend.core.exceptions.ReplaceWidgetMapWarning attribute)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.display">display() (in module datablend.utils.methods)</a>
 </li>
@@ -398,8 +397,6 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.EventWidget">EventWidget (class in datablend.core.widgets)</a>
-</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.extract_events">extract_events() (in module datablend.utils.methods)</a>
 </li>
   </ul></td>
@@ -425,8 +422,6 @@
       <ul>
         <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.fit">(datablend.core.blend.BlenderTemplate method)</a>
 </li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget.fit">(datablend.core.widgets.BaseWidget method)</a>
-</li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -435,44 +430,8 @@
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.fit_from_data">fit_from_data() (datablend.core.blend.BlenderTemplate method)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.fit_transform">fit_transform() (datablend.core.blend.Blender method)</a>
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget.fit_transform">(datablend.core.widgets.BaseWidget method)</a>
 </li>
-      </ul></li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.format_var_names">format_var_names() (in module datablend.utils.transformations)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.FullTemplateWidget">FullTemplateWidget (class in datablend.core.widgets)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="G">G</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackUnitWidget.get_dataframe">get_dataframe() (datablend.core.widgets.StackUnitWidget method)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.TemplateTransformWidget.get_datetimes_list">get_datetimes_list() (datablend.core.widgets.TemplateTransformWidget method)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateFromStudyDayWidget.get_list">get_list() (datablend.core.widgets.DateFromStudyDayWidget method)</a>
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateTimeMergeWidget.get_list">(datablend.core.widgets.DateTimeMergeWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.EventWidget.get_list">(datablend.core.widgets.EventWidget method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.RenameWidget.get_map">get_map() (datablend.core.widgets.RenameWidget method)</a>
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.ReplaceWidget.get_map">(datablend.core.widgets.ReplaceWidget method)</a>
-</li>
-      </ul></li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackWidget.get_timestamp_feature_events">get_timestamp_feature_events() (datablend.core.widgets.StackWidget method)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackWidget.get_timestamp_feature_tuples">get_timestamp_feature_tuples() (datablend.core.widgets.StackWidget method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -497,6 +456,8 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.InvalidBlenderTemplateError">InvalidBlenderTemplateError</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning.is_warning">is_warning() (datablend.core.exceptions.ReplaceWidgetMapWarning method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -526,6 +487,8 @@
         <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.merge_date_time">(in module datablend.utils.methods)</a>
 </li>
       </ul></li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.merge.merge_date_time2">merge_date_time2() (in module datablend.utils.merge)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.merge.merge_day_month_year">merge_day_month_year() (in module datablend.utils.merge)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.missing_columns">missing_columns() (datablend.core.blend.BlenderTemplate method)</a>
@@ -587,11 +550,7 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.RenameWidget">RenameWidget (class in datablend.core.widgets)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.ReplaceWidget">ReplaceWidget (class in datablend.core.widgets)</a>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning">ReplaceWidgetMapWarning</a>
 </li>
   </ul></td>
 </tr></table>
@@ -605,38 +564,16 @@
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.stack">stack() (datablend.core.blend.Blender method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.stacked_display">stacked_display() (in module datablend.utils.methods)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackUnitWidget">StackUnitWidget (class in datablend.core.widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackWidget">StackWidget (class in datablend.core.widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.settings.static">static (in module datablend.core.settings)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.str2eval">str2eval() (in module datablend.utils.transformations)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.display.str_dtypes">str_dtypes() (in module datablend.utils.display)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateFromStudyDayWidget.subset">subset (datablend.core.widgets.DateFromStudyDayWidget attribute)</a>
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateTimeMergeWidget.subset">(datablend.core.widgets.DateTimeMergeWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.EventWidget.subset">(datablend.core.widgets.EventWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.RenameWidget.subset">(datablend.core.widgets.RenameWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.ReplaceWidget.subset">(datablend.core.widgets.ReplaceWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackUnitWidget.subset">(datablend.core.widgets.StackUnitWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackWidget.subset">(datablend.core.widgets.StackWidget attribute)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.TemplateTransformWidget.subset">(datablend.core.widgets.TemplateTransformWidget attribute)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -645,41 +582,37 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.templates">templates (datablend.core.blend.Blender attribute)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.TemplateTransformWidget">TemplateTransformWidget (class in datablend.core.widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_bt_fit_from_data">test_bt_fit_from_data() (in module datablend.tests.test_widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_bt_fit_from_df">test_bt_fit_from_df() (in module datablend.tests.test_widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_bt_fit_from_json">test_bt_fit_from_json() (in module datablend.tests.test_widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_bt_fit_raises_exception_on_None">test_bt_fit_raises_exception_on_None() (in module datablend.tests.test_widgets)</a>
-</li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_examples.test_script_execution_blender">test_script_execution_blender() (in module datablend.tests.test_examples)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_examples.test_script_execution_template">test_script_execution_template() (in module datablend.tests.test_examples)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_examples.test_script_execution_widgets">test_script_execution_widgets() (in module datablend.tests.test_examples)</a>
 </li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_dtfromstudyday_raises_exception_on_missing_required_columns">test_widget_dtfromstudyday_raises_exception_on_missing_required_columns() (in module datablend.tests.test_widgets)</a>
+</li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_dtmerge">test_widget_dtmerge() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_dtmerge_raises_exception_on_missing_required_columns">test_widget_dtmerge_raises_exception_on_missing_required_columns() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_event_raises_exception_on_missing_required_columns">test_widget_event_raises_exception_on_missing_required_columns() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_events">test_widget_events() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_fit_from_df">test_widget_fit_from_df() (in module datablend.tests.test_widgets)</a>
 </li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_fit_from_json">test_widget_fit_from_json() (in module datablend.tests.test_widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_raises_exception_on_missing_required_columns">test_widget_raises_exception_on_missing_required_columns() (in module datablend.tests.test_widgets)</a>
-</li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_raises_exception_on_None">test_widget_raises_exception_on_None() (in module datablend.tests.test_widgets)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_rename">test_widget_rename() (in module datablend.tests.test_widgets)</a>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_fit_from_json">test_widget_fit_from_json() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_raises_exception_on_None">test_widget_raises_exception_on_None() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_replace_from_dict">test_widget_replace_from_dict() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_replace_from_str">test_widget_replace_from_str() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_replace_raises_exception_on_missing_required_columns">test_widget_replace_raises_exception_on_missing_required_columns() (in module datablend.tests.test_widgets)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_replace_raises_warning">test_widget_replace_raises_warning() (in module datablend.tests.test_widgets)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_stack">test_widget_stack() (in module datablend.tests.test_widgets)</a>
 </li>
@@ -688,27 +621,7 @@
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.tidy">tidy() (datablend.core.blend.Blender method)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.transform">transform() (datablend.core.blend.Blender method)</a>
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.BaseWidget.transform">(datablend.core.widgets.BaseWidget method)</a>
 </li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateFromStudyDayWidget.transform">(datablend.core.widgets.DateFromStudyDayWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.DateTimeMergeWidget.transform">(datablend.core.widgets.DateTimeMergeWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.EventWidget.transform">(datablend.core.widgets.EventWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.RenameWidget.transform">(datablend.core.widgets.RenameWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.ReplaceWidget.transform">(datablend.core.widgets.ReplaceWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackUnitWidget.transform">(datablend.core.widgets.StackUnitWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.StackWidget.transform">(datablend.core.widgets.StackWidget method)</a>
-</li>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.widgets.TemplateTransformWidget.transform">(datablend.core.widgets.TemplateTransformWidget method)</a>
-</li>
-      </ul></li>
   </ul></td>
 </tr></table>
 

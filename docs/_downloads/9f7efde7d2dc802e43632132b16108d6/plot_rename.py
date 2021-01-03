@@ -9,7 +9,7 @@ RenameWidget
 import pandas as pd
 
 # DataBlend library
-from datablend.core.widgets import RenameWidget
+from datablend.core.widgets.format import RenameWidget
 
 # ------------------------
 # Constants
@@ -33,6 +33,10 @@ data = [
 
 # Create data
 data = pd.DataFrame(data)
+
+# Template (to check missing columns exception)
+#template = pd.DataFrame(template)
+#template = template.drop(columns=['to_name'])
 
 # Create widget
 widget = RenameWidget().fit(template)
