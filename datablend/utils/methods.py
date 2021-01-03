@@ -218,21 +218,24 @@ def extract_records_from_tuples(dataframe, index, tuples,
     date indicates the column with the dates (datetime [ns]) and
     level indicates the column with the acuity (number).
 
-    Example:
-
+    Example
+    -------
     date_enrollment chills chills_date headache, headache_date, headache_level
          10-10-2020      1   9-10-2020        1      8-10-2020               3
           5-10-2020      1   1-10-2020        1     08-10-2020               1
           1-10-2020      0           -        1     08-10-2020               1
          12-10-2020      1   7-10-2020        1     08-10-2020               2
 
+    Returns
+    -------
+    dict
+        The result
     """
     # Check inputs
     if isinstance(index, str):
         index = [index]
 
     # What if tuples is None
-
 
     # Output
     stacked_by_dtype = {}
@@ -258,8 +261,10 @@ def extract_records_from_tuples(dataframe, index, tuples,
 
         #aux = aux.convert_dtypes()
 
+        # .. note: String could be string or class.
+
         # Add to dictionary
-        key = aux.result.dtype
+        key = str(aux.result.dtype)
         if not key in stacked_by_dtype:
             stacked_by_dtype[key] = []
         stacked_by_dtype[key].append(aux)
@@ -280,11 +285,27 @@ def extract_records_from_tuples(dataframe, index, tuples,
     if return_by_types:
         return stacked_by_dtype
 
+    """
+    .. warning: The order of the concatenation matters. If we start with
+                concatenating ints and then bools, the boolean will be
+                converted to 0 or 1. To solve this issue...
+                
+                1. Quick fix: start with booleans... 
+                   Will this generate an issue converting ints with only
+                   0s or 1s to boolean?
+                   
+                2. Good fix: keep the types from original data.
+                   Do as types with the types...
+                
+                3. Other fix: Create object dataframe before concatenating?
+                
+                ['float64', 'int64', 'bool', 'object'])
+    """
     # Careful if no datetime column ccfg aux will not exist.
     # Merge all no matter their types
     result = pd.DataFrame(columns=aux.columns, dtype=object)
-    for k, v in stacked_by_dtype.items():
-        result = result.append(v)
+    for k in sorted(stacked_by_dtype.keys()):  # Quick fix
+        result = result.append(stacked_by_dtype[k])
 
     # Return
     return result
