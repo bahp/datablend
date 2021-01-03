@@ -4,13 +4,19 @@ import pandas as pd
 
 # DataBlend libraries
 from datablend.core.blend import BlenderTemplate
-from datablend.core.widgets import BaseWidget
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
-from datablend.core.widgets import DateTimeMergeWidget
+from datablend.core.widgets.base import BaseWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
+from datablend.core.widgets.format import DateTimeMergeWidget
 from datablend.core.exceptions import WrongColumnType
 from datablend.core.exceptions import MissingRequiredColumns
 from datablend.core.exceptions import IncompatibleBlenderTemplateError
+from datablend.core.exceptions import ReplaceWidgetMapWarning
+
+"""
+.. note: bt is the acronym for BlenderTemplate
+         df is the acronym for DataFrame
+"""
 
 
 @pytest.fixture
@@ -52,44 +58,10 @@ def bt(bt_df):
 
 
 # ----------------------------
-# RenameWidget tests
-# ----------------------------
-"""
-    .. note: bt refers to blender_template
-    .. note: df refers to dataframe
-"""
-
-
-# ----------------------------
-# BlenderTemplate tests
-# ----------------------------
-def test_bt_fit_raises_exception_on_None():
-    """Widget none template."""
-    with pytest.raises(TypeError):
-        BlenderTemplate().fit(None)
-
-
-def test_bt_fit_from_df(bt_df):
-    """Widget none template."""
-    bt = BlenderTemplate().fit(bt_df)
-    assert isinstance(bt, BlenderTemplate)
-
-
-def test_bt_fit_from_json(bt_json):
-    """"""
-    bt = BlenderTemplate().fit(bt_json)
-    assert isinstance(bt, BlenderTemplate)
-
-
-def test_bt_fit_from_data(data):
-    """"""
-    bt = BlenderTemplate().fit_from_data(data)
-    assert isinstance(bt, BlenderTemplate)
-
-
-# ----------------------------
 # Widget tests
 # ----------------------------
+# Basic tests
+# -----------
 def test_widget_raises_exception_on_None():
     """"""
     with pytest.raises(TypeError):
@@ -108,29 +80,53 @@ def test_widget_fit_from_json(bt_json):
     assert isinstance(widget, BaseWidget)
 
 
-def test_widget_raises_exception_on_missing_required_columns(bt_df):
+# ReplaceWidget tests
+# -------------------
+def test_widget_replace_raises_exception_on_missing_required_columns(bt_df):
     """"""
-    bt_df = bt_df.drop(columns='to_name')
+    bt_df = bt_df.drop(columns='to_replace')
     bt = BlenderTemplate().fit(bt_df)
     with pytest.raises(MissingRequiredColumns):
-        RenameWidget().fit(bt)
+        ReplaceWidget().fit(bt)
 
 
-def test_widget_rename(bt, data):
+def test_widget_replace_raises_warning(bt_df, data):
     """"""
-    transformed = RenameWidget().fit_transform(bt, data)
-    assert True
+    bt_df.at[3, 'to_replace'] = {'Male': 1}
+    with pytest.warns(ReplaceWidgetMapWarning):
+        ReplaceWidget().fit_transform(bt_df, data)
 
 
 def test_widget_replace_from_dict(bt, data):
-    """"""
-    transformed = RenameWidget().fit_transform(bt, data)
-    transformed = ReplaceWidget().fit_transform(bt, transformed)
-    unique = set(transformed.gender.unique())
+    """ReplaceWidget fit from dictionary"""
+    transformed = ReplaceWidget().fit_transform(bt, data)
+    unique = set(transformed.Sex.unique())
     assert unique.issubset(set(['Male', 'Female']))
 
 
 def test_widget_replace_from_str(bt, data):
+    """ReplaceWidget fit from str dictionary."""
+    assert True
+
+
+# EventWidget tests
+# -----------------
+def test_widget_event_raises_exception_on_missing_required_columns(bt_df):
+    """"""
+    assert True
+
+
+# DateTimeMergeWidget tests
+# -------------------------
+def test_widget_dtmerge_raises_exception_on_missing_required_columns(bt_df):
+    """"""
+    assert True
+
+
+# DateFromStudyDay tests
+# ----------------------
+def test_widget_dtfromstudyday_raises_exception_on_missing_required_columns(bt_df):
+    """"""
     assert True
 
 

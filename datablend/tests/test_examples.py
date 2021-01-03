@@ -26,12 +26,12 @@ def test_script_execution_widgets(script):
     runpy.run_path(str(script))
 
 
-@pytest.mark.parametrize('script', scripts_widgets)
+@pytest.mark.parametrize('script', scripts_template)
 def test_script_execution_template(script):
     runpy.run_path(str(script))
 
 
-@pytest.mark.parametrize('script', scripts_widgets)
+@pytest.mark.parametrize('script', scripts_blender)
 def test_script_execution_blender(script):
     runpy.run_path(str(script))
 
