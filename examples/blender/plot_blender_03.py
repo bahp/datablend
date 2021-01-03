@@ -11,12 +11,12 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import Blender
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
-from datablend.core.widgets import DateTimeMergeWidget
-from datablend.core.widgets import DateFromStudyDayWidget
-from datablend.core.widgets import EventWidget
-from datablend.core.widgets import StackWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
+from datablend.core.widgets.format import DateTimeMergeWidget
+from datablend.core.widgets.format import DateFromStudyDayWidget
+from datablend.core.widgets.format import EventWidget
+from datablend.core.widgets.stack import StackWidget
 
 # ------------------------
 # Constants
@@ -28,7 +28,7 @@ template = [
      'to_name': 'study_number'},
 
     # Example datetime merge
-    {'from_name': None,
+    {'from_name': 'date_enrolment',
      'to_name': 'date_enrolment',
      'datetime_date': 'enDate',
      'datetime_time': 'enTime'},
@@ -68,7 +68,7 @@ template = [
     {'from_name': 'LabSampleStudyDay',
      'to_name': 'lab_study_day'},
 
-    {'from_name': None,
+    {'from_name': 'date_laboratory',
      'to_name': 'date_laboratory',
      'study_day_col': 'lab_study_day',
      'study_day_ref': 'date_enrolment'},
@@ -81,7 +81,7 @@ template = [
     {'from_name': 'wbc',
      'to_name': 'wbc',
      'timestamp': 'date_laboratory',
-     'unit':'10^9U/L'}
+     'unit': '10^9U/L'}
 
 ]
 
@@ -95,7 +95,7 @@ data = [
      'hct': 2.0, 'wbc': 3.5, 'LabSampleStudyDay': 3},
 
     {'StudyNo': '32dx-002',
-     'enDate':'12/07/2020', 'enTime': '11:00',
+     'enDate': '12/07/2020', 'enTime': '11:00',
      'DateIllness': '09/07/2020',
      'Temp': 36.5, 'Shock': False, 'Sex': 1,
      'CoughLevel': 5, 'CoughDate': '14/07/2020',
@@ -108,7 +108,7 @@ data = [
      'hct': 4.0, 'wbc': 3.0, 'LabSampleStudyDay': 1},
 
     {'StudyNo': '32dx-004',
-     'enDate':'14/07/2020', 'enTime': '13:00',
+     'enDate': '14/07/2020', 'enTime': '13:00',
      'Temp': 37.4, 'Shock': False, 'Sex': 1,
      'hct': 7.0, 'wbc': 1.0, 'LabSampleStudyDay': 2},
 
@@ -120,10 +120,10 @@ data = pd.DataFrame(data)
 
 # Create blender
 blender = Blender(widgets=[DateTimeMergeWidget(),
-                           RenameWidget(),
                            ReplaceWidget(),
-                           DateFromStudyDayWidget(),
-                           EventWidget()])
+                           RenameWidget(),
+                           EventWidget(),
+                           DateFromStudyDayWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=template)

@@ -2,7 +2,7 @@
 Blender with single input
 ============================
 
-Example using ``Blender`` works with data collected from a single sources.
+Example using ``Blender`` with data collected from a single sources.
 
 """
 
@@ -11,8 +11,8 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import Blender
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
 
 
 # ------------------------
@@ -44,8 +44,8 @@ templates = pd.DataFrame(template)
 data = pd.DataFrame(data)
 
 # Create blender
-blender = Blender(widgets=[RenameWidget(),
-                           ReplaceWidget()])
+blender = Blender(widgets=[ReplaceWidget(),
+                           RenameWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=templates)

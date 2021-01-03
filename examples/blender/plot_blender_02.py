@@ -2,15 +2,15 @@
 Blender with multiple inputs
 ============================
 
-Example using ``Blender`` works with data collected from several sources.
+Example using ``Blender`` with data collected from several sources.
 
 .. note:: Each data source has a different ``BlenderTemplate``.
 
-.. note:: In many scenarios the data collection is performed using
-          Microsoft Excel where different worksheets are used to record
-          for different types of data (e.g. examination, laboratory, pcr, ...).
-          These data, when loaded with pandas, is returned in a dictionary
-          that can be directly inputted to ``Blender``.
+.. note:: ``Pandas`` reads xlsx files with different sheets as a dictionary
+          where the key is the worksheet name and the value is the
+          dataframe. Therefore, xlsx files loaded with pandas can be
+          inputed to ``Blender`` as in the example below.
+
 """
 
 # Import
@@ -18,8 +18,8 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import Blender
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import ReplaceWidget
 
 # ------------------------
 # Constants
@@ -92,8 +92,8 @@ data = {
 }
 
 # Create blender
-blender = Blender(widgets=[RenameWidget(),
-                           ReplaceWidget()])
+blender = Blender(widgets=[ReplaceWidget(),
+                           RenameWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=templates)
