@@ -3,16 +3,13 @@ EventWidget
 ===========================
 """
 
-###############################################################################
-# First of all, we need to import the modules and functions that will be used
 # Import
 import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import BlenderTemplate
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import DateFromStudyDayWidget
-from datablend.core.widgets import EventWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import EventWidget
 
 # ------------------------
 # Constants
@@ -27,13 +24,6 @@ template = [
     {'from_name': 'DateEnrol',
      'to_name': 'date_enrolment',
      'event': 'event_enrolment'},
-
-    # Example date from study day widget and event
-    {'from_name': None,
-     'to_name': 'date_laboratory',
-     'study_day_col': 'lab_study_day',
-     'study_day_ref': 'date_enrolment',
-     'event': 'event_lab'},
 ]
 
 # Data
@@ -54,7 +44,7 @@ data = pd.DataFrame(data)
 
 # Create widgets and transform
 trans = RenameWidget().fit_transform(bt, data)
-trans = DateFromStudyDayWidget().fit_transform(bt, trans)
+print(trans)
 trans = EventWidget().fit_transform(bt, trans)
 
 # Show

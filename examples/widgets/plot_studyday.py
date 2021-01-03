@@ -8,8 +8,8 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.blend import BlenderTemplate
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import DateFromStudyDayWidget
+from datablend.core.widgets.format import RenameWidget
+from datablend.core.widgets.format import DateFromStudyDayWidget
 
 # ------------------------
 # Constants
