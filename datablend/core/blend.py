@@ -14,11 +14,14 @@ from pathlib import Path
 
 # Own libraries
 from datablend.utils.pandas import save_xlsx
-from datablend.utils.merge import merge_date_time
 from datablend.utils.transformations import convert_dtypes_categorical
 from datablend.utils.transformations import convert_dtypes_datetime
 from datablend.utils.transformations import format_var_names
 from datablend.utils.transformations import str2eval
+
+from datablend.core.exceptions import BTNullValueError
+from datablend.core.exceptions import BTMissingRequiredColumnsError
+from datablend.core.exceptions import BTDuplicateError
 
 # Configure logger
 logger = logging.getLogger('dev')
@@ -122,10 +125,33 @@ class BlenderTemplate:
     def valid_blender_template_dataframe(self, df):
         """Whether the template is valid.
 
-        .. todo: Minimum required columns
+        Raises
+        ------
+        BTMissingRequiredColumnsError
+            The required columns ['from_name', 'to_name'] are missing.
+
+        BTDuplicateError
+            The column has duplicated values.
+
+        BTRenameError
+            Not all the columns in the template have been renamed.
         """
         if not isinstance(df, pd.DataFrame):
             raise TypeError
+
+        # Missing required columns
+        for c in ['from_name', 'to_name']:
+            if c not in df.columns.tolist():
+                raise BTMissingRequiredColumnsError(missing=c)
+
+        # Duplicate values found
+        if any(df.from_name.duplicated()):
+            raise BTDuplicateError(column='from_name')
+
+        # Null values found
+        if any(pd.isnull(df.to_name)):
+            raise BTNullValueError(column='to_name')
+
         return True
 
     def fit(self, template):
@@ -370,10 +396,10 @@ class Blender:
             # Logging information
             logger.info("Stacking sheet <{0}>... COMPLETED.".format(k))
 
-            # Note importing this library in other places crashes
-            from datablend.core.widgets import StackWidget
+            # Import (importing this library in other places crashes)
+            from datablend.core.widgets.stack import StackWidget
 
-
+            # Stack
             stacked[k] = StackWidget(index=index).fit_transform(self.templates[k], df)
 
         # Return DataFrame

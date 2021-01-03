@@ -1,6 +1,5 @@
 # Units
 
-
 """Describing which variables are static.
 
 .. note: We define as static those variables that do not
@@ -11,7 +10,6 @@
 .. todo: haematocrit_max because it contains the word
          haematocrit it should be automatically classified
          as laboratory
-
 """
 
 
@@ -52,11 +50,26 @@ def find_levels(variable_names):
     """This method...
 
     .. note: Might need the dataframe to check ints!
+
+    Returns
+    -------
+    list
+        Variables with the word levels in it.
     """
     return [c for c in variable_names if 'level' in c]
 
 
-"""Describing the units of the variables."""
+"""Describing the units of the variables.
+
+vital signs
+laboratory
+demographics
+serology
+pcr
+ultrasound
+urinalisis
+xray
+"""
 units = [
 
     # Demographics
@@ -100,7 +113,7 @@ units = [
 
     # Laboratory
     {'name': 'haematocrit_percent', 'unit': '%', 'source': 'laboratory'},
-    {'name': 'haematocrit_max',  'source': 'laboratory'},
+    {'name': 'haematocrit_max', 'source': 'laboratory'},
     {'name': 'plt', 'unit': 'K/uL', 'source': 'laboratory'},
     {'name': 'wbc', 'unit': 'K/uL', 'source': 'laboratory'},
     {'name': 'neutrophils_percent', 'unit': '%', 'source': 'laboratory'},
@@ -124,31 +137,18 @@ units = [
     {'name': 'pcr_dengue_load', 'unit': 'copies/mL'},
 
     # Serology
-    #{'name': 'igm', 'unit': 'g/L', 'source': 'sero'},
-    #{'name': 'igg', 'unit': 'g/L', 'source': 'sero'},
-    #{'name': 'igm_interpretation', 'source': 'sero'},
-    #{'name': 'igg_interpretation', 'source': 'sero'},
-
-    # Others
+    {'name': 'igm', 'unit': 'g/L', 'source': 'sero'},
+    {'name': 'igg', 'unit': 'g/L', 'source': 'sero'},
+    {'name': 'igm_interpretation', 'source': 'sero'},
+    {'name': 'igg_interpretation', 'source': 'sero'},
 ]
 
-"""Describing the source of the variables
-
-vs - vital sign
-us - ultrasound
-    - urinalisis
-    - xray
-demo - demographics
-pcr - PCR
-sero - serology
-lab - laboratory
-"""
 
 def prefix_sources(tidy):
     """This method..."""
     # Get sources
     sources = {r['name']: '%s_%s' % (r['source'], r['name'])
-        for r in units if 'source' in r}
+               for r in units if 'source' in r}
     # Replace
     tidy = tidy.rename(columns=sources)
     # Retur
