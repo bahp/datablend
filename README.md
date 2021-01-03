@@ -108,7 +108,7 @@ code of conduct and the process for submitting pull requests to us.-->
 
 You can launch the test suite from the main directory running `pytest`.
 
-## Useful links
+#### Useful links
 
   - Official source code repo: https://github.com/bahp/datablend
   - Download releases: https://github.com/bahp/datablend/releases

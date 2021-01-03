@@ -3,17 +3,31 @@
 # -------------------------------------------------
 # MAC hidden files
 **/*.DS_Store
+
 # Temporal excel files
 **/~*
+
+# Log files
+**/*.log
+
 # PyCharm folder
 .idea
 
+# Sphinx documentation
+docs/_build
+docs/_examples
 
 # Folders
 examples/oucru/**/datasets/**/*.csv
 examples/oucru/**/datasets/**/*.xlsx
 examples/oucru/**/datasets/**/*.xls
+examples/oucru/**/datasets/**/*.xls
 **/resources/outputs/datasets
+
+examples/oucru/oucru-full/**/*.csv
+examples/oucru/oucru-full/**/*.xls
+examples/oucru/oucru-full/**/*.xlsx
+
 
 examples/basic
 # -------------------------------------------------
