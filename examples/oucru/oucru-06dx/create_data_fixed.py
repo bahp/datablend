@@ -71,7 +71,6 @@ for k, v in data.items():
     logger.info("Worksheet %-15s | Rows %5s | Columns %3s",
                 k, v.shape[0], v.shape[1])
 
-
 # -------------------------------
 # Fix data sheets
 # -------------------------------
@@ -82,6 +81,9 @@ data['EXAM'] = fix_exam(data['DEMO'], data['EXAM'])
 # ---------------------------------
 # Save
 # ---------------------------------
+# Create path if it does not exist
+pathlib.Path(path_fixed).parent.mkdir(parents=True, exist_ok=True)
+
 # Creating Excel Writer Object from Pandas
 writer = pd.ExcelWriter(path_fixed, engine='xlsxwriter')
 

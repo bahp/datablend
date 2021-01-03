@@ -21,16 +21,18 @@
 Welcome to DataBlend's documentation!
 =====================================
 
-The ``DataBlend`` python library allows to format manually collected data
-into other useful data structures such as (i) **Stacked data** frequently
-used in databases and (ii) **Tidy data** often required when using AI/ML
-libraries.
+``DataBlend`` is a lightweight library to format manually collected data. It allows
+to perform common transformations (e.g. rename or replace) and conversions to various
+data structures such as **stacked** data structure used in databases or **tidy** data
+structure used in AI/ML libraries.
 
-The origin of this project comes from the need of cleaning and merging
-different clinical data sets that were manually collected using Microsoft
-Excel.
+.. image:: /logos/blender.png
+   :width: 150
+   :align: right
+   :alt: DataBlend
 
-The code of the project is on Github: Link
+The code of the project is on Github: https://github.com/bahp/datablend
+
 
 .. toctree::
    :maxdepth: 2
@@ -39,7 +41,9 @@ The code of the project is on Github: Link
 
    usage/installation
    usage/quickstart
+   usage/template
    usage/widgets
+   usage/blender
    usage/tips
    usage/configuration
 
@@ -48,7 +52,6 @@ The code of the project is on Github: Link
    :caption: Advanced Usage and Information
    :hidden:
 
-   usage/advanced
 
 .. toctree::
    :maxdepth: 2
@@ -58,10 +61,21 @@ The code of the project is on Github: Link
    _examples/widgets/index
    _examples/blender/index
    _examples/template/index
+   usage/oucru06dx
 
-.. automodule:: datablend.core.blend
-   :members:
+.. toctree::
+   :maxdepth: 2
+   :caption: Development Guide
    :hidden:
+
+   usage/development
+
+.. toctree::
+   :maxdepth: 2
+   :caption: API doc
+   :hidden:
+
+   _apidoc/modules
 
 
 Indices and tables

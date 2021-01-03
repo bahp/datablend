@@ -78,22 +78,12 @@ The available widgets are:
  - ``ReplaceWidget``
  - ``DateTimeMergeWidget``
  - ``EventWidget``
- - ``DateFromStudyDayWodget``
+ - ``DateFromStudyDayWidget``
  - ``StackWidget``
  - ``StackUnitWidget``
 
-Blender with single input
--------------------------
+Examples
+--------
 
-.. literalinclude:: ../../examples/blender/plot_blender_01.py
-    :linenos:
-    :language: python
-    :caption:
-
-Blender with multiple input
----------------------------
-
-.. literalinclude:: ../../examples/blender/plot_blender_02.py
-    :linenos:
-    :language: python
-    :caption:
+ - Using :ref:`sphx_glr__examples_blender_plot_blender_01.py`.
+ - Using :ref:`sphx_glr__examples_blender_plot_blender_02.py`.

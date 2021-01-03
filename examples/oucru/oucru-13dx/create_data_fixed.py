@@ -156,6 +156,9 @@ data['NS1PLATELIA'] = fix_ns1platelia(data['ENROL'], data['NS1PLATELIA'])
 # ---------------------------------
 # Save
 # ---------------------------------
+# Create path if it does not exist
+pathlib.Path(path_fixed).parent.mkdir(parents=True, exist_ok=True)
+
 # Creating Excel Writer Object from Pandas
 writer = pd.ExcelWriter(path_fixed, engine='xlsxwriter')
 

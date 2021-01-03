@@ -7,16 +7,21 @@ Prerequisites
 Note that this library will need the following libraries. Most of the
 libraries are included in the requirements.txt file and will be installed
 by following this tutorial. Yet a few libraries are only required to
-create the documentation, coverage or package testing are not required
-by default.
+create the documentation, coverage or package testing and therefore might
+not be required by default.
 
 - ``pandas``
-- ``pyyaml`` (for logging purposes)
-- ``pytest`` (only for package testing)
-- ``sphinx``         (only to update documentation)
-- ``sphinx-gallery`` (only to update documentation)
-- ``sphinx-rtd-theme`` (only to update documentation)
-- ``matplotlib`` (only to update documentation)
+- ``pytest`` (testing)
+- ``pytest-cov`` (testing)
+- ``pyyaml`` (logging purposes)
+- ``xlrd`` (working with excel files)
+- ``xlsxwriter`` (working with excel files)
+- ``openpyxl`` (working with excel files)
+- ``sphinx`` (documentation)
+- ``sphinx-gallery`` (documentation)
+- ``sphinx-rtd-theme`` (documentation)
+- ``matplotlib`` (plotting and documentation)
+
 
 Creating the virtual environment
 --------------------------------
@@ -46,7 +51,7 @@ Installation in editable mode
 -------------------------------
 
 It is recommended that you install this package in editable (develop) mode. It
-puts a "link (actually *.pth files) into the python installation to your code,
+puts a link (actually *.pth files) into the python installation to your code,
 so that your package is installed, but any changes will immediately take effect.
 This way all your test code, and client code, etc, can all import your package
 the usual way.

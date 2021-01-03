@@ -9,6 +9,22 @@ from datablend.utils.logger import load_logger
 # ------------------------------------------
 # Methods
 # ------------------------------------------
+def fix_exam(df_his, df_exam):
+    """This method fixes the EXAM worksheet
+
+    issue 1: There is no date in EXAM
+        It can be addressed including the enrolment date in ENROL.
+        It can be addressed including the date in NS1STRIP.
+    """
+    # Issue 1: No date found (sample_date)
+    # ------------------------------------
+    # Create auxiliary dataframe
+    aux = df_his[['StudyNo', 'enDate', 'enTime']]
+    # Include date enrolment information
+    df_exam = df_exam.merge(aux, how='left', on='StudyNo')
+
+    # Return
+    return df_exam
 
 # -------------------------------
 # Create configuration from data
@@ -49,11 +65,14 @@ for k, v in data.items():
 # Fix data sheets
 # -------------------------------
 # Fix the various worksheets
-
+data['EXAM'] = fix_exam(data['HIS'], data['EXAM'])
 
 # ---------------------------------
 # Save
 # ---------------------------------
+# Create path if it does not exist
+pathlib.Path(path_fixed).parent.mkdir(parents=True, exist_ok=True)
+
 # Creating Excel Writer Object from Pandas
 writer = pd.ExcelWriter(path_fixed, engine='xlsxwriter')
 

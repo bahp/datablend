@@ -53,7 +53,6 @@ data = data.sort_values(by=['study_no', 'date', 'column'])
 # Convert to tidy format
 tidy = data.copy(deep=True)
 tidy = tidy.set_index(['study_no', 'date', 'column'])
-tidy = tidy.drop_duplicates()
 
 # Look for index duplicates
 duplicates = tidy.index.duplicated(keep=False)
@@ -64,6 +63,7 @@ logger.info("The data size: %s", str(data.shape))
 logger.info('The following duplicates were found:\n\n\t%s\n', \
     tidy[duplicates].to_string().replace('\n', '\n\t\t'))
 logger.info("=" * 80)
+
 
 # Keep only last row
 tidy = tidy[~tidy.index.duplicated(keep='last')]  # keep only last row

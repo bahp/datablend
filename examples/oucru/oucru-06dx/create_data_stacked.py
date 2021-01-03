@@ -7,13 +7,9 @@ import logging.config
 
 # DataBlend libraries
 from datablend.core.blend import Blender
-from datablend.core.widgets import DateTimeMergeWidget
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
-from datablend.core.widgets import TemplateTransformWidget
-from datablend.core.widgets import EventWidget
-from datablend.core.widgets import StackWidget
+from datablend.core.widgets.format import FullTemplateWidget
 from datablend.utils.logger import load_logger
+from datablend.utils.pandas import save_xlsx
 
 
 # -------------------------------
@@ -52,7 +48,6 @@ include = ['DEMO', 'HIST', 'EXAM', 'AE', 'EVO', 'LAB',
            'ULTRA', 'MGMT', 'FU', 'PCR', 'NS1', 'COAG',
            'SEROLOGY', 'CYTOKINE', 'HS']
 
-
 # Excel sheets to exclude
 exclude = ['SCR', 'SUM', 'Drug','AE_Drug', 'AER',
            'RAN', 'Category']
@@ -62,11 +57,7 @@ data = pd.read_excel(path_fixed, sheet_name=None)
 tmps = pd.read_excel(path_ccfgs, sheet_name=None)
 
 # Create blender
-blender = Blender(widgets=[DateTimeMergeWidget(),
-                           RenameWidget(),
-                           ReplaceWidget(),
-                           #TemplateTransformWidget(),
-                           EventWidget()])
+blender = Blender(widgets=[FullTemplateWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=tmps)
@@ -83,3 +74,12 @@ stacked = blender.stack(transformed, index='study_no',
 # Save stack data
 for k, df in stacked.items():
     df.to_csv(path_stack.replace('.xlsx', '_%s.csv' % k), index=False)
+
+# -----------
+# Save
+# -----------
+# Format templates (improve this)
+aux = {k:v for k,v in stacked.items()}
+
+# Save
+save_xlsx(aux, path_stack)

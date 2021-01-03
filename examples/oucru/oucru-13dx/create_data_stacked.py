@@ -7,12 +7,7 @@ import logging.config
 
 # Specific libraries
 from datablend.core.blend import Blender
-from datablend.core.widgets import DateTimeMergeWidget
-from datablend.core.widgets import RenameWidget
-from datablend.core.widgets import ReplaceWidget
-from datablend.core.widgets import TemplateTransformWidget
-from datablend.core.widgets import EventWidget
-from datablend.core.widgets import StackWidget
+from datablend.core.widgets.format import FullTemplateWidget
 from datablend.utils.logger import load_logger
 
 
@@ -60,11 +55,7 @@ tmps = pd.read_excel(path_ccfgs, sheet_name=None)
 
 
 # Create blender
-blender = Blender(widgets=[DateTimeMergeWidget(),
-                           RenameWidget(),
-                           ReplaceWidget(),
-                           #TemplateTransformWidget(),
-                           EventWidget()])
+blender = Blender(widgets=[FullTemplateWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=tmps)

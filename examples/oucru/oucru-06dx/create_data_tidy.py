@@ -87,7 +87,11 @@ for c in static:
 # Features in which level is indicated with a number. Thus if no
 # level indicated (np.nan) then the level is 0.
 levels = [c for c in tidy.columns if 'level' in c]
-tidy[levels] = tidy[levels].fillna(0)
+
+# When setting an integer 0 it was sometimes
+# raising an error not possible to assign int
+# to string array...
+tidy[levels] = tidy[levels].fillna('0')
 
 # Date of onset
 # -------------
@@ -125,7 +129,7 @@ tidy.to_csv(path_tidy, index=False)
 tidy = pd.read_csv(path_tidy)
 
 # Show
-print(str_dtypes(tidy))
+logger.info(str_dtypes(tidy))
 
 # Show
 #print(str_dtypes(settings.prefix_sources(tidy)))

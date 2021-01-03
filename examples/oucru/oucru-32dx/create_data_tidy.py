@@ -40,7 +40,8 @@ for path in list(Path(path_stack).glob('**/*_stacked_*.csv')):
     data = data.append(pd.read_csv(path))
 
 # Basic formatting
-data = data.drop(columns=['unit'])
+if 'unit' in data:
+    data = data.drop(columns=['unit'])
 data.date = pd.to_datetime(data.date)
 data.date = data.date.dt.date
 data = data.convert_dtypes()

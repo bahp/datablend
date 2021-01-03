@@ -10,9 +10,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../'))
+sys.path.insert(0, os.path.abspath('./'))
 
 
 # -- Project information -----------------------------------------------------
@@ -21,8 +22,12 @@ project = 'datablend'
 copyright = '2020, Bernard Hernandez'
 author = 'Bernard Hernandez'
 
-# The full version, including alpha/beta/rc tags
+# The short X.Y version.  |version|
+#version = '0.3.2'
+
+# The full version, including alpha/beta/rc tags |release|
 release = '0.0.1'
+
 
 
 # -----------------------------------------------------------------------------
@@ -36,9 +41,17 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
+    #'sphinx.ext.coverage',
+    #'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
     'sphinx_gallery.gen_gallery'
 ]
+
+# ------------------
+# Autosummary
+# ------------------
+autodoc_default_flags = ['members']
+autosummary_generate = True
 
 # ------------------
 # Napoleon extension
@@ -46,7 +59,8 @@ extensions = [
 # Configuration parameters for napoleon extension
 napoleon_google_docstring = False
 napoleon_use_param = False
-napoleon_use_ivar = False
+napoleon_use_ivar = True
+
 
 # ------------------
 # Sphinx gallery

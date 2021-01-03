@@ -139,6 +139,9 @@ data['SUM3'] = fix_sum3(data['HIST_DM'], data['SUM3'])
 # ---------------------------------
 # Save
 # ---------------------------------
+# Create path if it does not exist
+pathlib.Path(path_fixed).parent.mkdir(parents=True, exist_ok=True)
+
 # Creating Excel Writer Object from Pandas
 writer = pd.ExcelWriter(path_fixed, engine='xlsxwriter')
 

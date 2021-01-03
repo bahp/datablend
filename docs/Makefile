@@ -16,10 +16,13 @@ help:
 
 # This is to create the documentation using html and moving it to
 # the documentation branch (gh-pages). Note that this could also be
-# implemented by changing the BUILDDIR variable.
+# implemented by changing the BUILDDIR variable. (add make clean html)
 github:
-	@make html
+	@sphinx-apidoc -o ./_apidoc ../datablend/
+	@make clean html
 	@cp -a _build/html/. ../../gh-pages/docs
+
+# make clean -b coverage html
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

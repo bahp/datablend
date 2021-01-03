@@ -5,7 +5,27 @@ Widgets
 ==========
 
 This section explains the widgets implemented in ``DataBlend``. For full examples
-of this widgets see the widget gallery.
+of this widgets see the widget gallery. In addition, the table below summarises the
+columns that must appear in the previously defined ``BlenderTemplate`` for each of
+the implemented Widgets.
+
+============= ====== ======= ============= ===== ================ =====
+Column        Rename Replace DateTimeMerge Event DateFromStudyDay Stack
+============= ====== ======= ============= ===== ================ =====
+from_name      x
+to_name        x        x       x           x        x
+type
+to_replace              x
+datetime
+datetime_date                    x
+datetime_time                    x
+event                                       x
+study_day_col                                          x
+study_day_ref                                          x
+timestamp                                                          x
+unit                                                               x
+============= ====== ======= ============= ===== ================ =====
+
 
 RenameWidget
 ------------
