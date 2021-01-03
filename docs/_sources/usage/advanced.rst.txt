@@ -1,14 +1,4 @@
-Inferring templates from data
-=============================
 
-Fixing the data
-=============================
+Advanced
+========
 
-Data in stacked format
-=============================
-
-Data in tidy format
-=============================
-
-Further considerations
-=============================

@@ -95,14 +95,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Inferring templates from data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#fixing-the-data">Fixing the data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#data-in-stacked-format">Data in stacked format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#data-in-tidy-format">Data in tidy format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html#further-considerations">Further considerations</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">The Widget Gallery</a></li>
@@ -113,6 +105,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -195,18 +188,17 @@ to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="blender-with-multiple-inputs">
 <span id="sphx-glr-examples-blender-plot-blender-02-py"></span><h1>Blender with multiple inputs<a class="headerlink" href="#blender-with-multiple-inputs" title="Permalink to this headline">¶</a></h1>
-<p>Example using <code class="docutils literal notranslate"><span class="pre">Blender</span></code> works with data collected from several sources.</p>
+<p>Example using <code class="docutils literal notranslate"><span class="pre">Blender</span></code> with data collected from several sources.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Each data source has a different <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In many scenarios the data collection is performed using
-Microsoft Excel where different worksheets are used to record
-for different types of data (e.g. examination, laboratory, pcr, …).
-These data, when loaded with pandas, is returned in a dictionary
-that can be directly inputted to <code class="docutils literal notranslate"><span class="pre">Blender</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> reads xlsx files with different sheets as a dictionary
+where the key is the worksheet name and the value is the
+dataframe. Therefore, xlsx files loaded with pandas can be
+inputed to <code class="docutils literal notranslate"><span class="pre">Blender</span></code> as in the example below.</p>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
@@ -502,7 +494,7 @@ LAB:
      <span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.093 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.254 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-blender-plot-blender-02-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/68ced11cac5df22caa1ed7cbb5130fb8/plot_blender_02.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blender_02.py</span></code></a></p>

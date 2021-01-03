@@ -104,19 +104,12 @@
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Inferring templates from data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#fixing-the-data">Fixing the data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#data-in-stacked-format">Data in stacked format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#data-in-tidy-format">Data in tidy format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#further-considerations">Further considerations</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -198,12 +191,13 @@ columns that must appear in the previously defined <code class="docutils literal
 the implemented Widgets.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 22%" />
-<col style="width: 10%" />
-<col style="width: 12%" />
-<col style="width: 22%" />
+<col style="width: 20%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+<col style="width: 20%" />
 <col style="width: 8%" />
-<col style="width: 27%" />
+<col style="width: 25%" />
+<col style="width: 8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Column</p></th>
@@ -212,11 +206,13 @@ the implemented Widgets.</p>
 <th class="head"><p>DateTimeMerge</p></th>
 <th class="head"><p>Event</p></th>
 <th class="head"><p>DateFromStudyDay</p></th>
+<th class="head"><p>Stack</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>from_name</p></td>
 <td><p>x</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -228,8 +224,10 @@ the implemented Widgets.</p>
 <td><p>x</p></td>
 <td><p>x</p></td>
 <td><p>x</p></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>type</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -242,8 +240,10 @@ the implemented Widgets.</p>
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>datetime</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>
@@ -256,11 +256,13 @@ the implemented Widgets.</p>
 <td><p>x</p></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>datetime_time</p></td>
 <td></td>
 <td></td>
 <td><p>x</p></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -270,6 +272,7 @@ the implemented Widgets.</p>
 <td></td>
 <td><p>x</p></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><p>study_day_col</p></td>
 <td></td>
@@ -277,8 +280,26 @@ the implemented Widgets.</p>
 <td></td>
 <td></td>
 <td><p>x</p></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>study_day_ref</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>timestamp</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit</p></td>
+<td></td>
 <td></td>
 <td></td>
 <td></td>

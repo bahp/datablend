@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The OUCRU-06dx case &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development" href="development.html" />
+    <link rel="prev" title="Blender with single input" href="../_examples/template/plot_template_02.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The OUCRU-06dx case</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#quick-run">Quick run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fixing-the-data">Fixing the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-configuration-files">Creating configuration files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-in-stacked-format">Data in stacked format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-in-tidy-format">Data in tidy format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-considerations">Further considerations</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_apidoc/modules.html">datablend</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The OUCRU-06dx case</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/usage/oucru06dx.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-oucru-06dx-case">
+<h1>The OUCRU-06dx case<a class="headerlink" href="#the-oucru-06dx-case" title="Permalink to this headline">¶</a></h1>
+<p>The folder structure for this example is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">oucru</span><span class="o">-</span><span class="mi">06</span><span class="n">dx</span>
+    <span class="o">|-</span> <span class="n">resources</span>
+        <span class="o">|-</span> <span class="n">datasets</span>
+            <span class="o">|-</span> <span class="mi">19</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="n">CTU06DX_Data</span><span class="o">.</span><span class="n">xls</span> <span class="p">(</span><span class="n">required</span><span class="p">)</span>
+            <span class="o">|-</span> <span class="n">CTU06DX_DataDictionary</span><span class="o">.</span><span class="n">xls</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+        <span class="o">|-</span> <span class="n">outputs</span>
+            <span class="o">|-</span> <span class="n">datasets</span>
+                <span class="o">|-</span> <span class="mi">06</span><span class="n">dx_data_fixed</span><span class="o">.</span><span class="n">xlsx</span>
+                <span class="o">|-</span> <span class="mi">06</span><span class="n">dx_data_stacked</span><span class="o">.</span><span class="n">xlsx</span>
+                <span class="o">|-</span> <span class="mi">06</span><span class="n">dx_data_stacked_</span><span class="o">&lt;</span><span class="n">worksheet</span><span class="o">&gt;.</span><span class="n">csv</span>
+                <span class="o">|-</span> <span class="mi">06</span><span class="n">dx_data_tidy</span><span class="o">.</span><span class="n">csv</span>
+            <span class="o">|-</span> <span class="n">templates</span>
+                <span class="o">|-</span> <span class="n">ccfgs_06dx_data_fixed</span><span class="o">.</span><span class="n">xlsx</span>
+                <span class="o">|-</span> <span class="n">tmp</span>
+                    <span class="o">|-</span> <span class="n">ccfgs_06dx_data_fixed</span><span class="o">.</span><span class="n">xlsx</span>
+    <span class="o">|-</span> <span class="n">automated_run</span><span class="o">.</span><span class="n">sh</span>
+    <span class="o">|-</span> <span class="n">create_data_ccfgs</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|-</span> <span class="n">create_data_fixed</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|-</span> <span class="n">create_data_stacked</span><span class="o">.</span><span class="n">py</span>
+    <span class="o">|-</span> <span class="n">create_data_tidy</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The original data <code class="docutils literal notranslate"><span class="pre">19-5-2020-CTU06DX_Data.xls</span></code> must be located in
+the corresponding folder.</p>
+</div>
+<div class="section" id="quick-run">
+<h2>Quick run<a class="headerlink" href="#quick-run" title="Permalink to this headline">¶</a></h2>
+<p>To run the example execute <code class="docutils literal notranslate"><span class="pre">automated_run.sh</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">automated_run</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This bash script just runs the following python scripts:</p>
+<div class="highlight-BASH notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="c1"># 06dx</span>
+python create_data_fixed.py
+python create_data_stacked.py
+python create_data_tidy.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="fixing-the-data">
+<h2>Fixing the data<a class="headerlink" href="#fixing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">create_data_fixed.py</span></code> script corrects some of the issues that are
+found on the raw dataset for the oucru-06dx example. These are some of
+the issues that have been fixed for the various OUCRU examples (06dx,
+13dx, 32dx and 42dx).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Missing date</strong> column: Note that many worksheets have information but
+no date associated with it. This is a problem if one of our goals is to
+stack the data. Thus, one of the corrections is to include a datetime
+column from another worksheet (e.g. date_admission) when there is no
+datetime column present.</p></li>
+<li><p><strong>Inconsistent Age/DoB</strong> recording.</p></li>
+<li><p><strong>Erroneous Time</strong> format (24:00).</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This script creates <code class="docutils literal notranslate"><span class="pre">06dx_data_fixed.xls</span></code>.</p>
+</div>
+</div>
+<div class="section" id="creating-configuration-files">
+<h2>Creating configuration files<a class="headerlink" href="#creating-configuration-files" title="Permalink to this headline">¶</a></h2>
+<p>The original data <code class="docutils literal notranslate"><span class="pre">19-5-2020-CTU06DX_Data.xls</span></code> contains a total of 22 worksheets
+which makes the process of manually creating template configuration files quite
+tedious. Luckily, <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> has a method to auto-generate template
+configuration files from data.</p>
+<div class="highlight-PYTHON notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read all data sheets</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">path_data</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Create templates</span>
+<span class="n">templates</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Fill templates</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># Show information</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processing sheet... </span><span class="si">%s</span><span class="s2"> &lt;</span><span class="si">%s</span><span class="s2">&gt;.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">path_data</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="c1"># Create descriptor template</span>
+    <span class="n">templates</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">BlenderTemplate</span><span class="p">()</span><span class="o">.</span><span class="n">fit_from_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">create_data_ccfgs.py</span></code> script auto-generates a template configuration file
+(see <a class="reference external" href="https://github.com/bahp/datablend/raw/main/examples/oucru/oucru-06dx/resources/outputs/templates/tmp/ccfgs_06dx_data_fixed.xlsx">template_raw</a>) describing <code class="docutils literal notranslate"><span class="pre">06dx_data_fixed.xls</span></code> and saves it in a temporary
+folder (<code class="docutils literal notranslate"><span class="pre">tmp</span></code>). The user needs to copy this configuration file into the main
+templates folder for further revision and editing. For simplicity, a revised version
+of the auto-generated template configuration file has been also included in the
+example (see <a class="reference external" href="https://github.com/bahp/datablend/raw/main/examples/oucru/oucru-06dx/resources/outputs/templates/ccfgs_06dx_data_fixed.xlsx">template_rev</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This script creates <code class="docutils literal notranslate"><span class="pre">ccfgs_06dx_data_fixed.xls</span></code> in the temporary <code class="docutils literal notranslate"><span class="pre">tmp</span></code> folder.</p>
+</div>
+</div>
+<div class="section" id="data-in-stacked-format">
+<h2>Data in stacked format<a class="headerlink" href="#data-in-stacked-format" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">create_data_stacked.py</span></code> script creates the stacked data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This script creates <code class="docutils literal notranslate"><span class="pre">06dx_data_stacked.xls</span></code> and <code class="docutils literal notranslate"><span class="pre">06dx_data_stacked_&lt;worksheet&gt;.csv</span></code>.</p>
+</div>
+</div>
+<div class="section" id="data-in-tidy-format">
+<h2>Data in tidy format<a class="headerlink" href="#data-in-tidy-format" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">create_data_tidy.py</span></code> script creates the tidy data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This script creates <code class="docutils literal notranslate"><span class="pre">06dx_data_tidy.csv</span></code>.</p>
+</div>
+</div>
+<div class="section" id="further-considerations">
+<h2>Further considerations<a class="headerlink" href="#further-considerations" title="Permalink to this headline">¶</a></h2>
+<p>The full process is logged both in the console and the <code class="docutils literal notranslate"><span class="pre">output.log</span></code> file. As
+such, this file might contain useful information to revise and improve the
+data blending process. Note that during the creation of <code class="docutils literal notranslate"><span class="pre">06dx_data_tidy.csv</span></code>
+the different variables collected for a patient (e.g. skin_rash, ascites, dbp, …)
+are grouped for each patient daily.</p>
+<p>In the log file the duplicate values are presented (see below).</p>
+<blockquote>
+<div><ul>
+<li><p>There are some duplications that could be justified in scenarios where various
+samples where collected for the same day (e.g. various dbp samples). Thus, it is
+up to the user to decide how to address this issue (e.g. mean) if needed.</p></li>
+<li><p>However, there are other scenarios in which duplicates are not justified. This
+might be caused by mistakes made during the manual collection and or manipulation
+of data using Microsoft Excel. For instance, the skin_rash column with both
+True and False values on the same day.</p>
+<blockquote>
+<div><ul>
+<li><p>Inconsistent <strong>values</strong>: Opposite values recorded on the same day. This
+are a problem since we need to identify why they are contradictory and
+decide the strategy to solve this inconsistency.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g. ascites can’t True and False</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Inconsistent <strong>formats</strong>: Equal values are considered duplicated due to the
+format in which they have been collected. These are not a real problem as
+it can be easily solved by just keeping the last appearance (note that all
+values are the same).</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>e.g. sbp of 120.0 (float) and 120 (int)</p></li>
+<li><p>e.g. skin_rash of 0.0 (float), 0 (int) and False (boolean).</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">================================================================================</span>
+ <span class="n">The</span> <span class="n">data</span> <span class="n">size</span><span class="p">:</span> <span class="p">(</span><span class="mi">83313</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+ <span class="n">The</span> <span class="n">following</span> <span class="n">duplicates</span> <span class="n">were</span> <span class="n">found</span><span class="p">:</span>
+
+     <span class="n">study_no</span> <span class="n">date</span>       <span class="n">column</span>
+     <span class="mi">06</span><span class="n">DXA001</span> <span class="mi">2009</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">03</span> <span class="n">skin_rash</span>                 <span class="mf">0.0</span>
+                         <span class="n">skin_rash</span>               <span class="kc">False</span>
+<span class="hll">     <span class="mi">06</span><span class="n">DXA002</span> <span class="mi">2009</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="n">ascites</span>                 <span class="kc">False</span>
+</span><span class="hll">                         <span class="n">ascites</span>                  <span class="kc">True</span>
+</span>     <span class="mi">06</span><span class="n">DXA005</span> <span class="mi">2009</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="n">body_temperature</span>         <span class="mf">39.0</span>
+                         <span class="n">body_temperature</span>         <span class="mf">40.0</span>
+<span class="hll">                         <span class="n">dbp</span>                      <span class="mf">70.0</span>
+</span><span class="hll">                         <span class="n">dbp</span>                        <span class="mi">80</span>
+</span>                         <span class="n">petechiae</span>                 <span class="mf">0.0</span>
+                         <span class="n">petechiae</span>                <span class="kc">True</span>
+                         <span class="n">pulse</span>                   <span class="mf">120.0</span>
+                         <span class="n">pulse</span>                     <span class="mi">120</span>
+                         <span class="n">respiratory_rate</span>         <span class="mf">20.0</span>
+                         <span class="n">respiratory_rate</span>         <span class="mf">28.0</span>
+<span class="hll">                         <span class="n">sbp</span>                     <span class="mf">120.0</span>
+</span><span class="hll">                         <span class="n">sbp</span>                       <span class="mi">120</span>
+</span>                         <span class="n">skin_rash</span>                 <span class="mf">1.0</span>
+                         <span class="n">skin_rash</span>               <span class="kc">False</span>
+              <span class="mi">2009</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">11</span> <span class="n">pcr_dengue_load</span>      <span class="mf">1.69E+04</span>
+                         <span class="n">pcr_dengue_load</span>      <span class="mf">6.33E+03</span>
+     <span class="o">...</span>
+ <span class="o">================================================================================</span>
+</pre></div>
+</div>
+<p>In addition, it is extremely useful to revise the columns created in <code class="docutils literal notranslate"><span class="pre">06dx_data_tidy.csv</span></code>
+to see whether there are features representing the same parameters with different names
+(e.g. alb and albumin or abdo_pain and abdominal_pain). Note that this issue could be easily
+solved by renaming them on the template configuration files.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">================================================================================</span>
+ <span class="n">Data</span> <span class="n">Source</span><span class="p">:</span> <span class="kc">None</span> <span class="p">(</span><span class="mi">2178</span><span class="p">,</span> <span class="mi">115</span><span class="p">)</span>
+ <span class="n">Data</span> <span class="n">Types</span><span class="p">:</span>
+     <span class="n">abdominal_pain</span>              <span class="n">string</span>
+     <span class="n">abdominal_pain_level</span>         <span class="n">Int64</span>
+     <span class="n">abdominal_tenderness</span>       <span class="n">boolean</span>
+     <span class="n">age</span>                          <span class="n">Int64</span>
+<span class="hll">     <span class="n">alb</span>                        <span class="n">Float64</span>
+</span><span class="hll">     <span class="n">albumin</span>                    <span class="n">Float64</span>
+</span>     <span class="n">alt</span>                          <span class="n">Int64</span>
+     <span class="n">aptt</span>                       <span class="n">Float64</span>
+     <span class="n">ascites</span>                    <span class="n">boolean</span>
+     <span class="n">ascites_level</span>                <span class="n">Int64</span>
+     <span class="n">ast</span>                          <span class="n">Int64</span>
+     <span class="n">bilirubin_direct</span>           <span class="n">Float64</span>
+     <span class="n">bilirubin_total</span>            <span class="n">Float64</span>
+     <span class="n">bladder_thickening</span>          <span class="n">string</span>
+     <span class="n">bleeding</span>                   <span class="n">boolean</span>
+     <span class="n">bleeding_gum</span>                <span class="n">string</span>
+     <span class="o">...</span>
+ <span class="o">================================================================================</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="development.html" class="btn btn-neutral float-right" title="Development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../_examples/template/plot_template_02.html" class="btn btn-neutral float-left" title="Blender with single input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

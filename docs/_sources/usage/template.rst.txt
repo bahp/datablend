@@ -1,19 +1,23 @@
 Template
 ==========
 
-The ``BlenderTemplate`` represents the transformations to be applied
-to each of the columns in the data. In order to fit a template it is
-necessary to previously define a table with all the relevant
-information. This table can be loaded from a csv or xlsx file. It can
-also be defined as a list of dicts.
+The ``BlenderTemplate`` instance represents the transformations to be applied
+to each of the columns in the data. Some examples of these transformation are
+renaming columns, replacing values, merging date and time columns into a single
+datetime column, etc. However, in order to ``fit`` a ``BlenderTemplate`` we
+first need to define the transformations (see below).
 
-============ ============ ====== ========== ========
-from_name    to_name      type   to_replace datetime
-============ ============ ====== ========== ========
-StudyNo      study_number str
-Age          age          int
-Sex          gender       str1   {'Male':1}
-============ =================== ========== ========
+.. note:: This table can be a list of dicts or a pandas DataFrame. Thus, it
+          can be easily loaded from a csv, xlsx or json file.
+
+============ ============== ============== ========== =============== ====
+from_name    to_name        timestamp      to_replace event           unit
+============ ============== ============== ========== =============== ====
+StudyNo      study_number   str
+DateAd       date_admission datetime64[ns]            event_admission year
+Age          age            date_admission
+Sex          gender         date_admission {'Male':1}
+============ ============== ============== ========== =============== ====
 
 Let's understand each of the columns supported:
 
@@ -60,21 +64,10 @@ study_day_ref: str (``DateFromStudyDayWidget``)
     date in which the study commenced. Note that the column in the
     dataset should represent a date(time).
 
-In order to transform the data, we use a DatasetDescriptor. This object
-contains all the information describing the data and the transformations
-that need to be applied. In order to configure the DatasetDescriptor we
-need a configuration file. The datablend library has a method to ease
-this process by automatically creating configuration files from raw datasets.
+timestamp: str (``StackWidget``)
+    Refers to the name of the column in the formatted dataset with the
+    date associated to the feature. This date will be used when
+    stacking data.
 
-Let's create the configuration files.
-
-```py
-python create_ccfgs.py
-```
-
-This script creates a single configuration file for each of the books within
-the excel spreadsheet. Note that all of them are stored within the tmp folder
-because these configuration files will need further revision/editing.
-
-
-#### Aut
+unit: str (``StackUnitWidget``)
+    The unit of measurement.

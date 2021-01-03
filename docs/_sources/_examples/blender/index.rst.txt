@@ -12,7 +12,7 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example using Blender works with data collected from a single sources.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example using Blender with data collected from a single sources.">
 
 .. only:: html
 
@@ -33,7 +33,7 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example using Blender works with data collected from several sources.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Example using Blender with data collected from several sources.">
 
 .. only:: html
 

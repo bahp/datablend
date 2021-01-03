@@ -2,7 +2,7 @@
 Blender with single input
 ============================
 
-Example using ``Blender`` works with data collected from a single sources.
+Example using ``Blender`` with data collected from a single sources.
 
 """
 

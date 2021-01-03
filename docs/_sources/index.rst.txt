@@ -26,13 +26,13 @@ to perform common transformations (e.g. rename or replace) and conversions to va
 data structures such as **stacked** data structure used in databases or **tidy** data
 structure used in AI/ML libraries.
 
-<img src="docs/logos/blender.png" align="right" width="150">
+.. image:: /logos/blender.png
+   :width: 150
+   :align: right
+   :alt: DataBlend
 
-.. image:: https://github.com/bahp/datablend/blob/main/docs/logos/blender.png
-  :width: 150
-  :alt: Alternative text
+The code of the project is on Github: https://github.com/bahp/datablend
 
-The code of the project is on Github: Link
 
 .. toctree::
    :maxdepth: 2
@@ -52,7 +52,6 @@ The code of the project is on Github: Link
    :caption: Advanced Usage and Information
    :hidden:
 
-   usage/advanced
 
 .. toctree::
    :maxdepth: 2
@@ -62,6 +61,7 @@ The code of the project is on Github: Link
    _examples/widgets/index
    _examples/blender/index
    _examples/template/index
+   usage/oucru06dx
 
 .. toctree::
    :maxdepth: 2

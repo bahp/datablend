@@ -95,19 +95,12 @@
 <li class="toctree-l1"><a class="reference internal" href="tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html">Inferring templates from data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#fixing-the-data">Fixing the data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#data-in-stacked-format">Data in stacked format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#data-in-tidy-format">Data in tidy format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced.html#further-considerations">Further considerations</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
 <ul>
@@ -183,25 +176,32 @@
             
   <div class="section" id="template">
 <h1>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> represents the transformations to be applied
-to each of the columns in the data. In order to fit a template it is
-necessary to previously define a table with all the relevant
-information. This table can be loaded from a csv or xlsx file. It can
-also be defined as a list of dicts.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> instance represents the transformations to be applied
+to each of the columns in the data. Some examples of these transformation are
+renaming columns, replacing values, merging date and time columns into a single
+datetime column, etc. However, in order to <code class="docutils literal notranslate"><span class="pre">fit</span></code> a <code class="docutils literal notranslate"><span class="pre">BlenderTemplate</span></code> we
+first need to define the transformations (see below).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This table can be a list of dicts or a pandas DataFrame. Thus, it
+can be easily loaded from a csv, xlsx or json file.</p>
+</div>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 13%" />
-<col style="width: 21%" />
 <col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 22%" />
+<col style="width: 6%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>from_name</p></th>
 <th class="head"><p>to_name</p></th>
-<th class="head"><p>type</p></th>
+<th class="head"><p>timestamp</p></th>
 <th class="head"><p>to_replace</p></th>
-<th class="head"><p>datetime</p></th>
+<th class="head"><p>event</p></th>
+<th class="head"><p>unit</p></th>
 </tr>
 </thead>
 <tbody>
@@ -210,16 +210,27 @@ also be defined as a list of dicts.</p>
 <td><p>str</p></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td><p>Age</p></td>
+<tr class="row-odd"><td><p>DateAd</p></td>
+<td><p>date_admission</p></td>
+<td><p>datetime64[ns]</p></td>
+<td></td>
+<td><p>event_admission</p></td>
+<td><p>year</p></td>
+</tr>
+<tr class="row-even"><td><p>Age</p></td>
 <td><p>age</p></td>
-<td><p>int</p></td>
+<td><p>date_admission</p></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>Sex</p></td>
-<td colspan="2"><p>gender       str1</p></td>
+<tr class="row-odd"><td><p>Sex</p></td>
+<td><p>gender</p></td>
+<td><p>date_admission</p></td>
 <td><p>{‘Male’:1}</p></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
@@ -259,20 +270,13 @@ contain integer representing the study day (e.g 1st, 2nd, 3rd, …)</p>
 date in which the study commenced. Note that the column in the
 dataset should represent a date(time).</p>
 </dd>
+<dt>timestamp: str (<code class="docutils literal notranslate"><span class="pre">StackWidget</span></code>)</dt><dd><p>Refers to the name of the column in the formatted dataset with the
+date associated to the feature. This date will be used when
+stacking data.</p>
+</dd>
+<dt>unit: str (<code class="docutils literal notranslate"><span class="pre">StackUnitWidget</span></code>)</dt><dd><p>The unit of measurement.</p>
+</dd>
 </dl>
-<p>In order to transform the data, we use a DatasetDescriptor. This object
-contains all the information describing the data and the transformations
-that need to be applied. In order to configure the DatasetDescriptor we
-need a configuration file. The datablend library has a method to ease
-this process by automatically creating configuration files from raw datasets.</p>
-<p>Let’s create the configuration files.</p>
-<p><code class="docutils literal notranslate"><span class="pre">`py</span>
-<span class="pre">python</span> <span class="pre">create_ccfgs.py</span>
-<span class="pre">`</span></code></p>
-<p>This script creates a single configuration file for each of the books within
-the excel spreadsheet. Note that all of them are stored within the tmp folder
-because these configuration files will need further revision/editing.</p>
-<p>#### Aut</p>
 </div>
 
 

@@ -9,9 +9,9 @@ of this widgets see the widget gallery. In addition, the table below summarises 
 columns that must appear in the previously defined ``BlenderTemplate`` for each of
 the implemented Widgets.
 
-============= ====== ======= ============= ===== ================
-Column        Rename Replace DateTimeMerge Event DateFromStudyDay
-============= ====== ======= ============= ===== ================
+============= ====== ======= ============= ===== ================ =====
+Column        Rename Replace DateTimeMerge Event DateFromStudyDay Stack
+============= ====== ======= ============= ===== ================ =====
 from_name      x
 to_name        x        x       x           x        x
 type
@@ -22,7 +22,9 @@ datetime_time                    x
 event                                       x
 study_day_col                                          x
 study_day_ref                                          x
-============= ====== ======= ============= ===== ================
+timestamp                                                          x
+unit                                                               x
+============= ====== ======= ============= ===== ================ =====
 
 
 RenameWidget
