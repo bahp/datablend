@@ -30,10 +30,19 @@ The folder structure for this example is as follows:
 .. warning:: The original data ``19-5-2020-CTU06DX_Data.xls`` must be located in
    the corresponding folder.
 
+.. warning:: In order to run the oucru-full ``automated_run.sh`` script, all
+   the original OUCRU data needs to be placed in their corresponding folders:
+
+      - ``19-5-2020-CTU06DX_Data.xls`` in oucru-06dx/resources/datasets.
+      - ``13DX_Data_sharing.xlsx`` in oucru-13dx/resources/datasets (It might have a pwd!).
+      - ``19-5-2020-CT32DX_Data.xls`` in oucru-32dx/resources/datasets.
+      - ``19-5-2020-CT42DX_Data.xls`` in oucru-42dx/resources/datasets.
+
 Quick run
 =========
 
-To run the example execute ``automated_run.sh``.
+To run this example execute ``automated_run.sh`` from
+the oucru-06dx directory:
 
 .. code-block::
 
@@ -45,6 +54,18 @@ This bash script just runs the following python scripts:
   :language: BASH
   :emphasize-lines: 0
 
+Similarly, to run all the oucru examples (06dx, 13dx, 32dx, 42dx) execute
+``automated_run.sh`` from the oucru-full directory. This script runs the
+three python scripts for all the oucru directories and copies the final
+``xxdx_data_tidy.csv`` files result to oucru-full. It also combines them
+in a single file called ``06dx_13dx_32dx_42dx_data_tidy.csv``.
+
+.. note:: These ``.csv`` files are **not final**! A large portion of the
+          OUCRU data has been analysed and included during this data blending
+          example, however, it is useful to understand the process to customise
+          the blending to your liking. Moreover, there are still many columns,
+          some of them related with final labels, from the original OUCRU data
+          that have not been included yet.
 
 Fixing the data
 ===============

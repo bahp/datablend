@@ -212,9 +212,23 @@
 <p>The original data <code class="docutils literal notranslate"><span class="pre">19-5-2020-CTU06DX_Data.xls</span></code> must be located in
 the corresponding folder.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In order to run the oucru-full <code class="docutils literal notranslate"><span class="pre">automated_run.sh</span></code> script, all
+the original OUCRU data needs to be placed in their corresponding folders:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">19-5-2020-CTU06DX_Data.xls</span></code> in oucru-06dx/resources/datasets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">13DX_Data_sharing.xlsx</span></code> in oucru-13dx/resources/datasets (It might have a pwd!).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">19-5-2020-CT32DX_Data.xls</span></code> in oucru-32dx/resources/datasets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">19-5-2020-CT42DX_Data.xls</span></code> in oucru-42dx/resources/datasets.</p></li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="quick-run">
 <h2>Quick run<a class="headerlink" href="#quick-run" title="Permalink to this headline">¶</a></h2>
-<p>To run the example execute <code class="docutils literal notranslate"><span class="pre">automated_run.sh</span></code>.</p>
+<p>To run this example execute <code class="docutils literal notranslate"><span class="pre">automated_run.sh</span></code> from
+the oucru-06dx directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">automated_run</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
@@ -226,6 +240,20 @@ python create_data_fixed.py
 python create_data_stacked.py
 python create_data_tidy.py
 </pre></div>
+</div>
+<p>Similarly, to run all the oucru examples (06dx, 13dx, 32dx, 42dx) execute
+<code class="docutils literal notranslate"><span class="pre">automated_run.sh</span></code> from the oucru-full directory. This script runs the
+three python scripts for all the oucru directories and copies the final
+<code class="docutils literal notranslate"><span class="pre">xxdx_data_tidy.csv</span></code> files result to oucru-full. It also combines them
+in a single file called <code class="docutils literal notranslate"><span class="pre">06dx_13dx_32dx_42dx_data_tidy.csv</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files are <strong>not final</strong>! A large portion of the
+OUCRU data has been analysed and included during this data blending
+example, however, it is useful to understand the process to customise
+the blending to your liking. Moreover, there are still many columns,
+some of them related with final labels, from the original OUCRU data
+that have not been included yet.</p>
 </div>
 </div>
 <div class="section" id="fixing-the-data">
