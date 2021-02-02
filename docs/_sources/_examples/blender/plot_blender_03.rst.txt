@@ -19,11 +19,11 @@
 
 
 Blender with various widgets
-====================================
+============================
 
 .. warning:: The order of the ``Widgets`` passed to ``Blender`` matters.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-145
+.. GENERATED FROM PYTHON SOURCE LINES 8-142
 
 
 
@@ -34,6 +34,22 @@ Blender with various widgets
 
  .. code-block:: none
 
+    /Users/cbit/Desktop/repositories/github/datablend/main/datablend/core/widgets/format.py:141: ReplaceWidgetMapWarning: 
+    ReplaceWidgetMapWarning: Issue with 'to_replace' map for <SEX>.
+            The map does not contain all values appearing in
+            the data. Please ensure that this is correct. The
+            values are: {1, 2}
+
+            The map contains values that do not appear in the
+            data. Please ensure that this is correct. The
+            values are: {'Female', 'Male'}
+
+      warnings.warn(w)
+
+
+    Stacking excel sheets!
+
+             Stacking sheet <ROOT>... COMPLETED.
 
     Original:
         StudyNo      enDate enTime DateIllness  Temp  Shock  Sex  CoughLevel   CoughDate  hct  wbc  LabSampleStudyDay      date_enrolment
@@ -43,39 +59,39 @@ Blender with various widgets
     3  32dx-004  14/07/2020  13:00         NaN  37.4  False    1         NaN         NaN  7.0  1.0                  2 2020-07-14 13:00:00
 
     Transformed:
-      study_number      enDate enTime  date_onset  body_temperature  shock  gender  cough_level  cough_date  hct  wbc  lab_study_day      date_enrolment  event_onset     date_laboratory
-    0     32dx-001  11/07/2020  10:00  05/07/2020              37.2  False    Male          1.0  12/07/2020  2.0  3.5              3 2020-11-07 10:00:00         True 2020-11-10 10:00:00
-    1     32dx-002  12/07/2020  11:00  09/07/2020              36.5  False    Male          5.0  14/07/2020  3.0  2.0              5 2020-12-07 11:00:00         True 2020-12-12 11:00:00
-    2     32dx-003  13/07/2020  12:00         NaN              39.8   True  Female          2.0  13/07/2020  4.0  3.0              1 2020-07-13 12:00:00        False 2020-07-14 12:00:00
-    3     32dx-004  14/07/2020  13:00         NaN              37.4  False    Male          NaN         NaN  7.0  1.0              2 2020-07-14 13:00:00        False 2020-07-16 13:00:00
+        StudyNo      enDate enTime DateIllness  Temp  Shock  Sex  CoughLevel   CoughDate  hct  wbc  LabSampleStudyDay      date_enrolment  event_onset     date_laboratory
+    0  32dx-001  11/07/2020  10:00  05/07/2020  37.2  False    1         1.0  12/07/2020  2.0  3.5                  3 2020-11-07 10:00:00         True 2020-11-10 10:00:00
+    1  32dx-002  12/07/2020  11:00  09/07/2020  36.5  False    1         5.0  14/07/2020  3.0  2.0                  5 2020-12-07 11:00:00         True 2020-12-12 11:00:00
+    2  32dx-003  13/07/2020  12:00         NaN  39.8   True    2         2.0  13/07/2020  4.0  3.0                  1 2020-07-13 12:00:00        False 2020-07-14 12:00:00
+    3  32dx-004  14/07/2020  13:00         NaN  37.4  False    1         NaN         NaN  7.0  1.0                  2 2020-07-14 13:00:00        False 2020-07-16 13:00:00
 
     Stacked:
-       study_number                date            column  result     unit
-    0      32dx-001 2020-11-07 10:00:00             shock   False      NaN
-    1      32dx-002 2020-12-07 11:00:00             shock   False      NaN
-    2      32dx-003 2020-07-13 12:00:00             shock    True      NaN
-    3      32dx-004 2020-07-14 13:00:00             shock   False      NaN
-    4      32dx-001 2020-05-07 00:00:00       event_onset    True      NaN
-    5      32dx-002 2020-09-07 00:00:00       event_onset    True      NaN
-    6      32dx-001 2020-11-07 10:00:00  body_temperature    37.2  celsius
-    7      32dx-002 2020-12-07 11:00:00  body_temperature    36.5  celsius
-    8      32dx-003 2020-07-13 12:00:00  body_temperature    39.8  celsius
-    9      32dx-004 2020-07-14 13:00:00  body_temperature    37.4  celsius
-    10     32dx-001 2020-12-07 00:00:00       cough_level     1.0      NaN
-    11     32dx-002 2020-07-14 00:00:00       cough_level     5.0      NaN
-    12     32dx-003 2020-07-13 00:00:00       cough_level     2.0      NaN
-    13     32dx-001 2020-11-10 10:00:00               hct     2.0        %
-    14     32dx-002 2020-12-12 11:00:00               hct     3.0        %
-    15     32dx-003 2020-07-14 12:00:00               hct     4.0        %
-    16     32dx-004 2020-07-16 13:00:00               hct     7.0        %
-    17     32dx-001 2020-11-10 10:00:00               wbc     3.5  10^9U/L
-    18     32dx-002 2020-12-12 11:00:00               wbc     2.0  10^9U/L
-    19     32dx-003 2020-07-14 12:00:00               wbc     3.0  10^9U/L
-    20     32dx-004 2020-07-16 13:00:00               wbc     1.0  10^9U/L
-    21     32dx-001 2020-11-07 10:00:00            gender    Male      NaN
-    22     32dx-002 2020-12-07 11:00:00            gender    Male      NaN
-    23     32dx-003 2020-07-13 12:00:00            gender  Female      NaN
-    24     32dx-004 2020-07-14 13:00:00            gender    Male      NaN
+         StudyNo                date            column result     unit
+    0   32dx-001 2020-11-07 10:00:00             shock  False      NaN
+    1   32dx-002 2020-12-07 11:00:00             shock  False      NaN
+    2   32dx-003 2020-07-13 12:00:00             shock   True      NaN
+    3   32dx-004 2020-07-14 13:00:00             shock  False      NaN
+    4   32dx-001 2020-05-07 00:00:00       event_onset   True      NaN
+    5   32dx-002 2020-09-07 00:00:00       event_onset   True      NaN
+    6   32dx-001 2020-11-07 10:00:00  body_temperature   37.2  celsius
+    7   32dx-002 2020-12-07 11:00:00  body_temperature   36.5  celsius
+    8   32dx-003 2020-07-13 12:00:00  body_temperature   39.8  celsius
+    9   32dx-004 2020-07-14 13:00:00  body_temperature   37.4  celsius
+    10  32dx-001 2020-12-07 00:00:00       cough_level    1.0      NaN
+    11  32dx-002 2020-07-14 00:00:00       cough_level    5.0      NaN
+    12  32dx-003 2020-07-13 00:00:00       cough_level    2.0      NaN
+    13  32dx-001 2020-11-10 10:00:00               hct    2.0        %
+    14  32dx-002 2020-12-12 11:00:00               hct    3.0        %
+    15  32dx-003 2020-07-14 12:00:00               hct    4.0        %
+    16  32dx-004 2020-07-16 13:00:00               hct    7.0        %
+    17  32dx-001 2020-11-10 10:00:00               wbc    3.5  10^9U/L
+    18  32dx-002 2020-12-12 11:00:00               wbc    2.0  10^9U/L
+    19  32dx-003 2020-07-14 12:00:00               wbc    3.0  10^9U/L
+    20  32dx-004 2020-07-16 13:00:00               wbc    1.0  10^9U/L
+    21  32dx-001 2020-11-07 10:00:00            gender      1      NaN
+    22  32dx-002 2020-12-07 11:00:00            gender      1      NaN
+    23  32dx-003 2020-07-13 12:00:00            gender      2      NaN
+    24  32dx-004 2020-07-14 13:00:00            gender      1      NaN
 
 
 
@@ -92,13 +108,11 @@ Blender with various widgets
     import pandas as pd
 
     # DataBlend library
-    from datablend.core.blend import Blender
-    from datablend.core.widgets.format import RenameWidget
+    from datablend.core.blend.blender import Blender
     from datablend.core.widgets.format import ReplaceWidget
     from datablend.core.widgets.format import DateTimeMergeWidget
     from datablend.core.widgets.format import DateFromStudyDayWidget
     from datablend.core.widgets.format import EventWidget
-    from datablend.core.widgets.stack import StackWidget
 
     # ------------------------
     # Constants
@@ -152,7 +166,7 @@ Blender with various widgets
 
         {'from_name': 'date_laboratory',
          'to_name': 'date_laboratory',
-         'study_day_col': 'lab_study_day',
+         'study_day_col': 'LabSampleStudyDay',
          'study_day_ref': 'date_enrolment'},
 
         {'from_name': 'hct',
@@ -203,7 +217,6 @@ Blender with various widgets
     # Create blender
     blender = Blender(widgets=[DateTimeMergeWidget(),
                                ReplaceWidget(),
-                               RenameWidget(),
                                EventWidget(),
                                DateFromStudyDayWidget()])
 
@@ -214,7 +227,7 @@ Blender with various widgets
     transformed = blender.transform(data)
 
     # Stack data
-    stacked = blender.stack(transformed, index='study_number')
+    stacked = blender.stack(transformed, index='StudyNo')
 
     # Show
     print("\nOriginal:")
@@ -228,7 +241,7 @@ Blender with various widgets
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.115 seconds)
+   **Total running time of the script:** ( 0 minutes  0.117 seconds)
 
 
 .. _sphx_glr_download__examples_blender_plot_blender_03.py:

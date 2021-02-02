@@ -18,19 +18,110 @@
 .. _sphx_glr__examples_widgets_plot_tidy_static.py:
 
 
-RenameWidget
+StaticWidget
 ===========================
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-9
+.. deprecated
 
-First of all, we need to import the modules and functions that will be used
-Import
+.. GENERATED FROM PYTHON SOURCE LINES 7-55
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-50
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+
+    ================================================================================
+    The following columns have more than one uniquevalue. Please ensure that these
+    columns are meant tobe constant; that is, same value over the data.
+    Otherwise,there could be an inconsistent behaviour: ['age']
+
+      -<age> has 1 inconsistencies.
+
+                                     nanunique  nunique
+                    study_number                       
+                    32dx-002      [15.0, 14.0]        2
+
+
+
+    The STATIC transformations report:
+
+
+                            transform dtypes.1 dtypes.2                         status
+                    name                                                              
+                    age          True  float64    Int64  'bool' object is not callable
+                    gender       True  float64    Int64  'bool' object is not callable
+
+    ================================================================================
+
+    ================================================================================
+    The following columns have more than one uniquevalue. Please ensure that these
+    columns are meant tobe constant; that is, same value over the data.
+    Otherwise,there could be an inconsistent behaviour: ['age']
+
+      -<age> has 1 inconsistencies.
+
+                                     nanunique  nunique
+                    study_number                       
+                    32dx-002      [15.0, 14.0]        2
+
+
+
+    The STATIC transformations report:
+
+
+                            transform dtypes.1 dtypes.2                         status
+                    name                                                              
+                    age          True  float64    Int64  'bool' object is not callable
+                    gender       True  float64    Int64  'bool' object is not callable
+
+    ================================================================================
+
+    Original:
+      study_number    bt   age  gender
+    0     32dx-001  37.2  12.0     1.0
+    1     32dx-001  39.2   NaN     NaN
+    2     32dx-002  36.5  15.0     1.0
+    3     32dx-002  39.3  14.0     NaN
+    4     32dx-003  39.8  30.0     2.0
+    5     32dx-004  37.4  35.0     1.0
+
+    Transformed:
+      study_number    bt   age  gender
+    0     32dx-001  37.2  12.0     1.0
+    1     32dx-001  39.2   NaN     NaN
+    2     32dx-002  36.5  15.0     1.0
+    3     32dx-002  39.3  14.0     NaN
+    4     32dx-003  39.8  30.0     2.0
+    5     32dx-004  37.4  35.0     1.0
+
+    Transformed manual:
+      study_number    bt   age  gender
+    0     32dx-001  37.2  12.0     1.0
+    1     32dx-001  39.2   NaN     NaN
+    2     32dx-002  36.5  15.0     1.0
+    3     32dx-002  39.3  14.0     NaN
+    4     32dx-003  39.8  30.0     2.0
+    5     32dx-004  37.4  35.0     1.0
+
+    Are they equal? True
+
+
+
+
+
+
+|
 
 .. code-block:: default
-   :lineno-start: 9
+   :lineno-start: 8
 
+
+    # Import
     import pandas as pd
 
     # DataBlend library
@@ -53,7 +144,7 @@ Import
         {'study_number': '32dx-001', 'bt': 37.2, 'age': 12, 'gender': 1},
         {'study_number': '32dx-001', 'bt': 39.2},
         {'study_number': '32dx-002', 'bt': 36.5, 'age': 15, 'gender': 1},
-        {'study_number': '32dx-002', 'bt': 39.3, 'age': 15},
+        {'study_number': '32dx-002', 'bt': 39.3, 'age': 14},
         {'study_number': '32dx-003', 'bt': 39.8, 'age': 30, 'gender': 2},
         {'study_number': '32dx-004', 'bt': 37.4, 'age': 35, 'gender': 1}
     ]
@@ -62,54 +153,26 @@ Import
     data = pd.DataFrame(trans)
 
     # Create widget
-    widget = StaticTidyWidget().fit(template)
+    widget = StaticTidyWidget(by='study_number').fit(template)
 
     # Transform
     transformed = widget.transform(data)
+
+    # Transform
+    transformed_manual = widget.transform(data, l=['gender', 'age'])
 
     # Show
     print("\nOriginal:")
     print(data)
     print("\nTransformed:")
     print(transformed)
-    print("\nStacked:")
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-
-    Original:
-      study_number    bt   age  gender
-    0     32dx-001  37.2  12.0     1.0
-    1     32dx-001  39.2   NaN     NaN
-    2     32dx-002  36.5  15.0     1.0
-    3     32dx-002  39.3  15.0     NaN
-    4     32dx-003  39.8  30.0     2.0
-    5     32dx-004  37.4  35.0     1.0
-
-    Transformed:
-      study_number    bt   age  gender
-    0     32dx-001  37.2  12.0     1.0
-    1     32dx-001  39.2  12.0     1.0
-    2     32dx-002  36.5  15.0     1.0
-    3     32dx-002  39.3  15.0     1.0
-    4     32dx-003  39.8  30.0     2.0
-    5     32dx-004  37.4  35.0     1.0
-
-    Stacked:
-
-
-
-
+    print("\nTransformed manual:")
+    print(transformed_manual)
+    print("\nAre they equal? %s" % transformed.equals(transformed_manual))
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.024 seconds)
+   **Total running time of the script:** ( 0 minutes  0.061 seconds)
 
 
 .. _sphx_glr_download__examples_widgets_plot_tidy_static.py:

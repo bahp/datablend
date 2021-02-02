@@ -19,11 +19,11 @@
 
 
 Blender with single input
-============================
+=========================
 
 Example using ``Blender`` with data collected from a single sources.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-67
+.. GENERATED FROM PYTHON SOURCE LINES 8-66
 
 
 
@@ -35,6 +35,11 @@ Example using ``Blender`` with data collected from a single sources.
  .. code-block:: none
 
 
+
+    Stacking excel sheets!
+
+             Stacking sheet <ROOT>... COMPLETED.
+
     Original:
             pid   date_exam  Temp  Sex
     0  32dx-001  10/07/2020  37.2    1
@@ -42,10 +47,10 @@ Example using ``Blender`` with data collected from a single sources.
     2  32dx-003  10/07/2020  36.7    2
 
     Transformed:
-            pid   date_exam  body_temperature  gender
-    0  32dx-001  10/07/2020              37.2    Male
-    1  32dx-002  08/07/2020              37.5  Female
-    2  32dx-003  10/07/2020              36.7  Female
+            pid   date_exam  Temp     Sex
+    0  32dx-001  10/07/2020  37.2    Male
+    1  32dx-002  08/07/2020  37.5  Female
+    2  32dx-003  10/07/2020  36.7  Female
 
     Stacked:
             pid       date            column  result     unit
@@ -71,8 +76,7 @@ Example using ``Blender`` with data collected from a single sources.
     import pandas as pd
 
     # DataBlend library
-    from datablend.core.blend import Blender
-    from datablend.core.widgets.format import RenameWidget
+    from datablend.core.blend.blender import Blender
     from datablend.core.widgets.format import ReplaceWidget
 
 
@@ -89,7 +93,7 @@ Example using ``Blender`` with data collected from a single sources.
 
         # Gender
         {'from_name': 'Sex', 'to_name': 'gender',
-         'to_replace': {'Male': 1, 'Female': 2},
+         'to_replace': {1: 'Male', 2: 'Female'},
          'timestamp': 'date_exam'},
     ]
 
@@ -100,13 +104,15 @@ Example using ``Blender`` with data collected from a single sources.
         {'pid': '32dx-003', 'date_exam': '10/07/2020', 'Temp': 36.7, 'Sex': 2},
     ]
 
+    # -------------------
+    # Main
+    # -------------------
     # Create templates dictionary
     templates = pd.DataFrame(template)
     data = pd.DataFrame(data)
 
     # Create blender
-    blender = Blender(widgets=[ReplaceWidget(),
-                               RenameWidget()])
+    blender = Blender(widgets=[ReplaceWidget()])
 
     # Fit blender to templates.
     blender = blender.fit(info=templates)
@@ -125,11 +131,9 @@ Example using ``Blender`` with data collected from a single sources.
     print("\nStacked:")
     print(stacked)
 
-
-
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.052 seconds)
+   **Total running time of the script:** ( 0 minutes  0.056 seconds)
 
 
 .. _sphx_glr_download__examples_blender_plot_blender_01.py:

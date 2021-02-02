@@ -4,7 +4,7 @@
 
 .. _sphx_glr__examples_blender:
 
-The Blender Gallery
+Examples with Blender
 ==========================
 
 Below is a gallery of examples
@@ -72,6 +72,27 @@ Below is a gallery of examples
    :hidden:
 
    /_examples/blender/plot_blender_03
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Generic example to show the functionality of Blender. It focuses on the transformations: (i) Da...">
+
+.. only:: html
+
+ .. figure:: /_examples/blender/images/thumb/sphx_glr_plot_blender_04_thumb.png
+     :alt: Blender with various widgets
+
+     :ref:`sphx_glr__examples_blender_plot_blender_04.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/blender/plot_blender_04
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

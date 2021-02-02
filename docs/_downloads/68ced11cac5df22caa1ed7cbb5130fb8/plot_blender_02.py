@@ -6,9 +6,9 @@ Example using ``Blender`` with data collected from several sources.
 
 .. note:: Each data source has a different ``BlenderTemplate``.
 
-.. note:: ``Pandas`` reads xlsx files with different sheets as a dictionary
+.. note:: ``Pandas`` reads .xlsx files with different sheets as a dictionary
           where the key is the worksheet name and the value is the
-          dataframe. Therefore, xlsx files loaded with pandas can be
+          DataFrame. Therefore, .xlsx files loaded with pandas can be
           inputed to ``Blender`` as in the example below.
 
 """
@@ -17,8 +17,7 @@ Example using ``Blender`` with data collected from several sources.
 import pandas as pd
 
 # DataBlend library
-from datablend.core.blend import Blender
-from datablend.core.widgets.format import RenameWidget
+from datablend.core.blend.blender import Blender
 from datablend.core.widgets.format import ReplaceWidget
 
 # ------------------------
@@ -34,13 +33,15 @@ template_exam = [
 
     # Gender
     {'from_name': 'Sex', 'to_name': 'gender',
-     'to_replace': {'Male': 1, 'Female': 2},
+     'to_replace': {1: 'Male', 2: 'Female'},
      'timestamp': 'date_exam'},
 ]
 
-# .. note: The same blender instance will be used for the data. Thus,
-#          since the ReplaceWidget is used, the column to_replace needs
-#          to be included in both templates (see to_replace: None below).
+# .. note: In order to use the ReplaceWidget, the template needs to
+#          include the 'to_replace' column. In this example, we are
+#          using the same blender template for both worksheets
+#          (exam and lab) so will include an empty to_replace in
+#          the latter.
 
 template_lab = [
     # HCT
@@ -55,7 +56,6 @@ template_lab = [
      'timestamp': 'date',
      'unit': '10^9U/L',
      'to_replace': None}
-
 ]
 
 # Data
@@ -92,8 +92,7 @@ data = {
 }
 
 # Create blender
-blender = Blender(widgets=[ReplaceWidget(),
-                           RenameWidget()])
+blender = Blender(widgets=[ReplaceWidget(errors='raise')])
 
 # Fit blender to templates.
 blender = blender.fit(info=templates)

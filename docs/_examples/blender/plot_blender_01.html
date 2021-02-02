@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Blender with multiple inputs" href="plot_blender_02.html" />
-    <link rel="prev" title="The Blender Gallery" href="index.html" /> 
+    <link rel="prev" title="Examples with Blender" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,17 +94,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Blender Gallery</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with Blender</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Blender with single input</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_blender_02.html">Blender with multiple inputs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_blender_03.html">Blender with various widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_blender_04.html">Blender with various widgets</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -160,7 +168,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">The Blender Gallery</a> &raquo;</li>
+          <li><a href="index.html">Examples with Blender</a> &raquo;</li>
         
       <li>Blender with single input</li>
     
@@ -190,17 +198,21 @@ to download the full example code</p>
 <span id="sphx-glr-examples-blender-plot-blender-01-py"></span><h1>Blender with single input<a class="headerlink" href="#blender-with-single-input" title="Permalink to this headline">¶</a></h1>
 <p>Example using <code class="docutils literal notranslate"><span class="pre">Blender</span></code> with data collected from a single sources.</p>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Stacking excel sheets!
+
+         Stacking sheet &lt;ROOT&gt;... COMPLETED.
+
+Original:
         pid   date_exam  Temp  Sex
 0  32dx-001  10/07/2020  37.2    1
 1  32dx-002  08/07/2020  37.5    2
 2  32dx-003  10/07/2020  36.7    2
 
 Transformed:
-        pid   date_exam  body_temperature  gender
-0  32dx-001  10/07/2020              37.2    Male
-1  32dx-002  08/07/2020              37.5  Female
-2  32dx-003  10/07/2020              36.7  Female
+        pid   date_exam  Temp     Sex
+0  32dx-001  10/07/2020  37.2    Male
+1  32dx-002  08/07/2020  37.5  Female
+2  32dx-003  10/07/2020  36.7  Female
 
 Stacked:
         pid       date            column  result     unit
@@ -271,12 +283,12 @@ Stacked:
 62
 63
 64
-65</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+65
+66</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend library</span>
- <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">Blender</span>
- <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">RenameWidget</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.blend.blender</span> <span class="kn">import</span> <span class="n">Blender</span>
  <span class="kn">from</span> <span class="nn">datablend.core.widgets.format</span> <span class="kn">import</span> <span class="n">ReplaceWidget</span>
 
 
@@ -293,7 +305,7 @@ Stacked:
 
      <span class="c1"># Gender</span>
      <span class="p">{</span><span class="s1">&#39;from_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;to_name&#39;</span><span class="p">:</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span>
-      <span class="s1">&#39;to_replace&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+      <span class="s1">&#39;to_replace&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">},</span>
       <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;date_exam&#39;</span><span class="p">},</span>
  <span class="p">]</span>
 
@@ -304,13 +316,15 @@ Stacked:
      <span class="p">{</span><span class="s1">&#39;pid&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span> <span class="s1">&#39;date_exam&#39;</span><span class="p">:</span> <span class="s1">&#39;10/07/2020&#39;</span><span class="p">,</span> <span class="s1">&#39;Temp&#39;</span><span class="p">:</span> <span class="mf">36.7</span><span class="p">,</span> <span class="s1">&#39;Sex&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
  <span class="p">]</span>
 
+ <span class="c1"># -------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># -------------------</span>
  <span class="c1"># Create templates dictionary</span>
  <span class="n">templates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
  <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
  <span class="c1"># Create blender</span>
- <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">ReplaceWidget</span><span class="p">(),</span>
-                            <span class="n">RenameWidget</span><span class="p">()])</span>
+ <span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">(</span><span class="n">widgets</span><span class="o">=</span><span class="p">[</span><span class="n">ReplaceWidget</span><span class="p">()])</span>
 
  <span class="c1"># Fit blender to templates.</span>
  <span class="n">blender</span> <span class="o">=</span> <span class="n">blender</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">info</span><span class="o">=</span><span class="n">templates</span><span class="p">)</span>
@@ -330,7 +344,7 @@ Stacked:
  <span class="nb">print</span><span class="p">(</span><span class="n">stacked</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.052 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.056 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-blender-plot-blender-01-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e56e35d4513122ecf1dd926f8b01afb2/plot_blender_01.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blender_01.py</span></code></a></p>
@@ -353,7 +367,7 @@ Stacked:
         <a href="plot_blender_02.html" class="btn btn-neutral float-right" title="Blender with multiple inputs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="The Blender Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples with Blender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

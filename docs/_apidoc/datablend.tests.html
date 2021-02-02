@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="datablend.utils package" href="datablend.utils.html" />
-    <link rel="prev" title="datablend.core package" href="datablend.core.html" /> 
+    <link rel="prev" title="datablend.core.repair package" href="datablend.core.repair.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,12 +94,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -211,6 +218,78 @@
 <dt id="datablend.tests.test_examples.test_script_execution_widgets">
 <code class="sig-prename descclassname">datablend.tests.test_examples.</code><code class="sig-name descname">test_script_execution_widgets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">script</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_examples.test_script_execution_widgets" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</div>
+<div class="section" id="module-datablend.tests.test_template">
+<span id="datablend-tests-test-template-module"></span><h2>datablend.tests.test_template module<a class="headerlink" href="#module-datablend.tests.test_template" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.tests.test_template.bt">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">bt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.bt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.bt_df">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">bt_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.bt_df" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.bt_json">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">bt_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.bt_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.data">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a basic data DataFrame.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_from_data">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_from_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate fit from data.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_from_df">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_from_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_from_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate fit from dataframe.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_from_json">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate fit from json.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_raises_exception_duplicate_error">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_raises_exception_duplicate_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_raises_exception_duplicate_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate error: The column has duplicated values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_from_name">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_raises_exception_missing_required_column_error_from_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_from_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate error: The required column ‘from_name’ is missing.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_to_name">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_raises_exception_missing_required_column_error_to_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_to_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate error: The required column ‘to_name’ is missing.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_raises_exception_null_value_error">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_raises_exception_null_value_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bt_df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_raises_exception_null_value_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate error: The column has null values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.tests.test_template.test_bt_fit_raises_exception_on_None">
+<code class="sig-prename descclassname">datablend.tests.test_template.</code><code class="sig-name descname">test_bt_fit_raises_exception_on_None</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.tests.test_template.test_bt_fit_raises_exception_on_None" title="Permalink to this definition">¶</a></dt>
+<dd><p>BlenderTemplate error: None template.</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-datablend.tests.test_widgets">
@@ -325,7 +404,7 @@
         <a href="datablend.utils.html" class="btn btn-neutral float-right" title="datablend.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datablend.core.html" class="btn btn-neutral float-left" title="datablend.core package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="datablend.core.repair.html" class="btn btn-neutral float-left" title="datablend.core.repair package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -10,7 +10,6 @@ import pandas as pd
 
 # DataBlend library
 from datablend.core.widgets.format import FullTemplateWidget
-from datablend.core.widgets.format import RenameWidget
 from datablend.core.widgets.format import ReplaceWidget
 from datablend.core.widgets.format import DateTimeMergeWidget
 from datablend.core.widgets.format import DateFromStudyDayWidget
@@ -70,7 +69,7 @@ template = [
 
     {'from_name': 'date_laboratory',
      'to_name': 'date_laboratory',
-     'study_day_col': 'lab_study_day',
+     'study_day_col': 'LabSampleStudyDay',
      'study_day_ref': 'date_enrolment'},
 
     {'from_name': 'hct',
@@ -128,12 +127,11 @@ print(template)
 # Transformed (order matters!)
 transformed = DateTimeMergeWidget().fit_transform(template, data)
 transformed = ReplaceWidget().fit_transform(template, transformed)
-transformed = RenameWidget().fit_transform(template, transformed)
 transformed = EventWidget().fit_transform(template, transformed)
 transformed = DateFromStudyDayWidget().fit_transform(template, transformed)
 
 # Stack data
-stacked = StackWidget(index=['study_number']) \
+stacked = StackWidget(index=['StudyNo']) \
     .fit_transform(template, transformed)
 
 # Show

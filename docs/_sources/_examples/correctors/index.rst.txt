@@ -1,0 +1,413 @@
+:orphan:
+
+
+
+.. _sphx_glr__examples_correctors:
+
+Examples with correctors
+==========================
+
+Below is a gallery of examples
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure categories (category)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_category_thumb.png
+     :alt: Ensure categories (category)
+
+     :ref:`sphx_glr__examples_correctors_plot_category.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_category
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Repair Stack data from .yaml">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_correction_stack_thumb.png
+     :alt: Repair Stack data from .yaml
+
+     :ref:`sphx_glr__examples_correctors_plot_correction_stack.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_correction_stack
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Repair Tidy data from .yaml">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_correction_tidy_thumb.png
+     :alt: Repair Tidy data from .yaml
+
+     :ref:`sphx_glr__examples_correctors_plot_correction_tidy.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_correction_tidy
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure dtype (dtype)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_dtype_thumb.png
+     :alt: Ensure dtype (dtype)
+
+     :ref:`sphx_glr__examples_correctors_plot_dtype.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_dtype
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fill missing values (fillna)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_fillna_thumb.png
+     :alt: Fill missing values (fillna)
+
+     :ref:`sphx_glr__examples_correctors_plot_fillna.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_fillna
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Consistent columns (bool_level)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_level_thumb.png
+     :alt: Consistent columns (bool_level)
+
+     :ref:`sphx_glr__examples_correctors_plot_level.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_level
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Repair order of magnitude (order)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_order_magnitude_thumb.png
+     :alt: Repair order of magnitude (order)
+
+     :ref:`sphx_glr__examples_correctors_plot_order_magnitude.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_order_magnitude
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure range (range)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_range_thumb.png
+     :alt: Ensure range (range)
+
+     :ref:`sphx_glr__examples_correctors_plot_range.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_range
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Replace values (replace)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_replace_thumb.png
+     :alt: Replace values (replace)
+
+     :ref:`sphx_glr__examples_correctors_plot_replace.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_replace
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure consistent value (static)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_static_thumb.png
+     :alt: Ensure consistent value (static)
+
+     :ref:`sphx_glr__examples_correctors_plot_static.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_static
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure only one True (unique_true)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_unique_true_value_thumb.png
+     :alt: Ensure only one True (unique_true)
+
+     :ref:`sphx_glr__examples_correctors_plot_unique_true_value.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_unique_true_value
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. _sphx_glr__examples_correctors_oucru:
+
+Examples with correctors (OUCRU)
+================================
+
+Below is a gallery of examples
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix bleeding from sites">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_bleeding_thumb.png
+     :alt: Fix bleeding from sites
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_bleeding.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_bleeding
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="oucru_report">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_oucru_report_thumb.png
+     :alt: oucru_report
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_oucru_report.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_oucru_report
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix outcome from event_death">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_outcome_death_thumb.png
+     :alt: Fix outcome from event_death
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_outcome_death.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_outcome_death
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix parental fluid and load (mL)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_parental_fluid_thumb.png
+     :alt: Fix parental fluid and load (mL)
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_parental_fluid.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_parental_fluid
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix PCR dengue (load, sero and out)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_pcr_dengue_thumb.png
+     :alt: Fix PCR dengue (load, sero and out)
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_pcr_dengue.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_pcr_dengue
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix pleural effusion (from sides)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_pleural_effusion_thumb.png
+     :alt: Fix pleural effusion (from sides)
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_pleural_effusion.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_pleural_effusion
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fix shock, multiple and event_shock">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/oucru/images/thumb/sphx_glr_plot_shock_thumb.png
+     :alt: Fix shock, multiple and event_shock
+
+     :ref:`sphx_glr__examples_correctors_oucru_plot_shock.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/oucru/plot_shock
+.. raw:: html
+
+    <div class="sphx-glr-clear"></div>
+
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

@@ -23,7 +23,7 @@ Blender with single input
 
 Example using ``Blender`` works with data collected from a single sources.
 
-.. GENERATED FROM PYTHON SOURCE LINES 8-38
+.. GENERATED FROM PYTHON SOURCE LINES 8-37
 
 
 
@@ -37,10 +37,10 @@ Example using ``Blender`` works with data collected from a single sources.
 
     BlenderTemplate:
        from_name    to_name            type                                         to_replace timestamp  datetime datetime_date datetime_time event unit
-    0        pid        pid        category  {'V_0': '32dx-001', 'V_1': '32dx-002', 'V_2': ...       NaN     False           NaN           NaN   NaN  NaN
+    0        pid        pid        category  {'32dx-001': 'V_0', '32dx-002': 'V_1', '32dx-0...       NaN     False           NaN           NaN   NaN  NaN
     1  date_exam  date_exam  datetime64[ns]                                                NaN       NaN      True           NaN           NaN   NaN  NaN
-    2       Temp       temp        category            {'V_0': 37.2, 'V_1': 37.5, 'V_2': 36.7}       NaN     False           NaN           NaN   NaN  NaN
-    3        Sex        sex        category                    {True: 1, False: 2, None: None}       NaN     False           NaN           NaN   NaN  NaN
+    2       Temp       temp        category            {37.2: 'V_0', 37.5: 'V_1', 36.7: 'V_2'}       NaN     False           NaN           NaN   NaN  NaN
+    3        Sex        sex        category                               {1: 'V_0', 2: 'V_1'}       NaN     False           NaN           NaN   NaN  NaN
 
 
 
@@ -59,8 +59,7 @@ Example using ``Blender`` works with data collected from a single sources.
     import pandas as pd
 
     # DataBlend libraries
-    from datablend.core.blend import BlenderTemplate
-    from datablend.utils.pandas import save_xlsx
+    from datablend.core.blend.template import BlenderTemplate
 
 
     # --------------------

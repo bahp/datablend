@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Consistent columns (bool_level) &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Repair order of magnitude (order)" href="plot_order_magnitude.html" />
+    <link rel="prev" title="Fill missing values (fillna)" href="plot_fillna.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with correctors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_category.html">Ensure categories (category)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_correction_stack.html">Repair Stack data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_correction_tidy.html">Repair Tidy data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_dtype.html">Ensure dtype (dtype)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_fillna.html">Fill missing values (fillna)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Consistent columns (bool_level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_order_magnitude.html">Repair order of magnitude (order)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_range.html">Ensure range (range)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_replace.html">Replace values (replace)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_static.html">Ensure consistent value (static)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_unique_true_value.html">Ensure only one True (unique_true)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_apidoc/modules.html">datablend</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Examples with correctors</a> &raquo;</li>
+        
+      <li>Consistent columns (bool_level)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_examples/correctors/plot_level.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-level-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="consistent-columns-bool-level">
+<span id="sphx-glr-examples-correctors-plot-level-py"></span><h1>Consistent columns (bool_level)<a class="headerlink" href="#consistent-columns-bool-level" title="Permalink to this headline">¶</a></h1>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Note: When both abdominal_pain (bool) and abdominal_pain_level
+ (int) are both None, the resulting value is False and 0
+ respectively. They could/should be left as None.
+
+Data:
+   abdominal_pain  abdominal_pain_level
+0           False                   0.0
+1           False                   1.0
+2           False                   2.0
+3           False                   3.0
+4           False                   NaN
+5            True                   0.0
+6            True                   1.0
+7            True                   2.0
+8            True                   3.0
+9            True                   NaN
+10           None                   0.0
+11           None                   1.0
+12           None                   2.0
+13           None                   3.0
+14           None                   NaN
+
+Corrections:
+    abdominal_pain  abdominal_pain_level
+0            False                     0
+1             True                     1
+2             True                     2
+3             True                     3
+4            False                  &lt;NA&gt;
+5            False                     0
+6             True                     1
+7             True                     2
+8             True                     3
+9             True                  &lt;NA&gt;
+10           False                     0
+11            True                     1
+12            True                     2
+13            True                     3
+14            &lt;NA&gt;                  &lt;NA&gt;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+ <span class="c1"># Specific</span>
+ <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+ <span class="c1"># DataBlend</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">bool_level_correction</span>
+
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># Possible values</span>
+ <span class="n">booleans</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+ <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+ <span class="c1"># Product</span>
+ <span class="n">matrix</span> <span class="o">=</span> <span class="n">product</span><span class="p">(</span><span class="n">booleans</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+ <span class="c1"># Combinations</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span>
+     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;abdominal_pain&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;abdominal_pain_level&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Corrections</span>
+ <span class="n">correction</span> <span class="o">=</span> <span class="n">bool_level_correction</span><span class="p">(</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+     <span class="n">sbool</span><span class="o">=</span><span class="s1">&#39;abdominal_pain&#39;</span><span class="p">,</span>
+     <span class="n">slevel</span><span class="o">=</span><span class="s1">&#39;abdominal_pain_level&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Show data any</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note: When both abdominal_pain (bool) and abdominal_pain_level</span><span class="se">\n</span><span class="s2"> &quot;</span>
+       <span class="s2">&quot;(int) are both None, the resulting value is False and 0</span><span class="se">\n</span><span class="s2"> &quot;</span>
+       <span class="s2">&quot;respectively. They could/should be left as None.&quot;</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Corrections:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">correction</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.018 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-level-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/3da59de20ab401c9e1223b2923ddbdff/plot_level.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_level.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/448825b609a5dcb9e373ec08738fdc8f/plot_level.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_level.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_order_magnitude.html" class="btn btn-neutral float-right" title="Repair order of magnitude (order)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_fillna.html" class="btn btn-neutral float-left" title="Fill missing values (fillna)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

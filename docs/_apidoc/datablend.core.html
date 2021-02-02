@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="datablend.tests package" href="datablend.tests.html" />
+    <link rel="next" title="datablend.core.blend package" href="datablend.core.blend.html" />
     <link rel="prev" title="datablend package" href="datablend.html" /> 
 </head>
 
@@ -94,12 +94,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -192,40 +199,80 @@
             
   <div class="section" id="datablend-core-package">
 <h1>datablend.core package<a class="headerlink" href="#datablend-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datablend.core.blend.html">datablend.core.blend package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.blend.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.blend.html#module-datablend.core.blend.blender">datablend.core.blend.blender module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.blend.html#module-datablend.core.blend.config">datablend.core.blend.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.blend.html#module-datablend.core.blend.template">datablend.core.blend.template module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.blend.html#module-datablend.core.blend">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datablend.core.repair.html">datablend.core.repair package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.repair.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.repair.html#module-datablend.core.repair.correctors">datablend.core.repair.correctors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.repair.html#module-datablend.core.repair.report">datablend.core.repair.report module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.repair.html#module-datablend.core.repair.schema">datablend.core.repair.schema module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datablend.core.repair.html#module-datablend.core.repair">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-datablend.core.blend">
-<span id="datablend-core-blend-module"></span><h2>datablend.core.blend module<a class="headerlink" href="#module-datablend.core.blend" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-datablend.core.blend_old">
+<span id="datablend-core-blend-old-module"></span><h2>datablend.core.blend_old module<a class="headerlink" href="#module-datablend.core.blend_old" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="datablend.core.blend.Blender">
-<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">Blender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widgets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend_old.</code><code class="sig-name descname">Blender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widgets</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">curr_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This method…</p>
+<dl class="py attribute">
+<dt id="datablend.core.blend_old.Blender.bc">
+<code class="sig-name descname">bc</code><em class="property"> = None</em><a class="headerlink" href="#datablend.core.blend_old.Blender.bc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.fit" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the blender.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>info</strong></p>
+<dd class="field-odd"><p><strong>info</strong> (<em>pd.DataFrame or dict-like</em>) – Template to fit in either pd.DataFrame format or a
+dictionary where key is the sheet name and the value
+is the pd.DataFrame.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.fit_transform">
-<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.fit_stack">
+<code class="sig-name descname">fit_stack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.fit_stack" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.load">
-<code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.load" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.fit_stack_tidy">
+<code class="sig-name descname">fit_stack_tidy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.fit_stack_tidy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.save">
-<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.save" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.fit_transform">
+<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.Blender.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.Blender.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.save" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>filepath</strong> – </p>
@@ -237,24 +284,24 @@
 </dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.stack">
-<code class="sig-name descname">stack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.stack" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.stack">
+<code class="sig-name descname">stack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">index</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.stack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stacks the data.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="datablend.core.blend.Blender.templates">
-<code class="sig-name descname">templates</code><em class="property"> = {}</em><a class="headerlink" href="#datablend.core.blend.Blender.templates" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.templates">
+<code class="sig-name descname">templates</code><em class="property"> = {}</em><a class="headerlink" href="#datablend.core.blend_old.Blender.templates" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.tidy">
-<code class="sig-name descname">tidy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.tidy" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.tidy">
+<code class="sig-name descname">tidy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.tidy" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.Blender.transform">
-<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.Blender.transform" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.Blender.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">include</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.Blender.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transforms the data according to a template.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -272,8 +319,49 @@ is the pd.DataFrame.</p></li>
 </dd></dl>
 
 <dl class="py class">
-<dt id="datablend.core.blend.BlenderTemplate">
-<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">BlenderTemplate</code><a class="headerlink" href="#datablend.core.blend.BlenderTemplate" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderConfig">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend_old.</code><code class="sig-name descname">BlenderConfig</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">curr_path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.features">
+<code class="sig-name descname">features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.features" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.filepath_data">
+<code class="sig-name descname">filepath_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.filepath_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.filepath_logger_config">
+<code class="sig-name descname">filepath_logger_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.filepath_logger_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.filepath_temp">
+<code class="sig-name descname">filepath_temp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.filepath_temp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.stack_index">
+<code class="sig-name descname">stack_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.stack_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.worksheets_excluded">
+<code class="sig-name descname">worksheets_excluded</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.worksheets_excluded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderConfig.worksheets_included">
+<code class="sig-name descname">worksheets_included</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderConfig.worksheets_included" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.blend_old.BlenderTemplate">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.blend_old.</code><code class="sig-name descname">BlenderTemplate</code><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Description…</p>
 <p>from_name:</p>
@@ -285,18 +373,18 @@ is the pd.DataFrame.</p></li>
 <p>datetime_time:</p>
 <p>unit:</p>
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.check">
-<code class="sig-name descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.check" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.check">
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.check" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="datablend.core.blend.BlenderTemplate.df">
-<code class="sig-name descname">df</code><em class="property"> = None</em><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.df" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.df">
+<code class="sig-name descname">df</code><em class="property"> = None</em><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.df" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">template</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the template.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -306,14 +394,14 @@ is the pd.DataFrame.</p></li>
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend_old.BlenderTemplate" title="datablend.core.blend_old.BlenderTemplate">BlenderTemplate</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.fit_from_bt_df">
-<code class="sig-name descname">fit_from_bt_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit_from_bt_df" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.fit_from_bt_df">
+<code class="sig-name descname">fit_from_bt_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.fit_from_bt_df" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fits the template.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -323,14 +411,14 @@ is the pd.DataFrame.</p></li>
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend_old.BlenderTemplate" title="datablend.core.blend_old.BlenderTemplate">BlenderTemplate</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.fit_from_data">
-<code class="sig-name descname">fit_from_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.fit_from_data" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.fit_from_data">
+<code class="sig-name descname">fit_from_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.fit_from_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a configuration file for the descriptor.</p>
 <p>The result produced is just a preliminary template and needs
 further inspection by the user to ensure that all the
@@ -343,29 +431,49 @@ transformations and parameters are correct.</p>
 <dd class="field-even"><p></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend.BlenderTemplate" title="datablend.core.blend.BlenderTemplate">BlenderTemplate</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#datablend.core.blend_old.BlenderTemplate" title="datablend.core.blend_old.BlenderTemplate">BlenderTemplate</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.has_columns">
-<code class="sig-name descname">has_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.has_columns" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.has_columns">
+<code class="sig-name descname">has_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.has_columns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.has_timestamp">
-<code class="sig-name descname">has_timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.has_timestamp" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.has_timestamp">
+<code class="sig-name descname">has_timestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.has_timestamp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.missing_columns">
-<code class="sig-name descname">missing_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.missing_columns" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.map_kv">
+<code class="sig-name descname">map_kv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">include_keys</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.map_kv" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>string</em>) – The column to use as keys.</p></li>
+<li><p><strong>value</strong> (<em>string</em>) – The column to use as values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.blend_old.BlenderTemplate.missing_columns">
+<code class="sig-name descname">missing_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.missing_columns" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt id="datablend.core.blend.BlenderTemplate.valid_blender_template_dataframe">
-<code class="sig-name descname">valid_blender_template_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.BlenderTemplate.valid_blender_template_dataframe" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.BlenderTemplate.valid_blender_template_dataframe">
+<code class="sig-name descname">valid_blender_template_dataframe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.BlenderTemplate.valid_blender_template_dataframe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether the template is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises</dt>
@@ -381,15 +489,335 @@ transformations and parameters are correct.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.core.blend.category_maps">
-<code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">category_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">max_nunique</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.category_maps" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.category_maps">
+<code class="sig-prename descclassname">datablend.core.blend_old.</code><code class="sig-name descname">category_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">max_nunique</span><span class="o">=</span><span class="default_value">5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.category_maps" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method infers the enumerated maps.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.core.blend.date_time_maps">
-<code class="sig-prename descclassname">datablend.core.blend.</code><code class="sig-name descname">date_time_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend.date_time_maps" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.core.blend_old.date_time_maps">
+<code class="sig-prename descclassname">datablend.core.blend_old.</code><code class="sig-name descname">date_time_maps</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.blend_old.date_time_maps" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method…</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.consistency">
+<span id="datablend-core-consistency-module"></span><h2>datablend.core.consistency module<a class="headerlink" href="#module-datablend.core.consistency" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.core.consistency.bffill">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">bffill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.bffill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes backward and then forward fill</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.compound_feature_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">compound_feature_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">compound</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.compound_feature_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects compound boolean features.</p>
+<p>Some values are collected either in subcategories or a
+final compound category (e.g. bleeding, bleeding_skin
+and bleeding_mucosal). It might happen that there are
+inconsistencies between these data collection.</p>
+<p>The bleeding other assumes that if there is already
+one bleeding collected that agrees with bleeding, then
+it was collected with that purpose and it is set to false</p>
+<dl class="simple">
+<dt>Equivalent:</dt><dd><dl class="simple">
+<dt>bleeding = bleeding |</dt><dd><p>tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.consistency_bleeding">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">consistency_bleeding</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.consistency_bleeding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the consistency of the bleeding parameters.</p>
+<p>Ensure that there is consistency between the bleeding columns. In
+particular, check that if bleeding (overall) is True then at least
+one of the bleeding categories has to be true. Otherwise, set
+bleeding other to True.</p>
+<p>rule: if bleeding==1 then any(bleeding categories)==1</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.consistency_events">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">consistency_events</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.consistency_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the consistency of the events.</p>
+<p>Ensure that an event has only one True value.</p>
+<p>rule: np.sum(event) &lt;= 1</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.consistency_shock">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">consistency_shock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.consistency_shock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the consistency of the shock parameters.</p>
+<p>Ensure that there is consistency between the shock columns. In
+particular, check that if shock_multiple == 1 then the column
+shock == 1</p>
+<p>rule = if shock_multiple==1 then shock==1</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.consistency_stay">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">consistency_stay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.consistency_stay" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.fbfill">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">fbfill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.fbfill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes forward and then backward fill.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.fillna_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">fillna_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="n">groupby</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.fillna_correction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.has_duplicated_units_per_column">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">has_duplicated_units_per_column</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stack</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.has_duplicated_units_per_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether a feature has several units.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.has_undefined_units">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">has_undefined_units</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">units</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.has_undefined_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that units exist in Pint UnitRegistry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>units</strong> (<em>list</em>) – The list of units to check.</p></li>
+<li><p><strong>unit_registry</strong> (<em>UnitRegistry (pint library)</em>) – The UnitRegistry with all the units defined.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.mode">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.one_year_less">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">one_year_less</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.one_year_less" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.one_year_more">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">one_year_more</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.one_year_more" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.order_magnitude_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">order_magnitude_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">range</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">orders</span><span class="o">=</span><span class="default_value">[10, 100]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.order_magnitude_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects issues with order of magnitudes.</p>
+<p>Data manually collected often has one/two degrees of magnitude
+higher because one or two digits are pressed accidentally. It
+also happens if the comma was no pressed properly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong></p></li>
+<li><p><strong>orders</strong></p></li>
+<li><p><strong>range</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.outlier_dates_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">outlier_dates_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">coef</span><span class="o">=</span><span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.outlier_dates_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects the dates that are outliers.</p>
+<p>It receives all the dates in which samples were collected,
+for example for a patient and tries to (i) identify
+outliers and (ii) correct them with the best possible
+date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>series with datetime64[ns]</em>)</p></li>
+<li><p><strong>coeff</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>datetime64[ns] series with corrected dates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.range_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">range_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">range</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">nan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.range_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects issues with ranges.</p>
+<p>Some values collected are not within the ranges. They could
+also be removed using the IQR rule, but if we know the limits
+we can filter them as errors instead of outliers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong></p></li>
+<li><p><strong>range</strong></p></li>
+<li><p><strong>value</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.report_unique_value">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">report_unique_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">groupby</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.report_unique_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether columns have more than one unique value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The DataFrame with the columns to investigate.</p></li>
+<li><p><strong>groupby</strong> (<em>mapping, function, label, or list of labels</em>) – Used to determine the groups for the groupby.</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The higher the more detailed the report is.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.schema_json_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">schema_json_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">schema_json</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.schema_json_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method….</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.schema_validate">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">schema_validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stack</span></em>, <em class="sig-param"><span class="n">schema_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.schema_validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that the schema is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stack</strong> (<em>pd.DataFrame</em>) – The stacked data.</p></li>
+<li><p><strong>schema_json</strong> (<em>json</em>) – Full description</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.stack_validate">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">stack_validate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stack</span></em>, <em class="sig-param"><span class="n">unit_registry</span></em>, <em class="sig-param"><span class="n">schema_json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.stack_validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This methods validates the stack DataFrame.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul>
+<li><p><strong>stack</strong> (<em>pd.DataFrame</em>) –</p>
+<dl class="simple">
+<dt>The stacked DataFrame which must have the following columns:</dt><dd><p>StudyNo - id of the patient
+date - date in which data was collected
+column - the feature that was collected
+unit - the unit of such feature.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>unit_registry</strong> (<em>UnitRegistry (pint library)</em>) – The UnitRegistry with all the units defined.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.static_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">static_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="n">groupby</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.static_correction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.str2func">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">str2func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.str2func" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method passes strings to functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – Dictionary where value is a function name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.swap_day_month">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">swap_day_month</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.swap_day_month" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.swap_max_year">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">swap_max_year</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.swap_max_year" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.consistency.unique_true_value_correction">
+<code class="sig-prename descclassname">datablend.core.consistency.</code><code class="sig-name descname">unique_true_value_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">keep</span><span class="o">=</span><span class="default_value">'first'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.consistency.unique_true_value_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects more than one True appearance.</p>
+<p>For example, for variable representing events such as
+event_admission where only one value should be True
+during the data collection period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong></p></li>
+<li><p><strong>keep</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.correctors">
+<span id="datablend-core-correctors-module"></span><h2>datablend.core.correctors module<a class="headerlink" href="#module-datablend.core.correctors" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="datablend.core.correctors.Corrector">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.correctors.</code><code class="sig-name descname">Corrector</code><a class="headerlink" href="#datablend.core.correctors.Corrector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.correctors.InRangeCorrector">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.correctors.</code><code class="sig-name descname">InRangeCorrector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">low</span></em>, <em class="sig-param"><span class="n">high</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">nan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.correctors.InRangeCorrector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.correctors.Corrector" title="datablend.core.correctors.Corrector"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.correctors.Corrector</span></code></a></p>
+<p>This method…</p>
+<dl class="py method">
+<dt id="datablend.core.correctors.InRangeCorrector.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.correctors.InRangeCorrector.report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.correctors.InRangeCorrector.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.correctors.InRangeCorrector.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.correctors.OrderMagnitudeCorrector">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.correctors.</code><code class="sig-name descname">OrderMagnitudeCorrector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">low</span></em>, <em class="sig-param"><span class="n">high</span></em>, <em class="sig-param"><span class="n">orders</span><span class="o">=</span><span class="default_value">[10, 100]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.correctors.OrderMagnitudeCorrector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.correctors.Corrector" title="datablend.core.correctors.Corrector"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.correctors.Corrector</span></code></a></p>
+<dl class="py method">
+<dt id="datablend.core.correctors.OrderMagnitudeCorrector.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.correctors.OrderMagnitudeCorrector.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
@@ -397,7 +825,7 @@ transformations and parameters are correct.</p>
 <span id="datablend-core-exceptions-module"></span><h2>datablend.core.exceptions module<a class="headerlink" href="#module-datablend.core.exceptions" title="Permalink to this headline">¶</a></h2>
 <dl class="py exception">
 <dt id="datablend.core.exceptions.BTDuplicateError">
-<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">BTDuplicateError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">column</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.BTDuplicateError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">BTDuplicateError</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">column</span></em>, <em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.BTDuplicateError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datablend.core.exceptions.InvalidBlenderTemplateError" title="datablend.core.exceptions.InvalidBlenderTemplateError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.exceptions.InvalidBlenderTemplateError</span></code></a></p>
 <p>Error used in the BlenderTemplate.</p>
 <p>The column has duplicated values.</p>
@@ -459,7 +887,7 @@ transformations and parameters are correct.</p>
 
 <dl class="py exception">
 <dt id="datablend.core.exceptions.MissingRequiredColumns">
-<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">MissingRequiredColumns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">missing</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.MissingRequiredColumns" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">MissingRequiredColumns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">widget</span></em>, <em class="sig-param"><span class="n">missing</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.MissingRequiredColumns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#datablend.core.exceptions.IncompatibleBlenderTemplateError" title="datablend.core.exceptions.IncompatibleBlenderTemplateError"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.exceptions.IncompatibleBlenderTemplateError</span></code></a></p>
 <p>Error used for errors in the BlenderTemplate.</p>
 <p>Attributes:</p>
@@ -467,7 +895,7 @@ transformations and parameters are correct.</p>
 
 <dl class="py exception">
 <dt id="datablend.core.exceptions.ReplaceWidgetMapWarning">
-<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">ReplaceWidgetMapWarning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">dict_values</span></em>, <em class="sig-param"><span class="n">data_values</span></em>, <em class="sig-param"><span class="n">max_size</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.ReplaceWidgetMapWarning" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="sig-prename descclassname">datablend.core.exceptions.</code><code class="sig-name descname">ReplaceWidgetMapWarning</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">to_replace</span></em>, <em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">max_size</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.exceptions.ReplaceWidgetMapWarning" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Warning</span></code></p>
 <p>Warning used for errors in the ReplaceWidget map.</p>
 <p>It warns if the map does not contain all the elements in the data.
@@ -498,7 +926,12 @@ It warns if the map contains elements that do not appear in the data.</p>
 </div>
 <div class="section" id="module-datablend.core.settings">
 <span id="datablend-core-settings-module"></span><h2>datablend.core.settings module<a class="headerlink" href="#module-datablend.core.settings" title="Permalink to this headline">¶</a></h2>
-<p>Describing which variables are static.</p>
+<dl class="py data">
+<dt id="datablend.core.settings.default_false">
+<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">default_false</code><em class="property"> = ['lathargy_severe']</em><a class="headerlink" href="#datablend.core.settings.default_false" title="Permalink to this definition">¶</a></dt>
+<dd><p>Describing levels.</p>
+</dd></dl>
+
 <dl class="py function">
 <dt id="datablend.core.settings.find_levels">
 <code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">find_levels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable_names</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.settings.find_levels" title="Permalink to this definition">¶</a></dt>
@@ -529,15 +962,6 @@ It warns if the map contains elements that do not appear in the data.</p>
 <dd><p>This method…</p>
 </dd></dl>
 
-<dl class="py data">
-<dt id="datablend.core.settings.static">
-<code class="sig-prename descclassname">datablend.core.settings.</code><code class="sig-name descname">static</code><em class="property"> = ['age', 'gender', 'height', 'weight', 'pregnant', 'diabetes', 'anemia', 'asthma', 'hypertension', 'peptic_ulcer', 'renal_disease', 'chronic_hepatitis', 'coronary_heart_disease']</em><a class="headerlink" href="#datablend.core.settings.static" title="Permalink to this definition">¶</a></dt>
-<dd><p>Describing levels.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-datablend.core.widgets">
-<span id="datablend-core-widgets-module"></span><h2>datablend.core.widgets module<a class="headerlink" href="#module-datablend.core.widgets" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-datablend.core">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datablend.core" title="Permalink to this headline">¶</a></h2>
@@ -552,7 +976,7 @@ It warns if the map contains elements that do not appear in the data.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="datablend.tests.html" class="btn btn-neutral float-right" title="datablend.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="datablend.core.blend.html" class="btn btn-neutral float-right" title="datablend.core.blend package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="datablend.html" class="btn btn-neutral float-left" title="datablend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

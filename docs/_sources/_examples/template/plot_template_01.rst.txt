@@ -21,7 +21,7 @@
 Fitting a blender template
 ===========================
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-36
+.. GENERATED FROM PYTHON SOURCE LINES 5-41
 
 
 
@@ -49,6 +49,9 @@ Fitting a blender template
     3       Sex            gender
 
 
+    Map replace {from_name: to_name}
+    {'StudyNo': 'study_number', 'Temp': 'body_temperature', 'Shock': 'shock', 'Sex': 'gender'}
+
 
 
 
@@ -64,7 +67,7 @@ Fitting a blender template
     import pandas as pd
 
     # DataBlend libraries
-    from datablend.core.blend import BlenderTemplate
+    from datablend.core.blend.template import BlenderTemplate
 
     # ------------------------
     # Constants
@@ -88,13 +91,18 @@ Fitting a blender template
     bt1 = BlenderTemplate().fit(bt_df)
     bt2 = BlenderTemplate().fit(template)
 
-    # Show
+    # Show templates
     print(bt1)
     print(bt2)
 
+    # Replace from_name to to_name values.
+    print("\nMap replace {from_name: to_name}")
+    print(bt1.map_kv(key='from_name',
+                     value='to_name'))
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.012 seconds)
+   **Total running time of the script:** ( 0 minutes  0.014 seconds)
 
 
 .. _sphx_glr_download__examples_template_plot_template_01.py:

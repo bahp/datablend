@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Blender with single input" href="plot_template_02.html" />
-    <link rel="prev" title="The Template Gallery" href="index.html" /> 
+    <link rel="prev" title="Examples with BlenderTemplate" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,16 +94,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Template Gallery</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with BlenderTemplate</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Fitting a blender template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_template_02.html">Blender with single input</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -159,7 +166,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">The Template Gallery</a> &raquo;</li>
+          <li><a href="index.html">Examples with BlenderTemplate</a> &raquo;</li>
         
       <li>Fitting a blender template</li>
     
@@ -202,6 +209,10 @@ BlenderTemplate:
 1      Temp  body_temperature
 2     Shock             shock
 3       Sex            gender
+
+
+Map replace {from_name: to_name}
+{&#39;StudyNo&#39;: &#39;study_number&#39;, &#39;Temp&#39;: &#39;body_temperature&#39;, &#39;Shock&#39;: &#39;shock&#39;, &#39;Sex&#39;: &#39;gender&#39;}
 </pre></div>
 </div>
 <div class="line-block">
@@ -237,11 +248,16 @@ BlenderTemplate:
 33
 34
 35
-36</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+36
+37
+38
+39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend libraries</span>
- <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.blend.template</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
 
  <span class="c1"># ------------------------</span>
  <span class="c1"># Constants</span>
@@ -265,12 +281,17 @@ BlenderTemplate:
  <span class="n">bt1</span> <span class="o">=</span> <span class="n">BlenderTemplate</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">bt_df</span><span class="p">)</span>
  <span class="n">bt2</span> <span class="o">=</span> <span class="n">BlenderTemplate</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
 
- <span class="c1"># Show</span>
+ <span class="c1"># Show templates</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">bt1</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">bt2</span><span class="p">)</span>
+
+ <span class="c1"># Replace from_name to to_name values.</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Map replace {from_name: to_name}&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">bt1</span><span class="o">.</span><span class="n">map_kv</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;from_name&#39;</span><span class="p">,</span>
+                  <span class="n">value</span><span class="o">=</span><span class="s1">&#39;to_name&#39;</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.012 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.014 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-template-plot-template-01-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/5828f53b5ee7fadbf578e3e48cb641fe/plot_template_01.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_template_01.py</span></code></a></p>
@@ -293,7 +314,7 @@ BlenderTemplate:
         <a href="plot_template_02.html" class="btn btn-neutral float-right" title="Blender with single input" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="The Template Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples with BlenderTemplate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

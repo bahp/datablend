@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>datablend.core.repair package &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="datablend.tests package" href="datablend.tests.html" />
+    <link rel="prev" title="datablend.core.blend package" href="datablend.core.blend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Advanced</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">datablend</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="datablend.html">datablend package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="datablend.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="datablend.core.html">datablend.core package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.tests.html">datablend.tests package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="datablend.utils.html">datablend.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="datablend.html#module-datablend">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">datablend</a> &raquo;</li>
+        
+          <li><a href="datablend.html">datablend package</a> &raquo;</li>
+        
+          <li><a href="datablend.core.html">datablend.core package</a> &raquo;</li>
+        
+      <li>datablend.core.repair package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/_apidoc/datablend.core.repair.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="datablend-core-repair-package">
+<h1>datablend.core.repair package<a class="headerlink" href="#datablend-core-repair-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-datablend.core.repair.correctors">
+<span id="datablend-core-repair-correctors-module"></span><h2>datablend.core.repair.correctors module<a class="headerlink" href="#module-datablend.core.repair.correctors" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.add_to_date">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">add_to_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">year</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">month</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">day</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.add_to_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.bffill">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">bffill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.bffill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes backward and then forward fill</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.bool_level_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">bool_level_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">sbool</span></em>, <em class="sig-param"><span class="n">slevel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.bool_level_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects values of boolean and level series.</p>
+<p>In some scenarios data is collected indicating whether the
+patient had some condition (e.g. abdominal_pain) and also
+the level of that condition (a.g. abdominal_pain_level).
+This method corrects this columns so that they are
+consistent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>)</p></li>
+<li><p><strong>sbool</strong> (<em>str</em>)</p></li>
+<li><p><strong>slevel</strong> (<em>str</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.category_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">category_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.category_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects weird categories!</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.causal_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">causal_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.causal_correction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.combinations_lower_upper">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">combinations_lower_upper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">word</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.combinations_lower_upper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.compound_feature_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">compound_feature_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">compound</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.compound_feature_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects compound boolean features.</p>
+<p>Some values are collected either in subcategories or a
+final compound category (e.g. bleeding, bleeding_skin
+and bleeding_mucosal). It might happen that there are
+inconsistencies between these data collection.</p>
+<p>The bleeding other assumes that if there is already
+one bleeding collected that agrees with bleeding, then
+it was collected with that purpose and it is set to false</p>
+<p class="rubric">Examples</p>
+<dl class="simple">
+<dt>tidy.bleeding =         compound_feature_correction(tidy.bleeding,             tidy[[‘bleeding_skin’,</dt><dd><p>‘bleeding_mucosal’,
+‘bleeding_nose’,
+‘bleeding_skin’,
+‘bleeding_urine’,
+‘bleeding_vaginal’,
+‘bleeding_vensite’]])</p>
+</dd>
+<dt>Equivalent:</dt><dd><p>bleeding = bleeding |            tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>)</p></li>
+<li><p><strong>compound</strong> (<em>pd.DataFrame</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.date_corrections">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">date_corrections</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">years</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">use_swap_day_month</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.date_corrections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies various possible date corrections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong></p></li>
+<li><p><strong>years</strong></p></li>
+<li><p><strong>swap_day_month</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.date_outliers_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">date_outliers_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">max_days_to_median</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">outliers_as_nat</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.date_outliers_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong></p></li>
+<li><p><strong>max_day_difference</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.day_from_first_true">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">day_from_first_true</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">event</span></em>, <em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.day_from_first_true" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method….</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong></p></li>
+<li><p><strong>event</strong></p></li>
+<li><p><strong>tag</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.dtype_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">dtype_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">dtype</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'raise'</span></em>, <em class="sig-param"><span class="n">downcast</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.dtype_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Correct enforcing dtype.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct.</p></li>
+<li><p><strong>dtype</strong> (<em>str</em>) – The dtype to convert the series</p></li>
+<li><p><strong>errors</strong> (<em>str (coerce, raise, ignore)</em>) – Whether to raise, ignore or coerce errors</p></li>
+<li><p><strong>copy</strong> (<em>boolean</em>) – Whether to return a copy</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dtype_correction</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;Int64&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.fbfill">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">fbfill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.fbfill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes forward and then backward fill.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.fillna_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">fillna_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.fillna_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects filling nan with a strategy</p>
+<p class="rubric">Examples</p>
+<p># Fill nan
+tidy.abdominal_pain =         tidy.groupby(by=[‘StudyNo’])             .abdominal_pain.fillna(False)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>series</strong> (<em>pd.Series</em>)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.find_bleeding_location_columns">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_bleeding_location_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_bleeding_location_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.find_bool_columns">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_bool_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_bool_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.find_level_columns">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_level_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_level_columns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.mode">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.order_magnitude_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">order_magnitude_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">range</span></em>, <em class="sig-param"><span class="n">orders</span><span class="o">=</span><span class="default_value">[10, 100]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.order_magnitude_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects issues with order of magnitudes.</p>
+<p>Data manually collected often has one/two degrees of magnitude
+higher because one or two digits are pressed accidentally. It
+also happens if the comma was no pressed properly.</p>
+<p class="rubric">Examples</p>
+<p>tidy.body_temperature = tidy.body_temperature         .transform(order_magnitude_correction range=(20, 50))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct.</p></li>
+<li><p><strong>orders</strong> (<em>list</em>) – The orders of magnitude to try.</p></li>
+<li><p><strong>range</strong> – The desired range to accept the correction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_bleeding_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_bleeding_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_bleeding_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Examples</p>
+<dl class="simple">
+<dt>bleeding = bleeding |</dt><dd><p>tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tidy</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_convert_dtypes">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_convert_dtypes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_convert_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">yaml</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method computes all OUCRU data corrections.</p>
+<p>The corrections included are:
+1. bool/level correction
+2. bleeding correction
+3. pleural effusion
+4. parental fluid
+5. shock
+6. outcome death
+7. pcr_dengue
+8. day_from_onset, day_from_admission, day_from_enrolment
+9.
+10.
+11.
+12.
+13.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The pandas DataFrame in tidy format.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DatFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_outcome_death_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_outcome_death_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_outcome_death_correction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong></p></li>
+<li><p><strong>verbose</strong></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_parental_fluid_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_parental_fluid_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_parental_fluid_correction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Example:</dt><dd><p>tidy.parental_fluid =             tidy.parental_fluid |             (tidy.parental_fluid_volume &gt; 0)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tidy</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_pcr_dengue_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_pcr_dengue_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_pcr_dengue_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+<p>..warning: review</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_pleural_effusion_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_pleural_effusion_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_pleural_effusion_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Examples</p>
+<p>tidy.pleural_effusion =         tidy.pleural_effusion |         tidy.pleural_effusion_left |         tidy.pleural_effusion_right</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tidy</strong></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_shock_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_shock_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_shock_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method corrects shock related columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tidy</strong> (<em>pd.DataFrame</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.outlier_dates_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">outlier_dates_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">coef</span><span class="o">=</span><span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.outlier_dates_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects the dates that are outliers.</p>
+<p>It receives all the dates in which samples were collected,
+for example for a patient and tries to (i) identify
+outliers and (ii) correct them with the best possible
+date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>series with datetime64[ns]</em>)</p></li>
+<li><p><strong>coeff</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>datetime64[ns] series with corrected dates.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.range_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">range_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">range</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">nan</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.range_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects issues with ranges.</p>
+<p>Some values collected are not within the ranges. They could
+also be removed using the IQR rule, but if we know the limits
+we can filter them as errors instead of outliers.</p>
+<p class="rubric">Example</p>
+<p>tidy.dbp =         tidy.dbp.transform(range_correction, range=(40, 100))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong></p></li>
+<li><p><strong>range</strong></p></li>
+<li><p><strong>value</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.replace_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">replace_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.replace_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects replacing values.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.static_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">static_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.static_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects filling with a consistent value.</p>
+<p class="rubric">Example</p>
+<p>tidy.shock =         tidy.groupby(by=’StudyNo’).shock             .transform(static_correction, method=’max’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (<em>string</em>) – The method which can be a function or a string supported
+by the pandas apply function such as [max, min, median,
+mean, mode]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.str2func">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">str2func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.str2func" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method passes strings to functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – Dictionary where value is a function name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.swap_day_month">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">swap_day_month</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.swap_day_month" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.to_boolean">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">to_boolean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'raise'</span></em>, <em class="sig-param"><span class="n">replace_map</span><span class="o">=</span><span class="default_value">{1: True, 0: False, '1': True, '0': False, 'TRUE': True, 'TRUe': True, 'TRuE': True, 'TRue': True, 'TrUE': True, 'TrUe': True, 'TruE': True, 'True': True, 'tRUE': True, 'tRUe': True, 'tRuE': True, 'tRue': True, 'trUE': True, 'trUe': True, 'truE': True, 'true': True, 'FALSE': False, 'FALSe': False, 'FALsE': False, 'FALse': False, 'FAlSE': False, 'FAlSe': False, 'FAlsE': False, 'FAlse': False, 'FaLSE': False, 'FaLSe': False, 'FaLsE': False, 'FaLse': False, 'FalSE': False, 'FalSe': False, 'FalsE': False, 'False': False, 'fALSE': False, 'fALSe': False, 'fALsE': False, 'fALse': False, 'fAlSE': False, 'fAlSe': False, 'fAlsE': False, 'fAlse': False, 'faLSE': False, 'faLSe': False, 'faLsE': False, 'faLse': False, 'falSE': False, 'falSe': False, 'falsE': False, 'false': False, 'YES': True, 'YEs': True, 'YeS': True, 'Yes': True, 'yES': True, 'yEs': True, 'yeS': True, 'yes': True, 'NO': False, 'No': False, 'nO': False, 'no': False, 'Y': True, 'y': True, 'N': False, 'n': False}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.to_boolean" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>)</p></li>
+<li><p><strong>copy</strong> (<em>boolean</em>)</p></li>
+<li><p><strong>errors</strong> (<em>string</em>)</p></li>
+<li><p><strong>replace_map</strong> (<em>dict-like</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.unique_true_value_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">unique_true_value_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">nan</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.unique_true_value_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects more than one True appearance.</p>
+<p>For example, for variable representing events such as
+event_admission where only one value should be True
+during the data collection period.</p>
+<p class="rubric">Examples</p>
+<p>tidy.event_admission =         tidy.groupby(by=[‘StudyNo’])             .event_admission             .transform(unique_true_value_correction)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Argument keep to pass to duplicated function. The possible
+values are [‘first’, ‘last’, ‘false’].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.repair.report">
+<span id="datablend-core-repair-report-module"></span><h2>datablend.core.repair.report module<a class="headerlink" href="#module-datablend.core.repair.report" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.core.repair.report.oucru_report">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">oucru_report</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.oucru_report" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_event_death">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_event_death</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_event_death" title="Permalink to this definition">¶</a></dt>
+<dd><p>This evaluates that when event_death is true
+the outcome needs to be equal to ‘Died’ and
+reports it otherwise.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_parental_fluid">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_parental_fluid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_parental_fluid" title="Permalink to this definition">¶</a></dt>
+<dd><p>This evaluates that when parental_fluid_volume
+is higher than 0, then parental_fluid is set to
+True.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_pcr_dengue">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_pcr_dengue</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_pcr_dengue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_print">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">info</span></em>, <em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">comp</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_shock">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_shock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_shock" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method….</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.report.report_shock_multiple">
+<code class="sig-prename descclassname">datablend.core.repair.report.</code><code class="sig-name descname">report_shock_multiple</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.report.report_shock_multiple" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.repair.schema">
+<span id="datablend-core-repair-schema-module"></span><h2>datablend.core.repair.schema module<a class="headerlink" href="#module-datablend.core.repair.schema" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="datablend.core.repair.schema.SchemaCorrectionStack">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.repair.schema.</code><code class="sig-name descname">SchemaCorrectionStack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectionStack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.repair.schema.SchemaCorrectorBase" title="datablend.core.repair.schema.SchemaCorrectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.repair.schema.SchemaCorrectorBase</span></code></a></p>
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectionStack.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">report_corrections</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectionStack.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects dataset in stack format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DataFrame</strong> – The DataFrame to correct.</p></li>
+<li><p><strong>columns</strong> – The selected columns</p></li>
+<li><p><strong>report_corrections</strong> – Whether to report the corrections.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.repair.schema.SchemaCorrectionTidy">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.repair.schema.</code><code class="sig-name descname">SchemaCorrectionTidy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectionTidy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#datablend.core.repair.schema.SchemaCorrectorBase" title="datablend.core.repair.schema.SchemaCorrectorBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">datablend.core.repair.schema.SchemaCorrectorBase</span></code></a></p>
+<p>Class to apply corrections for tidy datasets.</p>
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectionTidy.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">report_corrections</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectionTidy.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects dataset in tidy format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DataFrame</strong> – The DataFrame to correct.</p></li>
+<li><p><strong>columns</strong> – The selected columns</p></li>
+<li><p><strong>report_corrections</strong> – Whether to report the corrections.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase">
+<em class="property">class </em><code class="sig-prename descclassname">datablend.core.repair.schema.</code><code class="sig-name descname">SchemaCorrectorBase</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">features</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">filepath</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to apply corrections.</p>
+<p>List of dictionaries with all the information of the features
+including the following attributes (explained with a full example
+for simplicity).</p>
+<p>For more information see corrector.yaml.</p>
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase.features_summary">
+<code class="sig-name descname">features_summary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dataframe</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase.features_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create summary of features.</p>
+<p>If DataFrame is not None, all the columns will appear
+in the summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>columns</strong> (<em>list</em>) – The features to consider.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase.get_feature_records">
+<code class="sig-name descname">get_feature_records</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase.get_feature_records" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get columns in features.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase.get_groupby">
+<code class="sig-name descname">get_groupby</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase.get_groupby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve defined groupby map</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>)</p></li>
+<li><p><strong>params</strong> (<em>dict</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase.get_transformations">
+<code class="sig-name descname">get_transformations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase.get_transformations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="datablend.core.repair.schema.SchemaCorrectorBase.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.schema.SchemaCorrectorBase.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.core.repair">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-datablend.core.repair" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="datablend.tests.html" class="btn btn-neutral float-right" title="datablend.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datablend.core.blend.html" class="btn btn-neutral float-left" title="datablend.core.blend package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

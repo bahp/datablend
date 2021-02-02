@@ -39,7 +39,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The OUCRU-06dx case" href="../../usage/oucru06dx.html" />
+    <link rel="next" title="Examples with Blender" href="../blender/index.html" />
     <link rel="prev" title="Fitting a blender template" href="plot_template_01.html" /> 
 </head>
 
@@ -94,16 +94,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Template Gallery</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with BlenderTemplate</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_template_01.html">Fitting a blender template</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Blender with single input</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -159,7 +166,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">The Template Gallery</a> &raquo;</li>
+          <li><a href="index.html">Examples with BlenderTemplate</a> &raquo;</li>
         
       <li>Blender with single input</li>
     
@@ -191,10 +198,10 @@ to download the full example code</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>BlenderTemplate:
    from_name    to_name            type                                         to_replace timestamp  datetime datetime_date datetime_time event unit
-0        pid        pid        category  {&#39;V_0&#39;: &#39;32dx-001&#39;, &#39;V_1&#39;: &#39;32dx-002&#39;, &#39;V_2&#39;: ...       NaN     False           NaN           NaN   NaN  NaN
+0        pid        pid        category  {&#39;32dx-001&#39;: &#39;V_0&#39;, &#39;32dx-002&#39;: &#39;V_1&#39;, &#39;32dx-0...       NaN     False           NaN           NaN   NaN  NaN
 1  date_exam  date_exam  datetime64[ns]                                                NaN       NaN      True           NaN           NaN   NaN  NaN
-2       Temp       temp        category            {&#39;V_0&#39;: 37.2, &#39;V_1&#39;: 37.5, &#39;V_2&#39;: 36.7}       NaN     False           NaN           NaN   NaN  NaN
-3        Sex        sex        category                    {True: 1, False: 2, None: None}       NaN     False           NaN           NaN   NaN  NaN
+2       Temp       temp        category            {37.2: &#39;V_0&#39;, 37.5: &#39;V_1&#39;, 36.7: &#39;V_2&#39;}       NaN     False           NaN           NaN   NaN  NaN
+3        Sex        sex        category                               {1: &#39;V_0&#39;, 2: &#39;V_1&#39;}       NaN     False           NaN           NaN   NaN  NaN
 </pre></div>
 </div>
 <div class="line-block">
@@ -228,14 +235,12 @@ to download the full example code</p>
 34
 35
 36
-37
-38</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">pathlib</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend libraries</span>
- <span class="kn">from</span> <span class="nn">datablend.core.blend</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
- <span class="kn">from</span> <span class="nn">datablend.utils.pandas</span> <span class="kn">import</span> <span class="n">save_xlsx</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.blend.template</span> <span class="kn">import</span> <span class="n">BlenderTemplate</span>
 
 
  <span class="c1"># --------------------</span>
@@ -281,7 +286,7 @@ to download the full example code</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../usage/oucru06dx.html" class="btn btn-neutral float-right" title="The OUCRU-06dx case" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../blender/index.html" class="btn btn-neutral float-right" title="Examples with Blender" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="plot_template_01.html" class="btn btn-neutral float-left" title="Fitting a blender template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

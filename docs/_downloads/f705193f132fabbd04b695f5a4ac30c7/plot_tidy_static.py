@@ -1,10 +1,10 @@
 """
-RenameWidget
+StaticWidget
 ===========================
+
+.. deprecated
 """
 
-###############################################################################
-# First of all, we need to import the modules and functions that will be used
 # Import
 import pandas as pd
 
@@ -28,7 +28,7 @@ trans = [
     {'study_number': '32dx-001', 'bt': 37.2, 'age': 12, 'gender': 1},
     {'study_number': '32dx-001', 'bt': 39.2},
     {'study_number': '32dx-002', 'bt': 36.5, 'age': 15, 'gender': 1},
-    {'study_number': '32dx-002', 'bt': 39.3, 'age': 15},
+    {'study_number': '32dx-002', 'bt': 39.3, 'age': 14},
     {'study_number': '32dx-003', 'bt': 39.8, 'age': 30, 'gender': 2},
     {'study_number': '32dx-004', 'bt': 37.4, 'age': 35, 'gender': 1}
 ]
@@ -37,14 +37,19 @@ trans = [
 data = pd.DataFrame(trans)
 
 # Create widget
-widget = StaticTidyWidget().fit(template)
+widget = StaticTidyWidget(by='study_number').fit(template)
 
 # Transform
 transformed = widget.transform(data)
+
+# Transform
+transformed_manual = widget.transform(data, l=['gender', 'age'])
 
 # Show
 print("\nOriginal:")
 print(data)
 print("\nTransformed:")
 print(transformed)
-print("\nStacked:")
+print("\nTransformed manual:")
+print(transformed_manual)
+print("\nAre they equal? %s" % transformed.equals(transformed_manual))

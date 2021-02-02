@@ -33,6 +33,7 @@ structure used in AI/ML libraries.
 
 The code of the project is on Github: https://github.com/bahp/datablend
 
+The coverage: `Link <./_coverage/index.html>`_
 
 .. toctree::
    :maxdepth: 2
@@ -46,11 +47,14 @@ The code of the project is on Github: https://github.com/bahp/datablend
    usage/blender
    usage/tips
    usage/configuration
+   usage/correctors
 
 .. toctree::
    :maxdepth: 2
    :caption: Advanced Usage and Information
    :hidden:
+
+   usage/advanced
 
 
 .. toctree::
@@ -59,8 +63,9 @@ The code of the project is on Github: https://github.com/bahp/datablend
    :hidden:
 
    _examples/widgets/index
-   _examples/blender/index
    _examples/template/index
+   _examples/blender/index
+   _examples/correctors/index
    usage/oucru06dx
 
 .. toctree::

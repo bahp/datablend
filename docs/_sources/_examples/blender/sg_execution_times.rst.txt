@@ -5,12 +5,14 @@
 
 Computation times
 =================
-**00:00.264** total execution time for **_examples_blender** files:
+**00:00.419** total execution time for **_examples_blender** files:
 
 +-------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_blender_plot_blender_03.py` (``plot_blender_03.py``) | 00:00.115 | 0.0 MB |
+| :ref:`sphx_glr__examples_blender_plot_blender_04.py` (``plot_blender_04.py``) | 00:00.141 | 0.0 MB |
 +-------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_blender_plot_blender_02.py` (``plot_blender_02.py``) | 00:00.097 | 0.0 MB |
+| :ref:`sphx_glr__examples_blender_plot_blender_03.py` (``plot_blender_03.py``) | 00:00.117 | 0.0 MB |
 +-------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_blender_plot_blender_01.py` (``plot_blender_01.py``) | 00:00.052 | 0.0 MB |
+| :ref:`sphx_glr__examples_blender_plot_blender_02.py` (``plot_blender_02.py``) | 00:00.105 | 0.0 MB |
++-------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_blender_plot_blender_01.py` (``plot_blender_01.py``) | 00:00.056 | 0.0 MB |
 +-------------------------------------------------------------------------------+-----------+--------+

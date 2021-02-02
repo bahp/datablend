@@ -4,7 +4,7 @@
 
 .. _sphx_glr__examples_widgets:
 
-The Widget Gallery
+Examples with Widgets
 ==========================
 
 Below is a gallery of examples
@@ -16,10 +16,10 @@ Below is a gallery of examples
 
 .. only:: html
 
- .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_dtmerge_thumb.png
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_dtmerge_thumb.png
      :alt: DateTimeMergeWidget
 
-     :ref:`sphx_glr__examples_widgets_plot_dtmerge.py`
+     :ref:`sphx_glr__examples_widgets_plot_format_dtmerge.py`
 
 .. raw:: html
 
@@ -29,7 +29,7 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/widgets/plot_dtmerge
+   /_examples/widgets/plot_format_dtmerge
 
 .. raw:: html
 
@@ -37,10 +37,10 @@ Below is a gallery of examples
 
 .. only:: html
 
- .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_events_thumb.png
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_events_thumb.png
      :alt: EventWidget
 
-     :ref:`sphx_glr__examples_widgets_plot_events.py`
+     :ref:`sphx_glr__examples_widgets_plot_format_events.py`
 
 .. raw:: html
 
@@ -50,7 +50,7 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/widgets/plot_events
+   /_examples/widgets/plot_format_events
 
 .. raw:: html
 
@@ -58,10 +58,10 @@ Below is a gallery of examples
 
 .. only:: html
 
- .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_rename_thumb.png
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_rename_thumb.png
      :alt: RenameWidget
 
-     :ref:`sphx_glr__examples_widgets_plot_rename.py`
+     :ref:`sphx_glr__examples_widgets_plot_format_rename.py`
 
 .. raw:: html
 
@@ -71,7 +71,7 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/widgets/plot_rename
+   /_examples/widgets/plot_format_rename
 
 .. raw:: html
 
@@ -79,10 +79,10 @@ Below is a gallery of examples
 
 .. only:: html
 
- .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_replace_thumb.png
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_replace_thumb.png
      :alt: ReplaceWidget
 
-     :ref:`sphx_glr__examples_widgets_plot_replace.py`
+     :ref:`sphx_glr__examples_widgets_plot_format_replace.py`
 
 .. raw:: html
 
@@ -92,7 +92,49 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/widgets/plot_replace
+   /_examples/widgets/plot_format_replace
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="DateFromStudyDayWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_studyday_thumb.png
+     :alt: DateFromStudyDayWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_format_studyday.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_format_studyday
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="BlenderTemplate warnings  - duplicated from_name  - null to_name  - to_replace not a map  - col...">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_format_warnings_thumb.png
+     :alt: Warnings
+
+     :ref:`sphx_glr__examples_widgets_plot_format_warnings.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_format_warnings
 
 .. raw:: html
 
@@ -117,14 +159,14 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="DateFromStudyDayWidget">
+    <div class="sphx-glr-thumbcontainer" tooltip="StackWidget">
 
 .. only:: html
 
- .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_studyday_thumb.png
-     :alt: DateFromStudyDayWidget
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_stack_unit_thumb.png
+     :alt: StackWidget
 
-     :ref:`sphx_glr__examples_widgets_plot_studyday.py`
+     :ref:`sphx_glr__examples_widgets_plot_stack_unit.py`
 
 .. raw:: html
 
@@ -134,7 +176,28 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/widgets/plot_studyday
+   /_examples/widgets/plot_stack_unit
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="StackWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_stack_with_melt_thumb.png
+     :alt: StackWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_stack_with_melt.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_stack_with_melt
 
 .. raw:: html
 
@@ -159,12 +222,54 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="RenameWidget">
+    <div class="sphx-glr-thumbcontainer" tooltip="TidyWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_thumb.png
+     :alt: TidyWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_tidy.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_tidy
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="TidyDefault">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_default_thumb.png
+     :alt: TidyDefault
+
+     :ref:`sphx_glr__examples_widgets_plot_tidy_default.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_tidy_default
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="TidyLevels">
 
 .. only:: html
 
  .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_levels_thumb.png
-     :alt: RenameWidget
+     :alt: TidyLevels
 
      :ref:`sphx_glr__examples_widgets_plot_tidy_levels.py`
 
@@ -180,12 +285,12 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="RenameWidget">
+    <div class="sphx-glr-thumbcontainer" tooltip="StaticWidget">
 
 .. only:: html
 
  .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_static_thumb.png
-     :alt: RenameWidget
+     :alt: StaticWidget
 
      :ref:`sphx_glr__examples_widgets_plot_tidy_static.py`
 
@@ -198,6 +303,27 @@ Below is a gallery of examples
    :hidden:
 
    /_examples/widgets/plot_tidy_static
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="TidyWidget">
+
+.. only:: html
+
+ .. figure:: /_examples/widgets/images/thumb/sphx_glr_plot_tidy_with_pivot_table_thumb.png
+     :alt: TidyWidget
+
+     :ref:`sphx_glr__examples_widgets_plot_tidy_with_pivot_table.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/widgets/plot_tidy_with_pivot_table
 .. raw:: html
 
     <div class="sphx-glr-clear"></div>

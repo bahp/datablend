@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RenameWidget &mdash; datablend 0.0.1 documentation</title>
+  <title>StaticWidget &mdash; datablend 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="The Blender Gallery" href="../blender/index.html" />
-    <link rel="prev" title="RenameWidget" href="plot_tidy_levels.html" /> 
+    <link rel="next" title="TidyWidget" href="plot_tidy_with_pivot_table.html" />
+    <link rel="prev" title="TidyLevels" href="plot_tidy_levels.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,23 +94,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">The Widget Gallery</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_dtmerge.html">DateTimeMergeWidget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_events.html">EventWidget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_rename.html">RenameWidget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_replace.html">ReplaceWidget</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with Widgets</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_format_dtmerge.html">DateTimeMergeWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_format_events.html">EventWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_format_rename.html">RenameWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_format_replace.html">ReplaceWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_format_studyday.html">DateFromStudyDayWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_format_warnings.html">Warnings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_stack.html">StackWidget</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_studyday.html">DateFromStudyDayWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_stack_unit.html">StackWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_stack_with_melt.html">StackWidget</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_summary.html">Summary</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_tidy_levels.html">RenameWidget</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">RenameWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy.html">TidyWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_default.html">TidyDefault</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_levels.html">TidyLevels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">StaticWidget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_tidy_with_pivot_table.html">TidyWidget</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -166,9 +179,9 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="index.html">The Widget Gallery</a> &raquo;</li>
+          <li><a href="index.html">Examples with Widgets</a> &raquo;</li>
         
-      <li>RenameWidget</li>
+      <li>StaticWidget</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -192,11 +205,90 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-examples-widgets-plot-tidy-static-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="renamewidget">
-<span id="sphx-glr-examples-widgets-plot-tidy-static-py"></span><h1>RenameWidget<a class="headerlink" href="#renamewidget" title="Permalink to this headline">¶</a></h1>
-<p>First of all, we need to import the modules and functions that will be used
-Import</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
+<div class="sphx-glr-example-title section" id="staticwidget">
+<span id="sphx-glr-examples-widgets-plot-tidy-static-py"></span><h1>StaticWidget<a class="headerlink" href="#staticwidget" title="Permalink to this headline">¶</a></h1>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>================================================================================
+The following columns have more than one uniquevalue. Please ensure that these
+columns are meant tobe constant; that is, same value over the data.
+Otherwise,there could be an inconsistent behaviour: [&#39;age&#39;]
+
+  -&lt;age&gt; has 1 inconsistencies.
+
+                                 nanunique  nunique
+                study_number
+                32dx-002      [15.0, 14.0]        2
+
+
+
+The STATIC transformations report:
+
+
+                        transform dtypes.1 dtypes.2                         status
+                name
+                age          True  float64    Int64  &#39;bool&#39; object is not callable
+                gender       True  float64    Int64  &#39;bool&#39; object is not callable
+
+================================================================================
+
+================================================================================
+The following columns have more than one uniquevalue. Please ensure that these
+columns are meant tobe constant; that is, same value over the data.
+Otherwise,there could be an inconsistent behaviour: [&#39;age&#39;]
+
+  -&lt;age&gt; has 1 inconsistencies.
+
+                                 nanunique  nunique
+                study_number
+                32dx-002      [15.0, 14.0]        2
+
+
+
+The STATIC transformations report:
+
+
+                        transform dtypes.1 dtypes.2                         status
+                name
+                age          True  float64    Int64  &#39;bool&#39; object is not callable
+                gender       True  float64    Int64  &#39;bool&#39; object is not callable
+
+================================================================================
+
+Original:
+  study_number    bt   age  gender
+0     32dx-001  37.2  12.0     1.0
+1     32dx-001  39.2   NaN     NaN
+2     32dx-002  36.5  15.0     1.0
+3     32dx-002  39.3  14.0     NaN
+4     32dx-003  39.8  30.0     2.0
+5     32dx-004  37.4  35.0     1.0
+
+Transformed:
+  study_number    bt   age  gender
+0     32dx-001  37.2  12.0     1.0
+1     32dx-001  39.2   NaN     NaN
+2     32dx-002  36.5  15.0     1.0
+3     32dx-002  39.3  14.0     NaN
+4     32dx-003  39.8  30.0     2.0
+5     32dx-004  37.4  35.0     1.0
+
+Transformed manual:
+  study_number    bt   age  gender
+0     32dx-001  37.2  12.0     1.0
+1     32dx-001  39.2   NaN     NaN
+2     32dx-002  36.5  15.0     1.0
+3     32dx-002  39.3  14.0     NaN
+4     32dx-003  39.8  30.0     2.0
+5     32dx-004  37.4  35.0     1.0
+
+Are they equal? True
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 8
+ 9
 10
 11
 12
@@ -237,7 +329,13 @@ Import</p>
 47
 48
 49
-50</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+50
+51
+52
+53
+54
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
  <span class="c1"># DataBlend library</span>
  <span class="kn">from</span> <span class="nn">datablend.core.widgets.tidy</span> <span class="kn">import</span> <span class="n">StaticTidyWidget</span>
@@ -259,7 +357,7 @@ Import</p>
      <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">37.2</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">39.2</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">36.5</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-     <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">39.3</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">39.3</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">39.8</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
      <span class="p">{</span><span class="s1">&#39;study_number&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;bt&#39;</span><span class="p">:</span> <span class="mf">37.4</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
  <span class="p">]</span>
@@ -268,42 +366,25 @@ Import</p>
  <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">trans</span><span class="p">)</span>
 
  <span class="c1"># Create widget</span>
- <span class="n">widget</span> <span class="o">=</span> <span class="n">StaticTidyWidget</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+ <span class="n">widget</span> <span class="o">=</span> <span class="n">StaticTidyWidget</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;study_number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
 
  <span class="c1"># Transform</span>
  <span class="n">transformed</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Transform</span>
+ <span class="n">transformed_manual</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">])</span>
 
  <span class="c1"># Show</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Original:&quot;</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transformed:&quot;</span><span class="p">)</span>
  <span class="nb">print</span><span class="p">(</span><span class="n">transformed</span><span class="p">)</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stacked:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Transformed manual:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">transformed_manual</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Are they equal? </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">transformed</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">transformed_manual</span><span class="p">))</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Original:
-  study_number    bt   age  gender
-0     32dx-001  37.2  12.0     1.0
-1     32dx-001  39.2   NaN     NaN
-2     32dx-002  36.5  15.0     1.0
-3     32dx-002  39.3  15.0     NaN
-4     32dx-003  39.8  30.0     2.0
-5     32dx-004  37.4  35.0     1.0
-
-Transformed:
-  study_number    bt   age  gender
-0     32dx-001  37.2  12.0     1.0
-1     32dx-001  39.2  12.0     1.0
-2     32dx-002  36.5  15.0     1.0
-3     32dx-002  39.3  15.0     1.0
-4     32dx-003  39.8  30.0     2.0
-5     32dx-004  37.4  35.0     1.0
-
-Stacked:
-</pre></div>
-</div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.024 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.061 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-widgets-plot-tidy-static-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/f705193f132fabbd04b695f5a4ac30c7/plot_tidy_static.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_tidy_static.py</span></code></a></p>
@@ -323,10 +404,10 @@ Stacked:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../blender/index.html" class="btn btn-neutral float-right" title="The Blender Gallery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_tidy_with_pivot_table.html" class="btn btn-neutral float-right" title="TidyWidget" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_tidy_levels.html" class="btn btn-neutral float-left" title="RenameWidget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_tidy_levels.html" class="btn btn-neutral float-left" title="TidyLevels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

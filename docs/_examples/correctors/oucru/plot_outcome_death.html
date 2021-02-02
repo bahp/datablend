@@ -1,0 +1,405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fix outcome from event_death &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Fix parental fluid and load (mL)" href="plot_parental_fluid.html" />
+    <link rel="prev" title="oucru_report" href="plot_oucru_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/advanced.html">Advanced</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Examples with correctors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_bleeding.html">Fix bleeding from sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_oucru_report.html">oucru_report</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fix outcome from event_death</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_parental_fluid.html">Fix parental fluid and load (mL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pcr_dengue.html">Fix PCR dengue (load, sero and out)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_pleural_effusion.html">Fix pleural effusion (from sides)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_shock.html">Fix shock, multiple and event_shock</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../_apidoc/modules.html">datablend</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Examples with correctors</a> &raquo;</li>
+        
+      <li>Fix outcome from event_death</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/_examples/correctors/oucru/plot_outcome_death.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-oucru-plot-outcome-death-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="fix-outcome-from-event-death">
+<span id="sphx-glr-examples-correctors-oucru-plot-outcome-death-py"></span><h1>Fix outcome from event_death<a class="headerlink" href="#fix-outcome-from-event-death" title="Permalink to this headline">¶</a></h1>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying... oucru_outcome_death_correction.
+
+Note:
+The events columns as defined in oucru should never contain False values.
+Since they are only flagged when appearing in the spreadsheets and
+therefore contain only True or pd.NA.
+
+Data:
+  study_no outcome event_death
+0        0    None        None
+1        1    None        None
+2        2    None        None
+3        2    None        True
+4        3    Died       False
+5        4    Died        True
+6        5   Alive        True
+7        6   Alive       False
+8        7   Alive        None
+
+Correction:
+  study_no outcome  event_death
+0        0    &lt;NA&gt;         &lt;NA&gt;
+1        1    &lt;NA&gt;         &lt;NA&gt;
+2        2    Died         &lt;NA&gt;
+3        2    Died         True
+4        3    Died        False
+5        4    Died         True
+6        5    Died         True
+7        6   Alive        False
+8        7   Alive         &lt;NA&gt;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+ <span class="c1"># Specific</span>
+ <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+ <span class="c1"># DataBlend Library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">oucru_outcome_death_correction</span>
+
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># .. note: According to our definition event_death</span>
+ <span class="c1">#          is only pd.NA or True. It is never false.</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;Died&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;Died&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;Alive&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;Alive&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+     <span class="p">[</span><span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;Alive&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+ <span class="p">]</span>
+
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># event_death</span>
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># Combinations</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;study_no&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;outcome&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;event_death&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Correction</span>
+ <span class="n">correction</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+ <span class="n">correction</span> <span class="o">=</span> <span class="n">oucru_outcome_death_correction</span><span class="p">(</span><span class="n">correction</span><span class="p">)</span>
+
+ <span class="c1"># Show data any</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note:</span><span class="se">\n</span><span class="s2">The events columns as defined in oucru &quot;</span>
+       <span class="s2">&quot;should never contain False values.</span><span class="se">\n</span><span class="s2">Since they &quot;</span>
+       <span class="s2">&quot;are only flagged when appearing in the spreadsheets &quot;</span>
+       <span class="s2">&quot;and</span><span class="se">\n</span><span class="s2">therefore contain only True or pd.NA.&quot;</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Correction:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">correction</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.024 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-oucru-plot-outcome-death-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/799a4a347fe87679bbff2edc88df41d1/plot_outcome_death.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_outcome_death.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../../_downloads/c225987d37ec3ace6a6fec76488ce27e/plot_outcome_death.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_outcome_death.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_parental_fluid.html" class="btn btn-neutral float-right" title="Fix parental fluid and load (mL)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_oucru_report.html" class="btn btn-neutral float-left" title="oucru_report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

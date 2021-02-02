@@ -92,12 +92,19 @@
 <li class="toctree-l1"><a class="reference internal" href="usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_examples/widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_examples/blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_examples/correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -180,14 +187,18 @@
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
@@ -195,11 +206,15 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.add_curr_path">add_curr_path() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.add_days">add_days() (in module datablend.utils.compute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.age">age() (in module datablend.utils.compute)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.add_to_date">add_to_date() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.age_from_dob">age_from_dob() (in module datablend.utils.compute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -207,18 +222,60 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender">Blender (class in datablend.core.blend)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.bc">bc (datablend.core.blend.blender.Blender attribute)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.bc">(datablend.core.blend_old.Blender attribute)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate">BlenderTemplate (class in datablend.core.blend)</a>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.bffill">bffill() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.bffill">(in module datablend.core.repair.correctors)</a>
 </li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt">bt() (in module datablend.tests.test_widgets)</a>
+        <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.bffill">(in module datablend.utils.pandas)</a>
 </li>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_df">bt_df() (in module datablend.tests.test_widgets)</a>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender">Blender (class in datablend.core.blend.blender)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender">(class in datablend.core.blend_old)</a>
 </li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig">BlenderConfig (class in datablend.core.blend.config)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig">(class in datablend.core.blend_old)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate">BlenderTemplate (class in datablend.core.blend.template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate">(class in datablend.core.blend_old)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_json">bt_json() (in module datablend.tests.test_widgets)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.bool_level_correction">bool_level_correction() (in module datablend.core.repair.correctors)</a>
 </li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.bt">bt() (in module datablend.tests.test_template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt">(in module datablend.tests.test_widgets)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.bt_df">bt_df() (in module datablend.tests.test_template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_df">(in module datablend.tests.test_widgets)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.bt_json">bt_json() (in module datablend.tests.test_template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.bt_json">(in module datablend.tests.test_widgets)</a>
+</li>
+      </ul></li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.BTDuplicateError">BTDuplicateError</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.BTMissingRequiredColumnsError">BTMissingRequiredColumnsError</a>
@@ -231,15 +288,47 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.category_maps">category_maps() (in module datablend.core.blend)</a>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.display.categories_report">categories_report() (in module datablend.utils.display)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.check">check() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.category_correction">category_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.category_maps">category_maps() (in module datablend.core.blend.template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.category_maps">(in module datablend.core.blend_old)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.causal_correction">causal_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.check">check() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.check">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.combinations_lower_upper">combinations_lower_upper() (in module datablend.core.repair.correctors)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.compound_feature_correction">compound_feature_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.compound_feature_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.consistency_bleeding">consistency_bleeding() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.consistency_events">consistency_events() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.consistency_shock">consistency_shock() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.consistency_stay">consistency_stay() (in module datablend.core.consistency)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.convert_dtypes_categorical">convert_dtypes_categorical() (in module datablend.utils.transformations)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.convert_dtypes_datetime">convert_dtypes_datetime() (in module datablend.utils.transformations)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.Corrector">Corrector (class in datablend.core.correctors)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -247,8 +336,12 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.data">data() (in module datablend.tests.test_widgets)</a>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.data">data() (in module datablend.tests.test_template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.data">(in module datablend.tests.test_widgets)</a>
 </li>
+      </ul></li>
       <li>
     datablend
 
@@ -267,7 +360,49 @@
     datablend.core.blend
 
       <ul>
-        <li><a href="_apidoc/datablend.core.html#module-datablend.core.blend">module</a>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.blend.blender
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.blender">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.blend.config
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.blend.template
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.template">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.blend_old
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.blend_old">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.consistency
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.consistency">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.correctors
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.correctors">module</a>
 </li>
       </ul></li>
       <li>
@@ -278,17 +413,38 @@
 </li>
       </ul></li>
       <li>
+    datablend.core.repair
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.repair.correctors
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.correctors">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.repair.report
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.report">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.core.repair.schema
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.schema">module</a>
+</li>
+      </ul></li>
+      <li>
     datablend.core.settings
 
       <ul>
         <li><a href="_apidoc/datablend.core.html#module-datablend.core.settings">module</a>
-</li>
-      </ul></li>
-      <li>
-    datablend.core.widgets
-
-      <ul>
-        <li><a href="_apidoc/datablend.core.html#module-datablend.core.widgets">module</a>
 </li>
       </ul></li>
       <li>
@@ -305,6 +461,15 @@
         <li><a href="_apidoc/datablend.tests.html#module-datablend.tests.test_examples">module</a>
 </li>
       </ul></li>
+      <li>
+    datablend.tests.test_template
+
+      <ul>
+        <li><a href="_apidoc/datablend.tests.html#module-datablend.tests.test_template">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     datablend.tests.test_widgets
 
@@ -326,8 +491,6 @@
         <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.compute">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     datablend.utils.display
 
@@ -364,6 +527,20 @@
 </li>
       </ul></li>
       <li>
+    datablend.utils.pandas_schema
+
+      <ul>
+        <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.pandas_schema">module</a>
+</li>
+      </ul></li>
+      <li>
+    datablend.utils.pint
+
+      <ul>
+        <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.pint">module</a>
+</li>
+      </ul></li>
+      <li>
     datablend.utils.plot
 
       <ul>
@@ -377,19 +554,39 @@
         <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.transformations">module</a>
 </li>
       </ul></li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.date_time_maps">date_time_maps() (in module datablend.core.blend)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.date_corrections">date_corrections() (in module datablend.core.repair.correctors)</a>
 </li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.date_outliers_correction">date_outliers_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.date_time_maps">date_time_maps() (in module datablend.core.blend.template)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.date_time_maps">(in module datablend.core.blend_old)</a>
+</li>
+      </ul></li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.datetime">datetime() (in module datablend.utils.compute)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.df">df (datablend.core.blend.BlenderTemplate attribute)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.day_from_first_true">day_from_first_true() (in module datablend.core.repair.correctors)</a>
 </li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.settings.default_false">default_false (in module datablend.core.settings)</a>
+</li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.display.describe">describe() (in module datablend.utils.display)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.df">df (datablend.core.blend.template.BlenderTemplate attribute)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.df">(datablend.core.blend_old.BlenderTemplate attribute)</a>
+</li>
+      </ul></li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning.diff1_">diff1_ (datablend.core.exceptions.ReplaceWidgetMapWarning attribute)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning.diff2_">diff2_ (datablend.core.exceptions.ReplaceWidgetMapWarning attribute)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.display">display() (in module datablend.utils.methods)</a>
 </li>
-      <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.dob">dob() (in module datablend.utils.compute)</a>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.compute.dob_from_age">dob_from_age() (in module datablend.utils.compute)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.dtype_correction">dtype_correction() (in module datablend.core.repair.correctors)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -411,27 +608,129 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.fbfill">fbfill() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.fbfill">(in module datablend.core.repair.correctors)</a>
+</li>
+        <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.fbfill">(in module datablend.utils.pandas)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.features">features() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.features">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.features_summary">features_summary() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase.features_summary">(datablend.core.repair.schema.SchemaCorrectorBase method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filename">filename() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_data">filepath_data() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.filepath_data">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_datasets">filepath_datasets() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_logger_config">filepath_logger_config() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.filepath_logger_config">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_reports">filepath_reports() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_stack">filepath_stack() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_temp">filepath_temp() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.filepath_temp">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.filepath_tidy">filepath_tidy() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.fillna_correction">fillna_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.fillna_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.find_bleeding_location_columns">find_bleeding_location_columns() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.find_bool_columns">find_bool_columns() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.find_level_columns">find_level_columns() (in module datablend.core.repair.correctors)</a>
+</li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.settings.find_levels">find_levels() (in module datablend.core.settings)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.settings.find_sources">find_sources() (in module datablend.core.settings)</a>
 </li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.settings.find_static">find_static() (in module datablend.core.settings)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.fit">fit() (datablend.core.blend.Blender method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.fit">fit() (datablend.core.blend.blender.Blender method)</a>
 
       <ul>
-        <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.fit">(datablend.core.blend.BlenderTemplate method)</a>
+        <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.fit">(datablend.core.blend.template.BlenderTemplate method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.fit">(datablend.core.blend_old.Blender method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.fit">(datablend.core.blend_old.BlenderTemplate method)</a>
 </li>
       </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.fit_from_bt_df">fit_from_bt_df() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.fit_from_bt_df">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.fit_from_data">fit_from_data() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.fit_from_data">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.fit_stack">fit_stack() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.fit_stack">(datablend.core.blend_old.Blender method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.fit_stack_tidy">fit_stack_tidy() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.fit_stack_tidy">(datablend.core.blend_old.Blender method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.fit_transform">fit_transform() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.fit_transform">(datablend.core.blend_old.Blender method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.format_var_names">format_var_names() (in module datablend.utils.transformations)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase.get_feature_records">get_feature_records() (datablend.core.repair.schema.SchemaCorrectorBase method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.fit_from_bt_df">fit_from_bt_df() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase.get_groupby">get_groupby() (datablend.core.repair.schema.SchemaCorrectorBase method)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.fit_from_data">fit_from_data() (datablend.core.blend.BlenderTemplate method)</a>
-</li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.fit_transform">fit_transform() (datablend.core.blend.Blender method)</a>
-</li>
-      <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.format_var_names">format_var_names() (in module datablend.utils.transformations)</a>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase.get_transformations">get_transformations() (datablend.core.repair.schema.SchemaCorrectorBase method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -439,11 +738,23 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.has_columns">has_columns() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.has_columns">has_columns() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.has_columns">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.has_duplicated_units_per_column">has_duplicated_units_per_column() (in module datablend.core.consistency)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.has_timestamp">has_timestamp() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.has_timestamp">has_timestamp() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.has_timestamp">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.has_undefined_units">has_undefined_units() (in module datablend.core.consistency)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -452,6 +763,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.IncompatibleBlenderTemplateError">IncompatibleBlenderTemplateError</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.InRangeCorrector">InRangeCorrector (class in datablend.core.correctors)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -465,12 +778,16 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.load">load() (datablend.core.blend.Blender method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.load">load() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.load">(datablend.core.blend_old.Blender method)</a>
 </li>
-      <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.load_columns_operations">load_columns_operations() (in module datablend.utils.methods)</a>
-</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.load_columns_operations">load_columns_operations() (in module datablend.utils.methods)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.load_features_map">load_features_map() (in module datablend.utils.methods)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.logger.load_logger">load_logger() (in module datablend.utils.logger)</a>
@@ -481,6 +798,12 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.map_kv">map_kv() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.map_kv">(datablend.core.blend_old.BlenderTemplate method)</a>
+</li>
+      </ul></li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.merge.merge_date_time">merge_date_time() (in module datablend.utils.merge)</a>
 
       <ul>
@@ -491,10 +814,22 @@
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.merge.merge_day_month_year">merge_day_month_year() (in module datablend.utils.merge)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.missing_columns">missing_columns() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.missing_columns">missing_columns() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.missing_columns">(datablend.core.blend_old.BlenderTemplate method)</a>
 </li>
+      </ul></li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.MissingRequiredColumns">MissingRequiredColumns</a>
 </li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.mode">mode() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.mode">(in module datablend.core.repair.correctors)</a>
+</li>
+        <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.mode">(in module datablend.utils.pandas)</a>
+</li>
+      </ul></li>
       <li>
     module
 
@@ -503,17 +838,37 @@
 </li>
         <li><a href="_apidoc/datablend.core.html#module-datablend.core">datablend.core</a>
 </li>
-        <li><a href="_apidoc/datablend.core.html#module-datablend.core.blend">datablend.core.blend</a>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend">datablend.core.blend</a>
+</li>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.blender">datablend.core.blend.blender</a>
+</li>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.config">datablend.core.blend.config</a>
+</li>
+        <li><a href="_apidoc/datablend.core.blend.html#module-datablend.core.blend.template">datablend.core.blend.template</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.blend_old">datablend.core.blend_old</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.consistency">datablend.core.consistency</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.correctors">datablend.core.correctors</a>
 </li>
         <li><a href="_apidoc/datablend.core.html#module-datablend.core.exceptions">datablend.core.exceptions</a>
 </li>
-        <li><a href="_apidoc/datablend.core.html#module-datablend.core.settings">datablend.core.settings</a>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair">datablend.core.repair</a>
 </li>
-        <li><a href="_apidoc/datablend.core.html#module-datablend.core.widgets">datablend.core.widgets</a>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.correctors">datablend.core.repair.correctors</a>
+</li>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.report">datablend.core.repair.report</a>
+</li>
+        <li><a href="_apidoc/datablend.core.repair.html#module-datablend.core.repair.schema">datablend.core.repair.schema</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#module-datablend.core.settings">datablend.core.settings</a>
 </li>
         <li><a href="_apidoc/datablend.tests.html#module-datablend.tests">datablend.tests</a>
 </li>
         <li><a href="_apidoc/datablend.tests.html#module-datablend.tests.test_examples">datablend.tests.test_examples</a>
+</li>
+        <li><a href="_apidoc/datablend.tests.html#module-datablend.tests.test_template">datablend.tests.test_template</a>
 </li>
         <li><a href="_apidoc/datablend.tests.html#module-datablend.tests.test_widgets">datablend.tests.test_widgets</a>
 </li>
@@ -531,6 +886,10 @@
 </li>
         <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.pandas">datablend.utils.pandas</a>
 </li>
+        <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.pandas_schema">datablend.utils.pandas_schema</a>
+</li>
+        <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.pint">datablend.utils.pint</a>
+</li>
         <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.plot">datablend.utils.plot</a>
 </li>
         <li><a href="_apidoc/datablend.utils.html#module-datablend.utils.transformations">datablend.utils.transformations</a>
@@ -539,8 +898,64 @@
   </ul></td>
 </tr></table>
 
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.nanunique">nanunique() (in module datablend.utils.pandas)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.one_year_less">one_year_less() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.one_year_more">one_year_more() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.order_magnitude_correction">order_magnitude_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.order_magnitude_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.OrderMagnitudeCorrector">OrderMagnitudeCorrector (class in datablend.core.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_bleeding_correction">oucru_bleeding_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_convert_dtypes">oucru_convert_dtypes() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction">oucru_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_outcome_death_correction">oucru_outcome_death_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_parental_fluid_correction">oucru_parental_fluid_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pcr_dengue_correction">oucru_pcr_dengue_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pleural_effusion_correction">oucru_pleural_effusion_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.oucru_report">oucru_report() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_shock_correction">oucru_shock_correction() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.outlier_dates_correction">outlier_dates_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.outlier_dates_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.prefix">prefix() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_apidoc/datablend.core.html#datablend.core.settings.prefix_sources">prefix_sources() (in module datablend.core.settings)</a>
 </li>
@@ -550,7 +965,33 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.range_correction">range_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.range_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.replace_correction">replace_correction() (in module datablend.core.repair.correctors)</a>
+</li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.ReplaceWidgetMapWarning">ReplaceWidgetMapWarning</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.InRangeCorrector.report">report() (datablend.core.correctors.InRangeCorrector method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_event_death">report_event_death() (in module datablend.core.repair.report)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_parental_fluid">report_parental_fluid() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_pcr_dengue">report_pcr_dengue() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_print">report_print() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_shock">report_shock() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.report.report_shock_multiple">report_shock_multiple() (in module datablend.core.repair.report)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.report_unique_value">report_unique_value() (in module datablend.core.consistency)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -558,21 +999,73 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.save">save() (datablend.core.blend.Blender method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.save">save() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.save">(datablend.core.blend_old.Blender method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.save_df_dict">save_df_dict() (in module datablend.utils.pandas)</a>
 </li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.save_xlsx">save_xlsx() (in module datablend.utils.pandas)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.stack">stack() (datablend.core.blend.Blender method)</a>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas_schema.schema_from_json">schema_from_json() (in module datablend.utils.pandas_schema)</a>
 </li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.schema_json_correction">schema_json_correction() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.schema_validate">schema_validate() (in module datablend.core.consistency)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectionStack">SchemaCorrectionStack (class in datablend.core.repair.schema)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectionTidy">SchemaCorrectionTidy (class in datablend.core.repair.schema)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase">SchemaCorrectorBase (class in datablend.core.repair.schema)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.stack">stack() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.stack">(datablend.core.blend_old.Blender method)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.stack_index">stack_index() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.stack_index">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.stack_validate">stack_validate() (in module datablend.core.consistency)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.methods.stacked_display">stacked_display() (in module datablend.utils.methods)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.settings.static">static (in module datablend.core.settings)</a>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.static_correction">static_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.static_correction">(in module datablend.core.repair.correctors)</a>
 </li>
+      </ul></li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.transformations.str2eval">str2eval() (in module datablend.utils.transformations)</a>
 </li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.str2func">str2func() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.str2func">(in module datablend.core.repair.correctors)</a>
+</li>
+        <li><a href="_apidoc/datablend.utils.html#datablend.utils.pandas.str2func">(in module datablend.utils.pandas)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.utils.html#datablend.utils.display.str_description">str_description() (in module datablend.utils.display)</a>
+</li>
       <li><a href="_apidoc/datablend.utils.html#datablend.utils.display.str_dtypes">str_dtypes() (in module datablend.utils.display)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.swap_day_month">swap_day_month() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.swap_day_month">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.swap_max_year">swap_max_year() (in module datablend.core.consistency)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -580,7 +1073,27 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.templates">templates (datablend.core.blend.Blender attribute)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.templates">templates (datablend.core.blend.blender.Blender attribute)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.templates">(datablend.core.blend_old.Blender attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_from_data">test_bt_fit_from_data() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_from_df">test_bt_fit_from_df() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_from_json">test_bt_fit_from_json() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_raises_exception_duplicate_error">test_bt_fit_raises_exception_duplicate_error() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_from_name">test_bt_fit_raises_exception_missing_required_column_error_from_name() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_raises_exception_missing_required_column_error_to_name">test_bt_fit_raises_exception_missing_required_column_error_to_name() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_raises_exception_null_value_error">test_bt_fit_raises_exception_null_value_error() (in module datablend.tests.test_template)</a>
+</li>
+      <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_template.test_bt_fit_raises_exception_on_None">test_bt_fit_raises_exception_on_None() (in module datablend.tests.test_template)</a>
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_examples.test_script_execution_blender">test_script_execution_blender() (in module datablend.tests.test_examples)</a>
 </li>
@@ -618,24 +1131,78 @@
 </li>
       <li><a href="_apidoc/datablend.tests.html#datablend.tests.test_widgets.test_widget_studyday">test_widget_studyday() (in module datablend.tests.test_widgets)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.tidy">tidy() (datablend.core.blend.Blender method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.tidy">tidy() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.tidy">(datablend.core.blend_old.Blender method)</a>
 </li>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.Blender.transform">transform() (datablend.core.blend.Blender method)</a>
+      </ul></li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.tidy_index">tidy_index() (datablend.core.blend.config.BlenderConfig method)</a>
 </li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.tidy_params">tidy_params() (datablend.core.blend.config.BlenderConfig method)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.to_boolean">to_boolean() (in module datablend.core.repair.correctors)</a>
+</li>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.blender.Blender.transform">transform() (datablend.core.blend.blender.Blender method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.Blender.transform">(datablend.core.blend_old.Blender method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.InRangeCorrector.transform">(datablend.core.correctors.InRangeCorrector method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.correctors.OrderMagnitudeCorrector.transform">(datablend.core.correctors.OrderMagnitudeCorrector method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectionStack.transform">(datablend.core.repair.schema.SchemaCorrectionStack method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectionTidy.transform">(datablend.core.repair.schema.SchemaCorrectionTidy method)</a>
+</li>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.schema.SchemaCorrectorBase.transform">(datablend.core.repair.schema.SchemaCorrectorBase method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.html#datablend.core.consistency.unique_true_value_correction">unique_true_value_correction() (in module datablend.core.consistency)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.unique_true_value_correction">(in module datablend.core.repair.correctors)</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_apidoc/datablend.core.html#datablend.core.blend.BlenderTemplate.valid_blender_template_dataframe">valid_blender_template_dataframe() (datablend.core.blend.BlenderTemplate method)</a>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.template.BlenderTemplate.valid_blender_template_dataframe">valid_blender_template_dataframe() (datablend.core.blend.template.BlenderTemplate method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderTemplate.valid_blender_template_dataframe">(datablend.core.blend_old.BlenderTemplate method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.worksheets_excluded">worksheets_excluded() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.worksheets_excluded">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="_apidoc/datablend.core.blend.html#datablend.core.blend.config.BlenderConfig.worksheets_included">worksheets_included() (datablend.core.blend.config.BlenderConfig method)</a>
+
+      <ul>
+        <li><a href="_apidoc/datablend.core.html#datablend.core.blend_old.BlenderConfig.worksheets_included">(datablend.core.blend_old.BlenderConfig method)</a>
+</li>
+      </ul></li>
       <li><a href="_apidoc/datablend.core.html#datablend.core.exceptions.WrongColumnType">WrongColumnType</a>
 </li>
   </ul></td>

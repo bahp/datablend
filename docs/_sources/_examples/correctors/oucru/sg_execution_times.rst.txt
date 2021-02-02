@@ -1,0 +1,24 @@
+
+:orphan:
+
+.. _sphx_glr__examples_correctors_oucru_sg_execution_times:
+
+Computation times
+=================
+**00:00.027** total execution time for **_examples_correctors_oucru** files:
+
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_pcr_dengue.py` (``plot_pcr_dengue.py``)             | 00:00.027 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_bleeding.py` (``plot_bleeding.py``)                 | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_oucru_report.py` (``plot_oucru_report.py``)         | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_outcome_death.py` (``plot_outcome_death.py``)       | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_parental_fluid.py` (``plot_parental_fluid.py``)     | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_pleural_effusion.py` (``plot_pleural_effusion.py``) | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_oucru_plot_shock.py` (``plot_shock.py``)                       | 00:00.000 | 0.0 MB |
++----------------------------------------------------------------------------------------------------+-----------+--------+

@@ -4,8 +4,8 @@
 
 .. _sphx_glr__examples_template:
 
-The Template Gallery
-==========================
+Examples with BlenderTemplate
+=============================
 
 Below is a gallery of examples
 

@@ -93,12 +93,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage/blender.html">Blender</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/tips.html">Useful Tips</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/advanced.html">Advanced</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Example Galleries</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">The Widget Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">The Blender Gallery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">The Template Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html">Examples with correctors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_examples/correctors/index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Development Guide</span></p>
@@ -203,8 +210,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.utils.compute.age">
-<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">age</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dob</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.age" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.utils.compute.age_from_dob">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">age_from_dob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dob</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.age_from_dob" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method calculates the age.</p>
 </dd></dl>
 
@@ -215,14 +222,65 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.utils.compute.dob">
-<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">dob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">age</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.dob" title="Permalink to this definition">¶</a></dt>
+<dt id="datablend.utils.compute.dob_from_age">
+<code class="sig-prename descclassname">datablend.utils.compute.</code><code class="sig-name descname">dob_from_age</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">age</span></em>, <em class="sig-param"><span class="n">date_reference</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.compute.dob_from_age" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method calculates the date of birth.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-datablend.utils.display">
 <span id="datablend-utils-display-module"></span><h2>datablend.utils.display module<a class="headerlink" href="#module-datablend.utils.display" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.display.categories_report">
+<code class="sig-prename descclassname">datablend.utils.display.</code><code class="sig-name descname">categories_report</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.display.categories_report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns value counts report.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>pd.Series</em>) – The series with the values</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value counts report.
+str1 = False      22 | True      20 | nan     34
+str2 = False (22) | True (20) | nan (34)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.display.describe">
+<code class="sig-prename descclassname">datablend.utils.display.</code><code class="sig-name descname">describe</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">reorder</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">drop</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.display.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method…..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The DataFrame to describe</p></li>
+<li><p><strong>reorder</strong> (<em>list</em>) – Order of the columns in the describe DataFrame</p></li>
+<li><p><strong>drop</strong> (<em>list</em>) – Columns to drop from describe</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) –</p>
+<ul>
+<li><p>verbose</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The resulting DataFrame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.display.str_description">
+<code class="sig-prename descclassname">datablend.utils.display.</code><code class="sig-name descname">str_description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.display.str_description" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns str with the description</p>
+</dd></dl>
+
 <dl class="py function">
 <dt id="datablend.utils.display.str_dtypes">
 <code class="sig-prename descclassname">datablend.utils.display.</code><code class="sig-name descname">str_dtypes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">label</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.display.str_dtypes" title="Permalink to this definition">¶</a></dt>
@@ -255,7 +313,7 @@
 <dl class="py function">
 <dt id="datablend.utils.merge.merge_date_time">
 <code class="sig-prename descclassname">datablend.utils.merge.</code><code class="sig-name descname">merge_date_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dates</span></em>, <em class="sig-param"><span class="n">times</span></em>, <em class="sig-param"><span class="n">kwargs_date</span><span class="o">=</span><span class="default_value">{'errors': 'raise'}</span></em>, <em class="sig-param"><span class="n">kwargs_time</span><span class="o">=</span><span class="default_value">{'errors': 'coerce'}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.merge.merge_date_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method merges columns date and time</p>
+<dd><p>This method merges dates and times arrays.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -454,6 +512,47 @@ and the corresponding value in the column named
 <div class="section" id="module-datablend.utils.pandas">
 <span id="datablend-utils-pandas-module"></span><h2>datablend.utils.pandas module<a class="headerlink" href="#module-datablend.utils.pandas" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
+<dt id="datablend.utils.pandas.bffill">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">bffill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.bffill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes backward and then forward fill</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.pandas.fbfill">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">fbfill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.fbfill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes forward and then backward fill.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.pandas.mode">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the mode and returns as a valid transform.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.pandas.nanunique">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">nanunique</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.nanunique" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="datablend.utils.pandas.save_df_dict">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">save_df_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">extension</span><span class="o">=</span><span class="default_value">'xlsx'</span></em>, <em class="sig-param"><span class="n">flat</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.save_df_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method saves a dictionary of DataFrames</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>dict-like</em>) – The dictionary where key is the name of the worksheet
+and the value is the pandas DataFrame.</p></li>
+<li><p><strong>filepath</strong> (<em>str-like</em>) – The path to store the output files.</p></li>
+<li><p><strong>filename</strong> (<em>str-like</em>) – The name to use for the output files without the extension.</p></li>
+<li><p><strong>ext</strong> (<em>str-like (xlsx or csv)</em>) – The extension</p></li>
+<li><p><strong>flat</strong> (<em>boolean</em>) – To concatenate all DataFrames to save them together.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="datablend.utils.pandas.save_xlsx">
 <code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">save_xlsx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em>, <em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">sheet_split</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.save_xlsx" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method saves a dictionary in .xlsx</p>
@@ -469,6 +568,29 @@ and value is the pandas DataFrame.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt id="datablend.utils.pandas.str2func">
+<code class="sig-prename descclassname">datablend.utils.pandas.</code><code class="sig-name descname">str2func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas.str2func" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method passes strings to functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>d</strong> (<em>dict</em>) – Dictionary where value is a function name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.pandas_schema">
+<span id="datablend-utils-pandas-schema-module"></span><h2>datablend.utils.pandas_schema module<a class="headerlink" href="#module-datablend.utils.pandas_schema" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="datablend.utils.pandas_schema.schema_from_json">
+<code class="sig-prename descclassname">datablend.utils.pandas_schema.</code><code class="sig-name descname">schema_from_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">json</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.utils.pandas_schema.schema_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method creates an schema from json.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-datablend.utils.pint">
+<span id="datablend-utils-pint-module"></span><h2>datablend.utils.pint module<a class="headerlink" href="#module-datablend.utils.pint" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-datablend.utils.plot">
 <span id="datablend-utils-plot-module"></span><h2>datablend.utils.plot module<a class="headerlink" href="#module-datablend.utils.plot" title="Permalink to this headline">¶</a></h2>

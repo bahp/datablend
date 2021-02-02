@@ -1,0 +1,558 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Repair Stack data from .yaml &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Repair Tidy data from .yaml" href="plot_correction_tidy.html" />
+    <link rel="prev" title="Ensure categories (category)" href="plot_category.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with correctors</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="plot_category.html">Ensure categories (category)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Repair Stack data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_correction_tidy.html">Repair Tidy data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_dtype.html">Ensure dtype (dtype)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_fillna.html">Fill missing values (fillna)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_level.html">Consistent columns (bool_level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_order_magnitude.html">Repair order of magnitude (order)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_range.html">Ensure range (range)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_replace.html">Replace values (replace)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_static.html">Ensure consistent value (static)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_unique_true_value.html">Ensure only one True (unique_true)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_apidoc/modules.html">datablend</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Examples with correctors</a> &raquo;</li>
+        
+      <li>Repair Stack data from .yaml</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_examples/correctors/plot_correction_stack.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-correction-stack-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="repair-stack-data-from-yaml">
+<span id="sphx-glr-examples-correctors-plot-correction-stack-py"></span><h1>Repair Stack data from .yaml<a class="headerlink" href="#repair-stack-data-from-yaml" title="Permalink to this headline">¶</a></h1>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Applying SchemaCorrectionStack!
+
+         SchemaCorrectionStack: Applying... bt                        | dtype_correction               | {&#39;dtype&#39;: &#39;Float64&#39;}
+         SchemaCorrectionStack: Applying... bt                        | order_magnitude_correction     | {&#39;range&#39;: [35, 43], &#39;orders&#39;: [10, 100]}
+         SchemaCorrectionStack: Applying... bt                        | range_correction               | {&#39;range&#39;: [35, 43]}
+         SchemaCorrectionStack: Applying... bt                        | fillna_correction              | {&#39;groupby&#39;: &#39;patient&#39;, &#39;method&#39;: &#39;fbfill&#39;}
+         SchemaCorrectionStack: Applying... age                       | dtype_correction               | {&#39;dtype&#39;: &#39;Float64&#39;}
+         SchemaCorrectionStack: Applying... age                       | range_correction               | {&#39;range&#39;: [0, 120]}
+         SchemaCorrectionStack: Applying... age                       | replace_correction             | {&#39;to_replace&#39;: {}}
+         SchemaCorrectionStack: Applying... age                       | static_correction              | {&#39;method&#39;: &#39;max&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+         SchemaCorrectionStack: Applying... gender                    | static_correction              | {&#39;method&#39;: &#39;mode&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+         SchemaCorrectionStack: Applying... pregnant                  | dtype_correction               | {&#39;dtype&#39;: &#39;boolean&#39;}
+         SchemaCorrectionStack: Applying... pregnant                  | static_correction              | {&#39;method&#39;: &#39;max&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+         SchemaCorrectionStack: Applying... pregnant                  | fillna_correction              | {&#39;value&#39;: False}
+         SchemaCorrectionStack: Applying... pcr_dengue_serotype       | static_correction              | {&#39;method&#39;: &#39;mode&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+         SchemaCorrectionStack: Applying... wbc                       | dtype_correction               | {&#39;dtype&#39;: &#39;Float64&#39;}
+         SchemaCorrectionStack: Applying... wbc                       | range_correction               | {&#39;range&#39;: [0.1, 50]}
+         SchemaCorrectionStack: Applying... vomiting                  | dtype_correction               | {&#39;dtype&#39;: &#39;boolean&#39;, &#39;errors&#39;: &#39;coerce&#39;}
+         SchemaCorrectionStack: Applying... vomiting                  | fillna_correction              | {&#39;method&#39;: &#39;ffill&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+         SchemaCorrectionStack: Applying... event_admission           | dtype_correction               | {&#39;dtype&#39;: &#39;boolean&#39;, &#39;errors&#39;: &#39;coerce&#39;}
+         SchemaCorrectionStack: Applying... event_admission           | unique_true_value_correction   | {&#39;keep&#39;: &#39;first&#39;, &#39;groupby&#39;: &#39;patient&#39;}
+
+Stacked:
+          id        date               column  result     unit
+0   32dx-001  2020/12/05                   bt     7.2  celsius
+1   32dx-001  2020/12/05                  age      32     year
+2   32dx-001  2020/12/05               gender    Male      NaN
+3   32dx-001  2020/12/05             pregnant   False      NaN
+4   32dx-001  2020/12/05  pcr_dengue_serotype  DENV-1      NaN
+5   32dx-001  2020/12/05  pcr_dengue_serotype  DENV-2      NaN
+6   32dx-002  2020/12/05                   bt    38.2      NaN
+7   32dx-002  2020/12/05                   bt    39.7      NaN
+8   32dx-002  2020/12/05                  age       4      NaN
+9   32dx-002  2020/12/05               gender  Female      NaN
+10  32dx-002  2020/12/05             pregnant    True      NaN
+11  32dx-002  2020/12/05             pregnant   False      NaN
+12  32dx-002  2020/12/05  pcr_dengue_serotype  DENV-3      NaN
+13  32dx-002  2020/12/05  pcr_dengue_serotype  DENV-4      NaN
+14  32dx-002  2020/12/05                  wbc      15      NaN
+15  32dx-002  2020/12/05                  wbc      18      NaN
+16  32dx-002  2020/12/06                  wbc      19      NaN
+17  32dx-002  2020/12/07                  wbc      20      NaN
+18  32dx-003  2020/12/05             vomiting   False      NaN
+19  32dx-003  2020/12/05             vomiting   False      NaN
+20  32dx-004  2020/12/04                  wbc       5      NaN
+21  32dx-004  2020/12/05             vomiting   False      NaN
+22  32dx-004  2020/12/05             vomiting   False      NaN
+23  32dx-004  2020/12/05             vomiting    True      NaN
+24  32dx-004  2020/12/05             vomiting    True      NaN
+25  32dx-004  2020/12/05                   bt    36.5      NaN
+26  32dx-004  2020/12/06                  wbc       4      NaN
+27  32dx-004  2020/12/08                   bt    39.5      NaN
+28  32dx-004  2020/12/04      event_admission    True      NaN
+29  32dx-004  2020/12/05      event_admission    True      NaN
+30  32dx-004  2020/12/06      event_admission   False      NaN
+31  32dx-004  2020/12/06                 fake   False      NaN
+
+Corrected:
+          id        date               column  result     unit
+0   32dx-001  2020/12/05                   bt     NaN  celsius
+1   32dx-001  2020/12/05                  age    32.0     year
+2   32dx-001  2020/12/05               gender    Male      NaN
+3   32dx-001  2020/12/05             pregnant   False      NaN
+4   32dx-001  2020/12/05  pcr_dengue_serotype  DENV-1      NaN
+5   32dx-001  2020/12/05  pcr_dengue_serotype  DENV-2      NaN
+6   32dx-002  2020/12/05                   bt    38.2      NaN
+7   32dx-002  2020/12/05                   bt    39.7      NaN
+8   32dx-002  2020/12/05                  age     4.0      NaN
+9   32dx-002  2020/12/05               gender  Female      NaN
+10  32dx-002  2020/12/05             pregnant    True      NaN
+11  32dx-002  2020/12/05             pregnant   False      NaN
+12  32dx-002  2020/12/05  pcr_dengue_serotype  DENV-3      NaN
+13  32dx-002  2020/12/05  pcr_dengue_serotype  DENV-4      NaN
+14  32dx-002  2020/12/05                  wbc    15.0      NaN
+15  32dx-002  2020/12/05                  wbc    18.0      NaN
+16  32dx-002  2020/12/06                  wbc    19.0      NaN
+17  32dx-002  2020/12/07                  wbc    20.0      NaN
+18  32dx-003  2020/12/05             vomiting   False      NaN
+19  32dx-003  2020/12/05             vomiting   False      NaN
+20  32dx-004  2020/12/04                  wbc     5.0      NaN
+21  32dx-004  2020/12/05             vomiting   False      NaN
+22  32dx-004  2020/12/05             vomiting   False      NaN
+23  32dx-004  2020/12/05             vomiting    True      NaN
+24  32dx-004  2020/12/05             vomiting    True      NaN
+25  32dx-004  2020/12/05                   bt    36.5      NaN
+26  32dx-004  2020/12/06                  wbc     4.0      NaN
+27  32dx-004  2020/12/08                   bt    39.5      NaN
+28  32dx-004  2020/12/04      event_admission    True      NaN
+29  32dx-004  2020/12/05      event_admission    &lt;NA&gt;      NaN
+30  32dx-004  2020/12/06      event_admission   False      NaN
+31  32dx-004  2020/12/06                 fake   False      NaN
+
+Dtypes:
+id        object
+date      object
+column    object
+result    object
+unit      object
+dtype: object
+
+&#39;\nprint(&quot;Corrections summary:&quot;)\nprint(schema_corrector.features_summary().to_string())\nschema_corrector.features_summary(data).to_csv(\&#39;aqui.csv\&#39;)\n&#39;
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
+ <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+ <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+ <span class="c1"># DataBlend library</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.schema</span> <span class="kn">import</span> <span class="n">SchemaCorrectionStack</span>
+
+ <span class="c1"># ------------------------</span>
+ <span class="c1"># Constants</span>
+ <span class="c1"># ------------------------</span>
+ <span class="c1"># Transformed data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;celsius&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;unit&#39;</span><span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;Male&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pregnant&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;DENV-1&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-001&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;DENV-2&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mf">38.2</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mf">39.7</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;Female&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pregnant&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pregnant&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;DENV-3&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;pcr_dengue_serotype&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;DENV-4&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;18&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/06&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;19&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-002&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/07&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;20&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-003&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/04&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="s1">&#39;True&#39;</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;vomiting&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mf">36.5</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/06&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;wbc&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/08&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="mf">39.5</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/04&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;event_admission&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/05&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;event_admission&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/06&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;event_admission&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+     <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;32dx-004&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="s1">&#39;2020/12/06&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="s1">&#39;fake&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+ <span class="p">]</span>
+
+ <span class="c1"># Parameters</span>
+ <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">]</span>
+ <span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;result&#39;</span>
+
+ <span class="c1"># Filepath</span>
+ <span class="n">filepath</span> <span class="o">=</span> <span class="s1">&#39;corrector.yaml&#39;</span>
+
+ <span class="c1"># --------------------</span>
+ <span class="c1"># Main</span>
+ <span class="c1"># --------------------</span>
+ <span class="c1"># Create data</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Create schema corrector</span>
+ <span class="n">schema_corrector</span> <span class="o">=</span> \
+     <span class="n">SchemaCorrectionStack</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
+
+ <span class="c1"># Show schema transformations summary</span>
+
+ <span class="c1"># Correct schema</span>
+ <span class="n">corrected</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> \
+     <span class="n">schema_corrector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+ <span class="c1"># Show report</span>
+ <span class="c1">#for k,v in report.items():</span>
+ <span class="c1">#    print(&quot;\n\nReport for {0}&quot;.format(k))</span>
+ <span class="c1">#    print(v)</span>
+
+ <span class="c1"># Show</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Stacked:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Corrected:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">corrected</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dtypes:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">corrected</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+
+ <span class="sd">&quot;&quot;&quot;It does not work with stack!&quot;&quot;&quot;</span>
+ <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd"> print(&quot;Corrections summary:&quot;)</span>
+<span class="sd"> print(schema_corrector.features_summary().to_string())</span>
+<span class="sd"> schema_corrector.features_summary(data).to_csv(&#39;aqui.csv&#39;)</span>
+<span class="sd"> &quot;&quot;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.089 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-correction-stack-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/34428524c5c6466d73010a14d07e2f45/plot_correction_stack.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_correction_stack.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/f9efac7a228b4e12fbc1761541a69b3b/plot_correction_stack.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_correction_stack.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_correction_tidy.html" class="btn btn-neutral float-right" title="Repair Tidy data from .yaml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_category.html" class="btn btn-neutral float-left" title="Ensure categories (category)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples with correctors &mdash; datablend 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ensure categories (category)" href="plot_category.html" />
+    <link rel="prev" title="Blender with various widgets" href="../blender/plot_blender_04.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> datablend
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Using DataBlend</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/template.html">Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/widgets.html">Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/blender.html">Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/tips.html">Useful Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/correctors.html">Correctors</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced Usage and Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/advanced.html">Advanced</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Example Galleries</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../widgets/index.html">Examples with Widgets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples with correctors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plot_category.html">Ensure categories (category)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_correction_stack.html">Repair Stack data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_correction_tidy.html">Repair Tidy data from .yaml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_dtype.html">Ensure dtype (dtype)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_fillna.html">Fill missing values (fillna)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_level.html">Consistent columns (bool_level)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_order_magnitude.html">Repair order of magnitude (order)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_range.html">Ensure range (range)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_replace.html">Replace values (replace)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_static.html">Ensure consistent value (static)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_unique_true_value.html">Ensure only one True (unique_true)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#examples-with-correctors-oucru">Examples with correctors (OUCRU)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_bleeding.html">Fix bleeding from sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_oucru_report.html">oucru_report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_outcome_death.html">Fix outcome from event_death</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_parental_fluid.html">Fix parental fluid and load (mL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_pcr_dengue.html">Fix PCR dengue (load, sero and out)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_pleural_effusion.html">Fix pleural effusion (from sides)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oucru/plot_shock.html">Fix shock, multiple and event_shock</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/oucru06dx.html">The OUCRU-06dx case</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Development Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/development.html">Development</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_apidoc/modules.html">datablend</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">datablend</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Examples with correctors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/_examples/correctors/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples-with-correctors">
+<span id="sphx-glr-examples-correctors"></span><h1>Examples with correctors<a class="headerlink" href="#examples-with-correctors" title="Permalink to this headline">¶</a></h1>
+<p>Below is a gallery of examples</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensure categories (category)"><div class="figure align-default" id="id1">
+<img alt="Ensure categories (category)" src="../../_images/sphx_glr_plot_category_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_category.html#sphx-glr-examples-correctors-plot-category-py"><span class="std std-ref">Ensure categories (category)</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Repair Stack data from .yaml"><div class="figure align-default" id="id2">
+<img alt="Repair Stack data from .yaml" src="../../_images/sphx_glr_plot_correction_stack_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_correction_stack.html#sphx-glr-examples-correctors-plot-correction-stack-py"><span class="std std-ref">Repair Stack data from .yaml</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Repair Tidy data from .yaml"><div class="figure align-default" id="id3">
+<img alt="Repair Tidy data from .yaml" src="../../_images/sphx_glr_plot_correction_tidy_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_correction_tidy.html#sphx-glr-examples-correctors-plot-correction-tidy-py"><span class="std std-ref">Repair Tidy data from .yaml</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensure dtype (dtype)"><div class="figure align-default" id="id4">
+<img alt="Ensure dtype (dtype)" src="../../_images/sphx_glr_plot_dtype_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_dtype.html#sphx-glr-examples-correctors-plot-dtype-py"><span class="std std-ref">Ensure dtype (dtype)</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fill missing values (fillna)"><div class="figure align-default" id="id5">
+<img alt="Fill missing values (fillna)" src="../../_images/sphx_glr_plot_fillna_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_fillna.html#sphx-glr-examples-correctors-plot-fillna-py"><span class="std std-ref">Fill missing values (fillna)</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Consistent columns (bool_level)"><div class="figure align-default" id="id6">
+<img alt="Consistent columns (bool_level)" src="../../_images/sphx_glr_plot_level_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_level.html#sphx-glr-examples-correctors-plot-level-py"><span class="std std-ref">Consistent columns (bool_level)</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Repair order of magnitude (order)"><div class="figure align-default" id="id7">
+<img alt="Repair order of magnitude (order)" src="../../_images/sphx_glr_plot_order_magnitude_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_order_magnitude.html#sphx-glr-examples-correctors-plot-order-magnitude-py"><span class="std std-ref">Repair order of magnitude (order)</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensure range (range)"><div class="figure align-default" id="id8">
+<img alt="Ensure range (range)" src="../../_images/sphx_glr_plot_range_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_range.html#sphx-glr-examples-correctors-plot-range-py"><span class="std std-ref">Ensure range (range)</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Replace values (replace)"><div class="figure align-default" id="id9">
+<img alt="Replace values (replace)" src="../../_images/sphx_glr_plot_replace_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_replace.html#sphx-glr-examples-correctors-plot-replace-py"><span class="std std-ref">Replace values (replace)</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensure consistent value (static)"><div class="figure align-default" id="id10">
+<img alt="Ensure consistent value (static)" src="../../_images/sphx_glr_plot_static_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_static.html#sphx-glr-examples-correctors-plot-static-py"><span class="std std-ref">Ensure consistent value (static)</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Ensure only one True (unique_true)"><div class="figure align-default" id="id11">
+<img alt="Ensure only one True (unique_true)" src="../../_images/sphx_glr_plot_unique_true_value_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_unique_true_value.html#sphx-glr-examples-correctors-plot-unique-true-value-py"><span class="std std-ref">Ensure only one True (unique_true)</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div></div>
+<div class="section" id="examples-with-correctors-oucru">
+<span id="sphx-glr-examples-correctors-oucru"></span><h1>Examples with correctors (OUCRU)<a class="headerlink" href="#examples-with-correctors-oucru" title="Permalink to this headline">¶</a></h1>
+<p>Below is a gallery of examples</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix bleeding from sites"><div class="figure align-default" id="id12">
+<img alt="Fix bleeding from sites" src="../../_images/sphx_glr_plot_bleeding_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_bleeding.html#sphx-glr-examples-correctors-oucru-plot-bleeding-py"><span class="std std-ref">Fix bleeding from sites</span></a></span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="oucru_report"><div class="figure align-default" id="id13">
+<img alt="oucru_report" src="../../_images/sphx_glr_plot_oucru_report_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_oucru_report.html#sphx-glr-examples-correctors-oucru-plot-oucru-report-py"><span class="std std-ref">oucru_report</span></a></span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix outcome from event_death"><div class="figure align-default" id="id14">
+<img alt="Fix outcome from event_death" src="../../_images/sphx_glr_plot_outcome_death_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_outcome_death.html#sphx-glr-examples-correctors-oucru-plot-outcome-death-py"><span class="std std-ref">Fix outcome from event_death</span></a></span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix parental fluid and load (mL)"><div class="figure align-default" id="id15">
+<img alt="Fix parental fluid and load (mL)" src="../../_images/sphx_glr_plot_parental_fluid_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_parental_fluid.html#sphx-glr-examples-correctors-oucru-plot-parental-fluid-py"><span class="std std-ref">Fix parental fluid and load (mL)</span></a></span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix PCR dengue (load, sero and out)"><div class="figure align-default" id="id16">
+<img alt="Fix PCR dengue (load, sero and out)" src="../../_images/sphx_glr_plot_pcr_dengue_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_pcr_dengue.html#sphx-glr-examples-correctors-oucru-plot-pcr-dengue-py"><span class="std std-ref">Fix PCR dengue (load, sero and out)</span></a></span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix pleural effusion (from sides)"><div class="figure align-default" id="id17">
+<img alt="Fix pleural effusion (from sides)" src="../../_images/sphx_glr_plot_pleural_effusion_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_pleural_effusion.html#sphx-glr-examples-correctors-oucru-plot-pleural-effusion-py"><span class="std std-ref">Fix pleural effusion (from sides)</span></a></span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="Fix shock, multiple and event_shock"><div class="figure align-default" id="id18">
+<img alt="Fix shock, multiple and event_shock" src="../../_images/sphx_glr_plot_shock_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="oucru/plot_shock.html#sphx-glr-examples-correctors-oucru-plot-shock-py"><span class="std std-ref">Fix shock, multiple and event_shock</span></a></span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-clear"></div><p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_category.html" class="btn btn-neutral float-right" title="Ensure categories (category)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../blender/plot_blender_04.html" class="btn btn-neutral float-left" title="Blender with various widgets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Bernard Hernandez
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
