@@ -3,7 +3,7 @@ import pytest
 import pandas as pd
 
 # DataBlend libraries
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.core.exceptions import BTNullValueError
 from datablend.core.exceptions import BTDuplicateError
 from datablend.core.exceptions import BTMissingRequiredColumnsError

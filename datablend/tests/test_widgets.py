@@ -3,7 +3,7 @@ import pytest
 import pandas as pd
 
 # DataBlend libraries
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.core.widgets.base import BaseWidget
 from datablend.core.widgets.format import RenameWidget
 from datablend.core.widgets.format import ReplaceWidget
