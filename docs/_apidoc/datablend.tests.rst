@@ -12,6 +12,14 @@ datablend.tests.test\_examples module
    :undoc-members:
    :show-inheritance:
 
+datablend.tests.test\_template module
+-------------------------------------
+
+.. automodule:: datablend.tests.test_template
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 datablend.tests.test\_widgets module
 ------------------------------------
 

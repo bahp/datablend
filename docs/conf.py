@@ -41,10 +41,16 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
     #'sphinx.ext.coverage',
+    'sphinx.ext.doctest',
     'sphinx.ext.autosummary',
     'sphinx.ext.githubpages',
     'sphinx_gallery.gen_gallery'
 ]
+
+# ------------------
+# Doc test
+# ------------------
+#doctest_global_setup = '''
 
 # ------------------
 # Autosummary
@@ -75,12 +81,14 @@ sphinx_gallery_conf = {
     # path to your example scripts
     'examples_dirs': ['../examples/widgets',
                       '../examples/blender',
-                      '../examples/template'],
+                      '../examples/template',
+                      '../examples/correctors'],
 
     # path to where to save gallery generated output
     'gallery_dirs': ['_examples/widgets',
                      '_examples/blender',
-                     '_examples/template'],
+                     '_examples/template',
+                     '_examples/correctors'],
 
     'line_numbers': True,
     'download_all_examples': False,

@@ -17,9 +17,13 @@ help:
 # This is to create the documentation using html and moving it to
 # the documentation branch (gh-pages). Note that this could also be
 # implemented by changing the BUILDDIR variable. (add make clean html)
+# @cd ..
+# @pytest --cov-report html:docs/_build/html/_coverage --cov datablend --verbose
+# @cd docs
 github:
 	@sphinx-apidoc -o ./_apidoc ../datablend/
 	@make clean html
+	#@cd ..; pytest --cov-report html --cov datablend --verbose
 	@cp -a _build/html/. ../../gh-pages/docs
 
 # make clean -b coverage html

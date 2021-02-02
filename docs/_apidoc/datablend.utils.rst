@@ -52,6 +52,22 @@ datablend.utils.pandas module
    :undoc-members:
    :show-inheritance:
 
+datablend.utils.pandas\_schema module
+-------------------------------------
+
+.. automodule:: datablend.utils.pandas_schema
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+datablend.utils.pint module
+---------------------------
+
+.. automodule:: datablend.utils.pint
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 datablend.utils.plot module
 ---------------------------
 
