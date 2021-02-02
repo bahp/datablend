@@ -24,8 +24,8 @@ features:
 
   - name: gender
     categories:
-      Male: 0
-      Female: 1
+      - Male
+      - Female
     transformations:
       - static_correction: {method: mode, groupby: patient}
 
@@ -84,23 +84,23 @@ features:
 
   - name: pcr_dengue_interpretation
     categories:
-      Not Dengue: 0
-      Lab-confirmed Dengue: 1
-      Presumptive Dengue: 2
-      Acute Flavivirus: 3
-      Recent Flavivirus: 4
-      Inconclusive: 5
-      Other Inconclusive: 6
+      - Not Dengue
+      - Lab-confirmed Dengue
+      - Presumptive Dengue
+      - Acute Flavivirus
+      - Recent Flavivirus
+      - Inconclusive
+      - Other Inconclusive
     transformations:
-      - static_correction: {method: mode}
+      - static_correction: {method: mode, groupby: patient}
 
   # decode or replace?
   - name: pcr_dengue_serotype
     categories:
-      <LOD: 0
-      DENV-1: 1
-      DENV-2: 2
-      DENV-3: 3
+      - <LOD
+      - DENV-1
+      - DENV-2
+      - DENV-3
     transformations:
       - static_correction: {method: mode, groupby: patient}
 
