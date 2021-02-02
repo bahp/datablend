@@ -31,7 +31,7 @@ def convert_dtypes_datetime(data):
     for c in aux.columns:
         if str(aux[c].dtype) != 'string':
             continue
-        if 'date' in c.lower():
+        if 'date' in str(c).lower():
             aux[c] = pd.to_datetime(aux[c])
 
     # Return
@@ -82,6 +82,10 @@ def format_var_names(x):
     It inserts an underscore before any number of consecutive
     uppercase letters not including uppercase at the beginning
     or end of the string.
+
+    .. todo: TRIM!
+    .. todo: Replace spaces with _
+
 
     .. todo: BirthDate_M --> birthdate_m instead of birthdate__m
     .. todo: SBP         --> sbp         instead of s_bp

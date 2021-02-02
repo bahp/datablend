@@ -10,7 +10,7 @@ def merge_day_month_year(data, day, month, year):
 def merge_date_time(dates, times,
                     kwargs_date={'errors': 'raise'},
                     kwargs_time={'errors': 'coerce'}):
-    """This method merges columns date and time
+    """This method merges dates and times arrays.
 
     .. note: If time is missing or erroneous is set to 00:00.
 

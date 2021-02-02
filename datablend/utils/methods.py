@@ -278,7 +278,7 @@ def extract_records_from_tuples(dataframe, index, tuples,
         """
 
     # Concatenate
-    for k,v in stacked_by_dtype.items():
+    for k, v in stacked_by_dtype.items():
         stacked_by_dtype[k] = \
             pd.concat(v).reset_index(drop=True)
 

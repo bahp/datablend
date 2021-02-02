@@ -1,4 +1,4 @@
-# Libraries
+# Libraries generic
 import numpy as np
 import pandas as pd
 
@@ -6,8 +6,10 @@ import pandas as pd
 from datetime import date
 from datetime import timedelta
 
-
-def age(dob, date_reference=None):
+# ---------------------------------------
+# Methods
+# ---------------------------------------
+def age_from_dob(dob, date_reference=None):
     """This method calculates the age.
 
     Parameters
@@ -26,7 +28,7 @@ def age(dob, date_reference=None):
             (dob.month, dob.day))
 
 
-def dob(age, date_reference=None):
+def dob_from_age(age, date_reference=None):
     """This method calculates the date of birth.
 
     Parameters
@@ -46,10 +48,6 @@ def dob(age, date_reference=None):
         return np.nan
     # Compute and return age
     return date_reference - timedelta(days=365*age)
-
-
-
-
 
 
 def datetime(date, time):
@@ -87,7 +85,7 @@ def add_days(dates, days):
     """
     # Cast both to pandas series
     dates = pd.Series(dates)
-    days = pd.Series(days)
+    days = pd.to_numeric(pd.Series(days), errors='coerce')
 
     # Format
     dates = pd.to_datetime(pd.Series(dates))
