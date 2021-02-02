@@ -1,4 +1,5 @@
 # Libraries.
+import pandas as pd
 
 class IncompatibleBlenderTemplateError(Exception):
     pass
@@ -47,12 +48,13 @@ class BTDuplicateError(InvalidBlenderTemplateError):
         Sex
         =========
     """
-    def __init__(self, column):
+    def __init__(self, column, values):
         self.column = column
+        self.values = values
 
     def __str__(self):
-        msg = "\n{0}: The BlenderTemplate column <{1}> has duplicated values."
-        return msg.format(self.__class__.__name__, str(self.column))
+        msg = "\n{0}: The BlenderTemplate column <{1}> has duplicated values {2}."
+        return msg.format(self.__class__.__name__, str(self.column), self.values)
 
 
 class BTMissingRequiredColumnsError(InvalidBlenderTemplateError):
@@ -75,12 +77,13 @@ class MissingRequiredColumns(IncompatibleBlenderTemplateError):
 
     """
 
-    def __init__(self, missing):
+    def __init__(self, widget, missing):
+        self.widget = widget
         self.missing = missing
 
     def __str__(self):
-        msg = "\n{0}: The BlenderTemplate is missing the following required columns: {1}.\n"
-        return msg.format(self.__class__.__name__, str(self.missing))
+        msg = "\n{0}: The BlenderTemplate for {1} must have these columns: {2}.\n"
+        return msg.format(self.__class__.__name__, self.widget, str(self.missing))
 
 
 class WrongColumnType(IncompatibleBlenderTemplateError):
@@ -98,7 +101,7 @@ class ReplaceWidgetMapWarning(Warning):
     diff1_ = set()
     diff2_ = set()
 
-    def __init__(self, key, dict_values, data_values, max_size=10):
+    def __init__(self, key, to_replace, data, max_size=10, verbose=10):
         """Constructor.
 
         .. note:
@@ -120,11 +123,15 @@ class ReplaceWidgetMapWarning(Warning):
         Returns
         -------
         """
+        def notnull(l):
+            return [e for e in l if pd.notnull(e)]
+
         # Attributes
         self.key = key
-        self.dict_values = set(dict_values)
-        self.data_values = set(data_values)
+        self.dict_values = set(notnull(to_replace.keys()))
+        self.data_values = set(notnull(data.unique()))
         self.max_size = max_size
+        self.verbose = verbose
 
         # Set information
         self.diff1_ = self.data_values - self.dict_values
@@ -137,7 +144,10 @@ class ReplaceWidgetMapWarning(Warning):
         return bool(self.diff2_) and len(self.diff2_) < self.max_size
 
     def is_warning(self):
-        return self._is_warning_diff1() #or self._is_warning_diff2()
+        if self.verbose > 9:
+            return self._is_warning_diff1() |\
+                self._is_warning_diff2()
+        return self._is_warning_diff1()
 
     def __str__(self):
         """Returns warning string."""

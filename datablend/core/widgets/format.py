@@ -5,7 +5,7 @@ import warnings
 import pandas as pd
 
 # DataBlend library
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.core.widgets.base import BaseWidget
 from datablend.utils.merge import merge_date_time
 from datablend.utils.compute import add_days
@@ -61,94 +61,81 @@ class ReplaceWidget(BaseWidget):
     """This widget replaces values in a column.
 
       .. warning: BlenderTemplate must have 'from_name' and 'to_replace'.
-      .. warning: BlenderTemplate must not have duplicated 'fom_name' values.
+      .. warning: BlenderTemplate must not have duplicated 'from_name' values.
+      .. warning: BlenderTemplate column 'to_replace' must have dictionaries.
+                  The transformation from str to dict (str2dict) is performed
+                  when creating the BlenderTemplate. It could also be double
+                  checked in this Widget.
 
     """
     # Required columns
     subset = ['from_name', 'to_replace']
 
-    def get_map(self, invert=True):
+    def get_map(self):
         """Creates the replace map.
-
-        .. note: the column to_replace contains dictionaries. The
-                 transformation from str to dict (str2dict) is
-                 performed when creating the BlenderTemplate.
-
-        .. todo: This invert might be caused by the way we have created
-                 the template automatically from data. Think carefully
-                 to avoid this extra coding. Keep the invert function and
-                 or option in parameters.
-
-        .. note: The default created maps (with keys starting with V_)
-                 are not accounted for.
 
         This method extracts from the template a dictionary where
         the key indicates the column name and the value is a
         dictionary with the renaming map convention.
 
+        .. note: The default created maps (with keys starting with V_)
+                 are not accounted for.
+
         Example
         -------
-         {'code: {'Positive': 1, 'Negative': 2, 'Equivocal': 3},
-         'gender': {'Male': 1, 'Female': 2},
-         'diabetes': {True: 1, False: 2}}
+         {
+            'code: {1:'Positive', 2:'Negative', 3: 'Equivocal'},
+            'gender': {1: 'Male', 2: 'Female'},
+            'diabetes': {1: True, 2: False}
+          }
 
         Returns
         -------
-        dictionary
+            dictionary
         """
-        def invert(d):
-            return {v: k for k, v in d.items()}
 
         def default_dict(d):
-            return all([str(e).startswith('V_') for e in list(d.keys())])
-
-        # Parameters
-        key, value = 'from_name', 'to_replace'
+            return all([str(e).startswith('V_') for e in list(d.items())])
 
         # Create records
-        aux = self.bt.df.dropna(subset=[key, value]) \
-                  .set_index(key).to_dict()[value]
+        aux = self.bt.map_kv(key='from_name', value='to_replace')
 
         # Remove default created maps
         delete = [k for k, v in aux.items() if default_dict(v)]
         for k in delete:
             del aux[k]
 
-        # Return
-        if invert:
-            return {k: invert(v) for k, v in aux.items()}
         return aux
 
     def show_warnings(self, data):
-        """This method shows the warning information
+        """This method shows the warning information.
 
-        .. note: It might happen that the data has two columns which are
-                 called exactly the same. Note that in the template
-                 configuration. Though it is warned. we might assign same
-                 name to two different columns.
-
-                 (e.g. bleeding_mucosal from history with onset date,
-                  e.g. bleeding_mucosal from examination with current date)
-
-        .. code: set(data[[k]].stack().value_counts().index.tolist())
-        .. code: set(np.array(data[k].values.tolist()).flatten())
-        .. code: set(Series(df.values.ravel()).unique())
+        The warnings are (i) whether there are data values
+        that are not defined in the replace map or (ii) if
+        there are keys defined in the replace map that do
+        not appear in the data.
 
         Parameters
         ----------
         data: pd.DataFrame
             The data.
-        """
-        def notnull(l):
-            return [e for e in l if pd.notnull(e)]
 
+        Raises
+        ------
+            Displays warning on terminal
+        """
         # Map Warnings
         for k, v in self.get_map().items():
-            # Get values to compare
-            dict_values = notnull(set(v.keys()))
-            data_values = notnull(data[[k]].values.ravel())
+
+            # Ignore
+            if k.lower() in ['entry']:
+                continue
+
             # Create warning
-            w = ReplaceWidgetMapWarning(k, dict_values, data_values)
+            w = ReplaceWidgetMapWarning(key=k,
+                to_replace=v, data=data[k],
+                max_size=10, verbose=5)
+
             # Raise warning
             if w.is_warning():
                 warnings.warn(w)
@@ -165,11 +152,8 @@ class DateTimeMergeWidget(BaseWidget):
     """This widget merges date and time columns.
 
     .. todo: validate datetime_date strings have date format
-    .. todo: validate datetune_time strings have time format
-    .. todo: should the columns datetime_date and datetime_time
-             contain original names (from_name) or renamed values
-             (to_name) for consistency?
-    .. todo: What happens when YYYY/MM/DD or YYYY/DD/MM?
+    .. todo: validate datetime_time strings have time format
+    .. todo: What happens when YYYY/MM/DD, YYYY/DD/MM or MM/DD/YY?
     .. todo: What happens when bad time (e.g. 24:00!!!)
     """
     # Required columns
@@ -220,6 +204,7 @@ class DateFromStudyDayWidget(BaseWidget):
 
     .. todo: Check study_day_col is an integer.
     .. todo: Check study_day_ref string have date format.
+    .. todo: The names specified do not exist???
     .. todo: Since the study_day_ref must be a date, should I
              convert this column in the data? Or should I create
              a new widget DateTimeWidget to do so? Including also
@@ -257,7 +242,7 @@ class DateFromStudyDayWidget(BaseWidget):
 
     def transform(self, data):
         """Performs the transformation."""
-        # Create date columns from stuy days
+        # Create date columns from study days
         for name, date, days in self.get_list():
             data[name] = add_days(data[date], data[days])
 
@@ -268,10 +253,10 @@ class DateFromStudyDayWidget(BaseWidget):
 class EventWidget(BaseWidget):
     """This widget creates events from date columns.
 
-    .. todo: Ensure that 'to_name' column is a date.
+    .. todo: Ensure that 'from_name' column contains dates.
     """
     # Required columns
-    subset = ['event', 'to_name']
+    subset = ['event', 'from_name']
 
     def get_list(self):
         """Creates tuples (name, date, days)
@@ -285,7 +270,7 @@ class EventWidget(BaseWidget):
         [('admission', 'date_admission')]
         """
         # Parameters
-        name, feature = 'event', 'to_name'
+        name, feature = 'event', 'from_name'
 
         # Get records
         aux = self.bt.df[[name, feature]] \
@@ -311,16 +296,31 @@ class EventWidget(BaseWidget):
 class FullTemplateWidget(BaseWidget):
 
     def transform(self, data):
-        """This method.....
+        """This method performs all the transformations
 
-        .. note: Use the ignore, coerce, raise approach. Pass this arguments
-                 to the constructor or in the transformation?
+        .. note: Use the ignore, coerce, raise approach.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
         """
         # Transform
-        transformed = DateTimeMergeWidget().fit_transform(self.bt, data)
-        transformed = ReplaceWidget().fit_transform(self.bt, transformed)
-        transformed = RenameWidget().fit_transform(self.bt, transformed)
-        transformed = EventWidget().fit_transform(self.bt, transformed)
+        wds = DateFromStudyDayWidget(errors='warn')
+        wdt = DateTimeMergeWidget(errors='warn')
+        wrp = ReplaceWidget(errors='warn')
+        wev = EventWidget(errors='warn')
+        wrn = RenameWidget() # do renaming in stack
+
+        # Transformed data
+        transformed = data.copy(deep=True)
+
+        # Apply all widgets.
+        for w in [wds, wdt, wrp, wev]:
+            #print("FullTemplateWidget: Applying... %s" % w.__class__.__name__)
+            if w.compatible_template(self.bt):
+                transformed = w.fit_transform(self.bt, transformed)
 
         # Return
         return transformed

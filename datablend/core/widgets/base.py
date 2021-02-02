@@ -2,11 +2,31 @@
 import logging
 
 # DataBlend
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.core.exceptions import MissingRequiredColumns
 
 # Create logger
 logger = logging.getLogger('dev')
+
+
+def check_parameter_value(name, value, allowed):
+    """This method check possible values of a parameter.
+
+    Parameters
+    ----------
+    name:
+    value:
+    allowed:
+
+    Returns
+    -------
+    object
+        The value if it is valid.
+    """
+    msg = "The parameter <{0}> accepts {2} but '{1}' was found."
+    if value not in allowed:
+        raise ValueError(msg.format(name, value, allowed))
+    return value
 
 
 class BaseWidget:
@@ -33,9 +53,14 @@ class BaseWidget:
         If ‘ignore’, then invalid parsing will return the input.
     """
 
-    def __init__(self):
+    def __init__(self, errors='raise', verbose=10):
         """Constructor"""
         self.bt = None
+        self.verbose = verbose
+        self.errors = check_parameter_value('errors', errors, ['raise', 'warn', 'coerce'])
+
+    def report(data, trans):
+        pass
 
     def check_required_columns(self, bt):
         """Verify required columns.
@@ -65,7 +90,16 @@ class BaseWidget:
         # Does not have the required columns
         if not bt.has_columns(subset):
             missing = bt.missing_columns(subset)
-            raise MissingRequiredColumns(missing=missing)
+            error = MissingRequiredColumns(
+                widget=self.__class__.__name__,
+                missing=missing)
+
+            if self.errors == 'raise':
+                raise error
+            if self.errors == 'warn':
+                print(error)
+
+            return False
         # Return
         return True
 
@@ -82,6 +116,7 @@ class BaseWidget:
             Duplicate values found in from_name.
         EmptyBlenderTemplate
             The BlenderTemplate has not been fitted.
+        NotDateTime
 
         Parameters
         ----------
@@ -93,10 +128,14 @@ class BaseWidget:
         boolean
             Whether the template is compatible with the widget.
         """
+        # Basic check
         if not isinstance(bt, BlenderTemplate):
             raise TypeError
-        # Do all basic checks
+        # Do other simple checks
         check1 = self.check_required_columns(bt)
+        check2 = True
+        check3 = True
+        check4 = True
         # Return
         return check1
 
@@ -142,6 +181,10 @@ class BaseWidget:
     def fit_transform(self, template, data):
         """Fit widget and transform data.
 
+        .. note: If the template is compatible with the widget,
+                 then the attribute self.bt will have BlenderTemplate
+                 otherwise it will remain as None.
+
         Parameters
         ----------
         template: pd.DataFrame or array of dicts
@@ -155,5 +198,10 @@ class BaseWidget:
         pd.DataFrame
             Transformed DataFrame
         """
+        # Fit template
         self.fit(template)
-        return self.transform(data)
+        # Template is compatible
+        if self.bt is not None:
+            return self.transform(data)
+        # Return data
+        return data
