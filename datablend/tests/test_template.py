@@ -35,7 +35,7 @@ def bt_json():
         {'from_name': 'Temp', 'to_name': 'body_temperature'},
         {'from_name': 'Shock', 'to_name': 'shock'},
         {'from_name': 'Sex', 'to_name': 'gender',
-         'to_replace': {'Male': 1, 'Female': 2}}
+         'to_replace': {1: 'Male', 2: 'Female'}}
     ]
     # Return
     return template
