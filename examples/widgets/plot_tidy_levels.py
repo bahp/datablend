@@ -1,6 +1,8 @@
 """
-RenameWidget
+TidyLevels
 ===========================
+
+.. deprecated:
 """
 
 # Import

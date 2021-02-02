@@ -7,7 +7,7 @@ ReplaceWidget
 import pandas as pd
 
 # DataBlend library
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.core.widgets.format import ReplaceWidget
 
 # ------------------------
@@ -20,7 +20,8 @@ template = [
     {'from_name': 'Temp', 'to_name': 'body_temperature'},
     {'from_name': 'Shock', 'to_name': 'shock'},
     {'from_name': 'Sex', 'to_name': 'gender',
-     'to_replace': "{'Male': 1, 'Female': 2, 'Unknown': 8}"}
+     #'to_replace': "{'Male': 1, 'Female': 2, 'Unknown': 8}"}
+    'to_replace': {1: 'Male', 2: 'Female', 8: None}}
 ]
 
 # Data

@@ -2,7 +2,12 @@
 Blender with various widgets
 ============================
 
-.. warning:: The order of the ``Widgets`` passed to ``Blender`` matters.
+Generic example to show the functionality of Blender. It focuses
+on the transformations: (i) DateTimeMergeWidget, (ii) ReplaceWidget,
+(iii) EventWidget and (iv) DataFromStudyDayWidget. In addition it
+converts the data to stacked and tidy structures.
+
+.. warning: The order of the ``Widgets`` passed to ``Blender`` matters.
 
 """
 
@@ -39,18 +44,21 @@ template = [
 
     {'from_name': 'Shock',
      'to_name': 'shock',
-     'timestamp': 'date_enrolment'},
+     'timestamp': 'date_enrolment',
+     'default': False},
 
     # Example replace widget
     {'from_name': 'Sex', 'to_name': 'gender',
-     'to_replace': {'Male': 1, 'Female': 2},
-     'timestamp': 'date_enrolment'},
+     'to_replace': {1: 'Male', 2: 'Female'},
+     'timestamp': 'date_enrolment',
+     'static': True},
 
     # Example parameters to be stacked.
     # Note that uses a different date.
     {'from_name': 'CoughLevel',
      'to_name': 'cough_level',
-     'timestamp': 'cough_date'},
+     'timestamp': 'cough_date',
+     'default': 0},
 
     {'from_name': 'CoughDate',
      'to_name': 'cough_date',
@@ -60,7 +68,8 @@ template = [
     {'from_name': 'DateIllness',
      'to_name': 'date_onset',
      'datetime': True,
-     'event': 'event_onset'},
+     'event': 'event_onset',
+     'default': False},
 
     # Example study day
     {'from_name': 'LabSampleStudyDay',
@@ -112,6 +121,9 @@ data = [
 
 ]
 
+# -----------------------
+# Main
+# -----------------------
 # Create DataFrames
 template = pd.DataFrame(template)
 data = pd.DataFrame(data)
@@ -131,6 +143,12 @@ transformed = blender.transform(data)
 # Stack data
 stacked = blender.stack(transformed, index='StudyNo')
 
+# Remove time information to group by day.
+stacked.date = stacked.date.dt.date
+
+# Tidy data
+tidy = blender.tidy(stacked, index=['StudyNo', 'date', 'column'])
+
 # Show
 print("\nOriginal:")
 print(data)
@@ -138,4 +156,5 @@ print("\nTransformed:")
 print(transformed)
 print("\nStacked:")
 print(stacked)
-
+print("\nTidy:")
+print(tidy)

@@ -11,8 +11,7 @@ import pathlib
 import pandas as pd
 
 # DataBlend libraries
-from datablend.core.blend import BlenderTemplate
-from datablend.utils.pandas import save_xlsx
+from datablend.core.blend.template import BlenderTemplate
 
 
 # --------------------

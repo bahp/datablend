@@ -1,0 +1,118 @@
+
+corrector:
+  groupby:
+    patient:
+      by: [id]
+
+features:
+
+  # ---------------------------
+  # Demographics
+  # ---------------------------
+  - name: age
+    unit: year
+    dtype: Int64
+    range:
+      absolute: [0, 120, year]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0, 120]
+      - replace_correction:
+          to_replace: {}
+      - static_correction: {method: max, groupby: patient}
+
+  - name: gender
+    categories:
+      Male: 0
+      Female: 1
+    transformations:
+      - static_correction: {method: mode, groupby: patient}
+
+  - name: pregnant
+    transformations:
+      - dtype_correction: {dtype: boolean}
+      - static_correction: {method: max, groupby: patient}
+      - fillna_correction: {value: False}
+
+  # ---------------
+  # Vital signs
+  # ---------------
+  - name: bt
+    unit: celsius
+    dtype: Float64
+    range:
+      absolute: [35, 43, celsius]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - order_magnitude_correction:
+          range: [35, 43]
+          orders: [10, 100]
+      - range_correction:
+          range: [35, 43]
+      - fillna_correction:
+          groupby: patient
+          method: fbfill
+
+  # -------------------------
+  # Examination
+  # -------------------------
+  - name: vomiting
+    transformations:
+      - dtype_correction: {dtype: boolean, errors: coerce}
+      - fillna_correction: {method: ffill, groupby: patient}
+
+  # ------------------
+  # Laboratory Results
+  # ------------------
+  - name: wbc
+    unit: kilocount/uL
+    dtype: Float64
+    range:
+      absolute: [0.1, 50, kilocount/uL]
+    transformations:
+      - dtype_correction: {dtype: Float64}
+      - range_correction:
+          range: [0.1, 50]
+
+  # ---
+  # PCR
+  # ---
+  - name: pcr_dengue_load
+    unit: copies/mL
+    dtype: Float64
+
+  - name: pcr_dengue_interpretation
+    categories:
+      Not Dengue: 0
+      Lab-confirmed Dengue: 1
+      Presumptive Dengue: 2
+      Acute Flavivirus: 3
+      Recent Flavivirus: 4
+      Inconclusive: 5
+      Other Inconclusive: 6
+    transformations:
+      - static_correction: {method: mode}
+
+  # decode or replace?
+  - name: pcr_dengue_serotype
+    categories:
+      <LOD: 0
+      DENV-1: 1
+      DENV-2: 2
+      DENV-3: 3
+    transformations:
+      - static_correction: {method: mode, groupby: patient}
+
+  # --------
+  # Events
+  # --------
+  - name: event_admission
+    transformations:
+      - dtype_correction: {dtype: boolean, errors: coerce}
+      - unique_true_value_correction: {keep: first, groupby: patient}
+
+  # --------------------
+  # For testing purposes
+  # --------------------
+  - name: fake_feature

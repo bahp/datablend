@@ -7,7 +7,7 @@ Fitting a blender template
 import pandas as pd
 
 # DataBlend libraries
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 
 # ------------------------
 # Constants
@@ -31,6 +31,11 @@ bt_df = pd.DataFrame(template)
 bt1 = BlenderTemplate().fit(bt_df)
 bt2 = BlenderTemplate().fit(template)
 
-# Show
+# Show templates
 print(bt1)
 print(bt2)
+
+# Replace from_name to to_name values.
+print("\nMap replace {from_name: to_name}")
+print(bt1.map_kv(key='from_name',
+                 value='to_name'))

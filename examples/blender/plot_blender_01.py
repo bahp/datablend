@@ -1,6 +1,6 @@
 """
 Blender with single input
-============================
+=========================
 
 Example using ``Blender`` with data collected from a single sources.
 
@@ -10,8 +10,7 @@ Example using ``Blender`` with data collected from a single sources.
 import pandas as pd
 
 # DataBlend library
-from datablend.core.blend import Blender
-from datablend.core.widgets.format import RenameWidget
+from datablend.core.blend.blender import Blender
 from datablend.core.widgets.format import ReplaceWidget
 
 
@@ -28,7 +27,7 @@ template = [
 
     # Gender
     {'from_name': 'Sex', 'to_name': 'gender',
-     'to_replace': {'Male': 1, 'Female': 2},
+     'to_replace': {1: 'Male', 2: 'Female'},
      'timestamp': 'date_exam'},
 ]
 
@@ -39,13 +38,15 @@ data = [
     {'pid': '32dx-003', 'date_exam': '10/07/2020', 'Temp': 36.7, 'Sex': 2},
 ]
 
+# -------------------
+# Main
+# -------------------
 # Create templates dictionary
 templates = pd.DataFrame(template)
 data = pd.DataFrame(data)
 
 # Create blender
-blender = Blender(widgets=[ReplaceWidget(),
-                           RenameWidget()])
+blender = Blender(widgets=[ReplaceWidget()])
 
 # Fit blender to templates.
 blender = blender.fit(info=templates)
@@ -63,4 +64,3 @@ print("\nTransformed:")
 print(transformed)
 print("\nStacked:")
 print(stacked)
-

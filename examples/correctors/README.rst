@@ -1,4 +1,4 @@
-Examples with Blender
+Examples with correctors
 ==========================
 
 Below is a gallery of examples

@@ -16,26 +16,13 @@ from datablend.core.widgets.stack import StackWidget
 # Template
 template = [
     # Example rename widget
-    {'from_name': 'StudyNo',
-     'to_name': 'study_number'},
-
-    {'from_name': 'DateEnrol',
-     'to_name': 'date_enrolment',
-     'event': 'event_enrolment'},
-
-    {'from_name': 'Sex',
-     'to_name': 'gender',
-     'timestamp': 'date_enrolment'},
-
-    {'from_name': 'Tmp',
-     'to_name': 'body_temperature',
-     'timestamp': 'date_enrolment',
-     'unit': 'celsius'},
-
-    {'from_name': 'Tmp2',
-     'to_name': 'body_temperature',
-     'timestamp': 'date_enrolment',
-     'unit': 'celsius'}
+    {'from_name': 'StudyNo', 'to_name': 'study_number'},
+    {'from_name': 'DateEnrol', 'to_name': 'date_enrolment'},
+    {'from_name': 'Sex', 'to_name': 'gender', 'timestamp': 'date_enrolment'},
+    {'from_name': 'Tmp', 'to_name': 'body_temperature',
+        'timestamp': 'date_enrolment', 'unit': 'celsius'},
+    {'from_name': 'Tmp2', 'to_name': 'body_temperature',
+        'timestamp': 'date_enrolment', 'unit':'celsius'}
 ]
 
 # Data
@@ -52,11 +39,13 @@ bt = BlenderTemplate().fit(template)
 # Create data
 data = pd.DataFrame(data)
 
-# This breaks because the EventWidget is used on the FullTemplate
-# but is not implemented within the StackWidget. However, the
-# stack widget creates tuples from both time stamp and events.
-# EventWidget was not executed and therefore event_enrolment does
-# not exist.
+aux = data.melt(id_vars=['StudyNo', 'DateEnrol'],
+                var_name='column',
+                value_name='result').dropna()
+
+aux.column = aux.column.replace(
+    {e['from_name']: e['to_name']
+        for e in template})
 
 # Stack data
 stack = StackWidget(index=['study_number']).fit_transform(bt, data)
@@ -66,3 +55,5 @@ print("\nOriginal:")
 print(data)
 print("\nStack:")
 print(stack)
+print("\nMelt:")
+print(aux)
