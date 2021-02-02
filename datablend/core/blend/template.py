@@ -149,8 +149,7 @@ class BlenderTemplate:
         # Null values found
         if any(pd.isnull(df.to_name)):
             values = df.to_name[df.to_name.duplicated()]
-            raise BTNullValueError(column='to_name',
-                                   values=values)
+            raise BTNullValueError(column='to_name')
 
         return True
 
