@@ -96,6 +96,8 @@
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Correctors</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#list-of-correctors">List of correctors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-correctors">How to use this correctors?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#and-the-specific-for-oucru">And the specific for OUCRU?</a></li>
 </ul>
 </li>
 </ul>
@@ -186,22 +188,178 @@
             
   <div class="section" id="correctors">
 <h1>Correctors<a class="headerlink" href="#correctors" title="Permalink to this headline">¶</a></h1>
-<p>Configuration and customization of DataBlend is done primarily with a
-dictionary specified in your conf.py file. A list of the possible keys
-are listed below and explained in greater detail in subsequent sections.</p>
+<p>Explanation…</p>
 <div class="section" id="list-of-correctors">
 <h2>List of correctors<a class="headerlink" href="#list-of-correctors" title="Permalink to this headline">¶</a></h2>
-<p>Most DataBlend configuration options are set in the DataBlend conf.py file:</p>
+<p>The following generic correctors are available:</p>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 80%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.dtype_correction" title="datablend.core.repair.correctors.dtype_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dtype_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.range_correction" title="datablend.core.repair.correctors.range_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">range_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.order_magnitude_correction" title="datablend.core.repair.correctors.order_magnitude_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">order_magnitude_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.replace_correction" title="datablend.core.repair.correctors.replace_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">replace_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.categorical_correction" title="datablend.core.repair.correctors.categorical_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">categorical_correction()</span></code></a></p></td>
+<td><p>Not implemented</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.fillna_correction" title="datablend.core.repair.correctors.fillna_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fillna_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.static_correction" title="datablend.core.repair.correctors.static_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">static_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.unique_true_value_correction" title="datablend.core.repair.correctors.unique_true_value_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unique_true_value_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.causal_correction" title="datablend.core.repair.correctors.causal_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">causal_correction()</span></code></a></p></td>
+<td><p>Not implemented</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.date_outliers_correction" title="datablend.core.repair.correctors.date_outliers_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">date_outliers_correction()</span></code></a></p></td>
+<td><p>Needs testing</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.compound_feature_correction" title="datablend.core.repair.correctors.compound_feature_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">compound_feature_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span> <span class="pre">(not</span> <span class="pre">.yaml)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.bool_level_correction" title="datablend.core.repair.correctors.bool_level_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">bool_level_correction()</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span> <span class="pre">(not</span> <span class="pre">.yaml)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="how-to-use-this-correctors">
+<h2>How to use this correctors?<a class="headerlink" href="#how-to-use-this-correctors" title="Permalink to this headline">¶</a></h2>
+<p>Well, using this correctors is quite simple!</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>range_corrector</p></li>
-<li><p>order_magnitude_corrector</p></li>
-<li><p>fillna_corrector</p></li>
-<li><p>static_corrector</p></li>
-<li><p>replace_corrector</p></li>
-<li><p>categories_corrector</p></li>
+<li><p><a class="reference internal" href="../_examples/correctors/plot_correction_stack.html#sphx-glr-examples-correctors-plot-correction-stack-py"><span class="std std-ref">Repair Stack data from .yaml</span></a>.</p></li>
+<li><p><a class="reference internal" href="../_examples/correctors/plot_correction_tidy.html#sphx-glr-examples-correctors-plot-correction-tidy-py"><span class="std std-ref">Repair Tidy data from .yaml</span></a>.</p></li>
 </ul>
 </div></blockquote>
+<p>Anyways, lets follow this small tutorial.</p>
+<p>Lets assume we have the following dataset in tidy structured format.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="nb">id</span>        <span class="n">date</span>   <span class="n">age</span>     <span class="n">bt</span>  <span class="n">gender</span>  <span class="n">pregnant</span>
+<span class="mi">0</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">001</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span>    <span class="mi">32</span>   <span class="mf">7.20</span>    <span class="n">Male</span>     <span class="kc">False</span>
+<span class="mi">1</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">002</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span>     <span class="mi">4</span>  <span class="mf">38.95</span>  <span class="n">Female</span>      <span class="kc">True</span>
+<span class="mi">2</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">002</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">06</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">3</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">002</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">07</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">4</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">003</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">5</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">004</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">04</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">6</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">004</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>  <span class="mf">36.50</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">7</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">004</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">06</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+<span class="mi">8</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">004</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">08</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="mi">3950</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Now, lets create a <a href="#id1"><span class="problematic" id="id2">``</span></a>corrector.yaml` file with the transformations. The
+file should look as the one shown below were transformations is a list
+with the name of the transformation and the parameters to pas to the
+function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">groupby</span></code> allows us to apply the correction functions to
+sub-groups of data. As an example, we can apply the transformations
+for each <code class="docutils literal notranslate"><span class="pre">patient</span></code> independently by grouping the data using the
+patient id.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corrector</span><span class="p">:</span>
+  <span class="n">groupby</span><span class="p">:</span>
+    <span class="n">patient</span><span class="p">:</span>
+      <span class="n">by</span><span class="p">:</span> <span class="p">[</span><span class="nb">id</span><span class="p">]</span>
+
+<span class="n">features</span><span class="p">:</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">age</span>
+    <span class="n">transformations</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">dtype_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">dtype</span><span class="p">:</span> <span class="n">Float64</span><span class="p">}</span>
+      <span class="o">-</span> <span class="n">range_correction</span><span class="p">:</span> <span class="p">{</span><span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+      <span class="o">-</span> <span class="n">replace_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">to_replace</span><span class="p">:</span> <span class="p">{}}</span>
+      <span class="o">-</span> <span class="n">static_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">method</span><span class="p">:</span> <span class="nb">max</span><span class="p">,</span> <span class="n">groupby</span><span class="p">:</span> <span class="n">patient</span><span class="p">}</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">gender</span>
+    <span class="n">categories</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">Male</span>
+      <span class="o">-</span> <span class="n">Female</span>
+    <span class="n">transformations</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">static_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">method</span><span class="p">:</span> <span class="n">mode</span><span class="p">,</span> <span class="n">groupby</span><span class="p">:</span> <span class="n">patient</span><span class="p">}</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">pregnant</span>
+    <span class="n">transformations</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">dtype_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">dtype</span><span class="p">:</span> <span class="n">boolean</span><span class="p">}</span>
+      <span class="o">-</span> <span class="n">static_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">method</span><span class="p">:</span> <span class="nb">max</span><span class="p">,</span> <span class="n">groupby</span><span class="p">:</span> <span class="n">patient</span><span class="p">}</span>
+      <span class="o">-</span> <span class="n">fillna_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">value</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">bt</span>
+    <span class="n">transformations</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">dtype_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">dtype</span><span class="p">:</span> <span class="n">Float64</span><span class="p">}</span>
+      <span class="o">-</span> <span class="n">order_magnitude_correction</span><span class="p">:</span>
+          <span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">43</span><span class="p">]</span>
+          <span class="n">orders</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+      <span class="o">-</span> <span class="n">range_correction</span><span class="p">:</span> <span class="p">{</span><span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">43</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>Lets instantiate <code class="docutils literal notranslate"><span class="pre">SchemaCorrectionTidy</span></code> passing <code class="docutils literal notranslate"><span class="pre">corrector.yaml</span></code> as argument.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create schema corrector</span>
+<span class="n">schema_corrector</span> <span class="o">=</span> \
+    <span class="n">SchemaCorrectionTidy</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="c1"># Show schema transformations summary</span>
+
+<span class="c1"># Correct schema</span>
+<span class="n">corrected</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> \
+    <span class="n">schema_corrector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And voila, your data has been corrected.</p>
+<p>What if we have stack structured data format? Well… pretty much the same.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create schema corrector</span>
+<span class="n">schema_corrector</span> <span class="o">=</span> \
+    <span class="n">SchemaCorrectionStack</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="c1"># Correct schema</span>
+<span class="n">corrected</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> \
+    <span class="n">schema_corrector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-the-specific-for-oucru">
+<h2>And the specific for OUCRU?<a class="headerlink" href="#and-the-specific-for-oucru" title="Permalink to this headline">¶</a></h2>
+<p>The following correctors have implemented for OUCRU specific purposes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_bleeding_correction" title="datablend.core.repair.correctors.oucru_bleeding_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_bleeding_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_outcome_death_correction" title="datablend.core.repair.correctors.oucru_outcome_death_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_outcome_death_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_parental_fluid_correction" title="datablend.core.repair.correctors.oucru_parental_fluid_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_parental_fluid_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pcr_dengue_correction" title="datablend.core.repair.correctors.oucru_pcr_dengue_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pcr_dengue_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pleural_effusion_correction" title="datablend.core.repair.correctors.oucru_pleural_effusion_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pleural_effusion_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_shock_correction" title="datablend.core.repair.correctors.oucru_shock_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_shock_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction" title="datablend.core.repair.correctors.oucru_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_correction()</span></code></a>: Applies all.</p></li>
+</ul>
+</div></blockquote>
+<p>These cannot be included in the .yaml because they are specific to OUCRU. In fact,
+the assume certain columns are present in the dataset passed. For this reason, at
+the moment are quite experimental. Once we identify similar patterns between
+different correctors, we will implement more generic methods.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These methods only work for <code class="docutils literal notranslate"><span class="pre">tidy</span></code> structure data at the moment.</p>
+</div>
+<p>The <a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction" title="datablend.core.repair.correctors.oucru_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_correction()</span></code></a>: method applies
+all the transformations to the data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corrected</span> <span class="o">=</span> <span class="n">oucru_correction</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 

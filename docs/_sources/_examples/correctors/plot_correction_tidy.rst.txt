@@ -21,7 +21,9 @@
 Repair Tidy data from .yaml
 =================================
 
-.. GENERATED FROM PYTHON SOURCE LINES 5-98
+See :download:`corrector.yaml <./../../../examples/correctors/corrector.yaml>`.
+
+.. GENERATED FROM PYTHON SOURCE LINES 8-101
 
 
 
@@ -155,7 +157,7 @@ Repair Tidy data from .yaml
 |
 
 .. code-block:: default
-   :lineno-start: 5
+   :lineno-start: 8
 
     # Import
     import numpy as np
@@ -254,7 +256,7 @@ Repair Tidy data from .yaml
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.112 seconds)
+   **Total running time of the script:** ( 0 minutes  0.119 seconds)
 
 
 .. _sphx_glr_download__examples_correctors_plot_correction_tidy.py:

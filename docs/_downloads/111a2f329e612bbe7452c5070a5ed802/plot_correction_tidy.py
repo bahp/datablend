@@ -1,6 +1,9 @@
 """
 Repair Tidy data from .yaml
 =================================
+
+See :download:`corrector.yaml <./../../../examples/correctors/corrector.yaml>`.
+
 """
 # Import
 import numpy as np

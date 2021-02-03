@@ -239,9 +239,24 @@ consistent.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.core.repair.correctors.category_correction">
-<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">category_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.category_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Corrects weird categories!</p>
+<dt id="datablend.core.repair.correctors.categorical_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">categorical_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">categories</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">allow_combinations</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'coerce'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.categorical_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects ensuring only categories specified are included.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The data to correct.</p></li>
+<li><p><strong>categories</strong> (<em>list</em>) – The categories allowed for the series.</p></li>
+<li><p><strong>allow_combinations</strong> (<em>boolean</em>) – Whether combinations (e.g. DENV-1,DENV-2) are allowed</p></li>
+<li><p><strong>errors</strong> (<em>string [ignore, coerce]</em>) –</p>
+<ul>
+<li><p>ignore leaves inconsistent values as they are</p></li>
+<li><p>coerce sets inconsistent values as None</p></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
