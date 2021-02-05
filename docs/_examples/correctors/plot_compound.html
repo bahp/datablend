@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Repair order of magnitude (order) &mdash; datablend 0.0.1 documentation</title>
+  <title>Ensure compound features &mdash; datablend 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ensure range (range)" href="plot_range.html" />
-    <link rel="prev" title="Fill missing values (fillna)" href="plot_fillna.html" /> 
+    <link rel="next" title="Repair Stack data from .yaml" href="plot_correction_stack.html" />
+    <link rel="prev" title="Ensure categories (category)" href="plot_categorical.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,12 +108,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with correctors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="plot_bool_level.html">Consistent columns (bool_level)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_categorical.html">Ensure categories (category)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plot_compound.html">Ensure compound features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Ensure compound features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_correction_stack.html">Repair Stack data from .yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_correction_tidy.html">Repair Tidy data from .yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_dtype.html">Ensure dtype (dtype)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_fillna.html">Fill missing values (fillna)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Repair order of magnitude (order)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_order_magnitude.html">Repair order of magnitude (order)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_range.html">Ensure range (range)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_replace.html">Replace values (replace)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_static.html">Ensure consistent value (static)</a></li>
@@ -178,13 +178,13 @@
         
           <li><a href="index.html">Examples with correctors</a> &raquo;</li>
         
-      <li>Repair order of magnitude (order)</li>
+      <li>Ensure compound features</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/_examples/correctors/plot_order_magnitude.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/_examples/correctors/plot_compound.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -199,88 +199,18 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-order-magnitude-py"><span class="std std-ref">here</span></a>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-compound-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="repair-order-of-magnitude-order">
-<span id="sphx-glr-examples-correctors-plot-order-magnitude-py"></span><h1>Repair order of magnitude (order)<a class="headerlink" href="#repair-order-of-magnitude-order" title="Permalink to this headline">¶</a></h1>
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      0     1
-0    30  30.0
-1  35.5  35.5
-2  37.4  37.4
-3   NaN   NaN
-4   376  37.6
-5  3600  36.0
-6  &lt;NA&gt;   NaN
-
-      0       1
-0    30    30.0
-1  35.5    35.5
-2  37.4    37.4
-3   NaN     NaN
-4   376    37.6
-5  3600  3600.0
-6  &lt;NA&gt;     NaN
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
- <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
- <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
- <span class="c1"># DataBlend library</span>
- <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">order_magnitude_correction</span>
-
- <span class="c1"># ------------------------</span>
- <span class="c1"># Constants</span>
- <span class="c1"># ------------------------</span>
- <span class="c1">#</span>
- <span class="n">sample1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mf">35.5</span><span class="p">,</span> <span class="mf">37.4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">376</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
-
- <span class="c1"># ------------------------</span>
- <span class="c1"># Main</span>
- <span class="c1"># ------------------------</span>
- <span class="c1"># Correct</span>
- <span class="n">a</span> <span class="o">=</span> <span class="n">order_magnitude_correction</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
- <span class="n">b</span> <span class="o">=</span> <span class="n">order_magnitude_correction</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="n">orders</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
-
- <span class="c1"># Show</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.021 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-order-magnitude-py">
+<div class="sphx-glr-example-title section" id="ensure-compound-features">
+<span id="sphx-glr-examples-correctors-plot-compound-py"></span><h1>Ensure compound features<a class="headerlink" href="#ensure-compound-features" title="Permalink to this headline">¶</a></h1>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-compound-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/58121c04a22467bfea2d9dbe5519d680/plot_order_magnitude.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_order_magnitude.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/eb0dac64db643da27c4d53cfc121da57/plot_compound.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_compound.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/1289ec9d6fac4efb63a6e4b90d936d59/plot_order_magnitude.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_order_magnitude.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/68482b70f26972783a57b214f221ca2e/plot_compound.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_compound.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -294,10 +224,10 @@ to download the full example code</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_range.html" class="btn btn-neutral float-right" title="Ensure range (range)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_correction_stack.html" class="btn btn-neutral float-right" title="Repair Stack data from .yaml" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_fillna.html" class="btn btn-neutral float-left" title="Fill missing values (fillna)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="plot_categorical.html" class="btn btn-neutral float-left" title="Ensure categories (category)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

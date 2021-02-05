@@ -15,7 +15,7 @@ The following generic correctors are available:
  :meth:`~datablend.core.repair.correctors.range_correction`               ``OK``
  :meth:`~datablend.core.repair.correctors.order_magnitude_correction`     ``OK``
  :meth:`~datablend.core.repair.correctors.replace_correction`             ``OK``
- :meth:`~datablend.core.repair.correctors.categorical_correction`         Not implemented
+ :meth:`~datablend.core.repair.correctors.categorical_correction`         ``OK``
  :meth:`~datablend.core.repair.correctors.fillna_correction`              ``OK``
  :meth:`~datablend.core.repair.correctors.static_correction`              ``OK``
  :meth:`~datablend.core.repair.correctors.unique_true_value_correction`   ``OK``
@@ -51,9 +51,9 @@ Lets assume we have the following dataset in tidy structured format.
     7  32dx-004  2020/12/06  <NA>   <NA>    <NA>      <NA>
     8  32dx-004  2020/12/08  <NA>   3950    <NA>      <NA>
 
-Now, lets create a ``corrector.yaml` file with the transformations. The
+Now, lets create a ``corrector.yaml`` file with the transformations. The
 file should look as the one shown below were transformations is a list
-with the name of the transformation and the parameters to pas to the
+with the name of the transformation and the parameters to pass to the
 function.
 
 .. note:: The ``groupby`` allows us to apply the correction functions to
@@ -73,7 +73,7 @@ function.
       - name: age
         transformations:
           - dtype_correction: {dtype: Float64}
-          - range_correction: {range: [0, 120]
+          - range_correction: {range: [0, 120]}
           - replace_correction: {to_replace: {}}
           - static_correction: {method: max, groupby: patient}
 
@@ -106,8 +106,6 @@ Lets instantiate ``SchemaCorrectionTidy`` passing ``corrector.yaml`` as argument
      schema_corrector = \
          SchemaCorrectionTidy(filepath=filepath)
 
-     # Show schema transformations summary
-
      # Correct schema
      corrected, report = \
          schema_corrector.transform(transform)
@@ -132,23 +130,24 @@ And the specific for OUCRU?
 
 The following correctors have implemented for OUCRU specific purposes:
 
- - :meth:`~datablend.core.repair.correctors.oucru_bleeding_correction`:
- - :meth:`~datablend.core.repair.correctors.oucru_outcome_death_correction`:
- - :meth:`~datablend.core.repair.correctors.oucru_parental_fluid_correction`:
- - :meth:`~datablend.core.repair.correctors.oucru_pcr_dengue_correction`:
- - :meth:`~datablend.core.repair.correctors.oucru_pleural_effusion_correction`:
- - :meth:`~datablend.core.repair.correctors.oucru_shock_correction`:
+ - :meth:`~datablend.core.repair.correctors.oucru_bleeding_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_outcome_death_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_parental_fluid_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_pcr_dengue_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_pleural_effusion_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_shock_correction`
+ - :meth:`~datablend.core.repair.correctors.oucru_gender_pregnant_correction`
  - :meth:`~datablend.core.repair.correctors.oucru_correction`: Applies all.
 
 These cannot be included in the .yaml because they are specific to OUCRU. In fact,
-the assume certain columns are present in the dataset passed. For this reason, at
+they assume that certain columns are present in the dataset passed. For this reason, at
 the moment are quite experimental. Once we identify similar patterns between
-different correctors, we will implement more generic methods.
+different correctors, we will implement more generic correctors.
 
 .. warning:: These methods only work for ``tidy`` structure data at the moment.
 
-The :meth:`~datablend.core.repair.correctors.oucru_correction`: method applies
-all the transformations to the data.
+The :meth:`~datablend.core.repair.correctors.oucru_correction` method applies
+all the OUCRU correctors to the data.
 
 .. code::
 

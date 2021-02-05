@@ -221,48 +221,83 @@
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.bool_level_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">bool_level_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">df</span></em>, <em class="sig-param"><span class="n">sbool</span></em>, <em class="sig-param"><span class="n">slevel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.bool_level_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Corrects values of boolean and level series.</p>
-<p>In some scenarios data is collected indicating whether the
-patient had some condition (e.g. abdominal_pain) and also
-the level of that condition (a.g. abdominal_pain_level).
-This method corrects this columns so that they are
-consistent.</p>
+<dd><p>Corrects values of boolean and numeric series.</p>
+<p>It handles boolean and numeric columns representing either the
+presence of a condition (True/False) or the presence of such
+condition through its level (0, 1, 2, 3).</p>
+<ul class="simple">
+<li><p>If level &gt; 0 then bool condition is True</p></li>
+<li><p>If level == 0 then bool condition is False</p></li>
+<li><p>If level is NaN then bool condition remains</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>df</strong> (<em>pd.DataFrame</em>)</p></li>
-<li><p><strong>sbool</strong> (<em>str</em>)</p></li>
-<li><p><strong>slevel</strong> (<em>str</em>)</p></li>
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – The dataframe</p></li>
+<li><p><strong>sbool</strong> (<em>str</em>) – Label of column with boolean values</p></li>
+<li><p><strong>slevel</strong> (<em>str</em>) – Label of column with numeric values</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_bool_level.html#sphx-glr-examples-correctors-plot-bool-level-py"><span class="std std-ref">Consistent columns (bool_level)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">abdominal_pain</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abdominal_pain_level</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.categorical_correction">
-<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">categorical_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">categories</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">allow_combinations</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'coerce'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.categorical_correction" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">categorical_correction</code><span class="sig-paren">(</span><em class="sig-param">series</em>, <em class="sig-param">categories=[]</em>, <em class="sig-param">allow_combinations=True</em>, <em class="sig-param">errors='coerce'</em>, <em class="sig-param">sep='</em>, <em class="sig-param">'</em>, <em class="sig-param">value=&lt;NA&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.categorical_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Corrects ensuring only categories specified are included.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>series</strong> (<em>pd.Series</em>) – The data to correct.</p></li>
 <li><p><strong>categories</strong> (<em>list</em>) – The categories allowed for the series.</p></li>
-<li><p><strong>allow_combinations</strong> (<em>boolean</em>) – Whether combinations (e.g. DENV-1,DENV-2) are allowed</p></li>
-<li><p><strong>errors</strong> (<em>string [ignore, coerce]</em>) –</p>
+<li><p><strong>allow_combinations</strong> (<em>boolean, default True</em>) – Whether combinations (e.g. DENV-1,DENV-2) are allowed</p></li>
+<li><p><strong>errors</strong> (<em>string [raise, coerce], default raise</em>) –</p>
 <ul>
-<li><p>ignore leaves inconsistent values as they are</p></li>
+<li><p>raise raises an exception</p></li>
 <li><p>coerce sets inconsistent values as None</p></li>
 </ul>
 </li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected series.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_categorical.html#sphx-glr-examples-correctors-plot-categorical-py"><span class="std std-ref">Ensure categories (category)</span></a>.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.causal_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">causal_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.causal_correction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method is not implemented yet.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.combinations_lower_upper">
@@ -273,39 +308,33 @@ consistent.</p>
 <dt id="datablend.core.repair.correctors.compound_feature_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">compound_feature_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">compound</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.compound_feature_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Corrects compound boolean features.</p>
-<p>Some values are collected either in subcategories or a
-final compound category (e.g. bleeding, bleeding_skin
-and bleeding_mucosal). It might happen that there are
-inconsistencies between these data collection.</p>
-<p>The bleeding other assumes that if there is already
-one bleeding collected that agrees with bleeding, then
-it was collected with that purpose and it is set to false</p>
-<p class="rubric">Examples</p>
-<dl class="simple">
-<dt>tidy.bleeding =         compound_feature_correction(tidy.bleeding,             tidy[[‘bleeding_skin’,</dt><dd><p>‘bleeding_mucosal’,
-‘bleeding_nose’,
-‘bleeding_skin’,
-‘bleeding_urine’,
-‘bleeding_vaginal’,
-‘bleeding_vensite’]])</p>
-</dd>
-<dt>Equivalent:</dt><dd><p>bleeding = bleeding |            tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
-</dd>
-</dl>
+<p>Ensures that the values of a compound feature (e.g. bleeding)
+and its subcategories (e.g. bleeding_skin, bleeding_nose, …)
+are consistent. The bleeding feature is set to True if the
+current value is True or if any of the bleeding sites is True;
+that is, series | compound.any().</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>series</strong> (<em>pd.Series</em>)</p></li>
-<li><p><strong>compound</strong> (<em>pd.DataFrame</em>)</p></li>
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct</p></li>
+<li><p><strong>compound</strong> (<em>pd.DataFrame</em>) – The DataFrame with subcategories.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected series.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_compound.html#sphx-glr-examples-correctors-plot-compound-py"><span class="std std-ref">Ensure compound features</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
 </dd></dl>
 
 <dl class="py function">
@@ -340,14 +369,21 @@ it was collected with that purpose and it is set to false</p>
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.day_from_first_true">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">day_from_first_true</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">event</span></em>, <em class="sig-param"><span class="n">tag</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.day_from_first_true" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method….</p>
+<dd><p>Include day for the first True element in x.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong></p></li>
-<li><p><strong>event</strong></p></li>
-<li><p><strong>tag</strong></p></li>
+<li><p><strong>x</strong> (<em>pd.DataFrame</em>) – DataFrame with patients data</p></li>
+<li><p><strong>event</strong> (<em>str</em>) – Label for the column with the dessired event</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – Tag to label new column (day_from_tag)</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>DataFrame with a column included indicating the
+days from the reference date indicated in event.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -355,21 +391,20 @@ it was collected with that purpose and it is set to false</p>
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.dtype_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">dtype_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">dtype</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'raise'</span></em>, <em class="sig-param"><span class="n">downcast</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.dtype_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Correct enforcing dtype.</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<dd><p>Enforces specificy dtype.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct.</p></li>
-<li><p><strong>dtype</strong> (<em>str</em>) – The dtype to convert the series</p></li>
-<li><p><strong>errors</strong> (<em>str (coerce, raise, ignore)</em>) – Whether to raise, ignore or coerce errors</p></li>
-<li><p><strong>copy</strong> (<em>boolean</em>) – Whether to return a copy</p></li>
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct</p></li>
+<li><p><strong>dtype</strong> (<em>str (pandas dtypes)</em>) – The dtype to convert the series</p></li>
+<li><p><strong>errors</strong> (<em>str (coerce, raise, ignore), default raise</em>) – Whether to raise, ignore or coerce errors</p></li>
+<li><p><strong>copy</strong> (<em>boolean, default True</em>) – Whether to return a copy</p></li>
+<li><p><strong>downcast</strong> – downcast parameters as per pd.to_numeric</p></li>
+<li><p><strong>**kwargs</strong> – arguments for pd.to_datetime</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected series.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.Series</p>
@@ -391,36 +426,55 @@ it was collected with that purpose and it is set to false</p>
 <dt id="datablend.core.repair.correctors.fillna_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">fillna_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.fillna_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Corrects filling nan with a strategy</p>
-<p class="rubric">Examples</p>
-<p># Fill nan
-tidy.abdominal_pain =         tidy.groupby(by=[‘StudyNo’])             .abdominal_pain.fillna(False)</p>
+<p>It implements the fillna function from pandas including
+two additional methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>bffill: concatenate backwards then forwards fill</p></li>
+<li><p>fbfill: concatenate forwards then backwards fill</p></li>
+</ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>series</strong> (<em>pd.Series</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The series</p></li>
+<li><p><strong>**kwargs</strong> – pd.fillna arguments</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected series.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_fillna.html#sphx-glr-examples-correctors-plot-fillna-py"><span class="std std-ref">Fill missing values (fillna)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.find_bleeding_location_columns">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_bleeding_location_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_bleeding_location_columns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method find bleeding column sites.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.find_bool_columns">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_bool_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_bool_columns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method creates column frrom level column</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.find_level_columns">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">find_level_columns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.find_level_columns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This method finds level columns.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.mode">
@@ -430,73 +484,122 @@ tidy.abdominal_pain =         tidy.groupby(by=[‘StudyNo’])             .abdo
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.order_magnitude_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">order_magnitude_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">range</span></em>, <em class="sig-param"><span class="n">orders</span><span class="o">=</span><span class="default_value">[10, 100]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.order_magnitude_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Corrects issues with order of magnitudes.</p>
-<p>Data manually collected often has one/two degrees of magnitude
-higher because one or two digits are pressed accidentally. It
-also happens if the comma was no pressed properly.</p>
-<p class="rubric">Examples</p>
-<p>tidy.body_temperature = tidy.body_temperature         .transform(order_magnitude_correction range=(20, 50))</p>
+<dd><p>Corrects issues related with the order of magnitude.</p>
+<p>It attempts to correct errors that occurs when inputting data
+manually and the values have one or two degrees of magnitude
+higher because one or two digits are pressed accidentally (e.g.
+pressing/missing extra 0s) or a comma is missing (e.g. 37.7 as
+377).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>series</strong> (<em>pd.Series</em>) – The series to correct.</p></li>
-<li><p><strong>orders</strong> (<em>list</em>) – The orders of magnitude to try.</p></li>
 <li><p><strong>range</strong> – The desired range to accept the correction.</p></li>
+<li><p><strong>orders</strong> (<em>list, default [10, 100]</em>) – The orders of magnitude to try.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected series.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_order_magnitude.html#sphx-glr-examples-correctors-plot-order-magnitude-py"><span class="std std-ref">Repair order of magnitude (order)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">body_temperature</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">36</span><span class="p">,</span> <span class="mi">366</span><span class="p">,</span> <span class="mi">3660</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">order_magnitude_correction</span><span class="p">(</span><span class="n">body_temperature</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">43</span><span class="p">])</span>
+<span class="go">[36, 36.6, 36.66]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_bleeding_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_bleeding_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_bleeding_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Examples</p>
-<dl class="simple">
-<dt>bleeding = bleeding |</dt><dd><p>tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
-</dd>
-</dl>
+<dd><p>Ensures bleeding and bleeding sites are consistent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tidy</strong></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_bleeding.html#sphx-glr-examples-correctors-oucru-plot-bleeding-py"><span class="std std-ref">Fix bleeding from sites</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<dl class="simple">
+<dt>bleeding = bleeding |</dt><dd><p>tidy.bleeding_gi |            tidy.bleeding_gum |            tidy.bleeding_mucosal |            tidy.bleeding_nose |            tidy.bleeding_skin |            tidy.bleeding_urine |            tidy.bleeding_vaginal |            tidy.bleeding_vensite</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_convert_dtypes">
-<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_convert_dtypes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">columns</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_convert_dtypes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_convert_dtypes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">columns</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_convert_dtypes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method to apply convert_dtypes.</p>
+<p>Helper method to apply convert_dtypes() to a specific
+set of columns which might or might not be included
+in the DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>columns</strong> (<em>list</em>) – The columns to apply convert_dtypes()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The DataFrame with columns converted.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">yaml</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method computes all OUCRU data corrections.</p>
-<p>The corrections included are:
-1. bool/level correction
-2. bleeding correction
-3. pleural effusion
-4. parental fluid
-5. shock
-6. outcome death
-7. pcr_dengue
-8. day_from_onset, day_from_admission, day_from_enrolment
-9.
-10.
-11.
-12.
-13.</p>
+<ul class="simple">
+<li><p>bool/level correction</p></li>
+<li><p>bleeding correction</p></li>
+<li><p>pleural effusion</p></li>
+<li><p>parental fluid</p></li>
+<li><p>shock</p></li>
+<li><p>outcome death</p></li>
+<li><p>pcr_dengue</p></li>
+<li><p>day_from_onset, day_from_admission, day_from_enrolment</p></li>
+<li><p>gender_pregnant_correction</p></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The pandas DataFrame in tidy format.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected DataFrame</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.DatFrame</p>
@@ -505,60 +608,173 @@ also happens if the comma was no pressed properly.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="datablend.core.repair.correctors.oucru_outcome_death_correction">
-<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_outcome_death_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_outcome_death_correction" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dt id="datablend.core.repair.correctors.oucru_gender_pregnant_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_gender_pregnant_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_gender_pregnant_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure that all pregnant patients have appropriate gender.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>tidy</strong></p></li>
-<li><p><strong>verbose</strong></p></li>
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – DataFrame with patients data</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – Verbosity level</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="datablend.core.repair.correctors.oucru_outcome_death_correction">
+<code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_outcome_death_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">outcome_category</span><span class="o">=</span><span class="default_value">'Died'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_outcome_death_correction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Corrects outcome when event_date is found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+<li><p><strong>outcome_category</strong> (<em>str, default Died</em>) – The outcome category to fill outcome</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_outcome_death.html#sphx-glr-examples-correctors-oucru-plot-outcome-death-py"><span class="std std-ref">Fix outcome from event_death</span></a>. ddd</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_parental_fluid_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_parental_fluid_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_parental_fluid_correction" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="simple">
-<dt>Example:</dt><dd><p>tidy.parental_fluid =             tidy.parental_fluid |             (tidy.parental_fluid_volume &gt; 0)</p>
-</dd>
-</dl>
+<dd><p>Corrects parental fluid related columns.</p>
+<p>It ensures that parental_fluid is True also when the
+parental_fluid_volume is specified but no specific
+parental_fluid column is found.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tidy</strong></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_parental_fluid.html#sphx-glr-examples-correctors-oucru-plot-parental-fluid-py"><span class="std std-ref">Fix parental fluid and load (mL)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Example</p>
+<p>tidy.parental_fluid =         tidy.parental_fluid |         (tidy.parental_fluid_volume &gt; 0)</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_pcr_dengue_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_pcr_dengue_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_pcr_dengue_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method…</p>
-<p>..warning: review</p>
+<dd><p>Ensures pcr related columns are consistent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_pcr_dengue.html#sphx-glr-examples-correctors-oucru-plot-pcr-dengue-py"><span class="std std-ref">Fix PCR dengue (load, sero and out)</span></a>.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_pleural_effusion_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_pleural_effusion_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_pleural_effusion_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p class="rubric">Examples</p>
-<p>tidy.pleural_effusion =         tidy.pleural_effusion |         tidy.pleural_effusion_left |         tidy.pleural_effusion_right</p>
+<dd><p>Corrects pleural effusion related columns</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tidy</strong></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_pleural_effusion.html#sphx-glr-examples-correctors-oucru-plot-pleural-effusion-py"><span class="std std-ref">Fix pleural effusion (from sides)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Example</p>
+<p>tidy.pleural_effusion =         tidy.pleural_effusion |         tidy.pleural_effusion_left |         tidy.pleural_effusion_right</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.oucru_shock_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">oucru_shock_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tidy</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.oucru_shock_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method corrects shock related columns.</p>
+<dd><p>Corrects shock related columns.</p>
+<p>It ensures that the columns shock, multiple_shock and
+event_shock are consistent.</p>
+<ul class="simple">
+<li><p>If &gt;0 event_shock then shock=True</p></li>
+<li><p>If &gt;1 event_shock then shock_multiple=True</p></li>
+<li><p>shock is True if shock or shock_multiple=True</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>tidy</strong> (<em>pd.DataFrame</em>)</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tidy</strong> (<em>pd.DataFrame</em>) – The DataFrame</p></li>
+<li><p><strong>verbose</strong> (<em>int</em>) – The level of verbosity.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/oucru/plot_shock.html#sphx-glr-examples-correctors-oucru-plot-shock-py"><span class="std std-ref">Fix shock, multiple and event_shock</span></a>.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -592,14 +808,13 @@ date.</p>
 <p>Some values collected are not within the ranges. They could
 also be removed using the IQR rule, but if we know the limits
 we can filter them as errors instead of outliers.</p>
-<p class="rubric">Example</p>
 <p>tidy.dbp =         tidy.dbp.transform(range_correction, range=(40, 100))</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>series</strong></p></li>
-<li><p><strong>range</strong></p></li>
-<li><p><strong>value</strong></p></li>
+<li><p><strong>series</strong> (<em>pd.Series (numeric series)</em>) – The pandas series to correct</p></li>
+<li><p><strong>range</strong> (<em>range or tuple (min, max)</em>) – The range</p></li>
+<li><p><strong>value</strong> (<em>default np.nan</em>) – The value to use for corrections</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -609,27 +824,72 @@ we can filter them as errors instead of outliers.</p>
 <dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_range.html#sphx-glr-examples-correctors-plot-range-py"><span class="std std-ref">Ensure range (range)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.replace_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">replace_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.replace_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Corrects replacing values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The pandas series</p></li>
+<li><p><strong>**kwargs</strong> – Arguments as per pandas replace function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected series.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_replace.html#sphx-glr-examples-correctors-plot-replace-py"><span class="std std-ref">Replace values (replace)</span></a>.</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.static_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">static_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">method</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.static_correction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Corrects filling with a consistent value.</p>
-<p class="rubric">Example</p>
 <p>tidy.shock =         tidy.groupby(by=’StudyNo’).shock             .transform(static_correction, method=’max’)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>method</strong> (<em>string</em>) – The method which can be a function or a string supported
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The pandas series</p></li>
+<li><p><strong>method</strong> (<em>string or function</em>) – The method which can be a function or a string supported
 by the pandas apply function such as [max, min, median,
-mean, mode]</p>
+mean, mode, …]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected series.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_static.html#sphx-glr-examples-correctors-plot-static-py"><span class="std std-ref">Ensure consistent value (static)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
 </dd></dl>
 
 <dl class="py function">
@@ -662,7 +922,7 @@ mean, mode]</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p>The corrected series.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.Series</p>
@@ -673,21 +933,36 @@ mean, mode]</p>
 <dl class="py function">
 <dt id="datablend.core.repair.correctors.unique_true_value_correction">
 <code class="sig-prename descclassname">datablend.core.repair.correctors.</code><code class="sig-name descname">unique_true_value_correction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">series</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">nan</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#datablend.core.repair.correctors.unique_true_value_correction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Corrects more than one True appearance.</p>
-<p>For example, for variable representing events such as
-event_admission where only one value should be True
-during the data collection period.</p>
-<p class="rubric">Examples</p>
+<dd><p>Ensure there is only one True value.</p>
+<p>For example, for variable representing events that can only
+occur once such as event_death, we can correct inconsistent
+series so that only one True value appears.</p>
 <p>tidy.event_admission =         tidy.groupby(by=[‘StudyNo’])             .event_admission             .transform(unique_true_value_correction)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>series</strong> (<em>pd.Series</em>)</p></li>
-<li><p><strong>**kwargs</strong> – Argument keep to pass to duplicated function. The possible
-values are [‘first’, ‘last’, ‘false’].</p></li>
+<li><p><strong>series</strong> (<em>pd.Series</em>) – The boolean series to correct.</p></li>
+<li><p><strong>**kwargs</strong> – Arguments to pass to the pandas duplicated function. In
+particular the argument ‘keep’ which allows (i) ‘first’
+to keep first appearance, (ii) ‘last’ to keep last
+appearance or (iii) ‘False’ which keeps all appearences.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The corrected series</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">Examples</span></code></dt><dd><p><a class="reference internal" href="../_examples/correctors/plot_unique_true_value.html#sphx-glr-examples-correctors-plot-unique-true-value-py"><span class="std std-ref">Ensure only one True (unique_true)</span></a>.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
 </dd></dl>
 
 </div>

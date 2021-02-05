@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Repair order of magnitude (order) &mdash; datablend 0.0.1 documentation</title>
+  <title>Consistent columns (bool_level) &mdash; datablend 0.0.1 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Ensure range (range)" href="plot_range.html" />
-    <link rel="prev" title="Fill missing values (fillna)" href="plot_fillna.html" /> 
+    <link rel="next" title="Ensure categories (category)" href="plot_categorical.html" />
+    <link rel="prev" title="Examples with correctors" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,14 +106,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../template/index.html">Examples with BlenderTemplate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../blender/index.html">Examples with Blender</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples with correctors</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="plot_bool_level.html">Consistent columns (bool_level)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Consistent columns (bool_level)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_categorical.html">Ensure categories (category)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_compound.html">Ensure compound features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_correction_stack.html">Repair Stack data from .yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_correction_tidy.html">Repair Tidy data from .yaml</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_dtype.html">Ensure dtype (dtype)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_fillna.html">Fill missing values (fillna)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Repair order of magnitude (order)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_order_magnitude.html">Repair order of magnitude (order)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_range.html">Ensure range (range)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_replace.html">Replace values (replace)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_static.html">Ensure consistent value (static)</a></li>
@@ -178,13 +178,13 @@
         
           <li><a href="index.html">Examples with correctors</a> &raquo;</li>
         
-      <li>Repair order of magnitude (order)</li>
+      <li>Consistent columns (bool_level)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/_examples/correctors/plot_order_magnitude.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/_examples/correctors/plot_bool_level.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -199,29 +199,51 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-order-magnitude-py"><span class="std std-ref">here</span></a>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-correctors-plot-bool-level-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="repair-order-of-magnitude-order">
-<span id="sphx-glr-examples-correctors-plot-order-magnitude-py"></span><h1>Repair order of magnitude (order)<a class="headerlink" href="#repair-order-of-magnitude-order" title="Permalink to this headline">¶</a></h1>
+<div class="sphx-glr-example-title section" id="consistent-columns-bool-level">
+<span id="sphx-glr-examples-correctors-plot-bool-level-py"></span><h1>Consistent columns (bool_level)<a class="headerlink" href="#consistent-columns-bool-level" title="Permalink to this headline">¶</a></h1>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>      0     1
-0    30  30.0
-1  35.5  35.5
-2  37.4  37.4
-3   NaN   NaN
-4   376  37.6
-5  3600  36.0
-6  &lt;NA&gt;   NaN
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Note: When both abdominal_pain (bool) and abdominal_pain_level
+ (int) are both None, the resulting value is False and 0
+ respectively. They could/should be left as None.
 
-      0       1
-0    30    30.0
-1  35.5    35.5
-2  37.4    37.4
-3   NaN     NaN
-4   376    37.6
-5  3600  3600.0
-6  &lt;NA&gt;     NaN
+Data:
+   abdominal_pain  abdominal_pain_level
+0           False                   0.0
+1           False                   1.0
+2           False                   2.0
+3           False                   3.0
+4           False                   NaN
+5            True                   0.0
+6            True                   1.0
+7            True                   2.0
+8            True                   3.0
+9            True                   NaN
+10           None                   0.0
+11           None                   1.0
+12           None                   2.0
+13           None                   3.0
+14           None                   NaN
+
+Corrections:
+    abdominal_pain  abdominal_pain_level
+0            False                     0
+1             True                     1
+2             True                     2
+3             True                     3
+4            False                  &lt;NA&gt;
+5            False                     0
+6             True                     1
+7             True                     2
+8             True                     3
+9             True                  &lt;NA&gt;
+10           False                     0
+11            True                     1
+12            True                     2
+13            True                     3
+14            &lt;NA&gt;                  &lt;NA&gt;
 </pre></div>
 </div>
 <div class="line-block">
@@ -249,38 +271,70 @@ to download the full example code</p>
 24
 25
 26
-27</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Import</span>
- <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="c1"># Libraries</span>
  <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
- <span class="c1"># DataBlend library</span>
- <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">order_magnitude_correction</span>
+ <span class="c1"># Specific</span>
+ <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
 
- <span class="c1"># ------------------------</span>
- <span class="c1"># Constants</span>
- <span class="c1"># ------------------------</span>
- <span class="c1">#</span>
- <span class="n">sample1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mf">35.5</span><span class="p">,</span> <span class="mf">37.4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">376</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">])</span>
+ <span class="c1"># DataBlend</span>
+ <span class="kn">from</span> <span class="nn">datablend.core.repair.correctors</span> <span class="kn">import</span> <span class="n">bool_level_correction</span>
 
- <span class="c1"># ------------------------</span>
+ <span class="c1"># -----------------------------</span>
  <span class="c1"># Main</span>
- <span class="c1"># ------------------------</span>
- <span class="c1"># Correct</span>
- <span class="n">a</span> <span class="o">=</span> <span class="n">order_magnitude_correction</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">))</span>
- <span class="n">b</span> <span class="o">=</span> <span class="n">order_magnitude_correction</span><span class="p">(</span><span class="n">sample1</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="n">orders</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+ <span class="c1"># -----------------------------</span>
+ <span class="c1"># Possible values</span>
+ <span class="n">booleans</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+ <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
 
- <span class="c1"># Show</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
- <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">sample1</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+ <span class="c1"># Product</span>
+ <span class="n">matrix</span> <span class="o">=</span> <span class="n">product</span><span class="p">(</span><span class="n">booleans</span><span class="p">,</span> <span class="n">numbers</span><span class="p">)</span>
+
+ <span class="c1"># Combinations</span>
+ <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span>
+     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;abdominal_pain&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;abdominal_pain_level&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Corrections</span>
+ <span class="n">correction</span> <span class="o">=</span> <span class="n">bool_level_correction</span><span class="p">(</span>
+     <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+     <span class="n">sbool</span><span class="o">=</span><span class="s1">&#39;abdominal_pain&#39;</span><span class="p">,</span>
+     <span class="n">slevel</span><span class="o">=</span><span class="s1">&#39;abdominal_pain_level&#39;</span><span class="p">)</span>
+
+ <span class="c1"># Show data any</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Note: When both abdominal_pain (bool) and abdominal_pain_level</span><span class="se">\n</span><span class="s2"> &quot;</span>
+       <span class="s2">&quot;(int) are both None, the resulting value is False and 0</span><span class="se">\n</span><span class="s2"> &quot;</span>
+       <span class="s2">&quot;respectively. They could/should be left as None.&quot;</span><span class="p">)</span>
+
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Corrections:&quot;</span><span class="p">)</span>
+ <span class="nb">print</span><span class="p">(</span><span class="n">correction</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.021 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-order-magnitude-py">
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.022 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-correctors-plot-bool-level-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/58121c04a22467bfea2d9dbe5519d680/plot_order_magnitude.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_order_magnitude.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/460222dab2af50b72f5fb0aac0e1adb2/plot_bool_level.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_bool_level.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/1289ec9d6fac4efb63a6e4b90d936d59/plot_order_magnitude.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_order_magnitude.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/a4557feaef548f8a0781ef7c52639513/plot_bool_level.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_bool_level.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
@@ -294,10 +348,10 @@ to download the full example code</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_range.html" class="btn btn-neutral float-right" title="Ensure range (range)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="plot_categorical.html" class="btn btn-neutral float-right" title="Ensure categories (category)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="plot_fillna.html" class="btn btn-neutral float-left" title="Fill missing values (fillna)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Examples with correctors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

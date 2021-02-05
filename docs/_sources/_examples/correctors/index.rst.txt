@@ -12,14 +12,14 @@ Below is a gallery of examples
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Ensure categories (category)">
+    <div class="sphx-glr-thumbcontainer" tooltip="Consistent columns (bool_level)">
 
 .. only:: html
 
- .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_category_thumb.png
-     :alt: Ensure categories (category)
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_bool_level_thumb.png
+     :alt: Consistent columns (bool_level)
 
-     :ref:`sphx_glr__examples_correctors_plot_category.py`
+     :ref:`sphx_glr__examples_correctors_plot_bool_level.py`
 
 .. raw:: html
 
@@ -29,7 +29,49 @@ Below is a gallery of examples
 .. toctree::
    :hidden:
 
-   /_examples/correctors/plot_category
+   /_examples/correctors/plot_bool_level
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure categories (category)">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_categorical_thumb.png
+     :alt: Ensure categories (category)
+
+     :ref:`sphx_glr__examples_correctors_plot_categorical.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_categorical
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Ensure compound features">
+
+.. only:: html
+
+ .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_compound_thumb.png
+     :alt: Ensure compound features
+
+     :ref:`sphx_glr__examples_correctors_plot_compound.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /_examples/correctors/plot_compound
 
 .. raw:: html
 
@@ -114,27 +156,6 @@ Below is a gallery of examples
    :hidden:
 
    /_examples/correctors/plot_fillna
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Consistent columns (bool_level)">
-
-.. only:: html
-
- .. figure:: /_examples/correctors/images/thumb/sphx_glr_plot_level_thumb.png
-     :alt: Consistent columns (bool_level)
-
-     :ref:`sphx_glr__examples_correctors_plot_level.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /_examples/correctors/plot_level
 
 .. raw:: html
 

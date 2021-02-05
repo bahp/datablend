@@ -5,20 +5,22 @@
 
 Computation times
 =================
-**00:00.119** total execution time for **_examples_correctors** files:
+**00:00.037** total execution time for **_examples_correctors** files:
 
 +------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_correctors_plot_correction_tidy.py` (``plot_correction_tidy.py``)     | 00:00.119 | 0.0 MB |
+| :ref:`sphx_glr__examples_correctors_plot_categorical.py` (``plot_categorical.py``)             | 00:00.037 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_correctors_plot_category.py` (``plot_category.py``)                   | 00:00.000 | 0.0 MB |
+| :ref:`sphx_glr__examples_correctors_plot_bool_level.py` (``plot_bool_level.py``)               | 00:00.000 | 0.0 MB |
++------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_plot_compound.py` (``plot_compound.py``)                   | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr__examples_correctors_plot_correction_stack.py` (``plot_correction_stack.py``)   | 00:00.000 | 0.0 MB |
++------------------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr__examples_correctors_plot_correction_tidy.py` (``plot_correction_tidy.py``)     | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr__examples_correctors_plot_dtype.py` (``plot_dtype.py``)                         | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr__examples_correctors_plot_fillna.py` (``plot_fillna.py``)                       | 00:00.000 | 0.0 MB |
-+------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr__examples_correctors_plot_level.py` (``plot_level.py``)                         | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr__examples_correctors_plot_order_magnitude.py` (``plot_order_magnitude.py``)     | 00:00.000 | 0.0 MB |
 +------------------------------------------------------------------------------------------------+-----------+--------+

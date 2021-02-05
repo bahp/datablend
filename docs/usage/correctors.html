@@ -212,7 +212,7 @@
 <td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.categorical_correction" title="datablend.core.repair.correctors.categorical_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">categorical_correction()</span></code></a></p></td>
-<td><p>Not implemented</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.fillna_correction" title="datablend.core.repair.correctors.fillna_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fillna_correction()</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">OK</span></code></p></td>
@@ -262,9 +262,9 @@
 <span class="mi">8</span>  <span class="mi">32</span><span class="n">dx</span><span class="o">-</span><span class="mi">004</span>  <span class="mi">2020</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">08</span>  <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>   <span class="mi">3950</span>    <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>      <span class="o">&lt;</span><span class="n">NA</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Now, lets create a <a href="#id1"><span class="problematic" id="id2">``</span></a>corrector.yaml` file with the transformations. The
+<p>Now, lets create a <code class="docutils literal notranslate"><span class="pre">corrector.yaml</span></code> file with the transformations. The
 file should look as the one shown below were transformations is a list
-with the name of the transformation and the parameters to pas to the
+with the name of the transformation and the parameters to pass to the
 function.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -283,7 +283,7 @@ patient id.</p>
   <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">age</span>
     <span class="n">transformations</span><span class="p">:</span>
       <span class="o">-</span> <span class="n">dtype_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">dtype</span><span class="p">:</span> <span class="n">Float64</span><span class="p">}</span>
-      <span class="o">-</span> <span class="n">range_correction</span><span class="p">:</span> <span class="p">{</span><span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+      <span class="o">-</span> <span class="n">range_correction</span><span class="p">:</span> <span class="p">{</span><span class="nb">range</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">]}</span>
       <span class="o">-</span> <span class="n">replace_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">to_replace</span><span class="p">:</span> <span class="p">{}}</span>
       <span class="o">-</span> <span class="n">static_correction</span><span class="p">:</span> <span class="p">{</span><span class="n">method</span><span class="p">:</span> <span class="nb">max</span><span class="p">,</span> <span class="n">groupby</span><span class="p">:</span> <span class="n">patient</span><span class="p">}</span>
 
@@ -314,8 +314,6 @@ patient id.</p>
 <span class="n">schema_corrector</span> <span class="o">=</span> \
     <span class="n">SchemaCorrectionTidy</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">)</span>
 
-<span class="c1"># Show schema transformations summary</span>
-
 <span class="c1"># Correct schema</span>
 <span class="n">corrected</span><span class="p">,</span> <span class="n">report</span> <span class="o">=</span> \
     <span class="n">schema_corrector</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span>
@@ -338,25 +336,26 @@ patient id.</p>
 <p>The following correctors have implemented for OUCRU specific purposes:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_bleeding_correction" title="datablend.core.repair.correctors.oucru_bleeding_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_bleeding_correction()</span></code></a>:</p></li>
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_outcome_death_correction" title="datablend.core.repair.correctors.oucru_outcome_death_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_outcome_death_correction()</span></code></a>:</p></li>
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_parental_fluid_correction" title="datablend.core.repair.correctors.oucru_parental_fluid_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_parental_fluid_correction()</span></code></a>:</p></li>
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pcr_dengue_correction" title="datablend.core.repair.correctors.oucru_pcr_dengue_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pcr_dengue_correction()</span></code></a>:</p></li>
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pleural_effusion_correction" title="datablend.core.repair.correctors.oucru_pleural_effusion_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pleural_effusion_correction()</span></code></a>:</p></li>
-<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_shock_correction" title="datablend.core.repair.correctors.oucru_shock_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_shock_correction()</span></code></a>:</p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_bleeding_correction" title="datablend.core.repair.correctors.oucru_bleeding_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_bleeding_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_outcome_death_correction" title="datablend.core.repair.correctors.oucru_outcome_death_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_outcome_death_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_parental_fluid_correction" title="datablend.core.repair.correctors.oucru_parental_fluid_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_parental_fluid_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pcr_dengue_correction" title="datablend.core.repair.correctors.oucru_pcr_dengue_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pcr_dengue_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_pleural_effusion_correction" title="datablend.core.repair.correctors.oucru_pleural_effusion_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_pleural_effusion_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_shock_correction" title="datablend.core.repair.correctors.oucru_shock_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_shock_correction()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_gender_pregnant_correction" title="datablend.core.repair.correctors.oucru_gender_pregnant_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_gender_pregnant_correction()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction" title="datablend.core.repair.correctors.oucru_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_correction()</span></code></a>: Applies all.</p></li>
 </ul>
 </div></blockquote>
 <p>These cannot be included in the .yaml because they are specific to OUCRU. In fact,
-the assume certain columns are present in the dataset passed. For this reason, at
+they assume that certain columns are present in the dataset passed. For this reason, at
 the moment are quite experimental. Once we identify similar patterns between
-different correctors, we will implement more generic methods.</p>
+different correctors, we will implement more generic correctors.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These methods only work for <code class="docutils literal notranslate"><span class="pre">tidy</span></code> structure data at the moment.</p>
 </div>
-<p>The <a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction" title="datablend.core.repair.correctors.oucru_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_correction()</span></code></a>: method applies
-all the transformations to the data.</p>
+<p>The <a class="reference internal" href="../_apidoc/datablend.core.repair.html#datablend.core.repair.correctors.oucru_correction" title="datablend.core.repair.correctors.oucru_correction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">oucru_correction()</span></code></a> method applies
+all the OUCRU correctors to the data.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corrected</span> <span class="o">=</span> <span class="n">oucru_correction</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
 </div>
