@@ -12,6 +12,7 @@ from datablend.core.repair.correctors import dtype_correction
 from datablend.core.repair.correctors import range_correction
 from datablend.core.repair.correctors import order_magnitude_correction
 from datablend.core.repair.correctors import replace_correction
+from datablend.core.repair.correctors import categorical_correction
 from datablend.core.repair.correctors import static_correction
 from datablend.core.repair.correctors import fillna_correction
 from datablend.core.repair.correctors import unique_true_value_correction
