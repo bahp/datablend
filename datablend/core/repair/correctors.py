@@ -116,7 +116,8 @@ def to_boolean(series, copy=True, errors='raise',
 
     Returns
     -------
-        pd.Series
+    pd.Series
+        The corrected series.
     """
     # Library
     from pandas.api.types import is_bool_dtype
@@ -131,9 +132,9 @@ def to_boolean(series, copy=True, errors='raise',
 
 def dtype_correction(series, dtype, copy=True,
         errors='raise', downcast=None, **kwargs):
-    """Correct enforcing dtype.
+    """Enforces specificy dtype.
 
-    .. warning: If numbers contain decimal values, the output
+    .. warning: If series contain decimal values, the output
                 will also contain decimal values even when
                 dtype Int64 is specified.
 
@@ -145,26 +146,25 @@ def dtype_correction(series, dtype, copy=True,
     .. note: pd.to_numeric params are errors, downcast
     .. note: pd.to_datetime params are many (**kwargs)
 
-    .. note: should I ignore the series as type?
-
-    .. doctest::
-        >>> 1 + 1
-        4
-
     Parameters
     ----------
     series: pd.Series
-        The series to correct.
-    dtype: str
+        The series to correct
+    dtype: str (pandas dtypes)
         The dtype to convert the series
-    errors: str (coerce, raise, ignore)
+    errors: str (coerce, raise, ignore), default raise
         Whether to raise, ignore or coerce errors
-    copy: boolean
+    copy: boolean, default True
         Whether to return a copy
+    downcast:
+        downcast parameters as per pd.to_numeric
+    **kwargs:
+        arguments for pd.to_datetime
 
     Returns
     -------
-        pd.Series
+    pd.Series
+        The corrected series.
 
     Examples
     --------
@@ -184,13 +184,15 @@ def dtype_correction(series, dtype, copy=True,
 
 
 def bool_level_correction(df, sbool, slevel):
-    """Corrects values of boolean and level series.
+    """Corrects values of boolean and numeric series.
 
-    In some scenarios data is collected indicating whether the
-    patient had some condition (e.g. abdominal_pain) and also
-    the level of that condition (a.g. abdominal_pain_level).
-    This method corrects this columns so that they are
-    consistent.
+    It handles boolean and numeric columns representing either the
+    presence of a condition (True/False) or the presence of such
+    condition through its level (0, 1, 2, 3).
+
+    - If level > 0 then bool condition is True
+    - If level == 0 then bool condition is False
+    - If level is NaN then bool condition remains
 
     .. todo: Think carefully whether we should copy the data
              to avoid corrections in place. Also consider whether
@@ -201,11 +203,25 @@ def bool_level_correction(df, sbool, slevel):
     Parameters
     ----------
     df: pd.DataFrame
+        The dataframe
     sbool: str
+        Label of column with boolean values
     slevel: str
+        Label of column with numeric values
 
     Returns
     -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_bool_level.py`.
+
+    Examples
+    --------
+    >>> abdominal_pain = [False, True, False, True]
+    >>> abdominal_pain_level = [0, 0, 1, 2]
 
     """
     # Convert dtypes
@@ -229,22 +245,30 @@ def bool_level_correction(df, sbool, slevel):
 def fillna_correction(series, **kwargs):
     """Corrects filling nan with a strategy
 
-    .. note: Generalise to get function and pass arguments!
+    It implements the fillna function from pandas including
+    two additional methods:
 
-    Examples
-    --------
-    # Fill nan
-    tidy.abdominal_pain = \
-        tidy.groupby(by=['StudyNo']) \
-            .abdominal_pain.fillna(False)
+      - bffill: concatenate backwards then forwards fill
+      - fbfill: concatenate forwards then backwards fill
 
     Parameters
     ----------
     series: pd.Series
+        The series
+    **kwargs:
+        pd.fillna arguments
 
     Returns
     -------
-        pd.Series
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_fillna.py`.
+
+    Examples
+    --------
     """
     if 'method' in kwargs:
         if kwargs['method'] == 'bffill':
@@ -258,25 +282,37 @@ def static_correction(series, method, **kwargs):
     """Corrects filling with a consistent value.
 
     .. note: Mode might return a series with two values with the
-             same frequency and only the first will be considered.
+             same frequency yet only the first will be considered.
 
     .. note: max, min, median, mean might have an inconsistent
              behaviour when applied to strings (objects) and
              similarly median and mean might have inconsistent
              behaviour when applied to boolean.
 
-    Example
-    -------
     tidy.shock = \
         tidy.groupby(by='StudyNo').shock \
             .transform(static_correction, method='max')
 
     Parameters
     ----------
-    method: string
+    series: pd.Series
+        The pandas series
+    method: string or function
         The method which can be a function or a string supported
         by the pandas apply function such as [max, min, median,
-        mean, mode]
+        mean, mode, ...]
+
+    Returns
+    -------
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_static.py`.
+
+    Examples
+    --------
     """
     #if series.isna().all():
     #    return series
@@ -301,9 +337,22 @@ def static_correction(series, method, **kwargs):
     return transform
 
 
-def category_correction(series, categories=[],
-        allow_combinations=True, errors='coerce'):
+def categorical_correction(series, categories=[],
+        allow_combinations=True, errors='coerce', sep=',',
+        value=pd.NA):
     """Corrects ensuring only categories specified are included.
+
+    .. warning: It assumes combinations are comma separated
+                without spaces. The user will have to handle
+                empty spaces issues with replace or trim.
+
+    .. note: It sorts the output to facilitate comparison of
+             multiple combinations. Thus DENV-1,DENV-2 and
+             DENV-2,DENV-1 will be corrected as DENV-1,DENV2.
+
+    .. note: It removes duplicates 'DENV-1,DENV-1' as DENV-1
+
+    .. todo: How to raise errors?
 
     Parameters
     ----------
@@ -311,47 +360,109 @@ def category_correction(series, categories=[],
         The data to correct.
     categories: list
         The categories allowed for the series.
-    allow_combinations: boolean
+    allow_combinations: boolean, default True
         Whether combinations (e.g. DENV-1,DENV-2) are allowed
-    errors: string [ignore, coerce]
-        - ignore leaves inconsistent values as they are
+    errors: string [raise, coerce], default raise
+        - raise raises an exception
         - coerce sets inconsistent values as None
 
     Returns
     -------
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_categorical.py`.
     """
-    return series
+    # Copy series
+    corrected = series.copy(deep=True)
+
+    # Correct single elements
+    isin = corrected.isin(categories)
+    issep = series.apply(str).str.contains(sep)
+
+    # Allowing combinations
+    if allow_combinations:
+        # Correct combinations
+        combs = corrected[issep]\
+            .apply(lambda x: sep.join(sorted(
+                set(x.split(sep))
+                   .intersection(set(categories)))))
+        # Fix empty set
+        combs[combs == ''] = value
+
+    if errors == 'raise':
+        if (~isin & ~issep).sum() > 0:
+            print("ERROR!")
+        a = combs.compare(corrected)
+        pass
+
+    if errors == 'coerce':
+        corrected[~isin] = value
+        if allow_combinations:
+            corrected.update(combs)
+
+    # Returns
+    return corrected
 
 
 def replace_correction(series, **kwargs):
-    """Corrects replacing values."""
+    """Corrects replacing values.
+
+    Parameters
+    ----------
+    series: pd.Series
+        The pandas series
+    **kwargs:
+        Arguments as per pandas replace function
+
+    Returns
+    -------
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_replace.py`.
+    """
     return series.replace(**kwargs)
 
 
 def order_magnitude_correction(series, range, orders=[10, 100]):
-    """Corrects issues with order of magnitudes.
+    """Corrects issues related with the order of magnitude.
 
-    Data manually collected often has one/two degrees of magnitude
-    higher because one or two digits are pressed accidentally. It
-    also happens if the comma was no pressed properly.
-
-    Examples
-    --------
-    tidy.body_temperature = tidy.body_temperature \
-        .transform(order_magnitude_correction range=(20, 50))
+    It attempts to correct errors that occurs when inputting data
+    manually and the values have one or two degrees of magnitude
+    higher because one or two digits are pressed accidentally (e.g.
+    pressing/missing extra 0s) or a comma is missing (e.g. 37.7 as
+    377).
 
     Parameters
     ----------
     series: pd.Series
         The series to correct.
-    orders: list
-        The orders of magnitude to try.
     range:
         The desired range to accept the correction.
+    orders: list, default [10, 100]
+        The orders of magnitude to try.
 
     Returns
     -------
-        pd.Series
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_order_magnitude.py`.
+
+    Examples
+    --------
+    .. doctest::
+
+        >>> body_temperature = pd.Series([36, 366, 3660])
+        >>> order_magnitude_correction(body_temperature, range=[30, 43])
+        [36, 36.6, 36.66]
     """
     # Create transform
     transform = pd.to_numeric(series.copy(deep=True))
@@ -381,20 +492,28 @@ def range_correction(series, range=None, value=np.nan):
                 value=(low, high)
                 value='edges'
 
-    Example
-    -------
     tidy.dbp = \
         tidy.dbp.transform(range_correction, range=(40, 100))
 
     Parameters
     ----------
-    series:
-    range:
-    value:
+    series: pd.Series (numeric series)
+        The pandas series to correct
+    range: range or tuple (min, max)
+        The range
+    value: default np.nan
+        The value to use for corrections
 
     Returns
     -------
     pd.Series
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_range.py`.
+
+    Examples
+    --------
     """
     # Create transform
     transform = pd.to_numeric(series.copy(deep=True))
@@ -406,28 +525,18 @@ def range_correction(series, range=None, value=np.nan):
     return transform
 
 
-def category_correction(series, **kwargs):
-    """Corrects weird categories!
-
-    .. note: Can be done using the replace_correction?
-    """
-    pass
-
-
 def unique_true_value_correction(series, value=np.nan, **kwargs):
-    """Corrects more than one True appearance.
+    """Ensure there is only one True value.
 
-    For example, for variable representing events such as
-    event_admission where only one value should be True
-    during the data collection period.
+    For example, for variable representing events that can only
+    occur once such as event_death, we can correct inconsistent
+    series so that only one True value appears.
 
     .. note: If len(series) <=1 return series
     .. note: Set to value=np.nan or value=False
     .. note: What if there is no true value?
     .. note: Rename to one_true_value_correction
 
-    Examples
-    --------
     tidy.event_admission = \
         tidy.groupby(by=['StudyNo']) \
             .event_admission \
@@ -436,12 +545,24 @@ def unique_true_value_correction(series, value=np.nan, **kwargs):
     Parameters
     ----------
     series: pd.Series
+        The boolean series to correct.
     **kwargs:
-        Argument keep to pass to duplicated function. The possible
-        values are ['first', 'last', 'false'].
+        Arguments to pass to the pandas duplicated function. In
+        particular the argument 'keep' which allows (i) 'first'
+        to keep first appearance, (ii) 'last' to keep last
+        appearance or (iii) 'False' which keeps all appearences.
 
     Returns
     -------
+    pd.Series
+        The corrected series
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_unique_true_value.py`.
+
+    Examples
+    --------
     """
     # Ensure that it is boolean
     transform = series.copy(deep=True)
@@ -470,6 +591,7 @@ def unique_true_value_correction(series, value=np.nan, **kwargs):
 
 
 def causal_correction(x, y):
+    """This method is not implemented yet."""
     # if x is one then y must be one.
     pass
 
@@ -477,48 +599,36 @@ def causal_correction(x, y):
 def compound_feature_correction(series, compound):
     """Corrects compound boolean features.
 
-    Some values are collected either in subcategories or a
-    final compound category (e.g. bleeding, bleeding_skin
-    and bleeding_mucosal). It might happen that there are
-    inconsistencies between these data collection.
+    Ensures that the values of a compound feature (e.g. bleeding)
+    and its subcategories (e.g. bleeding_skin, bleeding_nose, ...)
+    are consistent. The bleeding feature is set to True if the
+    current value is True or if any of the bleeding sites is True;
+    that is, series | compound.any().
 
-    The bleeding other assumes that if there is already
-    one bleeding collected that agrees with bleeding, then
-    it was collected with that purpose and it is set to false
+    .. note: Option to return bleeding other if it is not included
+             in the compound and the series (bleeding) has True but
+             no subcategory (bleeding site) is found.
 
     .. warning: Works with pd.NA but not with np.nan!
-
-    Examples
-    --------
-    tidy.bleeding = \
-        compound_feature_correction(tidy.bleeding, \
-            tidy[['bleeding_skin',
-                  'bleeding_mucosal',
-                  'bleeding_nose',
-                  'bleeding_skin',
-                  'bleeding_urine',
-                  'bleeding_vaginal',
-                  'bleeding_vensite']])
-
-    Equivalent:
-        bleeding = bleeding | \
-           tidy.bleeding_gi | \
-           tidy.bleeding_gum | \
-           tidy.bleeding_mucosal | \
-           tidy.bleeding_nose | \
-           tidy.bleeding_skin | \
-           tidy.bleeding_urine | \
-           tidy.bleeding_vaginal | \
-           tidy.bleeding_vensite
 
     Parameters
     ----------
     series: pd.Series
+        The series to correct
     compound: pd.DataFrame
+        The DataFrame with subcategories.
 
     Returns
     -------
-        pd.Series
+    pd.Series
+        The corrected series.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_plot_compound.py`.
+
+    Examples
+    --------
     """
     # Copy data
     transform = series.copy(deep=True)
@@ -535,6 +645,7 @@ def compound_feature_correction(series, compound):
 
     # Return
     return transform
+
 
 def date_corrections(x, years=None, use_swap_day_month=True):
     """Applies various possible date corrections
@@ -1214,20 +1325,24 @@ def schema_json_correction(dataframe, schema_json, columns=None):
     return corrected
 """
 
+
 # -------------------------------------------------------------------
 # Specific corrections for OUCRU conventions
 # -------------------------------------------------------------------
 def find_level_columns(columns):
+    """This method finds level columns."""
     return [e for e in columns if 'level' in e]
 
 
 def find_bool_columns(columns):
+    """This method creates column frrom level column"""
     return [e.replace('_level', '')
             for e in columns if 'level' in e]
 
 
 def find_bleeding_location_columns(columns):
-    """
+    """This method find bleeding column sites.
+
     .. note: bleeding_severe is not a location
              and therefore should not be included.
              Also we should double check that
@@ -1245,8 +1360,26 @@ def find_bleeding_location_columns(columns):
             e.split('_')[1] in locations]
 
 
-def oucru_convert_dtypes(tidy, columns):
-    """"""
+def oucru_convert_dtypes(tidy, columns=[]):
+    """Helper method to apply convert_dtypes.
+
+    Helper method to apply convert_dtypes() to a specific
+    set of columns which might or might not be included
+    in the DataFrame.
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The DataFrame
+    columns: list
+        The columns to apply convert_dtypes()
+
+    Returns
+    -------
+    pd.DataFrame
+        The DataFrame with columns converted.
+
+    """
     # Find intersection
     intersection = \
         list(set(columns).intersection(tidy.columns))
@@ -1264,20 +1397,35 @@ def oucru_convert_dtypes(tidy, columns):
 
 
 def oucru_parental_fluid_correction(tidy, verbose=10):
-    """
+    """Corrects parental fluid related columns.
 
-    Example:
-        tidy.parental_fluid = \
-            tidy.parental_fluid | \
-            (tidy.parental_fluid_volume > 0)
+    It ensures that parental_fluid is True also when the
+    parental_fluid_volume is specified but no specific
+    parental_fluid column is found.
+
+    .. note: Uses compound_feature_correction
 
     Parameters
     ----------
-    tidy
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
 
     Returns
     -------
+    pd.DataFrame
+        The corrected DataFrame.
 
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_parental_fluid.py`.
+
+    Example
+    -------
+    tidy.parental_fluid = \
+        tidy.parental_fluid | \
+        (tidy.parental_fluid_volume > 0)
     """
     if verbose > 5:
         print("Applying... oucru_parental_fluid_correction.")
@@ -1298,15 +1446,37 @@ def oucru_parental_fluid_correction(tidy, verbose=10):
 
 
 def oucru_shock_correction(tidy, verbose=10):
-    """This method corrects shock related columns.
+    """Corrects shock related columns.
+
+    It ensures that the columns shock, multiple_shock and
+    event_shock are consistent.
+
+    - If >0 event_shock then shock=True
+    - If >1 event_shock then shock_multiple=True
+    - shock is True if shock or shock_multiple=True
 
     .. warning: For the boolean logic to work, the types need to
                 be converted using the pandas primary dtypes.
 
+    .. warning: Note that no event_shocks are created, so it
+                might happen that multiple_shock is True but
+                there is only one event_shock recorded.
+
     Parameters
     ----------
     tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
 
+    Returns
+    -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_shock.py`.
     """
     if verbose > 5:
         print("Applying... oucru_shock_correction.")
@@ -1350,21 +1520,32 @@ def oucru_shock_correction(tidy, verbose=10):
 
 
 def oucru_pleural_effusion_correction(tidy, verbose=10):
-    """
+    """Corrects pleural effusion related columns
 
-    Examples
+    .. note: Applies compound_feature_correction to pleural effusion columns.
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
+
+    Returns
+    -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See Also
     --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_pleural_effusion.py`.
+
+    Example
+    -------
     tidy.pleural_effusion = \
         tidy.pleural_effusion | \
         tidy.pleural_effusion_left | \
         tidy.pleural_effusion_right
-
-    Parameters
-    ----------
-    tidy
-
-    Returns
-    -------
 
     """
     if verbose > 5:
@@ -1393,7 +1574,25 @@ def oucru_pleural_effusion_correction(tidy, verbose=10):
 
 
 def oucru_bleeding_correction(tidy, verbose=10):
-    """
+    """Ensures bleeding and bleeding sites are consistent.
+
+    .. note: Applies compound_feature_correction to bleeding related columns.
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
+
+    Returns
+    -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_bleeding.py`.
 
     Examples
     --------
@@ -1406,14 +1605,6 @@ def oucru_bleeding_correction(tidy, verbose=10):
            tidy.bleeding_urine | \
            tidy.bleeding_vaginal | \
            tidy.bleeding_vensite
-
-    Parameters
-    ----------
-    tidy
-
-    Returns
-    -------
-
     """
     if verbose > 5:
         print("Applying... oucru_bleeding_correction.")
@@ -1434,17 +1625,27 @@ def oucru_bleeding_correction(tidy, verbose=10):
     return tidy
 
 
-def oucru_outcome_death_correction(tidy, verbose=10):
-    """
+def oucru_outcome_death_correction(tidy, verbose=10,
+        outcome_category='Died'):
+    """Corrects outcome when event_date is found.
 
     Parameters
     ----------
-    tidy
-    verbose
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
+    outcome_category: str, default Died
+        The outcome category to fill outcome
 
     Returns
     -------
+    pd.DataFrame
+        The corrected DataFrame.
 
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_outcome_death.py`. ddd
     """
     if verbose > 5:
         print("Applying... oucru_outcome_death_correction.")
@@ -1460,20 +1661,47 @@ def oucru_outcome_death_correction(tidy, verbose=10):
         if 'outcome' not in tidy:
             tidy['outcome'] = pd.NA
 
-        # At least one shock event
-        idxs = tidy \
+        # It has an event_death
+        idxs_death = tidy \
             .groupby(by='study_no') \
             .event_death.transform('sum') > 0
-        tidy.loc[idxs, 'outcome'] = 'Died'
+        tidy.loc[idxs_death, 'outcome'] = outcome_category
+
+        if 'event_discharge' not in tidy:
+            tidy['event_discharge'] = None
+
+        # It does not have an event_discharge
+        idxs_discharge = tidy \
+            .groupby(by='study_no') \
+            .event_discharge.transform('sum') == 0
+        idxs = idxs_death & idxs_discharge
+        tidy.loc[idxs, 'event_discharge'] = \
+            tidy.loc[idxs, 'event_death']
 
     # Return
     return tidy
 
 
 def oucru_pcr_dengue_correction(tidy, verbose=10):
-    """This method...
+    """Ensures pcr related columns are consistent.
 
-    ..warning: review
+    .. warning: review!!
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
+
+    Returns
+    -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_pcr_dengue.py`.
     """
     if verbose > 5:
         print("Applying... oucru_pcr_dengue_correction.")
@@ -1502,17 +1730,50 @@ def oucru_pcr_dengue_correction(tidy, verbose=10):
     return tidy
 
 
-def day_from_first_true(x, event, tag):
-    """This method....
+def oucru_gender_pregnant_correction(tidy, verbose=10):
+    """Ensure that all pregnant patients have appropriate gender.
 
     Parameters
     ----------
-    x:
-    event:
-    tag:
+    tidy: pd.DataFrame
+        DataFrame with patients data
+    verbose: int
+        Verbosity level
 
     Returns
     -------
+    pd.DataFrame
+        The corrected DataFrame
+    """
+    if verbose > 5:
+        print("Applying... gender_pregnant_correction.")
+
+    if 'pregnant' in tidy:
+        if not 'gender' in tidy:
+            tidy['gender'] = None
+
+        tidy.loc[tidy['pregnant'], 'gender'] = 'Female'
+
+    return tidy
+
+
+def day_from_first_true(x, event, tag):
+    """Include day for the first True element in x.
+
+    Parameters
+    ----------
+    x: pd.DataFrame
+        DataFrame with patients data
+    event: str
+        Label for the column with the dessired event
+    tag: str
+        Tag to label new column (day_from_tag)
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with a column included indicating the
+        days from the reference date indicated in event.
     """
     # Keep not nan
     notna = x.dropna(how='any', subset=[event])
@@ -1529,20 +1790,19 @@ def day_from_first_true(x, event, tag):
 def oucru_correction(tidy, yaml=None):
     """This method computes all OUCRU data corrections.
 
-    The corrections included are:
-    1. bool/level correction
-    2. bleeding correction
-    3. pleural effusion
-    4. parental fluid
-    5. shock
-    6. outcome death
-    7. pcr_dengue
-    8. day_from_onset, day_from_admission, day_from_enrolment
-    9.
-    10.
-    11.
-    12.
-    13.
+    - bool/level correction
+    - bleeding correction
+    - pleural effusion
+    - parental fluid
+    - shock
+    - outcome death
+    - pcr_dengue
+    - day_from_onset, day_from_admission, day_from_enrolment
+    - gender_pregnant_correction
+    -
+    -
+    -
+    -
 
     Parameters
     ----------
@@ -1551,8 +1811,8 @@ def oucru_correction(tidy, yaml=None):
 
     Returns
     -------
-        pd.DatFrame
-
+    pd.DatFrame
+        The corrected DataFrame
     """
 
     # ------------------------
@@ -1589,9 +1849,6 @@ def oucru_correction(tidy, yaml=None):
     # -------------------------
     tidy = oucru_parental_fluid_correction(tidy)
 
-    # Correction pcr_dengue
-    # ---------------------
-
     # Correction fever
     # ----------------
 
@@ -1606,6 +1863,10 @@ def oucru_correction(tidy, yaml=None):
     # Correction pcr_dengue
     # ---------------------
     tidy = oucru_pcr_dengue_correction(tidy)
+
+    # Correction gender
+    # -----------------
+    tidy = gender_pregnant_correction(tidy)
 
     # ---------------------------
     # Add new informative columns

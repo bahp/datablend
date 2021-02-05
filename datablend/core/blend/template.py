@@ -148,6 +148,7 @@ class BlenderTemplate:
 
         # Null values found
         if any(pd.isnull(df.to_name)):
+            print(df)
             values = df.to_name[df.to_name.duplicated()]
             raise BTNullValueError(column='to_name')
 
@@ -214,6 +215,8 @@ class BlenderTemplate:
         -------
             BlenderTemplate
         """
+        df.dropna(how='all', inplace=True)
+
         # Raises error if not valid.
         self.valid_blender_template_dataframe(df)
 
