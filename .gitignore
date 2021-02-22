@@ -9,6 +9,7 @@
 
 # Log files
 **/*.log
+**/*.html
 
 # PyCharm folder
 .idea

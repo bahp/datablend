@@ -57,9 +57,17 @@ def combine_files(path_data, regexp='**/*.csv', **kwargs):
 # Main
 # -------------------------------------------------------
 # Path with data
-path_stack = Path('./resources/datasets/stacked')
-path_tidy = Path('./resources/datasets/tidy')
-path_save = Path('./resources/datasets/combined')
+path_stack = Path('./resources/datasets/stacked/')
+path_tidy = Path('./resources/datasets/tidy/')
+path_save = Path('./resources/datasets/combined/')
+
+# Create folders if they dont exist
+path_stack.mkdir(parents=True, exist_ok=True)
+path_tidy.mkdir(parents=True, exist_ok=True)
+path_save.mkdir(parents=True, exist_ok=True)
+
+#
+#Path('../.glob('**/*.py')
 
 # ----------------------------------
 # Combine stacked

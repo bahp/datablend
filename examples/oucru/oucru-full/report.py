@@ -127,6 +127,10 @@ def corrections_summary(data):
 # Path with data
 path_tidy = Path('./resources/datasets/combined/combined_tidy.csv')
 path_stack = Path('./resources/datasets/combined/combined_stacked.csv')
+path_report = Path('./resources/reports/')
+
+# Create folders if they dont exist
+path_report.mkdir(parents=True, exist_ok=True)
 
 # ------------------------------
 # Load data
@@ -154,7 +158,7 @@ report = {
 
 # Save report
 save_df_dict(report,
-             filepath='./resources/reports',
+             filepath=path_report,
              filename='report',
              extension='xlsx',
              flat=False)
