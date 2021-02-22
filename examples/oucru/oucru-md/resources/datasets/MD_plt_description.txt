@@ -1,0 +1,27 @@
+The dataset contains daily platelet data of 891 children with dengue in the MD cohort. 
+
+Variables:
+- st_no		: Patient study number
+- doi_info		: Day of illness (day)
+- plt		: Platelet count (cells/mm3)
+- age		: Age at enrolment (year)
+- sex		: Gender (Female, Male)
+- day_ill  		: Day of illness at enrolment
+- his_vomit	: History of vomiting at enrolment (Yes, No)
+- temp		: Temperature at enrolment (0C)
+- liver		: Liver size at enrolment (cm)
+- plt_bsl		: Platelet count at enrolment (cells/mm3)
+- status		: Shock status
+
+
+-----
+Data source: Dr. Bridget Wills <bwills@oucru.org>
+Disclaimer:
+- Use of this data should be for the purpose of medical research to advance understanding of scientific questions only.
+- When publishing any analysis or results which makes use of this data, please acknowledge the contribution of Hospital for Tropical Diseases and OUCRU and cite this original paper.
+- For any secondary analysis that relies heavily on this dataset, please consider contacting the corresponding author for input and potential co-authorship
+
+
+
+
+
