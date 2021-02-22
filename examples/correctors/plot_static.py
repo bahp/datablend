@@ -22,6 +22,9 @@ sample6 = pd.Series([4, 4, 4, 4])
 sample7 = pd.Series([True, False, False, False])
 sample8 = pd.Series(['True', 'False', 'False'])
 sample9 = pd.Series([1.55, 2.28, 3.34])
+sample10 = pd.Series(
+    data=['Feo', 'Guapo', 'Feo', 'Feo'],
+    index=[4, 8, 12, 24])
 
 # ------------------------
 # Main
@@ -40,6 +43,7 @@ e = static_correction(sample1, method='mode')
 f = static_correction(sample1, method='mean')
 g = static_correction(sample1, method='median')
 l = static_correction(sample9, method='mean')
+m = static_correction(sample10, method='mode')
 
 # Show
 print("\nMax:")
@@ -61,3 +65,5 @@ print("\nMedian:")
 print("%s" % pd.concat([sample1, g], axis=1))
 print("\nMedian:")
 print("%s" % pd.concat([sample9, l], axis=1))
+print("\nMode:")
+print("%s" % pd.concat([sample10, m], axis=1))

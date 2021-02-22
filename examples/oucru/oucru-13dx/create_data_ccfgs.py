@@ -3,7 +3,7 @@ import pathlib
 import pandas as pd
 
 # DataBlend libraries
-from datablend.core.blend import BlenderTemplate
+from datablend.core.blend.template import BlenderTemplate
 from datablend.utils.pandas import save_xlsx
 
 # -------------------------------
@@ -13,12 +13,13 @@ from datablend.utils.pandas import save_xlsx
 curr_path = pathlib.Path(__file__).parent.absolute()
 
 # Path with raw data.
-path_data = '{0}/resources/datasets/{1}'.format(
-    curr_path, '13DX_Data_sharing.xls')
+path_data = '{0}/resources/outputs/datasets/{1}'.format(
+    curr_path, '13dx_data_fixed.xls')
 
 # Path to save fixed data.
 path_ccfgs = '{0}/resources/outputs/templates/tmp/{1}'.format(
     curr_path, 'ccfgs_13dx_data_fixed.xlsx')
+
 
 # --------------------
 # Main
@@ -44,7 +45,7 @@ path = pathlib.Path(path_ccfgs)
 path.parent.mkdir(parents=True, exist_ok=True)
 
 # Format templates (improve this)
-aux = {k:v.df for k,v in templates.items()}
+aux = {k: v.df for k, v in templates.items()}
 
 # Save
 save_xlsx(aux, path_ccfgs)
