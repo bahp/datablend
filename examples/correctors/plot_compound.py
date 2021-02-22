@@ -1,4 +1,0 @@
-"""
-Ensure compound features
-========================
-"""
