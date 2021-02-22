@@ -10,3 +10,5 @@ matplotlib
 sphinx
 sphinx-gallery
 sphinx-rtd-theme
+pint
+pandas_schema

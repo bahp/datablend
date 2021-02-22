@@ -1762,6 +1762,52 @@ def oucru_gender_pregnant_correction(tidy, verbose=10):
     return tidy
 
 
+def oucru_dengue_interpretation_feature(tidy, verbose=10,
+            pcr=True, ns1=True, igm=True, paired_igm_igg=True,
+            default=False):
+    """Include this new feature based on others.
+
+    Dengue definition:
+        - positive NS1 point of care assay,
+        - positive reverse transcriptase polymerase chain reaction (RT-PCR),
+        - positive dengue IgM through acute serology,
+        - seroconversion of either paired IgM or IgG samples.
+
+    .. note: NS1 might have Equivocal,Positive
+    .. note: IGM might have Equivocal,Positive
+
+    """
+    if verbose > 5:
+        print("Applying... oucru_dengue_interpretation_feature.")
+
+    # Create series (assuming false by default)
+    dengue_interpretation = pd.Series(index=tidy.index)
+
+    # Positive PCR
+    if pcr and 'pcr_dengue_serotype' in tidy:
+        idxs_denv = tidy.pcr_dengue_serotype.fillna('').str.contains('DENV')
+        idxs_mixed = tidy.pcr_dengue_serotype.fillna('').str.contains('Mixed')
+        dengue_interpretation[idxs_denv] = True
+        dengue_interpretation[idxs_mixed] = True
+
+    # Positive NS1
+    if ns1 and 'ns1_interpretation' in tidy:
+        idxs = tidy.ns1_interpretation.fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Positive IGM
+    if igm and 'igm_interpretation' in tidy:
+        idxs = tidy.igm_interpretation.fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Fill default
+    dengue_interpretation = dengue_interpretation.fillna(default)
+
+    # Return
+    return dengue_interpretation
+
+
+
 def day_from_first_true(x, event, tag):
     """Include day for the first True element in x.
 
@@ -1790,7 +1836,6 @@ def day_from_first_true(x, event, tag):
     x['day_from_%s' % tag] = None
     # Return
     return x
-
 
 def oucru_correction(tidy, yaml=None):
     """This method computes all OUCRU data corrections.

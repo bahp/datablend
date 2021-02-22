@@ -9,6 +9,23 @@ from datablend.utils.logger import load_logger
 # ------------------------------------------
 # Methods
 # ------------------------------------------
+def fix_elisa14(df_df, df_elisa14):
+    """This method fixes the EXAM worksheet
+
+    issue 1: There is no date in EXAM
+        It can be addressed including the enrolment date in ENROL.
+        It can be addressed including the date in NS1STRIP.
+    """
+    # Issue 1: No date found (sample_date)
+    # ------------------------------------
+    # Create auxiliary dataframe
+    aux = df_df[['st_no', 'admstu']]
+    # Include date enrolment information
+    df_elisa14 = df_elisa14.merge(aux, how='left', on='st_no')
+
+    # Return
+    return df_elisa14
+
 
 # -------------------------------
 # Create configuration from data
@@ -48,6 +65,8 @@ for k, v in data.items():
 # Fix data sheets
 # -------------------------------
 # Fix the various worksheets
+data['FINAL_ELISA_14DEC2012_ALL_DATA'] = \
+    fix_elisa14(data['DF'], data['FINAL_ELISA_14DEC2012_ALL_DATA'])
 
 
 # ---------------------------------
