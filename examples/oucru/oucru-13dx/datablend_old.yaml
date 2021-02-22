@@ -1,0 +1,499 @@
+appName: appName
+logLevel: WARN
+
+
+datablend:
+
+  execute_stack:
+    create_stack: True
+    create_clean: True
+    create_report: True
+
+  execute_tidy:
+    create_tidy: True
+    create_clean: True
+    create_report: True
+    create_profile: True
+
+  blender:
+
+    logger_config: logging.yaml
+    templates: resources/outputs/templates/ccfgs_13dx_data_fixed.xlsx
+    widgets:
+      - FullTemplateWidget: feo
+      - RenameWidget: guapo
+      - TransformWidget: done
+
+    # Inputs
+    filepath_data: resources/outputs/datasets/13dx_data_fixed.xlsx
+    filepath_template: resources/outputs/templates/ccfgs_13dx_data_fixed.xlsx
+
+    folder_structure:
+      tags:
+        filename_prefix: 13dx_data
+        filename_stacked: stacked
+        filename_tidy: tidy
+
+      outputs:
+        main: resources/outputs
+        datasets: resources/outputs/datasets
+        templates: resources/outputs/templates
+        reports: resources/outputs/reports
+
+    worksheets:
+      include:
+        - ENROL
+        - DAILY
+        - PCR
+        - CBC
+        - BIO
+        - SEROLOGY
+        - LAB_DIAGNOSIS
+        - INPFU
+        - NS1PLATELIA
+      exclude:
+        - Category
+        - NS1TRIP
+
+    stack:
+      index: StudyNo
+
+    tidy:
+      index: [StudyNo, date, column]
+      value: result
+
+      report_corrections: True
+      report_comparison: True
+      report_describe: True
+      report_pandas_profile: True
+
+date:
+  transformations:
+    date_outliers_correction:
+      max_days_to_median: 15
+      outliers_as_nat: True
+      corrections:
+        - swap_day_month
+        - one_year_more
+
+
+features:
+
+  # ---------------------------
+  # Demographics
+  # ---------------------------
+  # Use transformations queue?
+  - name: age
+    unit: year
+    dtype: Int64
+    range:
+      absolute: [0, 120, year]
+    transformations:
+      range_correction:
+          range: [0, 120]
+      replace_correction:
+          to_replace: {}
+      static_correction:
+          method: max
+
+  - name: gender
+    categories:
+      Male: 0
+      Female: 1
+    transformations:
+      static_correction: {method: mode}
+
+  - name: weight
+    unit: kg
+    dtype: Float64
+    range:
+      absolute: [2, 100, kg]
+    transformations:
+      static_correction: {method: mean}
+
+  - name: height
+    unit: cm
+    dtype: Float64
+    range:
+      absolute: [50, 200, cm]
+    transformations:
+      static_correction: {method: mean}
+
+  - name: anorexia
+    dtype: Boolean
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: pregnant
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: diabetes
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: asthma
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: anemia
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: peptic_ulcer
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: chronic_hepatitis
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  # ---------------
+  # Vital signs
+  # ---------------
+  - name: body_temperature
+    unit: celsius
+    dtype: Float64
+    range:
+      absolute: [35, 43, celsius]
+    transformations:
+      order_magnitude_correction:
+          range: [35, 43]
+          orders: [10, 100]
+      range_correction:
+          range: [35, 43]
+
+  - name: respiratory_rate
+    unit: breath/minute
+    dtype: Int64
+    range:
+      absolute: [10, 60, breath/minute]
+    transformations:
+      range_correction:
+          range: [10, 60]
+
+  - name: pulse
+    unit: beat/minute
+    dtype: Int64
+    range:
+      absolute: [50, 200, beat/minute]
+    transformations:
+      range_correction:
+          range: [50, 200]
+
+  - name: dbp
+    unit: mmHg
+    dtype: Float64
+    range:
+      absolute: [40, 100, mmHg]
+    transformations:
+      range_correction:
+          range: [40, 60]
+
+  - name: sbp
+    unit: mmHg
+    dtype: Float64
+    range:
+      absolute: [50, 200, mmHg]
+    transformations:
+      range_correction:
+          range: [50, 200]
+
+  # ------------------
+  # Other examination
+  # ------------------
+  - name: bleeding
+  - name: bleeding_gi
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+      
+  - name: bleeding_gum
+  - name: bleeding_mucosal
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: bleeding_nose
+  - name: bleeding_severe
+  - name: bleeding_skin
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: bleeding_urine
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: bleeding_vaginal
+  - name: bleeding_vensite
+
+  - name: abdominal_pain
+  - name: abdominal_tenderness
+
+  - name: skin_clammy
+  - name: skin_flush
+  - name: skin_rash
+
+  - name: hepatomegaly
+  - name: diarrhoea
+  - name: breath
+  - name: movement
+  - name: restlessness
+  - name: vomiting
+  - name: lathargy_severe
+  - name: conjunctival_injection
+
+  - name: jaundice
+  - name: oedema_pulmonary
+  - name: nasal_packing
+  - name: gcs_verbal_response
+  - name: gcs_motor_response
+  - name: gcs_eye_movement
+  - name: cns_abnormal_signs
+  - name: cns_abnormal
+  - name: pleural_effusion
+  - name: pulse_status
+  - name: agitated
+  - name: dehydratation
+  - name: ascites
+  - name: perfusion
+  - name: liver_acute
+  - name: respiratory_distress
+  - name: pulse_status
+    categories:
+      Strong: 1,
+      Weak: 2,
+      Not done / Not detected: 8
+      Unknown: 9
+
+  - name: dehydration
+
+  # ------------------
+  # Other
+  # ------------------
+  - name: crystalloid
+  - name: parental_fluid
+
+  # ------------------
+  # Laboratory Results
+  # ------------------
+  # Include name and description?
+  - name: alb
+    unit: g/dL
+    dtype: Float64
+    range:
+      absolute: [0.1, 50, kilocount/uL]
+    transformations:
+      range_correction:
+          range: [0.1, 50]
+
+  - name: alt
+    code: alt
+    unit: u/L
+    dtype: Float64
+    range:
+      absolute: [0, 1000, U/L]
+    transformations:
+      range_correction:
+          range: [0, 1000]
+
+  - name: ast
+    code: ast
+    unit: u/L
+    dtype: Float64
+    range:
+      absolute: [0, 1000, U/L]
+    transformations:
+      range_correction:
+          range: [0, 1000]
+
+  - name: creatine_kinase
+    code: ck
+    unit: u/L
+    dtype: Float64
+
+  - name: ffp
+
+  - name: haemoglobin
+    code: hgb
+    unit: g/dL
+    dtype: Float64
+    range:
+      absolute: [1, 30, g/dL]
+    transformations:
+      range_correction:
+          range: [0.1, 50]
+
+  - name: haematocrit_percent
+    unit: percent
+    transformations:
+      range_correction:
+          range: [0, 100]
+
+  - name: lymphocytes
+    unit: u/L
+
+  - name: lymphocytes_percent
+    unit: percent
+    transformations:
+      range_correction:
+          range: [0, 100]
+
+  - name: monocytes
+    unit: u/L
+
+  - name: monocytes_percent
+    unit: percent
+    transformations:
+      range_correction:
+          range: [0, 100]
+
+  - name: neutrophils
+    unit: u/L
+
+  - name: neutrophils_percent
+    unit: percent
+    transformations:
+      range_correction:
+          range: [0, 100]
+
+  - name: plt
+    unit: kilocount/uL
+    dtype: Float64
+    range:
+      absolute: [1, 1600, kilocount/uL]
+    transformations:
+      range_correction:
+          range: [1, 1600]
+
+  - name: rbc
+
+  - name: wbc
+    unit: kilocount/uL
+    dtype: Float64
+    range:
+      absolute: [0.1, 50, kilocount/uL]
+    transformations:
+      range_correction:
+          range: [0.1, 50]
+
+  # ---
+  # PCR
+  # ---
+  - name: pcr_dengue_load
+    unit: copies/mL
+    dtype: Float64
+
+  - name: pcr_dengue_interpretation
+    categories:
+      Not Dengue: 0
+      Lab-confirmed Dengue: 1
+      Presumptive Dengue: 2
+      Acute Flavivirus: 3
+      Recent Flavivirus: 4
+      Inconclusive: 5
+      Other Inconclusive: 6
+    transformations:
+      static_correction: {method: mode}
+
+  # decode or replace?
+  - name: pcr_dengue_serotype
+    categories:
+      <LOD: 0
+      DENV-1: 1
+      DENV-2: 2
+      DENV-3: 3
+    transformations:
+      static_correction: {method: mode}
+
+  # -----------
+  # Serology
+  # -----------
+  - name: igm
+    unit: g/L
+    dtype: Float64
+
+  - name: igg
+    unit: g/L
+    dtype: Float64
+
+  - name: igm_interpretation
+    dtype: String
+    categories:
+      - Positive: 1
+      - Negative: 2
+      - Equivocal: 3
+
+  - name: igg_interpretation
+    dtype: String
+    categories:
+      - Positive: 1
+      - Negative: 2
+      - Equivocal: 3
+
+  - name: serology_interpretation
+    dtype: String
+    categories:
+      - Inconclusive: 0
+      - Probably Primary: 1
+      - Probably Secondary: 2
+
+  # --------
+  # Outcomes
+  # --------
+  - name: shock
+    dtype: Boolean
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: shock_multiple
+    dtype: Boolean
+    transformations:
+      static_correction: {method: max}
+      fillna_correction: {value: False}
+
+  - name: outcome
+    categories:
+      Full recovery: 1
+      Self discharge: 2
+      Transferred: 3
+      Died: 4
+      Unknown: 9
+    transformations:
+      static_correction: {method: mode}
+
+  - name: icd_code
+    dtype: String
+    transformations:
+      fillna_correction: {method: ffill} # (review to fbfill)
+
+  # --------
+  # Events
+  # --------
+  - name: event_onset
+    transformations:
+      unique_true_value_correction: {keep: first}
+
+  - name: event_admission
+    transformations:
+      unique_true_value_correction: {keep: first}
+
+  - name: event_enrolment
+    transformations:
+      unique_true_value_correction: {keep: first}
+
+  - name: event_discharge
+    transformations:
+      unique_true_value_correction: {keep: first}
+
+  - name: event_shock

@@ -1,0 +1,67 @@
+appName: appName
+logLevel: WARN
+
+
+datablend:
+
+  execute_stack:
+    create_stack: True
+    create_clean: True
+    create_report: True
+
+  execute_tidy:
+    create_tidy: True
+    create_clean: True
+    create_report: True
+    create_profile: True
+
+  blender:
+
+    logger_config: logging.yaml
+    templates: resources/outputs/templates/ccfgs_13dx_data_fixed.xlsx
+    widgets:
+      - FullTemplateWidget: feo
+      - RenameWidget: guapo
+      - TransformWidget: done
+
+    # Inputs
+    filepath_data: resources/outputs/datasets/13dx_data_fixed.xlsx
+    filepath_template: resources/outputs/templates/ccfgs_13dx_data_fixed.xlsx
+
+    folder_structure:
+      tags:
+        filename_prefix: 13dx_data
+        filename_stacked: stacked
+        filename_tidy: tidy
+
+      outputs:
+        main: resources/outputs
+        datasets: resources/outputs/datasets
+        templates: resources/outputs/templates
+        reports: resources/outputs/reports
+
+    worksheets:
+      include:
+      exclude:
+        - Category
+
+    stack:
+      index: study_no
+
+    tidy:
+      index: [study_no, date, column]
+      value: result
+
+      report_corrections: True
+      report_comparison: True
+      report_describe: True
+      report_pandas_profile: True
+
+date:
+  transformations:
+    date_outliers_correction:
+      max_days_to_median: 15
+      outliers_as_nat: True
+      corrections:
+        - swap_day_month
+        - one_year_more

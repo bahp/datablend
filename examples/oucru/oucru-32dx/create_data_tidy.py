@@ -1,14 +1,15 @@
 # Libraries
 import textwrap
+import yaml
+import logging
 import pathlib
 import pandas as pd
-
-# Specific libraries
-from pathlib import Path
+import logging.config
 
 # DataBlend Libraries
-from datablend.utils.logger import load_logger
-from datablend.utils.display import str_dtypes
+from datablend.core.blend.blender import Blender
+from datablend.core.repair.correctors import oucru_correction
+from datablend.core.repair.schema import SchemaCorrectionTidy
 
 # -----------------------------------
 # Constants
@@ -16,127 +17,143 @@ from datablend.utils.display import str_dtypes
 # Current path
 curr_path = pathlib.Path(__file__).parent.absolute()
 
-# Create logger
-logger = load_logger('%s/logging.yaml' % curr_path)
-
-# Path to saved stacked data
-path_stack = '{0}/resources/outputs/datasets/'.format(curr_path)
-
-# Path to save tidy data
-path_tidy = '{0}/resources/outputs/datasets/{1}'.format(
-    curr_path, '32dx_data_tidy.csv')
-
-# -----------------------------------
-# Main
-# -----------------------------------
-# Create empty data
-data = pd.DataFrame()
-
-# Create empty data
-data = pd.DataFrame()
-
-# Read all files
-for path in list(Path(path_stack).glob('**/*_stacked_*.csv')):
-    data = data.append(pd.read_csv(path))
-
-# Basic formatting
-if 'unit' in data:
-    data = data.drop(columns=['unit'])
-data.date = pd.to_datetime(data.date)
-data.date = data.date.dt.date
-data = data.convert_dtypes()
-data = data.drop_duplicates()
-data = data.sort_values(by=['study_no', 'date', 'column'])
-
-# Convert to tidy format
-tidy = data.copy(deep=True)
-tidy = tidy.set_index(['study_no', 'date', 'column'])
-
-# Look for index duplicates
-duplicates = tidy.index.duplicated(keep=False)
-
-# Logging information
-logger.info("=" * 80)
-logger.info("The data size: %s", str(data.shape))
-logger.info('The following duplicates were found:\n\n\t%s\n', \
-    tidy[duplicates].to_string().replace('\n', '\n\t\t'))
-logger.info("=" * 80)
-
-# Keep only last row
-tidy = tidy[~tidy.index.duplicated(keep='last')]  # keep only last row
-tidy = tidy.unstack(level=2)  # Unstack
-tidy.columns = tidy.columns.droplevel(level=0)  # Drop...
-tidy = tidy.reset_index()
+# Path to config file
+yaml_datablend = '{0}/{1}'.format(curr_path, './datablend.yaml')
+yaml_corrector = '{0}/{1}'.format(curr_path, '../corrector.yaml')
 
 
-# --------------------------
-# Format
-# --------------------------
+# ----------------------------------
+# Create tidy format
+# ----------------------------------
+# Create blender
+blender = Blender(
+    filepath=yaml_datablend,
+    curr_path=curr_path)
 
-# Set static
-# ----------
-# Features that do not change over time the course of the admission.
-static = ['gender', 'age', 'diabetes', 'height', 'pregnant',
-          'weight', 'anemia', 'asthma', 'coronary_heart_disease',
-          'hypertension', 'peptic_ulcer', 'chronic_hepatitis',
-          'renal_disease']
+# Create tidy data
+tidy, duplicated = blender._tidy_from_config()
 
-for c in static:
-    tidy[c] = tidy.groupby(by='study_no')[c].ffill()
-    tidy[c] = tidy.groupby(by='study_no')[c].bfill()
+# Save tidy data
+tidy.to_csv(blender.bc.filepath_tidy(), index=False)
 
-# Set Levels
-# ----------
-# Features in which level is indicated with a number. Thus if no
-# level indicated (np.nan) then the level is 0.
-levels = [c for c in tidy.columns if 'level' in c]
-tidy[levels] = tidy[levels].fillna(0)
+# Save duplicated
+duplicated.to_csv('./duplicated.csv')
 
-# Date of onset
-# -------------
-# For some parameters, it is indicated the date of onset.
-#
-# The dataset is a combination of history, examination and
-# resources_evolution spreadsheets. Thus the following assumptions
-# are made.
-#
-# - We use bfill for those results in which the first value
-#   is False. This means that if the value obtained on
-#   examination was false there was no previous symptoms
-#   of such either.
-#
-#
-onset = ['chills', 'anorexia', 'nausea', 'vomiting', 'diarrhoea',
-         'sore_throat', 'cough', 'bleeding_skin', 'feeling_faint']
 
-for c in onset:
-    tidy[c] = tidy[c].ffill()
 
-# Date admission / discharge
-# --------------------------
+# ----------------------------------
+# Create tidy format corrected
+# ----------------------------------
+# .. note: Should we ready directly the csv to ensure that
+#          behaviour will be the same? The read_csv does
+#          some dtype transformations.
 
-# Haematocrit
-# ------------
-# Fill with max or min
-tidy.haematocrit_percent_lab.fillna(tidy.haematocrit_percent_max)
-tidy.haematocrit_percent_lab.fillna(tidy.haematocrit_percent_min)
+# Read data
+original = pd.read_csv(blender.bc.filepath_tidy(),
+    parse_dates=['date'],
+    dtype={'body_temperature': 'Float64'})
 
-# Remove columns
-tidy = tidy.drop(columns=['haematocrit_percent_max',
-                          'haematocrit_percent_min',
-                          'haematocrit_high'])
+# Create tidy
+tidy = original.copy(deep=True)
+
+# Apply OUCRU corrections
+tidy = oucru_correction(tidy)
+
+# Create corrector
+corrector = \
+    SchemaCorrectionTidy(filepath=yaml_corrector)
+
+# Apply corrections
+tidy, corrections = \
+    corrector.transform(tidy, report_corrections=True)
+
+# Define filename
+filename = '{0}/{1}.csv'.format(
+    blender.bc.filepath_datasets(),
+    blender.bc.filename(mode='tidy', add='corrected'))
+
+
+# Save tidy corrected
+tidy.to_csv(filename, index=False)
+
+
+tidy.dtypes.to_csv('dtypes.csv')
+
+
+# --------------------------------------------------------
+# Reports
+# --------------------------------------------------------
+
+"""
+# -----------------------
+# Yaml config (DataFrame)
+# -----------------------
+# Get configuration report
+summary = bc.features_summary(tidy)
+
+# Define filename
+filename = '{0}/{1}.csv'.format(
+    bc.filepath_reports(),
+    bc.filename(mode='tidy', add='corrections_summary'))
 
 # Save
-tidy.to_csv(path_tidy, index=False)
+summary.to_csv(filename, index=False)
 
-# Show types
-logger.info("=" * 80)
-logger.info("Date Types:")
-logger.info('')
-logger.info(tidy.convert_dtypes().sort_index().dtypes)
-logger.info("The outfile is: %s", path_tidy)
-logger.info("=" * 80)
+# -----------------------
+# Corrections
+# -----------------------
+# Import library
+from datablend.utils.pandas import save_df_dict
 
-# Load
-tidy = pd.read_csv(path_tidy)
-print(str_dtypes(tidy))
+# Save all worksheets separated in same xlsx file.
+save_df_dict(corrections, filepath=bc.filepath_reports(),
+    filename=bc.filename(mode='tidy', add='corrections'),
+    extension='xlsx', index=False)
+
+# -----------------
+# Comparison (txt)
+# -----------------
+# Create report
+report = report_tidy_corrections(orig, tidy)
+
+# Define filename
+filename = '{0}/{1}.txt'.format(
+    bc.filepath_reports(),
+    bc.filename(mode='tidy', add='comparison'))
+
+# Save it
+with open(filename, "w") as text_file:
+    print(report, file=text_file)
+
+# ----------------------
+# Describe (summary)
+# ----------------------
+# Create description
+description = describe(tidy)
+
+# Define filename
+filename = '{0}/{1}.csv'.format(
+    bc.filepath_reports(),
+    bc.filename(mode='tidy', add='description'))
+
+# Save
+description.to_csv(filename)
+
+
+# --------------------------------
+# Pandas-profile (HTML)
+# ---------------------------------
+# Libraries
+from pandas_profiling import ProfileReport
+
+# Generate report
+profile = ProfileReport(tidy, title='OUCRU - 13dx_corrected')
+
+# Create report
+filename = '{0}/{1}.html'.format(
+    bc.filepath_reports(),
+    bc.filename(mode='tidy', add='profile'))
+
+# Save as HTML
+profile.to_file(filename)
+"""

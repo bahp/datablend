@@ -77,6 +77,7 @@ def report_shock_multiple(tidy, verbose):
         return
     pass
 
+
 def report_pcr_dengue(tidy, verbose):
     if 'pcr_dengue_load' not in tidy:
         return

@@ -26,6 +26,9 @@ def str_df(df):
     return "\t{0}".format(df.to_string().replace('\n', '\n\t'))
 
 
+# --------------------------------------------------
+# Generic
+# --------------------------------------------------
 def report_undefined_units(units, unit_registry):
     """Checks that units exist in Pint UnitRegistry.
 
@@ -38,6 +41,20 @@ def report_undefined_units(units, unit_registry):
 
     Returns
     -------
+    DataFrame
+
+    Examples
+    --------
+    ============= ==================
+    unit	      status
+    ============= ==================
+    IU	          UndefinedUnitError
+    U/L	          ✓
+    beat/minute	  ✓
+    breath/minute ✓
+    celsius	      ✓
+    cm	          ✓
+    ============= ==================
     """
     # Create list
     status = []
@@ -60,7 +77,38 @@ def report_undefined_units(units, unit_registry):
     return status
 
 
-def report_stacked_duplicated_units(stack, keep='errors'):
+# --------------------------------------------------
+# Stacked
+# --------------------------------------------------
+def report_stack_units_per_dataset(data):
+    """This method....
+
+    Examples
+    --------
+    ======= ====== ======
+    column  06dx   13dx
+    ======= ====== ======
+    weight  kg     kg
+    height  cm     m
+    age     year   year
+    albumin U/L    g/L
+    ======= ====== ======
+    """
+    # Get only those where units are specified
+    units = data[data.unit.notna()]
+    units = units[['column', 'unit', 'dsource']]
+    units = units.drop_duplicates()
+
+    # Pivot table
+    units = pd.pivot_table(units, index=['column'],
+        columns=['dsource'], values=['unit'],
+        aggfunc=','.join)
+
+    # Return
+    return units
+
+
+def report_stack_duplicated_units(stack, keep='errors'):
     """Checks that units exist in Pint UnitRegistry.
 
     Parameters
@@ -100,12 +148,15 @@ def report_stack_feature_count(stack, cpid='StudyNo'):
 
     Example
     -------
-              alb  alt wbc
-    patient1   1    1   2
-    patient2   2   NA   1
+    ======== === === ===
+    patient  alb alt wbc
+    ======== === === ===
+    patient1   1   1   2
+    patient2   2  NA   1
+    ======== === === ===
 
     """
-    return stack.groupby(by='StudyNo') \
+    return stack.groupby(by=cpid) \
          .column.value_counts()\
          .to_frame('vcount') \
          .unstack()
@@ -118,15 +169,19 @@ def report_stack_date_count(stack, cpid='StudyNo'):
 
     Example
     -------
-                    count
+    ======== ===== =====
+    patient  date  count
+    ======== ===== =====
     patient1 date1     1
     patient1 date2     5
     patient1 date3     2
-    patient2 date1     10
+    patient2 date1    10
+    ======== ===== =====
     """
-    return stack.groupby(by='StudyNo') \
+    return stack.groupby(by=cpid) \
         .date.value_counts() \
-        .to_frame('vcount')
+        .to_frame('vcount') \
+        .sort_values(by=[cpid, 'date'])
 
 
 def report_stack_stay(stack, cpid='StudyNo'):
@@ -165,6 +220,8 @@ def report_stack_stay(stack, cpid='StudyNo'):
     df.dmin = df.dmin.dt.date
     df.dmax = df.dmax.dt.date
 
+    df = df.set_index(cpid)
+
     return df
 
 
@@ -190,6 +247,82 @@ def report_stack_corrections(original, corrected, cpid='StudyNo'):
     compare = compare.merge(summary, on=cpid)
     # Return
     return compare
+
+
+# --------------------------------------------------
+# Tidy
+# --------------------------------------------------
+def report_tidy_feature_count_per_dataset(data):
+    """This method...
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+
+    Examples
+    --------
+    ======== ==== ==== ====
+    feature  06dx 13dx 32dx
+    ======== ==== ==== ====
+    feature1   12   33   45
+    feature2        44  300
+    feature3   35  150
+    ======== ==== ==== ====
+
+    """
+    # Count not nan for each dataset.
+    count = data.groupby(by=['dsource']) \
+        .agg(['count']) \
+        .transpose() \
+        .unstack() \
+        .sort_index()
+
+    # Count number of null values per row.
+    count['n_sets'] = count[count > 0].count(axis=1)
+
+    # Return
+    return count
+
+
+def report_tidy_dtypes_per_dataset(data):
+    """
+
+    Parameters
+    ----------
+    data
+
+    Returns
+    -------
+
+    Examples
+    --------
+    ======== ==== ==== ====
+    feature  06dx 13dx 32dx
+    ======== ==== ==== ====
+    feature1   22   33
+    feature2   30  350 3000
+    feature3   20
+    ======== ==== ==== ====
+
+    """
+    # Initialise
+    dtypes = pd.DataFrame()
+
+    # Loop filling dtypes
+    for k, df in data.groupby(by=['dsource']):
+        series = df.dropna(axis=1, how='all') \
+            .convert_dtypes().dtypes
+        series.name = k
+        dtypes = dtypes.merge(series, how='outer',
+                              left_index=True, right_index=True)
+
+    # Count number of null values per row.
+    dtypes['n_sets'] = dtypes.count(axis=1)
+
+    # Return
+    return dtypes
 
 
 def report_tidy_corrections(original, corrected, verbose=10):

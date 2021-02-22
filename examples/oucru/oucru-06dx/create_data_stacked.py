@@ -5,81 +5,76 @@ import pathlib
 import pandas as pd
 import logging.config
 
-# DataBlend libraries
-from datablend.core.blend import Blender
+# Specific libraries
+from datablend.core.blend.blender import Blender
 from datablend.core.widgets.format import FullTemplateWidget
-from datablend.utils.logger import load_logger
-from datablend.utils.pandas import save_xlsx
+from datablend.core.repair.schema import SchemaCorrectionStack
 
-
-# -------------------------------
-# Create configuration from data
-# -------------------------------
+# -----------------------------------
+# Constants
+# -----------------------------------
 # Current path
 curr_path = pathlib.Path(__file__).parent.absolute()
 
-# Create logger
-logger = load_logger('%s/logging.yaml' % curr_path)
-
-# Path with fixed data
-path_fixed = '{0}/resources/outputs/datasets/{1}'.format(
-    curr_path, '06dx_data_fixed.xlsx')
-
-# Path with templates
-path_ccfgs = '{0}/resources/outputs/templates/{1}'.format(
-    curr_path, 'ccfgs_06dx_data_fixed.xlsx')
-
-# Path to save stacked data
-path_stack = '{0}/resources/outputs/datasets/{1}'.format(
-    curr_path, '06dx_data_stacked.xlsx')
-
-
-# Logging information
-logger.info("=" * 80)
-logger.info("File: %s", path_fixed)
-logger.info("")
-
+# Path to config file
+yaml_datablend = '{0}/{1}'.format(curr_path, './datablend.yaml')
+yaml_corrector = '{0}/{1}'.format(curr_path, '../corrector.yaml')
 
 # -------------------------------
 # Main
 # -------------------------------
-# Excel sheets to include
-include = ['DEMO', 'HIST', 'EXAM', 'AE', 'EVO', 'LAB',
-           'ULTRA', 'MGMT', 'FU', 'PCR', 'NS1', 'COAG',
-           'SEROLOGY', 'CYTOKINE', 'HS']
-
-# Excel sheets to exclude
-exclude = ['SCR', 'SUM', 'Drug','AE_Drug', 'AER',
-           'RAN', 'Category']
-
-# Read all data sheets
-data = pd.read_excel(path_fixed, sheet_name=None)
-tmps = pd.read_excel(path_ccfgs, sheet_name=None)
-
 # Create blender
-blender = Blender(widgets=[FullTemplateWidget()])
+blender = Blender(filepath=yaml_datablend,
+                  curr_path=curr_path,
+                  widgets=[FullTemplateWidget()])
 
-# Fit blender to templates.
-blender = blender.fit(info=tmps)
-
-# Transform data
-transformed = blender.transform(data, include=include,
-                                      exclude=exclude)
+# Fit the blender
+blender = blender._fit_from_config()
 
 # Stack data
-stacked = blender.stack(transformed, index='study_no',
-                                     include=include,
-                                     exclude=exclude)
+stacked = blender._stack_from_config()
 
-# Save stack data
-for k, df in stacked.items():
-    df.to_csv(path_stack.replace('.xlsx', '_%s.csv' % k), index=False)
+# The outputs are stored in disk.
+#   resources/outputs/datasets
+#   resources/outputs/reports
+#   resources/outputs/templates
 
-# -----------
+
+# --------------------------------
+# Clean stacked
+# --------------------------------
+# Concatenate
+stacked = pd.concat(stacked.values(), ignore_index=True)
+
+# Keep original copy
+original = stacked.copy(deep=True)
+
+# Create schema corrector
+schema_corrector = \
+    SchemaCorrectionStack(filepath=yaml_corrector)
+
+# Show schema transformations summary
+
+# Correct schema
+stacked, report = \
+    schema_corrector.transform(stacked)
+
+# Include old results/dates before correction
+stacked['result_old'] = \
+    original.result.astype(str) \
+        .compare(stacked.result.astype(str)).self
+
+stacked['date_old'] = \
+    original.date.astype(str) \
+        .compare(stacked.date.astype(str)).self
+
+# Filter between 2010 and 2014.
+#stack = stack[stack.date.dt.year.between(2010, 2014)]
+
+# Drop those with nan values?
+
 # Save
-# -----------
-# Format templates (improve this)
-aux = {k:v for k,v in stacked.items()}
-
-# Save
-save_xlsx(aux, path_stack)
+stacked.to_csv('{0}/{1}.csv'.format(
+    blender.bc.filepath_datasets(),
+    blender.bc.filename(mode='stacked', add='corrected'),
+))

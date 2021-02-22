@@ -168,7 +168,7 @@ def dtype_correction(series, dtype, copy=True,
 
     Examples
     --------
-    >>> dtype_correction(pd.Series(['1', '2']), dtype='Int64')
+    >>> dtype_correction(pd.Series(['1', '2']), dtype='Int64', errors='coerce')
     """
     # Enable coerce functionality
     if errors == 'coerce':
@@ -328,10 +328,15 @@ def static_correction(series, method, **kwargs):
     if isinstance(value, pd.Series):
         value = value[0]
 
+    #print("---")
+    #print(series)
+    #print(value)
+
     # Transform
     transform = series.copy(deep=True)
-    #transform.values[:] = value
-    transform.update(np.repeat(value, series.size))
+    transform.values[:] = value
+    #transform.update(np.repeat(value, series.size))
+    #print(transform)
 
     # Return
     return transform
@@ -1866,7 +1871,7 @@ def oucru_correction(tidy, yaml=None):
 
     # Correction gender
     # -----------------
-    tidy = gender_pregnant_correction(tidy)
+    #tidy = oucru_gender_pregnant_correction(tidy)
 
     # ---------------------------
     # Add new informative columns
@@ -1918,3 +1923,58 @@ def oucru_correction(tidy, yaml=None):
 
     # Return
     return tidy
+
+
+def report_corrections(original, corrected, columns=None,
+                       verbose=10, **kwargs):
+    """This method...
+
+    Parameters
+    ----------
+    original
+    corrected
+
+    Returns
+    -------
+
+    """
+    # Set columns
+    if columns is None:
+        columns = corrected.columns
+
+    # Initialise report
+    report = {}
+
+    # Loop
+    for c in columns:
+        # Newly created column (ignore)
+        if c not in original:
+            continue
+
+        # Get series
+        s1 = original[c]
+        s2 = corrected[c]
+
+        # Compare NaN
+        idxs1 = s1.isnull() != s2.isnull()
+
+        # Compare elements
+        idxs2 = s1[~idxs1] != s2[~idxs1]
+
+        # All
+        idxs = idxs1 | idxs2
+
+        # Comparison
+        comparison = pd.DataFrame()
+        comparison['original'] = original.loc[idxs, c]
+        comparison['corrected'] = corrected.loc[idxs, c]
+
+        # No comparison to store
+        if not comparison.size:
+            continue
+
+        # Save in report
+        report[c] = comparison
+
+    # Return
+    return report
