@@ -36,10 +36,6 @@ tidy, duplicated = blender._tidy_from_config()
 # Save tidy data
 tidy.to_csv(blender.bc.filepath_tidy(), index=False)
 
-# Save duplicated
-duplicated.to_csv('./duplicated.csv')
-
-
 
 # ----------------------------------
 # Create tidy format corrected
@@ -75,9 +71,6 @@ filename = '{0}/{1}.csv'.format(
 
 # Save tidy corrected
 tidy.to_csv(filename, index=False)
-
-
-tidy.dtypes.to_csv('dtypes.csv')
 
 
 # --------------------------------------------------------

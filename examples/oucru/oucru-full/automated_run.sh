@@ -2,54 +2,54 @@
 
 
 # Execute 06dx
-#python ../oucru-06dx/create_data_fixed.py || exit
-#python ../oucru-06dx/create_data_stacked.py || exit
-#python ../oucru-06dx/create_data_tidy.py || exit
+python ../oucru-06dx/create_data_fixed.py || exit
+python ../oucru-06dx/create_data_stacked.py || exit
+python ../oucru-06dx/create_data_tidy.py || exit
 
 # Execute 13dx
-#python ../oucru-13dx/create_data_fixed.py || exit
-#python ../oucru-13dx/create_data_stacked.py || exit
-#python ../oucru-13dx/create_data_tidy.py || exit
+python ../oucru-13dx/create_data_fixed.py || exit
+python ../oucru-13dx/create_data_stacked.py || exit
+python ../oucru-13dx/create_data_tidy.py || exit
 
 # Execute 32dx
-#python ../oucru-32dx/create_data_fixed.py || exit
-#python ../oucru-32dx/create_data_stacked.py || exit
-#python ../oucru-32dx/create_data_tidy.py || exit
+python ../oucru-32dx/create_data_fixed.py || exit
+python ../oucru-32dx/create_data_stacked.py || exit
+python ../oucru-32dx/create_data_tidy.py || exit
 
 # Execute 42dx
-#python ../oucru-42dx/create_data_fixed.py || exit
-#python ../oucru-42dx/create_data_stacked.py || exit
-#python ../oucru-42dx/create_data_tidy.py || exit
+python ../oucru-42dx/create_data_fixed.py || exit
+python ../oucru-42dx/create_data_stacked.py || exit
+python ../oucru-42dx/create_data_tidy.py || exit
 
 # Execute md
-#python ../oucru-md/create_data_fixed.py || exit
-#python ../oucru-md/create_data_stacked.py || exit
-#python ../oucru-md/create_data_tidy.py || exit
+python ../oucru-md/create_data_fixed.py || exit
+python ../oucru-md/create_data_stacked.py || exit
+python ../oucru-md/create_data_tidy.py || exit
 
 # Execute dr
-#python ../oucru-dr/create_data_fixed.py || exit
-#python ../oucru-dr/create_data_stacked.py || exit
-#python ../oucru-dr/create_data_tidy.py || exit
+python ../oucru-dr/create_data_fixed.py || exit
+python ../oucru-dr/create_data_stacked.py || exit
+python ../oucru-dr/create_data_tidy.py || exit
 
 # Execute fl
-#python ../oucru-fl/create_data_fixed.py || exit
+python ../oucru-fl/create_data_fixed.py || exit
 python ../oucru-fl/create_data_stacked.py || exit
 python ../oucru-fl/create_data_tidy.py || exit
 
 # Execute df
-#python ../oucru-df/create_data_fixed.py || exit
-#python ../oucru-df/create_data_stacked.py || exit
-#python ../oucru-df/create_data_tidy.py || exit
+python ../oucru-df/create_data_fixed.py || exit
+python ../oucru-df/create_data_stacked.py || exit
+python ../oucru-df/create_data_tidy.py || exit
 
 # Execute d001
-#python ../oucru-d001/create_data_fixed.py || exit
-#python ../oucru-d001/create_data_stacked.py || exit
-#python ../oucru-d001/create_data_tidy.py || exit
+python ../oucru-d001/create_data_fixed.py || exit
+python ../oucru-d001/create_data_stacked.py || exit
+python ../oucru-d001/create_data_tidy.py || exit
 
 # Execute 01nva
-#python ../oucru-01nva/create_data_fixed.py || exit
-#python ../oucru-01nva/create_data_stacked.py || exit
-#python ../oucru-01nva/create_data_tidy.py || exit
+python ../oucru-01nva/create_data_fixed.py || exit
+python ../oucru-01nva/create_data_stacked.py || exit
+python ../oucru-01nva/create_data_tidy.py || exit
 
 # Copy all data tidy
 cp ../oucru-06dx/resources/outputs/datasets/06dx_data_tidy_corrected.csv ./resources/datasets/tidy
