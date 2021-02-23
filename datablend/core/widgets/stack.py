@@ -193,10 +193,17 @@ class StackWidget(BaseWidget):
 
         # Cast date to datetime
         if self.as_datetime:
-            stacked.date = pd.to_datetime(stacked.date)
+            # Careful here!! no more warnings if dates wrong
+            try:
+                stacked.date = pd.to_datetime(stacked.date)
+            except Exception as e:
+                print("\nWarning... date could not be converted nicely so coerce was used!!\n\n")
+                stacked.date = pd.to_datetime(stacked.date, errors='coerce')
 
         # Drop duplicates
         stacked = stacked.drop_duplicates()
+
+        # Drop null dates
 
         # Return
         return stacked
