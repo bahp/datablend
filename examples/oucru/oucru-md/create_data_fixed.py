@@ -37,6 +37,35 @@ def fix_mdtienhist(df_mdtiendemo, df_mdtienhist):
     return df_mdtienhist
 
 
+def fix_elisaall(df_mdclinical, df_elisaall):
+    """This method fixes the DAILY worksheet
+
+    issue 1: There is no date in all columns in daily
+        It can be addressed including the enrolment date in ENROL.
+        It can be addressed including the date in NS1STRIP.
+
+    issue 2: The date of hospitalisation are sometimes wrong
+        Th main issue is with the year and can be solved using
+        the enrol dates.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+    # Issue 1: No date found (sample_date)
+    # ------------------------------------
+    # Create auxiliary DataFrame
+    aux = df_mdclinical[['st_no', 'admhtd_d', 'admstu_dt']]
+
+    # Include date enrolment information
+    df_elisaall = df_elisaall.merge(aux, how='left', on='st_no')
+
+    # Return
+    return df_elisaall
+
+
 # -------------------------------
 # Create configuration from data
 # -------------------------------
@@ -74,8 +103,15 @@ for k, v in data.items():
 # -------------------------------
 # Fix data sheets
 # -------------------------------
-data['MD_Tien_hist'] = fix_mdtienhist(data['MD_Tien_demo'],
-                                      data['MD_Tien_hist'])
+# Fix data sheets
+data['MD_Tien_hist'] = fix_mdtienhist(data['MD_Tien_demo'], data['MD_Tien_hist'])
+data['MD_Elisa_all'] = fix_elisaall(data['MD_clinical'], data['MD_Elisa_all'])
+
+# Study selection
+data['MD_Elisa_sum'] = data['MD_Elisa_sum'][data['MD_Elisa_sum'] \
+    .st_code.str.upper().replace(" ", "") == 'MD']
+data['MD_Elisa_all'] = data['MD_Elisa_all'][data['MD_Elisa_all'] \
+    .st_code.str.upper().replace(" ", "") == 'MD']
 
 # ---------------------------------
 # Save

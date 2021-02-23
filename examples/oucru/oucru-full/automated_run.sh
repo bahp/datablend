@@ -1,5 +1,6 @@
 #!/bin/sh
 
+:'
 # Execute 06dx
 python ../oucru-06dx/create_data_fixed.py || exit
 python ../oucru-06dx/create_data_stacked.py || exit
@@ -49,10 +50,10 @@ python ../oucru-d001/create_data_tidy.py || exit
 python ../oucru-01nva/create_data_fixed.py || exit
 python ../oucru-01nva/create_data_stacked.py || exit
 python ../oucru-01nva/create_data_tidy.py || exit
-
+'
 
 # Linux
-
+:'
 # Copy all data tidy
 cp ../oucru-06dx/resources/outputs/datasets/06dx_data_tidy_corrected.csv ./resources/datasets/tidy
 cp ../oucru-13dx/resources/outputs/datasets/13dx_data_tidy_corrected.csv ./resources/datasets/tidy
@@ -76,9 +77,10 @@ cp ../oucru-fl/resources/outputs/datasets/fl_data_stacked_corrected.csv ./resour
 cp ../oucru-df/resources/outputs/datasets/df_data_stacked_corrected.csv ./resources/datasets/stacked
 cp ../oucru-d001/resources/outputs/datasets/d001_data_stacked_corrected.csv ./resources/datasets/stacked
 cp ../oucru-01nva/resources/outputs/datasets/01nva_data_stacked_corrected.csv ./resources/datasets/stacked
+'
 
 # Windows
-:'
+
 # Copy all data tidy
 xcopy ..\\oucru-06dx\\resources\\outputs\\datasets\\06dx_data_tidy_corrected.csv .\\resources\\datasets\\tidy
 xcopy ..\\oucru-13dx\\resources\\outputs\\datasets\\13dx_data_tidy_corrected.csv .\\resources\\datasets\\tidy
@@ -102,7 +104,6 @@ xcopy ..\\oucru-fl\\resources\\outputs\\datasets\\fl_data_stacked_corrected.csv 
 xcopy ..\\oucru-df\\resources\\outputs\\datasets\\df_data_stacked_corrected.csv .\\resources\\datasets\\stacked
 xcopy ..\\oucru-d001\\resources\\outputs\\datasets\\d001_data_stacked_corrected.csv .\\resources\\datasets\\stacked
 xcopy ..\\oucru-01nva\\resources\\outputs\\datasets\\01nva_data_stacked_corrected.csv .\\resources\\datasets\\stacked
-'
 
 # Execute combine data tidy
 python combine_data.py || exit

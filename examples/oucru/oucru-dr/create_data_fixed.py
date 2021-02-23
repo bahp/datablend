@@ -49,6 +49,12 @@ for k, v in data.items():
 # Fix data sheets
 # -------------------------------
 
+
+# Study selection
+data['DR1_2232_EVOL'] = \
+    data['DR1_2232_EVOL'][data['DR1_2232_EVOL'] \
+        .StudyCode.str.upper().replace(" ", "").str.contains('DR')]
+
 # ---------------------------------
 # Save
 # ---------------------------------

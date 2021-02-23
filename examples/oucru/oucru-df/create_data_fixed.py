@@ -68,6 +68,13 @@ for k, v in data.items():
 data['FINAL_ELISA_14DEC2012_ALL_DATA'] = \
     fix_elisa14(data['DF'], data['FINAL_ELISA_14DEC2012_ALL_DATA'])
 
+# Study selection
+data['FINAL_ELISA_14DEC2012_ALL_DATA'] = \
+    data['FINAL_ELISA_14DEC2012_ALL_DATA'][data['FINAL_ELISA_14DEC2012_ALL_DATA'] \
+        .st_code.str.upper().replace(" ", "") == 'DF']
+data['FINAL_ELISA_SUMMARY'] = \
+    data['FINAL_ELISA_SUMMARY'][data['FINAL_ELISA_SUMMARY'] \
+        .st_code.str.upper().replace(" ", "") == 'DF']
 
 # ---------------------------------
 # Save
