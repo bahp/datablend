@@ -66,8 +66,33 @@ path_stack.mkdir(parents=True, exist_ok=True)
 path_tidy.mkdir(parents=True, exist_ok=True)
 path_save.mkdir(parents=True, exist_ok=True)
 
-#
-#Path('../.glob('**/*.py')
+# ----------------------------------
+# Copy files from ther oucru folders
+# ----------------------------------
+# .. TODO: Find the regular expression to exclude the
+#          folder 'oucru-full' so that we do not need
+#          to check in the for loop.
+# Libraries
+import shutil
+
+# Define pattern
+pattern = "!(test)/**/*_data_tidy_corrected.csv"
+
+
+# Copy tidy files
+for f in Path('../').glob('**/*data_tidy_corrected.csv'):
+    if 'oucru-full' in str(f):
+        continue
+    shutil.copy(f, path_tidy)
+    print("Copied file %s" % f)
+
+
+# Copy stacked files
+for f in Path('../').glob('**/*data_stacked_corrected.csv'):
+    if 'oucru-full' in str(f):
+        continue
+    shutil.copy(f, path_stack)
+    print("Copied file %s" % f)
 
 # ----------------------------------
 # Combine stacked

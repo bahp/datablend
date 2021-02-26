@@ -136,6 +136,9 @@ data['HIST_PMH'] = fix_histpmh(data['HIST_DM'], data['HIST_PMH'])
 data['EXAM'] = fix_exam(data['HIST_DM'], data['EXAM'])
 data['SUM3'] = fix_sum3(data['HIST_DM'], data['SUM3'])
 
+# Add gender (all females)
+data['HIST_DM']['gender'] = 'Female'
+
 # ---------------------------------
 # Save
 # ---------------------------------

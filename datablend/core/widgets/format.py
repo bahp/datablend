@@ -244,7 +244,10 @@ class DateFromStudyDayWidget(BaseWidget):
         """Performs the transformation."""
         # Create date columns from study days
         for name, date, days in self.get_list():
-            data[name] = add_days(data[date], data[days])
+            if days.startswith('-'):
+                data[name] = add_days(data[date], -data[days[1:]])
+            else:
+                data[name] = add_days(data[date], data[days])
 
         # Return
         return data
@@ -299,6 +302,9 @@ class FullTemplateWidget(BaseWidget):
         """This method performs all the transformations
 
         .. note: Use the ignore, coerce, raise approach.
+        .. note: Order matters for DateFromStudy if it uses a date that
+                 has been defined as the combination of separated columns
+                 with date and time values.
 
         Parameters
         ----------
@@ -307,8 +313,8 @@ class FullTemplateWidget(BaseWidget):
         -------
         """
         # Transform
-        wds = DateFromStudyDayWidget(errors='warn')
         wdt = DateTimeMergeWidget(errors='warn')
+        wds = DateFromStudyDayWidget(errors='warn')
         wrp = ReplaceWidget(errors='warn')
         wev = EventWidget(errors='warn')
         wrn = RenameWidget() # do renaming in stack
@@ -317,7 +323,7 @@ class FullTemplateWidget(BaseWidget):
         transformed = data.copy(deep=True)
 
         # Apply all widgets.
-        for w in [wds, wdt, wrp, wev]:
+        for w in [wdt, wds, wrp, wev]:
             #print("FullTemplateWidget: Applying... %s" % w.__class__.__name__)
             if w.compatible_template(self.bt):
                 transformed = w.fit_transform(self.bt, transformed)

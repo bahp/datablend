@@ -24,7 +24,7 @@ template = [
     # Example date from study day widget
     {'from_name': None,
      'to_name': 'date_laboratory',
-     'study_day_col': 'lab_study_day',
+     'study_day_col': '-lab_study_day',
      'study_day_ref': 'date_enrolment'},
 ]
 

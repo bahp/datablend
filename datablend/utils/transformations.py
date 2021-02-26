@@ -5,9 +5,12 @@ import pandas as pd
 
 
 def str2eval(x):
-    if not pd.isnull(x):
-        return ast.literal_eval(x)
-
+    try:
+        if not pd.isnull(x):
+            return ast.literal_eval(x)
+    except Exception as e:
+        print("\n\nError: %s\n\n" % str(x))
+        raise e
 
 def convert_dtypes_datetime(data):
     """This method converts columns to datetime.

@@ -171,7 +171,7 @@ class Blender:
         # Return
         return self
 
-    def transform(self, data, include=None, exclude=None):
+    def transform(self, data, include=None, exclude=None, verbose=10):
         """Transforms the data according to a template.
 
         .. note: The result is in the same format as the parameter data.
@@ -198,6 +198,9 @@ class Blender:
         Returns
         -------
         """
+        if verbose > 1:
+            print("\n\nTransforming excel sheets!\n")
+
         # Copy data
         aux = data
 
@@ -217,8 +220,8 @@ class Blender:
             if k not in include:
                 continue
 
-            # Logging information
-            logger.info("Transforming sheet <{0}>... COMPLETED.".format(k))
+            # Show information
+            print("{0:8} Transforming sheet <{1}>... COMPLETED.".format('', k))
 
             # Apply all widgets.
             for w in self.widgets:

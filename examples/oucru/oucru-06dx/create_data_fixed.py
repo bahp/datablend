@@ -37,6 +37,34 @@ def fix_exam(df_demo, df_exam):
     return df_exam
 
 
+def fix_his(df_demo, df_his):
+    """This method fixes the EXAM worksheet
+
+     issue 1: There is no examination day.
+         It can be addressed by completing both. In this case
+         assuming that examination day is the admission date.
+
+     Parameters
+     ----------
+     df_demo: pd.DataFrame
+        Demographics sheet.
+
+     df_exam: pd.DataFrame
+        Examination sheet.
+     """
+
+    # Issue 1: No date found (date_examination)
+    # ------------------------------------
+    # Create auxiliary dataframe
+    aux = df_demo[['Studycode', 'AdmissionDate', 'Timeadmission']]
+    # Include date enrolment information
+    df_his = df_his.merge(aux, how='left',
+                            left_on='StudyCode',
+                            right_on='Studycode')
+    # Return
+    return df_his
+
+
 # -------------------------------
 # Create configuration from data
 # -------------------------------
@@ -76,6 +104,7 @@ for k, v in data.items():
 # -------------------------------
 # Fix the various worksheets
 data['EXAM'] = fix_exam(data['DEMO'], data['EXAM'])
+data['HIST'] = fix_his(data['DEMO'], data['HIST'])
 
 
 # ---------------------------------
