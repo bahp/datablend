@@ -404,7 +404,7 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [0, 100]
+          range: [0, 1000000000000] #[0, 100]
 
   - name: alt
     unit: U/L                   # U/L=U/L | SI=ukat/L | F=0.01667
@@ -417,19 +417,19 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [0, 9999]
+          range: [0, 1000000000000] # [0, 9999]
 
   - name: ast
     unit: U/L                   # U/L=U/L | SI=ukat/L | F=0.01667
     range:
       absolute: [0, 9999, U/L]  # oucru
-      ref_female: [6, 34, U/L]  # wiki
+      ref_female: [6, 34, U/L]  # wiki  ref = ('gender', 'Female', [X, X, X])
       ref_male: [8, 40, U/L]    # wiki
       ref1: [10, 40, U/L]       # scymed
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [0, 9999]
+          range: [0, 1000000000000] # [0, 9999]
 
   - name: creatine_kinase
     unit: U/L                    # U/L=U/L | SI=ukat/L | F=0.01667
@@ -437,11 +437,11 @@ features:
       absolute: [0, 9999, U/L]   # oucru
       ref_male: [24, 174, U/L]   # wiki (U/L = ng/mL)
       ref_female: [24, 200, U/L] # wiki (U/L = ng/mL)
-      ref1: [10, 90, U/L]       # scymed
+      ref1: [10, 90, U/L]        # scymed
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [0, 9999]
+          range: [0, 1000000000000] # [0, 9999]
 
   - name: haemoglobin
     code: hgb                # U/L=g/dL | SI=g/L | C=10
@@ -454,7 +454,7 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [0.1, 50]
+          range: [0, 1000000000000] # [0.1, 50]
 
   - name: lymphocytes
     unit: u/L
@@ -522,7 +522,7 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64}
       - range_correction:
-          range: [1, 1600]
+          range: [0, 1000000000000] # [ , ]
 
   - name: wbc
     unit: kilocount/uL
@@ -532,7 +532,7 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
       - range_correction:
-          range: [0.1, 50]
+          range: [0, 1000000000000] # [0.1, 50]
 
   - name: sodium
     unit: U/L       # U/L=mEq/L | SI=mmol/L | C=1
@@ -559,7 +559,7 @@ features:
       ref2: [2.5, 7.1, mmol/L]
     transformations:
       - range_correction:
-          range: [0.5, 15]
+          range: [0, 1000000000000] # [0.5, 15]
 
   - name: crp
     unit: mg/L
@@ -598,18 +598,6 @@ features:
     transformations:
       - dtype_correction: {dtype: Float64, errors: coerce}
 
-  - name: pcr_dengue_interpretation
-    categories:
-      - Not Dengue
-      - Lab-confirmed Dengue
-      - Presumptive Dengue
-      - Acute Flavivirus
-      - Recent Flavivirus
-      - Inconclusive
-      - Other Inconclusive
-    transformations:
-      - static_correction: {method: mode, groupby: patient}
-
   - name: pcr_dengue_serotype
     categories:
       - <LOD
@@ -627,6 +615,18 @@ features:
             #'No Sample': ~,
             #'No sample': ~
           }
+      - static_correction: {method: mode, groupby: patient}
+
+  - name: pcr_dengue_interpretation
+    categories:
+      - Not Dengue
+      - Lab-confirmed Dengue
+      - Presumptive Dengue
+      - Acute Flavivirus
+      - Recent Flavivirus
+      - Inconclusive
+      - Other Inconclusive
+    transformations:
       - static_correction: {method: mode, groupby: patient}
 
   # -----------
@@ -656,13 +656,19 @@ features:
 
   - name: serology_interpretation
     categories:
+      - Primary
+      - Secondary
       - Inconclusive
-      - Probably primary
-      - Probably Secondary
 
   # --------
   # Outcomes
   # --------
+  - name: dengue_serology_interpretation
+  - name: dengue_pcr_interpretation
+  - name: dengue_interpretation
+    transformations:
+      - dtype_correction: {dtype: boolean}
+
   - name: shock
     transformations:
       - dtype_correction: {dtype: boolean}
