@@ -317,6 +317,7 @@ class SchemaCorrectionStack(SchemaCorrectorBase):
         if columns is None:
             columns = corrected.column.unique()
 
+
         # Loop
         for name in columns:
 
@@ -351,6 +352,7 @@ class SchemaCorrectionStack(SchemaCorrectorBase):
                         # Faster transformation
                         corrected.loc[idxs, 'result'] = \
                             globals()[f](corrected[idxs].result, **fn_params)
+                                #, record=self.features_[name])
 
         # Return
         if report_corrections:

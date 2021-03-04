@@ -183,7 +183,7 @@ def dtype_correction(series, dtype, copy=True,
     return series.astype(dtype, copy, errors)
 
 
-def bool_level_correction(df, sbool, slevel):
+def bool_level_correction(df, sbool, slevel, verbosity=10):
     """Corrects values of boolean and numeric series.
 
     It handles boolean and numeric columns representing either the
@@ -224,6 +224,11 @@ def bool_level_correction(df, sbool, slevel):
     >>> abdominal_pain_level = [0, 0, 1, 2]
 
     """
+    # Show information
+    if verbosity > 5:
+        print("Applying... bool_level_correction | {0} | {1}" \
+            .format(sbool, slevel))
+
     # Convert dtypes
     df[[sbool, slevel]] = df[[sbool, slevel]].convert_dtypes()
 
@@ -480,6 +485,48 @@ def order_magnitude_correction(series, range, orders=[10, 100]):
         transform[idx] = aux[idx]
     # Return
     return transform
+
+
+def unit_correction(series, unit_from=None, unit_to=None, range=None, record=None):
+    """Corrects issues related with units.
+
+    Parameters
+    ----------
+    series: pd.Series
+        The series to correct
+    unit_from:
+        The unit that has been used to record the series.
+    unit_to:
+        The unit the series should be converted too.
+    range:
+        The range to verify whether the conversion is valid.
+
+    Returns
+    -------
+
+    Examples
+    --------
+    """
+    # Import
+    #from datablend.core.settings import ureg
+
+    # Libraries for pint
+    from pint import UnitRegistry
+
+    # Create
+    ureg = UnitRegistry()  # auto_reduce_dimensions = False
+
+    # Check
+    if isinstance(series, pd.Series):
+        series = series.values
+
+    # Convert to unit
+    return pd.Series((series * ureg(unit_from)).to(unit_to))
+
+    print(v)
+
+    # Check in between
+    #between = pd.Series(v).between(low, high)
 
 
 def range_correction(series, range=None, value=np.nan):
@@ -1807,6 +1854,258 @@ def oucru_dengue_interpretation_feature(tidy, verbose=10,
     return dengue_interpretation
 
 
+# -------------
+# Serology maps
+# -------------
+MAP_serology_paired = {
+    '----': 'Not Dengue',
+    '---+': 'Primary',
+    '--+-': 'Primary',
+    '--++': 'Primary',
+    '-+--': 'Inconclusive',
+    '-+-+': 'Secondary',
+    '-++-': 'Inconclusive',
+    '-+++': 'Secondary',
+    '+---': 'Inconclusive',
+    '+--+': 'Secondary',
+    '+-+-': 'Inconclusive',
+    '+-++': 'Secondary',
+    '++--': 'Inconclusive',
+    '++-+': 'Secondary',
+    '+++-': 'Inconclusive',
+    '++++': 'Secondary'
+}
+
+MAP_serology_single = {
+    '--': 'Inconclusive',
+    '-+': 'Inconclusive',
+    '+-': 'Primary',
+    '++': 'Secondary'
+}
+
+MAP_serology_signs = {
+    'Positive': '+',
+    'Negative': '-',
+    'Equivocal': '?'
+}
+
+
+def oucru_serology_single(tidy, verbose=0):
+    """This method..."""
+
+    # Copy information
+    if 'igm_interpretation' not in tidy or \
+       'igg_interpretation' not in tidy:
+        print("""Serology single cannot be computed because at least 
+                 one of the required columns is missing. Required columns 
+                 are: [igm_interpretation, igg_interpretation]""")
+        return None
+
+    # Create serology_single
+    serology_single = \
+        tidy.igm_interpretation.replace(MAP_serology_signs) + \
+        tidy.igg_interpretation.replace(MAP_serology_signs)
+
+    # Return
+    return serology_single
+
+
+def _serology_paired(df):
+    """Helper method serology paired for one patient.
+    
+    """
+
+    # Paired samples
+    ps = []
+
+    for e in df.rolling(window=2, min_periods=2):
+        if e.shape[0] == 1:
+            ps.append(None)
+            continue
+
+        try:
+            # Create sign combination
+            key = ''.join(e['serology_single'].values.flatten())
+        except Exception as e:
+            key = None
+
+        # Append
+        ps.append(key)
+
+    # Return
+    return ps
+
+
+def oucru_serology_paired(tidy,
+        column_patient='study_no',
+        column_date='date',
+        verbose=0):
+    """Computes the paired serology.
+
+    The serology single and serology paired definitions are defined
+    on the docs string of oucru_serology_interpretation_feature
+    method.
+
+    .. note: It also computes the single serology as first step.
+    .. note: It edits the DataFrame adding the serology_single
+             and serology_paired columns.
+
+    .. todo: The implementation can be improved.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+    #if column_patient not in tidy:
+    #    print("Cannot be computed; missing <study_no>")
+    #    return tidy
+    #if column_date not in tidy:
+    #    print("Cannot be computed; missing <date>")
+    #    return tidy
+
+    tidy['serology_single'] = \
+        oucru_serology_single(tidy, verbose)
+
+    aux = pd.Series()
+
+    # For each patient
+    for i, (d, df) in enumerate(tidy.groupby(['study_no'])):
+
+        df = df.sort_values(by='date')
+
+        # Only one serology sample
+        if df.shape[0] == 1:
+            continue
+        # Add serology paired
+        df['serology_paired'] = _serology_paired(df)
+        # Merge with data
+        # data['serology_paired'] = df.serology_paired
+
+        aux = pd.concat([aux, df.serology_paired])
+
+    # Serology paired
+    tidy['serology_paired'] = aux
+
+    print(tidy.columns)
+
+    # Return
+    return tidy
+
+
+def oucru_serology_interpretation_feature(tidy,
+        serology_single=True, serology_paired=True,
+        serology_interpretation=True,
+        inconsistencies='coerce',
+
+        verbose=0):
+    """Computes the serology interpretation from igm and igg.
+
+    .. note: Serology paired by default includes serology single.
+
+    .. todo: What if serology_interpretation was already given
+             by a clinician? This might have been based on the
+             single or the paired interpretation. And sometimes
+             might mean that igm and igg are not available. Thus,
+             consider approaches to merge this information and
+             possible check its consistency?
+
+    Rules
+    =====
+
+     First   second
+    igm igg igm igg  single        paired       notes
+     -   -   -   -   Inconclusive  Not Dengue
+     -   -   -   +   Inconclusive  Primary
+     -   -   +   -   Inconclusive  Primary       1
+     -   -   +   +   Inconclusive  Primary
+
+     -   +   -   -   Inconclusive  Inconclusive  3
+     -   +   -   +   Inconclusive  Secondary*
+     -   +   +   -   Inconclusive  Inconclusive  3
+     -   +   +   +   Inconclusive  Secondary*
+
+     +   -   -   -   Primary       Inconclusive
+     +   -   -   +   Primary       Secondary*
+     +   -   +   -   Primary       Inconclusive  1
+     +   -   +   +   Primary       Secondary*
+
+     +   +   -   -   Secondary     Inconclusive  2
+     +   +   -   +   Secondary     Secondary*
+     +   +   +   -   Secondary     Inconclusive
+     +   +   +   +   Secondary     Secondary*
+
+     where * indicates significant increase in igg
+           1 indicates inconclusive because igg should be + by now
+           2 indicates it is odd and maybe hovering around the threshold
+           3 keep it as single outcome.
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The dataframe with the information
+    serology_single: boolean
+        Whether to include the serology using single samples
+    serology_paired: boolean
+        Whether to include the serology using paired samples
+    serology_interpretation: boolean
+        Whether to include the serology interpretation from the serology
+        single and/or serology paired. This will replace the signs with
+        the corresponding interpretation.
+    inconsistencies: str [coerce, ]
+        Indicates the strategy to follow to construct the serology
+        interpretation feature. The possible values are:
+        - 'coerce': serology_interpretation will be computed from
+            the raw igm and igg values and empty values will be
+            filled with clinician's serology_interpretation.
+        - ' ': only missing values will be filled.
+    verbose: int
+        Level of verbosity
+
+    Returns
+    -------
+
+    """
+    # Helper methods
+    def replace(value, dictionary, default):
+        if pd.isnull(value):
+            return value
+        return dictionary.get(value, default)
+
+    def check_consistency():
+        pass
+
+    # Show information
+    if verbose > 5:
+        print("Applying... oucru_serology_interpretation_feature.")
+
+    # Compute serology paired (includes single)
+    tidy = oucru_serology_paired(tidy, verbose)
+
+    # Include serology single interpretation
+    tidy['serology_single_interpretation'] = \
+        tidy.serology_single.apply(replace,
+            args=(MAP_serology_single, 'Inconclusive'))
+
+    # Include serology paired interpretation
+    tidy['serology_paired_interpretation'] = \
+        tidy.serology_paired.apply(replace,
+            args=(MAP_serology_paired, 'Inconclusive'))
+
+    # Include serology interpretation
+    tidy['serology_interpretation'] = \
+        tidy.serology_paired_interpretation
+    tidy['serology_interpretation'] = \
+        tidy.serology_interpretation.fillna( \
+            tidy.serology_single_interpretation)
+
+    # This is still not static for the patient, is it?
+    # make it static
+
+    # Return
+    return tidy
+
 
 def day_from_first_true(x, event, tag):
     """Include day for the first True element in x.
@@ -1917,6 +2216,10 @@ def oucru_correction(tidy, yaml=None):
     # Correction gender
     # -----------------
     #tidy = oucru_gender_pregnant_correction(tidy)
+
+    # Correction
+    # ----------
+    tidy = oucru_serology_interpretation_feature(tidy)
 
     # ---------------------------
     # Add new informative columns

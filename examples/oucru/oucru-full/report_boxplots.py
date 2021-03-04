@@ -31,12 +31,12 @@ def select_dtypes_numeric(df):
     include = []
 
     # Loop
-    for c in df.column.unique():
+    for c in sorted(df.column.unique()):
         try:
             pd.to_numeric(df[df.column == c].result, errors='raise')
             include.append(c)
         except Exception as e:
-            print("Ignoring.. %s -> %s" % (c,e))
+            print("Ignoring.. %20s -> %s" % (c,e))
 
     # Return
     return include

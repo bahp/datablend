@@ -59,6 +59,21 @@ schema_corrector = \
 stacked, report = \
     schema_corrector.transform(stacked)
 
+# ---------------------------------------------
+# Manual unit correction, move to SchemaStacked
+# ---------------------------------------------
+# DataBlend library
+from datablend.core.repair.correctors import unit_correction
+
+# It is just for PLT
+idxs =  (stacked.column=='plt') & (stacked.unit=='megacount/L')
+
+# Manual corrections (to move to corrector stack schema if possible!)
+stacked.loc[idxs, 'result'] = unit_correction(stacked[idxs].result,
+    unit_from='megacount/L', unit_to='gigacount/L')
+stacked.loc[idxs, 'unit'] = 'gigacount/L'
+# ----------------------------------------------
+
 # Include old results/dates before correction
 stacked['result_old'] = \
     original.result.astype(str) \
