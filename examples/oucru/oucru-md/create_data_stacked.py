@@ -69,8 +69,11 @@ from datablend.core.repair.correctors import unit_correction
 idxs =  (stacked.column=='plt') & (stacked.unit=='megacount/L')
 
 # Manual corrections (to move to corrector stack schema if possible!)
-stacked.loc[idxs, 'result'] = unit_correction(stacked[idxs].result,
-    unit_from='megacount/L', unit_to='gigacount/L')
+stacked.loc[idxs, 'result'] = \
+    unit_correction(stacked[idxs].result,
+        unit_from='megacount/L', unit_to='gigacount/L')
+
+# PLT
 stacked.loc[idxs, 'unit'] = 'gigacount/L'
 # ----------------------------------------------
 
