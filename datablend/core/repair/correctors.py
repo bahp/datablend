@@ -490,6 +490,14 @@ def order_magnitude_correction(series, range, orders=[10, 100]):
 def unit_correction(series, unit_from=None, unit_to=None, range=None, record=None):
     """Corrects issues related with units.
 
+    .. todo: It can be implemented in a better way.
+        if isintance(series, pd.Series):
+            transformed = series.transformed # the copy
+
+        Do stuff
+
+        return depending on input parameter
+
     Parameters
     ----------
     series: pd.Series
@@ -516,14 +524,17 @@ def unit_correction(series, unit_from=None, unit_to=None, range=None, record=Non
     # Create
     ureg = UnitRegistry()  # auto_reduce_dimensions = False
 
-    # Check
-    if isinstance(series, pd.Series):
-        series = series.values
+    # Create transformed
+    transformed = pd.Series(series)
+
+    # Transformed
+    transformed = (transformed.values * ureg(unit_from)).to(unit_to)
 
     # Convert to unit
-    return pd.Series((series * ureg(unit_from)).to(unit_to))
+    if not isinstance(series, pd.Series):
+        return transformed
+    return pd.Series(index=series.index, data=transformed)
 
-    print(v)
 
     # Check in between
     #between = pd.Series(v).between(low, high)
@@ -744,6 +755,8 @@ def date_outliers_correction(series,
              outliers = np.abs(series - series.mean()) > coef * series.std()
              outliers = np.abs(series - series.median()) > coef * series.std()
 
+    .. warning: Unfortunatly it does not work with apply!?
+
     Parameters
     ----------
     series
@@ -755,7 +768,7 @@ def date_outliers_correction(series,
     """
     # Compute days of difference between day and median
     outliers = (series - series.median()) \
-                   .dt.days.abs() > max_days_to_median
+        .dt.days.abs() > max_days_to_median
 
     # Return original
     if not outliers.any():
@@ -1405,7 +1418,7 @@ def find_bleeding_location_columns(columns):
     """
     # Create locations
     locations = ['skin', 'mucosal', 'nose', 'gum',
-        'urine', 'vaginal', 'vensite', 'gi']
+        'urine', 'vaginal', 'vensite', 'gi', 'other']
     # Return variables
     return [e for e in columns
         if 'bleeding_' in e and
@@ -1661,17 +1674,23 @@ def oucru_bleeding_correction(tidy, verbose=10):
     if verbose > 5:
         print("Applying... oucru_bleeding_correction.")
 
-    # Correction
-    if 'bleeding' in tidy:
-        # Find bleeding locations
-        bleeding_locations = \
-            find_bleeding_location_columns(tidy.columns)
 
-        # Correct compound feature bleeding.
-        tidy.bleeding = \
-            compound_feature_correction(
-                tidy.bleeding,
-                tidy[bleeding_locations])
+    # Find bleeding locations
+    bleeding_locations = \
+        find_bleeding_location_columns(tidy.columns)
+
+    if not bleeding_locations:
+        return tidy
+
+    # Column bleeding does not exist
+    if 'bleeding' not in tidy:
+        tidy['bleeding'] = False
+
+    # Correct compound feature bleeding.
+    tidy.bleeding = \
+        compound_feature_correction(
+            tidy.bleeding,
+            tidy[bleeding_locations])
 
     # Return
     return tidy
@@ -1965,7 +1984,7 @@ def oucru_serology_paired(tidy,
     #    print("Cannot be computed; missing <date>")
     #    return tidy
 
-    tidy['serology_single'] = \
+    tidy.loc[:, 'serology_single'] = \
         oucru_serology_single(tidy, verbose)
 
     aux = pd.Series()
@@ -1979,16 +1998,14 @@ def oucru_serology_paired(tidy,
         if df.shape[0] == 1:
             continue
         # Add serology paired
-        df['serology_paired'] = _serology_paired(df)
+        df.loc[:, 'serology_paired'] = _serology_paired(df)
         # Merge with data
         # data['serology_paired'] = df.serology_paired
 
         aux = pd.concat([aux, df.serology_paired])
 
     # Serology paired
-    tidy['serology_paired'] = aux
-
-    print(tidy.columns)
+    tidy.loc[:, 'serology_paired'] = aux
 
     # Return
     return tidy
@@ -2110,6 +2127,9 @@ def oucru_serology_interpretation_feature(tidy,
 def day_from_first_true(x, event, tag):
     """Include day for the first True element in x.
 
+    .. warning: It might not be first true but
+                first not Null value.
+
     Parameters
     ----------
     x: pd.DataFrame
@@ -2127,6 +2147,11 @@ def day_from_first_true(x, event, tag):
     """
     # Keep not nan
     notna = x.dropna(how='any', subset=[event])
+    # If removing this, then from first value
+    # If removing this, then assuming event is boolean
+    # Also assuming that date exists
+    # Also assuming that date is a datetime64[ns]
+    notna = notna[notna[event]]
     # Create column
     if notna.size:
         x['day_from_%s' % tag] = \
@@ -2167,6 +2192,8 @@ def oucru_correction(tidy, yaml=None):
     # ------------------------
     # Corrections
     # ------------------------
+    tidy = tidy[tidy.date.notna()]
+
 
     # Corrections bool/level
     # ----------------------

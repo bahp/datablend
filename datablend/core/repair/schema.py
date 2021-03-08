@@ -63,8 +63,10 @@ class SchemaCorrectorBase:
         # Load from filepath
         if filepath is not None:
             # Read yaml configuration
-            configuration = yaml.load(open(filepath, 'r'),
-                                      Loader=yaml.FullLoader)
+            configuration = \
+                yaml.load(open(filepath, 'r',
+                    encoding='utf8'),
+                    Loader=yaml.FullLoader)
 
             # Set groupby map
             self.groupby_ = \
