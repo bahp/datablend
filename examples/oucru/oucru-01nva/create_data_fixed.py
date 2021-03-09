@@ -9,6 +9,33 @@ from datablend.utils.logger import load_logger
 # ------------------------------------------
 # Methods
 # ------------------------------------------
+def fix_hist(df_dm, df_hist):
+    """This method fixes the DAILY worksheet
+
+    issue 1: There is no date in all columns in daily
+        It can be addressed including the enrolment date in ENROL.
+        It can be addressed including the date in NS1STRIP.
+
+    issue 2: The date of hospitalisation are sometimes wrong
+        Th main issue is with the year and can be solved using
+        the enrol dates.
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+
+    # Issue 1: No date found (sample_date)
+    # ------------------------------------
+    # Create auxiliary DataFrame
+    aux = df_dm[['SUBJID', 'ADMDTC', 'ADMTIME']]
+    aux.columns = ['SUBJID', 'ADMDTC_DM', 'ADMTIME_DM']
+    # Include date enrolment information
+    df_hist = df_hist.merge(aux, how='left', on='SUBJID')
+    # Return
+    return df_hist
 
 # -------------------------------
 # Create configuration from data
@@ -47,6 +74,7 @@ for k, v in data.items():
 # -------------------------------
 # Fix data sheets
 # -------------------------------
+data['HIST'] = fix_hist(data['DM'], data['HIST'])
 
 # ---------------------------------
 # Save
