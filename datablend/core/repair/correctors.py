@@ -130,6 +130,28 @@ def to_boolean(series, copy=True, errors='raise',
         .astype('boolean', copy, errors)
 
 
+def string_correction(series,
+        strip=True, replace_spaces=True,
+        lower=True):
+    """Enforces string corrections
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+    # Copy
+    transform = series.copy(deep=True)
+
+    # Transformations
+    transform = transform.str.lower()
+    transform = transform.str.replace('\s{2,}', ' ')
+    transform = transform.str.strip()
+
+    # Return
+    return transform
+
 def dtype_correction(series, dtype, copy=True,
         errors='raise', downcast=None, **kwargs):
     """Enforces specificy dtype.
@@ -756,6 +778,9 @@ def date_outliers_correction(series,
              outliers = np.abs(series - series.median()) > coef * series.std()
 
     .. warning: Unfortunatly it does not work with apply!?
+
+    .. todo: It is contained within not outliers dates.
+    .. todo:
 
     Parameters
     ----------
@@ -1415,10 +1440,12 @@ def find_bleeding_location_columns(columns):
 
     .. warning: Include other, severe, severity?
 
+    .. note: Bleeding other might be an string.
+
     """
     # Create locations
     locations = ['skin', 'mucosal', 'nose', 'gum',
-        'urine', 'vaginal', 'vensite', 'gi', 'other']
+        'urine', 'vaginal', 'vensite', 'gi']
     # Return variables
     return [e for e in columns
         if 'bleeding_' in e and

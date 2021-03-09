@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 
 # Import correctors (for globals()[] to work).
+from datablend.core.repair.correctors import string_correction
 from datablend.core.repair.correctors import dtype_correction
 from datablend.core.repair.correctors import range_correction
 from datablend.core.repair.correctors import order_magnitude_correction
@@ -325,6 +326,8 @@ class SchemaCorrectionStack(SchemaCorrectorBase):
 
             # Get indexes
             idxs = corrected.column == name
+
+            # CHeck if transformations exist but it is empty!
 
             for tf_map in self.get_transformations(name):
                 for f, params in tf_map.items():
