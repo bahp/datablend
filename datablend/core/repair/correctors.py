@@ -132,7 +132,7 @@ def to_boolean(series, copy=True, errors='raise',
 
 def string_correction(series,
         strip=True, replace_spaces=True,
-        lower=True):
+        lower=True, title=True, capitalize=False):
     """Enforces string corrections
 
     Parameters
@@ -148,6 +148,12 @@ def string_correction(series,
     transform = transform.str.lower()
     transform = transform.str.replace('\s{2,}', ' ')
     transform = transform.str.strip()
+
+    if title:
+        transform = transform.str.title()
+
+    if capitalize:
+        transform = transform.str.capitalize()
 
     # Return
     return transform
@@ -717,6 +723,7 @@ def compound_feature_correction(series, compound):
     """
     # Copy data
     transform = series.copy(deep=True)
+
 
     # Convert to dtypes
     transform = transform.convert_dtypes()
@@ -1451,6 +1458,26 @@ def find_bleeding_location_columns(columns):
         if 'bleeding_' in e and
             e.split('_')[1] in locations]
 
+def find_oedema_location_columns(columns):
+    """This method find bleeding column sites.
+
+    .. note: bleeding_severe is not a location
+             and therefore should not be included.
+             Also we should double check that
+             they are all boolean variables.
+
+    .. warning: Include other, severe, severity?
+
+    .. note: Bleeding other might be an string.
+
+    """
+    # Create locations
+    locations = ['face', 'feet', 'hands', 'pumonary']
+    # Return variables
+    return [e for e in columns
+        if 'oedema_' in e and
+            e.split('_')[1] in locations]
+
 
 def oucru_convert_dtypes(tidy, columns=[]):
     """Helper method to apply convert_dtypes.
@@ -1722,6 +1749,59 @@ def oucru_bleeding_correction(tidy, verbose=10):
     # Return
     return tidy
 
+def oucru_oedema_correction(tidy, verbose=10):
+    """Ensures oedema and oedema sites are consistent.
+
+    .. note: Applies compound_feature_correction to bleeding related columns.
+
+    Parameters
+    ----------
+    tidy: pd.DataFrame
+        The DataFrame
+    verbose: int
+        The level of verbosity.
+
+    Returns
+    -------
+    pd.DataFrame
+        The corrected DataFrame.
+
+    See Also
+    --------
+    Examples: :ref:`sphx_glr__examples_correctors_oucru_plot_bleeding.py`.
+
+    Examples
+    --------
+    bleeding = oedema |
+           tidy.oedema_face | \
+           tidy.oedema_feet | \
+           tidy.oedema_hands | \
+           tidy.oedema_pulmonary
+    """
+    if verbose > 5:
+        print("Applying... oucru_oedemag_correction.")
+
+
+    # Find bleeding locations
+    oedema_locations = \
+        find_oedema_location_columns(tidy.columns)
+
+    if not oedema_locations:
+        return tidy
+
+    # Column bleeding does not exist
+    if 'bleeding' not in tidy:
+        tidy['bleeding'] = False
+
+    # Correct compound feature bleeding.
+    tidy.oedema = \
+        compound_feature_correction(
+            tidy.oedema,
+            tidy[oedema_locations])
+
+    # Return
+    return tidy
+
 
 def oucru_outcome_death_correction(tidy, verbose=10,
         outcome_category='Died'):
@@ -1828,6 +1908,97 @@ def oucru_pcr_dengue_correction(tidy, verbose=10):
     return tidy
 
 
+def any_feature(tidy, replace={}, invert=False):
+    """This method...
+
+    .. warning: Might have an inconsistent behaviour when
+                a replace value is included. Ideally keep
+                just as a boolean outcome.
+
+    Parameters
+    ----------
+    tidy:
+    replace:
+    invert:
+
+    Returns
+    -------
+    """
+
+    # Keep idxs with all na
+    idxs = tidy.isna().all(1)
+
+    # Copy and replace
+    aux = tidy.copy(deep=True)
+    aux = aux.replace(replace)
+    aux = aux.convert_dtypes()
+
+    # Create feature
+    feature = aux.any(axis=1).astype('boolean')
+
+    # Revert
+    if replace and invert:
+        inv = {v: k for k, v in replace.items()}
+        feature = feature.replace(inv)
+
+    # Issue (None, None) keep as none
+    feature[idxs] = None
+
+    # Return
+    return feature
+
+def oucru_ns1_interpretation_feature(tidy,
+        ns1=True, plasma=True, platelia=True,
+        trip=True, urine=True, columns=None,
+        verbose=10):
+    """This method...
+
+    .. todo: Create generic method to do this with dengue_interpretation,
+             ns1_interpretation and serology_interpretation. And probably
+             others.
+    .. todo: Use compound_feature_correction as base?
+    .. todo: What about the corresponding concentrations?
+
+
+    .. note: Equivocal, Equivocal becomes Negative
+    .. note: None, None becomes Negative
+
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
+    # Information
+    if verbose > 5:
+        print("Applying... oucru_ns1_interpretation_feature.")
+
+    # Replace
+    replace = {
+        'Positive': True,
+        'Negative': False,
+        'Equivocal': None
+    }
+
+    # NS1 columns
+    ns1_columns = ['ns1_interpretation',
+                   'ns1_plasma_interpretation',
+                   'ns1_platelia_interpretation',
+                   'ns1_trip_test_interpretation',
+                   'ns1_urine_interpretation']
+
+    # Columns has not been specified
+    if columns is None:
+        columns = ns1_columns
+
+    # Keep only columns that exist
+    columns = set(columns).intersection(tidy.columns)
+
+    # Return
+    return any_feature(tidy[columns],
+        replace=replace, invert=False)
+
+
 def oucru_gender_pregnant_correction(tidy, verbose=10):
     """Ensure that all pregnant patients have appropriate gender.
 
@@ -1856,41 +2027,117 @@ def oucru_gender_pregnant_correction(tidy, verbose=10):
 
 
 def oucru_dengue_interpretation_feature(tidy, verbose=10,
-            pcr=True, ns1=True, igm=True, paired_igm_igg=True,
+            pcr=True, ns1=True, igm=True, serology=True,
+            single_igm_igg=True,
+            paired_igm_igg=True,
             default=False):
     """Include this new feature based on others.
 
     Dengue definition:
-        - positive NS1 point of care assay,
-        - positive reverse transcriptase polymerase chain reaction (RT-PCR),
-        - positive dengue IgM through acute serology,
-        - seroconversion of either paired IgM or IgG samples.
+        - positive NS1 point of care assay
+        - positive reverse transcriptase polymerase chain reaction (RT-PCR)
+        - positive dengue IgM through acute serology
+        - seroconversion of either single or paired IgM or IgG samples
 
     .. note: NS1 might have Equivocal,Positive
     .. note: IGM might have Equivocal,Positive
+    .. note: serology_interpretation include!
+    .. note: careful with upper/lower case.
+    .. note: improve implementation?
 
+    Parameters
+    ----------
+
+    Returns
+    -------
     """
     if verbose > 5:
         print("Applying... oucru_dengue_interpretation_feature.")
 
     # Create series (assuming false by default)
-    dengue_interpretation = pd.Series(index=tidy.index)
+    dengue_interpretation = \
+        pd.Series(index=tidy.index, dtype='boolean')
 
+    # -------------
+    # PCR
+    # -------------
     # Positive PCR
     if pcr and 'pcr_dengue_serotype' in tidy:
-        idxs_denv = tidy.pcr_dengue_serotype.fillna('').str.contains('DENV')
-        idxs_mixed = tidy.pcr_dengue_serotype.fillna('').str.contains('Mixed')
-        dengue_interpretation[idxs_denv] = True
-        dengue_interpretation[idxs_mixed] = True
-
-    # Positive NS1
-    if ns1 and 'ns1_interpretation' in tidy:
-        idxs = tidy.ns1_interpretation.fillna('').str.contains('Positive')
+        # Contains DENV
+        idxs = tidy.pcr_dengue_serotype \
+            .fillna('').str.contains('DENV')
         dengue_interpretation[idxs] = True
 
+        # Contains Mixed
+        idxs = tidy.pcr_dengue_serotype \
+            .fillna('').str.contains('Mixed')
+        dengue_interpretation[idxs] = True
+
+    # -----------
+    # NS1
+    # -----------
+    # Positive NS1
+    if ns1 and 'ns1_interpretation' in tidy:
+        idxs = tidy.ns1_interpretation \
+            .fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Positive NS1 plasma
+    if ns1 and 'ns1_plasma_interpretation' in tidy:
+        idxs = tidy.ns1_plasma_interpretation \
+            .fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Positive NS1 platelia
+    if ns1 and 'ns1_platelia_interpretation' in tidy:
+        idxs = tidy.ns1_platelia_interpretation \
+            .fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Positive NS1 urine
+    if ns1 and 'ns1_urine_interpretation' in tidy:
+        idxs = tidy.ns1_urine_interpretation \
+            .fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Positive NS1 trip test
+    #if ns1 and 'ns1_trip_test_interpretation' in tidy:
+    #    print(tidy.ns1_trip_test_interpretation)
+    #    idxs = tidy.ns1_trip_test_interpretation
+    #    print(idxs)
+    #    dengue_interpretation[idxs] = True
+
+    # -----------
+    # Serology
+    # -----------
     # Positive IGM
     if igm and 'igm_interpretation' in tidy:
-        idxs = tidy.igm_interpretation.fillna('').str.contains('Positive')
+        idxs = tidy.igm_interpretation \
+            .fillna('').str.contains('Positive')
+        dengue_interpretation[idxs] = True
+
+    # Single igm_igg
+    if single_igm_igg and 'serology_single_interpretation' in tidy:
+        idxs = tidy.serology_single_interpretation \
+            .fillna('').isin(['Primary', 'Secondary'])
+        dengue_interpretation[idxs] = True
+
+    # Paired igm_igg
+    if paired_igm_igg and 'serology_paired_interpretation' in tidy:
+        idxs = tidy.serology_paired_interpretation \
+            .fillna('').isin(['Primary', 'Secondary'])
+        dengue_interpretation[idxs] = True
+
+    # Serology
+    if serology and 'serology_interpretation' in tidy:
+        # Contains Primary
+        idxs = tidy.serology_interpretation \
+            .fillna('').str.contains('Primary')
+        dengue_interpretation[idxs] = True
+
+        # Contains Secondary
+        idxs = tidy.serology_interpretation \
+            .fillna('').str.contains('Secondary')
         dengue_interpretation[idxs] = True
 
     # Fill default
@@ -2042,7 +2289,6 @@ def oucru_serology_interpretation_feature(tidy,
         serology_single=True, serology_paired=True,
         serology_interpretation=True,
         inconsistencies='coerce',
-
         verbose=0):
     """Computes the serology interpretation from igm and igg.
 
@@ -2144,6 +2390,11 @@ def oucru_serology_interpretation_feature(tidy,
         tidy.serology_interpretation.fillna( \
             tidy.serology_single_interpretation)
 
+    # Columns
+    columns = ['serology_interpretation',
+               'serology_interpretation_single',
+               'serology_interpretation_paired']
+
     # This is still not static for the patient, is it?
     # make it static
 
@@ -2243,6 +2494,10 @@ def oucru_correction(tidy, yaml=None):
     # Correction bleeding
     # -------------------
     tidy = oucru_bleeding_correction(tidy)
+
+    # Correction oedema
+    # -----------------
+    tidy = oucru_oedema_correction(tidy)
 
     # Correction pleural_effusion
     # ---------------------------

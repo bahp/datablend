@@ -140,6 +140,9 @@ xray
 
 GROUPBY = 'StudyNo'
 
+
+# TO REMOVE!!!!!!
+
 units = [
 
     #
@@ -189,7 +192,7 @@ units = [
      ]},
 
     {'name': 'anorexia',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'static': 'max',
      'transformations': [
@@ -198,7 +201,7 @@ units = [
      'default': False},
 
     {'name': 'pregnant',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'static': 'max',
      'transformations': [
@@ -207,7 +210,7 @@ units = [
      'default': False},
 
     {'name': 'diabetes',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'static': 'max',
      'transformations': [
@@ -216,7 +219,7 @@ units = [
      'default': False},
 
     {'name': 'asthma',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'static': 'max',
      'transformations': [
@@ -225,7 +228,7 @@ units = [
      'default': False},
 
     {'name': 'anemia',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'transformations': [
          ('static_correction', {'groupby': GROUPBY, 'method': 'max'}),
@@ -233,7 +236,7 @@ units = [
      'static': 'max'},
 
     {'name': 'hypertension',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'transformations': [
          ('static_correction', {'groupby': GROUPBY, 'method': 'max'}),
@@ -241,7 +244,7 @@ units = [
      'static': 'max'},
 
     {'name': 'peptic_ulcer',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'transformations': [
          ('static_correction', {'groupby': GROUPBY, 'method': 'max'}),
@@ -249,7 +252,7 @@ units = [
      'static': 'max'},
 
     {'name': 'chronic_hepatitis',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'demographics',
      'transformations': [
          ('static_correction', {'groupby': GROUPBY, 'method': 'max'}),
@@ -317,7 +320,7 @@ units = [
     # Examination
     # -----------
     {'name': 'abdominal_pain',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
@@ -327,7 +330,7 @@ units = [
      ]},
 
     {'name': 'abdominal_tenderness',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'transformations': [
@@ -335,13 +338,13 @@ units = [
          ('fillna_correction', {'groupby': GROUPBY, 'method': False}),
      ]},
 
-    {'name': 'agitated', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'ascites', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'agitated', 'dtype': bool, 'source': 'examination'},
+    {'name': 'ascites', 'dtype': bool, 'source': 'examination'},
     {'name': 'breath', 'source': 'examination'},
-    {'name': 'dehydration', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'jaundice', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'dehydration', 'dtype': bool, 'source': 'examination'},
+    {'name': 'jaundice', 'dtype': bool, 'source': 'examination'},
     {'name': 'diarrhoea',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
@@ -350,14 +353,14 @@ units = [
          ('fillna_correction', {'groupby': GROUPBY, 'method': False}),
      ]},
 
-    {'name': 'impairment', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'hepatomegaly', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'liver_acute', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'liver_involved', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'movement', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'impairment', 'dtype': bool, 'source': 'examination'},
+    {'name': 'hepatomegaly', 'dtype': bool, 'source': 'examination'},
+    {'name': 'liver_acute', 'dtype': bool, 'source': 'examination'},
+    {'name': 'liver_involved', 'dtype': bool, 'source': 'examination'},
+    {'name': 'movement', 'dtype': bool, 'source': 'examination'},
 
     {'name': 'vomiting',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
@@ -367,7 +370,7 @@ units = [
      ]},
 
     {'name': 'skin_clammy',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
@@ -376,11 +379,11 @@ units = [
          ('fillna_correction', {'groupby': GROUPBY, 'method': False}),
      ]},
 
-    {'name': 'skin_flush', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'skin_rash', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'skin_flush', 'dtype': bool, 'source': 'examination'},
+    {'name': 'skin_rash', 'dtype': bool, 'source': 'examination'},
 
     {'name': 'restlessness',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
@@ -389,36 +392,36 @@ units = [
          ('fillna_correction', {'groupby': GROUPBY, 'method': False}),
      ]},
 
-    {'name': 'cns_abnormal', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'cns_abnormal_signs', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'cns_abnormal', 'dtype': bool, 'source': 'examination'},
+    {'name': 'cns_abnormal_signs', 'dtype': bool, 'source': 'examination'},
     {'name': 'gcs_eye_movement', 'dtype': int, 'source': 'examination'},
     {'name': 'gcs_motor_response', 'dtype': int, 'source': 'examination'},
     {'name': 'gcs_verbal_response', 'dtype': int, 'source': 'examination'},
 
     {'name': 'bleeding',
-     'dtype': np.bool,
+     'dtype': bool,
      'static': 'fbfill',
      'default': False,
      'source': 'examination',
      },
 
-    {'name': 'bleeding_gi', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_gum', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_mucosal', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_nose', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_severe', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_skin', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_urine', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_vaginal', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'bleeding_vensite', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'conjunctival_injection', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'lathargy_severe', 'dtype': np.bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
-    {'name': 'oedema_pulmonary', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'nasal_packing', 'dtype': np.bool, 'source': 'examination'},
-    {'name': 'respiratory_distress', 'dtype': np.bool, 'source': 'examination'},
+    {'name': 'bleeding_gi', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_gum', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_mucosal', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_nose', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_severe', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_skin', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_urine', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_vaginal', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'bleeding_vensite', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'conjunctival_injection', 'dtype': bool, 'source': 'examination'},
+    {'name': 'lathargy_severe', 'dtype': bool, 'source': 'examination', 'static': 'fbfill', 'default': False},
+    {'name': 'oedema_pulmonary', 'dtype': bool, 'source': 'examination'},
+    {'name': 'nasal_packing', 'dtype': bool, 'source': 'examination'},
+    {'name': 'respiratory_distress', 'dtype': bool, 'source': 'examination'},
     {'name': 'pulse_status', 'source': 'examination'},
     {'name': 'pleural_effusion',
-     'dtype': np.bool,
+     'dtype': bool,
      'source': 'examination',
      'static': 'fbfill',
      'default': False,
