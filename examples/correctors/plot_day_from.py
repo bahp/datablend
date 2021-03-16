@@ -38,6 +38,7 @@ data = [
 
     {'study_no': '6', 'date': None, 'event_admission': True},
 
+
 ]
 
 # Create DataFrame

@@ -92,5 +92,8 @@ def add_days(dates, days):
     days = pd.Series(days).apply(np.ceil)
     days = days.apply(lambda x: pd.Timedelta(x, unit='D'))
 
+    if days.isna().all():
+        return days
+
     # Return
     return dates + days

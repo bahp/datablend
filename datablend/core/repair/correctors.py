@@ -13,6 +13,7 @@ from pint.errors import UndefinedUnitError
 # DataBlend libraries
 from datablend.core.settings import textwrapper
 from datablend.core.settings import ureg
+from datablend.utils.compute import add_days
 from datablend.utils.pandas import nanunique
 from datablend.utils.pandas_schema import schema_from_json
 
@@ -321,6 +322,8 @@ def static_correction(series, method, **kwargs):
              behaviour when applied to strings (objects) and
              similarly median and mean might have inconsistent
              behaviour when applied to boolean.
+
+    .. note: The mode could be also implemented with value_counts.
 
     tidy.shock = \
         tidy.groupby(by='StudyNo').shock \
@@ -2438,6 +2441,29 @@ def day_from_first_true(x, event, tag):
     x['day_from_%s' % tag] = None
     # Return
     return x
+
+
+def day_from_day_values(df, cdate='date',
+        cday='day_from_illness',
+        return_date=True,
+        return_day=True):
+    """This method..."""
+    # Find onset date for each date, day combo
+    date_onset = add_days(df[cdate],
+        -df[cday].astype(float))
+
+    if date_onset.isna().all():
+        return date_onset
+
+    # Count dates and chose the most frequent
+    onset = date_onset.value_counts() \
+        .head(1).index.values[0]
+
+    # Compute new days
+    day_from = df[cdate] - onset
+
+    # Return
+    return day_from
 
 def oucru_correction(tidy, yaml=None):
     """This method computes all OUCRU data corrections.
