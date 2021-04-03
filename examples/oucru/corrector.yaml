@@ -240,7 +240,7 @@ features:
   - name: bleeding
     ctype: examination
     transformations:
-      - dtype_correction: {dtype: boolean}
+      - dtype_correction: {dtype: boolean, errors: coerce}
     warning: Double check all datasets have bleeding.
     description: Compound feature from bleeding subcategories, thus, it is True if any of
                  the bleeding subcategories is True. The bleeding subcategories are skin,

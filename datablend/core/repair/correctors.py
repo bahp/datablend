@@ -127,7 +127,7 @@ def to_boolean(series, copy=True, errors='raise',
     if is_bool_dtype(series):
         return series
     # Replace and convert type
-    return series.replace(MAP) \
+    return series.map(MAP) \
         .astype('boolean', copy, errors)
 
 
@@ -212,7 +212,7 @@ def dtype_correction(series, dtype, copy=True,
     return series.astype(dtype, copy, errors)
 
 
-def bool_level_correction(df, sbool, slevel, verbosity=10):
+def bool_level_correction(sbool, slevel, verbosity=10):
     """Corrects values of boolean and numeric series.
 
     It handles boolean and numeric columns representing either the
@@ -256,24 +256,40 @@ def bool_level_correction(df, sbool, slevel, verbosity=10):
     # Show information
     if verbosity > 5:
         print("Applying... bool_level_correction | {0} | {1}" \
-            .format(sbool, slevel))
+              .format(sbool.name, slevel.name))
+
+    # Create copy
+    transform = sbool.copy(deep=True)
+
+    # Convert dtype
+    transform = transform.convert_dtypes()
+
+    # Correction
+    transform = transform | slevel.fillna(0) > 0
+    transform[slevel == 0] = False
+
+    # Return
+    return transform
+
+    # Set
+    #df.loc[:, sbool] = transform
 
     # Convert dtypes
-    df[[sbool, slevel]] = df[[sbool, slevel]].convert_dtypes()
+    #df[[sbool, slevel]] = df[[sbool, slevel]].convert_dtypes()
 
     # Indexes
     #idxs = df.notna().any(axis=1)
 
     # Correct both series
-    df[sbool] = df[sbool] | df[slevel].fillna(0) > 0
-    df.loc[df[slevel] == 0, sbool] = False
+    #df.loc[:, sbool] = df[sbool] | df[slevel].fillna(0) > 0
+    #df.loc[df[slevel] == 0, sbool] = False
 
     #df.loc[idxs, sbool] = df.loc[idxs, [sbool, slevel]].any(axis=1)
     #df.loc[idxs, slevel] = df.loc[idxs, slevel].replace(to_replace=0, value=pd.NA)
     #df.loc[idxs, slevel] = df.loc[idxs, slevel].fillna(df[sbool])
 
     # Return
-    return df
+    #return df
 
 
 def fillna_correction(series, **kwargs):
@@ -726,7 +742,6 @@ def compound_feature_correction(series, compound):
     """
     # Copy data
     transform = series.copy(deep=True)
-
 
     # Convert to dtypes
     transform = transform.convert_dtypes()
@@ -1731,7 +1746,6 @@ def oucru_bleeding_correction(tidy, verbose=10):
     if verbose > 5:
         print("Applying... oucru_bleeding_correction.")
 
-
     # Find bleeding locations
     bleeding_locations = \
         find_bleeding_location_columns(tidy.columns)
@@ -1782,7 +1796,7 @@ def oucru_oedema_correction(tidy, verbose=10):
            tidy.oedema_pulmonary
     """
     if verbose > 5:
-        print("Applying... oucru_oedemag_correction.")
+        print("Applying... oucru_oedema_correction.")
 
 
     # Find bleeding locations
@@ -2405,11 +2419,17 @@ def oucru_serology_interpretation_feature(tidy,
     return tidy
 
 
-def day_from_first_true(x, event, tag):
+def day_from_first_true(x, event, tag, cdate='date'):
     """Include day for the first True element in x.
 
     .. warning: It might not be first true but
                 first not Null value.
+
+    .. warning: the column date has been hardcoded! note
+                that it has x.date. Implement better.
+
+    .. todo: check that column cdate exists and it
+             is actually a datetime series!
 
     Parameters
     ----------
@@ -2436,7 +2456,7 @@ def day_from_first_true(x, event, tag):
     # Create column
     if notna.size:
         x['day_from_%s' % tag] = \
-            (x.date - notna.date.values[0]).dt.days
+            (x[cdate] - notna[cdate].values[0]).dt.days
         return x
     x['day_from_%s' % tag] = None
     # Return
@@ -2515,7 +2535,10 @@ def oucru_correction(tidy, yaml=None):
             continue
         if not slevel in tidy.columns:
             continue
-        tidy = bool_level_correction(tidy, sbool, slevel)
+        continue
+        #tidy = bool_level_correction(tidy, sbool, slevel)
+        tidy[sbool] = bool_level_correction(tidy[sbool], tidy[slevel])
+
 
     # Correction bleeding
     # -------------------

@@ -27,10 +27,10 @@ data = pd.DataFrame(matrix,
              'abdominal_pain_level'])
 
 # Corrections
-correction = bool_level_correction(
-    data.copy(deep=True),
-    sbool='abdominal_pain',
-    slevel='abdominal_pain_level')
+data['abdominal_pain'] = \
+    bool_level_correction(
+        data.abdominal_pain,
+        data.abdominal_pain_level)
 
 # Show data any
 print("\nNote: When both abdominal_pain (bool) and abdominal_pain_level\n "
@@ -39,5 +39,3 @@ print("\nNote: When both abdominal_pain (bool) and abdominal_pain_level\n "
 
 print("\nData:")
 print(data)
-print("\nCorrections:")
-print(correction)

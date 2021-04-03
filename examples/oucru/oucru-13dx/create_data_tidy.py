@@ -51,9 +51,6 @@ original = pd.read_csv(blender.bc.filepath_tidy(),
 # Create tidy
 tidy = original.copy(deep=True)
 
-# Apply OUCRU corrections
-tidy = oucru_correction(tidy)
-
 # Create corrector
 corrector = \
     SchemaCorrectionTidy(filepath=yaml_corrector)
@@ -61,6 +58,9 @@ corrector = \
 # Apply corrections
 tidy, corrections = \
     corrector.transform(tidy, report_corrections=True)
+
+# Apply OUCRU corrections
+tidy = oucru_correction(tidy)
 
 # Define filename
 filename = '{0}/{1}.csv'.format(

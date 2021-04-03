@@ -53,9 +53,6 @@ original = pd.read_csv(blender.bc.filepath_tidy(),
 # Create tidy
 tidy = original.copy(deep=True)
 
-# Apply OUCRU corrections
-tidy = oucru_correction(tidy)
-
 # Create corrector
 corrector = \
     SchemaCorrectionTidy(filepath=yaml_corrector)
@@ -64,11 +61,13 @@ corrector = \
 tidy, corrections = \
     corrector.transform(tidy, report_corrections=True)
 
+# Apply OUCRU corrections
+tidy = oucru_correction(tidy)
+
 # Define filename
 filename = '{0}/{1}.csv'.format(
     blender.bc.filepath_datasets(),
     blender.bc.filename(mode='tidy', add='corrected'))
-
 
 # Save tidy corrected
 tidy.to_csv(filename, index=False)
