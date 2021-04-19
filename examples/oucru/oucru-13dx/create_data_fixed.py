@@ -258,7 +258,8 @@ path_fixed = '{0}/resources/outputs/datasets/{1}'.format(
 # Format data
 # -------------------------------
 # Read all data sheets
-data = pd.read_excel(path_data, sheet_name=None)
+data = pd.read_excel(path_data, 
+   sheet_name=None, engine='openpyxl')
 
 # Logging information
 logger.info("=" * 80)
