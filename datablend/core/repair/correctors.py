@@ -2073,7 +2073,7 @@ def oucru_dengue_interpretation_feature(tidy, verbose=10,
 
     # Create series (assuming false by default)
     dengue_interpretation = \
-        pd.Series(index=tidy.index, dtype='boolean')
+        pd.Series(index=tidy.index, dtype=bool) # Good? Error? 'boolean'
 
     # -------------
     # PCR
