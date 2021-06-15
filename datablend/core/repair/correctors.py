@@ -22,7 +22,7 @@ from datablend.utils.pandas_schema import schema_from_json
 # ---------------------------------------------------
 # Transformation functions
 def mode(series):
-    """"""
+    """Computes the mode."""
     if series.isnull().all():
         return np.nan
     return series.mode()[0]
@@ -706,7 +706,7 @@ def causal_correction(x, y):
     pass
 
 
-def compound_feature_correction(series, compound):
+def compound_feature_correction(series, compound, verbose=0):
     """Corrects compound boolean features.
 
     Ensures that the values of a compound feature (e.g. bleeding)
@@ -740,6 +740,10 @@ def compound_feature_correction(series, compound):
     Examples
     --------
     """
+    if verbose > 5:
+        print("Applying... compound_feature_correction to {0:>20} | {1}" \
+            .format(series.name, compound.columns.tolist()))
+
     # Copy data
     transform = series.copy(deep=True)
 
@@ -1444,16 +1448,61 @@ def schema_json_correction(dataframe, schema_json, columns=None):
 # -------------------------------------------------------------------
 # Specific corrections for OUCRU conventions
 # -------------------------------------------------------------------
+OUCRU_COMPOUND_FEATURES = {
+    'bleeding_gi': [
+        'hematemesis',
+        'melaena'
+    ],
+    'bleeding_nose': [
+        'epistaxis',
+        'packing_nose'
+    ],
+    'bleeding_skin': [
+        'petechiae',
+        'ecchymosis',
+        'bruising'],
+    'bleeding_urine': [
+        'hematuria'
+    ],
+    'cns_abnormal': [
+        'meningism',
+        'agitated',
+        'restlessness',
+    ],
+    'sd_leakage': [
+        'ascites',
+        'overload',
+        'oedema_pulmonary',
+        'respiratory_distress',
+    ],
+    'sd_bleeding': [
+        'bleeding_gi',
+        'bleeding_urine',
+    ],
+    'sd_organ_impairment': [
+        'cns_abnormal',
+        'liver_abnormal',
+        'kidney_abnormal'
+    ],
+    'ventilation': [
+        'ventilation_type',
+        'ventilation_cannula',
+        'ventilation_ncpap'
+    ]
+
+}
+
+
+
 def find_level_columns(columns):
     """This method finds level columns."""
     return [e for e in columns if 'level' in e]
 
 
 def find_bool_columns(columns):
-    """This method creates column frrom level column"""
+    """This method creates column from level column"""
     return [e.replace('_level', '')
             for e in columns if 'level' in e]
-
 
 def find_bleeding_location_columns(columns):
     """This method find bleeding column sites.
@@ -1490,7 +1539,7 @@ def find_oedema_location_columns(columns):
 
     """
     # Create locations
-    locations = ['face', 'feet', 'hands', 'pumonary']
+    locations = ['face', 'feet', 'hands', 'pulmonary']
     # Return variables
     return [e for e in columns
         if 'oedema_' in e and
@@ -1806,9 +1855,9 @@ def oucru_oedema_correction(tidy, verbose=10):
     if not oedema_locations:
         return tidy
 
-    # Column bleeding does not exist
-    if 'bleeding' not in tidy:
-        tidy['bleeding'] = False
+    # Column oedema does not exist
+    if 'oedema' not in tidy:
+        tidy['oedema'] = False
 
     # Correct compound feature bleeding.
     tidy.oedema = \
@@ -2164,6 +2213,8 @@ def oucru_dengue_interpretation_feature(tidy, verbose=10,
     return dengue_interpretation
 
 
+
+
 # -------------
 # Serology maps
 # -------------
@@ -2201,7 +2252,7 @@ MAP_serology_signs = {
 
 
 def oucru_serology_single(tidy, verbose=0):
-    """This method..."""
+    """Computes the serology single."""
 
     # Copy information
     if 'igm_interpretation' not in tidy or \
@@ -2485,7 +2536,23 @@ def day_from_day_values(df, cdate='date',
     # Return
     return day_from
 
-def oucru_correction(tidy, yaml=None):
+def oucru_inpatient_correction(tidy):
+    """This method fills inpatient."""
+    # First include inpatient/outpatient
+    tidy['patient_care'] = pd.NA
+    if 'inpatient' in tidy:
+        tidy.patient_care[tidy.inpatient] \
+            .fillna('Inpatient', inplace=True)
+    if 'outpatient' in tidy:
+        tidy.patient_care[tidy.outpatient] \
+            .fillna('Outpatient', inplace=True)
+
+    # Return
+    return tidy
+
+
+
+def oucru_correction(tidy, yaml=None, verbose=10):
     """This method computes all OUCRU data corrections.
 
     - bool/level correction
@@ -2512,10 +2579,14 @@ def oucru_correction(tidy, yaml=None):
     pd.DatFrame
         The corrected DataFrame
     """
+    # Show info
+    print("\nApplying... oucru_corrections!")
+
 
     # ------------------------
     # Corrections
     # ------------------------
+    tidy = tidy.copy(deep=True)   # fixes CopyWarning
     tidy = tidy[tidy.date.notna()]
 
 
@@ -2539,6 +2610,23 @@ def oucru_correction(tidy, yaml=None):
         #tidy = bool_level_correction(tidy, sbool, slevel)
         tidy[sbool] = bool_level_correction(tidy[sbool], tidy[slevel])
 
+
+    # Corrections compound
+    # --------------------
+    for k,v in OUCRU_COMPOUND_FEATURES.items():
+        # Get intersection columns
+        columns = tidy.columns.intersection(set(v))
+        if not columns.tolist():
+            continue
+        # Create column if not exists
+        if not k in tidy.columns:
+            tidy[k] = None
+        # Create compound feature
+        tidy[k] = \
+            compound_feature_correction(
+                tidy[k],
+                tidy[columns],
+                verbose=10)
 
     # Correction bleeding
     # -------------------
@@ -2575,9 +2663,13 @@ def oucru_correction(tidy, yaml=None):
     # -----------------
     #tidy = oucru_gender_pregnant_correction(tidy)
 
-    # Correction
-    # ----------
+    # Correction serology
+    # -------------------
     tidy = oucru_serology_interpretation_feature(tidy)
+
+    # Correction inpatient
+    # --------------------
+    tidy = oucru_inpatient_correction(tidy)
 
     # ---------------------------
     # Add new informative columns
@@ -2633,7 +2725,7 @@ def oucru_correction(tidy, yaml=None):
 
 def report_corrections(original, corrected, columns=None,
                        verbose=10, **kwargs):
-    """This method...
+    """This method reports the corrections
 
     Parameters
     ----------
