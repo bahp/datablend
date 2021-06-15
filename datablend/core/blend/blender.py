@@ -55,7 +55,7 @@ class Blender:
 
         # Read templates
         templates = pd.read_excel(filepath,
-            sheet_name=None)
+            sheet_name=None, engine='openpyxl')
 
         # Fit
         return self.fit(templates)
@@ -80,7 +80,7 @@ class Blender:
 
         # Read data
         data = pd.read_excel(filepath,
-            sheet_name=None)
+            sheet_name=None, engine='openpyxl')
 
         # Transform data
         data = self.transform(data,

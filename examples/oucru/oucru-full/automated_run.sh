@@ -5,12 +5,14 @@
 python ../oucru-06dx/create_data_fixed.py || exit
 python ../oucru-06dx/create_data_stacked.py || exit
 python ../oucru-06dx/create_data_tidy.py || exit
+'
 
 # Execute 13dx
 python ../oucru-13dx/create_data_fixed.py || exit
 python ../oucru-13dx/create_data_stacked.py || exit
 python ../oucru-13dx/create_data_tidy.py || exit
 
+:'
 # Execute 32dx
 python ../oucru-32dx/create_data_fixed.py || exit
 python ../oucru-32dx/create_data_stacked.py || exit
@@ -25,7 +27,6 @@ python ../oucru-42dx/create_data_tidy.py || exit
 python ../oucru-md/create_data_fixed.py || exit
 python ../oucru-md/create_data_stacked.py || exit
 python ../oucru-md/create_data_tidy.py || exit
-'
 
 # Execute dr
 python ../oucru-dr/create_data_fixed.py || exit
@@ -51,7 +52,7 @@ python ../oucru-d001/create_data_tidy.py || exit
 python ../oucru-01nva/create_data_fixed.py || exit
 python ../oucru-01nva/create_data_stacked.py || exit
 python ../oucru-01nva/create_data_tidy.py || exit
-
+'
 
 # Linux
 # Copy included in the python script.
