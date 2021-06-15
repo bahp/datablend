@@ -2669,7 +2669,7 @@ def oucru_correction(tidy, yaml=None, verbose=10):
 
     # Correction inpatient
     # --------------------
-    tidy = oucru_inpatient_correction(tidy)
+    # tidy = oucru_inpatient_correction(tidy) # issue
 
     # ---------------------------
     # Add new informative columns
