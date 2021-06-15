@@ -2663,13 +2663,26 @@ def oucru_correction(tidy, yaml=None, verbose=10):
     # -----------------
     #tidy = oucru_gender_pregnant_correction(tidy)
 
-    # Correction serology
-    # -------------------
-    tidy = oucru_serology_interpretation_feature(tidy)
 
     # Correction inpatient
     # --------------------
     # tidy = oucru_inpatient_correction(tidy) # issue
+
+    # Add serology interpretation feature
+    # -----------------------------------
+    tidy = oucru_serology_interpretation_feature(tidy)
+
+    # Add ns1 interpretation feature
+    # ------------------------------
+    #tidy['ns1_interpretation'] = \
+    #    oucru_ns1_interpretation_feature(tidy)
+
+    # Add dengue interpretation feature
+    # ---------------------------------
+    tidy['dengue_interpretation'] = \
+        oucru_dengue_interpretation_feature(tidy)
+
+
 
     # ---------------------------
     # Add new informative columns
