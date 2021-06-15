@@ -76,7 +76,7 @@ logger = load_logger('%s/logging.yaml' % curr_path)
 
 # Path with raw data.
 path_data = '{0}/resources/datasets/{1}'.format(
-    curr_path, '19-5-2020-CTU06DX_Data.xls')
+    curr_path, '19-5-2020-CTU06DX_Data.xlsx')
 
 # Path to save fixed data.
 path_fixed = '{0}/resources/outputs/datasets/{1}'.format(
@@ -87,7 +87,8 @@ path_fixed = '{0}/resources/outputs/datasets/{1}'.format(
 # Read data
 # -------------------------------
 # Read all data sheets
-data = pd.read_excel(path_data, sheet_name=None)
+data = pd.read_excel(path_data,
+   sheet_name=None, engine='openpyxl')
 
 # Logging information
 logger.info("=" * 80)

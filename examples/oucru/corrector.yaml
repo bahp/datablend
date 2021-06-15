@@ -1498,8 +1498,8 @@ features:
     warning: fix name
 
   - name: ventilation
-    warning: Be careful with ventilation (True and Fals)
-             and ventilation_type (canula, ncpap, ...)
+    transformations:
+      - dtype_correction: {dtype: boolean}
 
   - name: ward
     warning: Merge with ward_admitted below?
