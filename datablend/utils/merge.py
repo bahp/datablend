@@ -27,7 +27,10 @@ def merge_date_time(dates, times,
     date = pd.to_datetime(dates, **kwargs_date)
 
     # Create times
-    time = pd.to_datetime(times, **kwargs_time)
+    # ..note: hack 'str' because of exception class <time>
+    #         cannot be cast to class datetime.
+    #time = pd.to_datetime(times, **kwargs_time)
+    time = pd.to_datetime(times.astype('str'))
     time = time.fillna(pd.Timestamp('1960-01-01'))
 
     # Create strings
